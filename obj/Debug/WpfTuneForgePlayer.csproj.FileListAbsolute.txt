@@ -1,0 +1,15 @@
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\WpfTuneForgePlayer.exe.config
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\WpfTuneForgePlayer.exe
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\WpfTuneForgePlayer.pdb
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.csproj.AssemblyReference.cache
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\MainWindow.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\App.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer_MarkupCompile.cache
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\MainWindow.baml
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.g.resources
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.Properties.Resources.resources
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.csproj.GenerateResource.cache
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.csproj.CoreCompileInputs.cache
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.exe
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.pdb
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.exe.config
