@@ -48,7 +48,10 @@ namespace WpfTuneForgePlayer
 
             using var tagFile = TagLib.File.Create(path);
             if (tagFile.Tag.Pictures.Length == 0)
+            {
+                MessageBox.Show("File not have album art", "DEBUG");
                 return null;
+            }
 
             var bin = tagFile.Tag.Pictures[0].Data.Data;
             if (bin.Length == 0)
@@ -68,7 +71,10 @@ namespace WpfTuneForgePlayer
         {
             var albumImage = GetAlbumArt(path);
             if (albumImage == null)
-                return;
+            {
+                MessageBox.Show("Not found" + path, "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+               
 
             MusicLogo.Source = albumImage;
         }
@@ -116,7 +122,7 @@ namespace WpfTuneForgePlayer
             _userIsDragging = false;
         }
 
-        private void TimerTime_Tick(object? sender, EventArgs e)
+        private void TimerTime_Tick(object sender, EventArgs e)
         {
             if (_audioFile == null || !_isMusicPlaying || _userIsDragging)
                 return;
@@ -128,7 +134,7 @@ namespace WpfTuneForgePlayer
             EndMusicLabel.Content = _audioFile.TotalTime.ToString(@"mm\:ss");
         }
 
-        private void StatusVolumeSound_Click(object sender, RoutedEventArgs e)
+        private void ToggleSound(object sender, RoutedEventArgs e)
         {
             if (outputDevice == null)
             {

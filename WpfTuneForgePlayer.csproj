@@ -157,5 +157,20 @@
   <ItemGroup>
     <Resource Include="repeatSong.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="language.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favoriter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="music.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

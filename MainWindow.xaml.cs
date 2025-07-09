@@ -26,5 +26,10 @@ namespace WpfTuneForgePlayer
             ActionHandle();
             InitTimerMusic();
         }
+
+        private void MusicTrackBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

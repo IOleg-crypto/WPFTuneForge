@@ -10,13 +10,17 @@
     Height="450"
     Width="800"
     MinWidth="960"
+    ResizeMode="CanMinimize"
+    WindowStyle="SingleBorderWindow"
     MinHeight="480"
     Background="Black">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/> <!-- Sidebar -->
-            <ColumnDefinition Width="*"/>   <!-- Main content -->
+            <ColumnDefinition Width="Auto"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main content -->
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
@@ -48,17 +52,19 @@
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="43*" />
                     </Grid.RowDefinitions>
-                    
-                    
+
+
                     <Grid VerticalAlignment="Top" Height="120" Margin="0,280,0,0" Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="267*" />
                             <ColumnDefinition Width="267*" />
-                            <ColumnDefinition Width="180*" />
+                            <ColumnDefinition Width="134*" />
+                            <ColumnDefinition Width="4"/>
+                            <ColumnDefinition Width="42*"/>
                             <ColumnDefinition Width="86*" />
                         </Grid.ColumnDefinitions>
-                        
-                        
+
+
 
                         <Grid Grid.Column="1">
                             <StackPanel Orientation="Horizontal"
@@ -67,39 +73,72 @@
                                         Margin="0,46,0,0"
                                         Height="80" >
                                 <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
-                                        Margin="5,0">
-                                    <Image Source="/previous.png" Width="60"/>
-                                </Button>
+                                        Margin="5,0"/>
+
+
 
                                 <Button Style="{StaticResource ImageButtonStyle}" Click="OnClickMusic"
                                         BorderBrush = "Transparent" Cursor="Hand" Margin="5,0">
-                                    <Image Source="/pause.png" Width="60"/>
+                                    <Image Source="/pause.png" Width="97" Height="88"/>
                                 </Button>
 
                                 <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
-                                        Margin="5,0">
-                                    <Image Source="/next.png" Width="60"/>
-                                </Button>
+                                        Margin="5,0"/>
                             </StackPanel>
+                            <Image Source="/previous.png" Margin="0,31,188,-20"/>
+                            <Image Source="/next.png" Margin="195,56,-6,6" RenderTransformOrigin="0.5,0.5">
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.109"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
                         </Grid>
-                       
+
 
                         <Label x:Name="StartMusicLabel" Content="00:00" Foreground="White" FontSize="14"
-                               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,54,0,0" Grid.Column="0"/>
+                               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,20,0,0" Grid.Column="0"/>
                         <Label x:Name="EndMusicLabel" Content="00:00" Foreground="White" FontSize="14"
-                               Grid.Column="3" Margin="16,44,0,46" HorizontalAlignment="Left"/>
+                               Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                        <Slider x:Name = "MusicTrackBar" Margin="49,16,28,-414" Grid.ColumnSpan="4"
-                                Grid.Column="0" />
-                        <Image Margin="161,-8,0,109" Source="/songHaoticPlaylist.png" Grid.Column="2" HorizontalAlignment="Left" Width="35"/>
-                        <Image Margin="112,-8,34,109" Source="/favorite_a.png" Grid.Column="2"/>
-                        <Image Margin="21,-8,31,109" Source="/repeatSong.png" Grid.Column="3"/>
+                        <Slider x:Name = "MusicTrackBar" Margin="38,10,39,77" Grid.ColumnSpan="6"
+                                Grid.Column="0" ValueChanged="MusicTrackBar_ValueChanged" />
+
+
+
+
+                        <Button Style="{StaticResource ImageButtonStyle}" Click="ToggleSound" BorderBrush = "Transparent"
+                                        Margin="5,0">
+                            <Image Margin="599,-18,-453,119" Source="/favorite_a.png" Grid.Column="2" Grid.ColumnSpan="3"/>
+                        </Button>
+
+
+                        <Button Style="{StaticResource ImageButtonStyle}" Click="ToggleSound" BorderBrush = "Transparent"
+                                        Margin="5,0">
+                            <Image Grid.Row="1" Margin="32,285,744,-281" Source="/volume-high_new.png"/>
+                        </Button>
+                        <Button Style="{StaticResource ImageButtonStyle}" Click="ToggleSound" BorderBrush = "Transparent">
+                            <Image Margin="646,-20,-594,121" Source="/repeatSong.png" Grid.Column="5"/>
+                        </Button>
+
+
+                        <Image Source="/songHaoticPlaylist.png" HorizontalAlignment="Left" Width="26" RenderTransformOrigin="-1.834,0.31" Margin="29,-18,0,121" Grid.Column="4" Grid.ColumnSpan="2">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0.065"/>
+                                    <TranslateTransform X="0.005" Y="-0.093"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
                     </Grid>
 
-                    <Image x:Name = "MusicLogo" Margin="311,10,311,0" Grid.Row="1" Height="152" VerticalAlignment="Top">
-                        <Image.OpacityMask>
-                            <ImageBrush/>
-                        </Image.OpacityMask>
+                    <Image x:Name = "MusicLogo" Margin="306,5,294,0" Source="/assets/sidebar/exit2.png" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -110,8 +149,18 @@
                         </Image.RenderTransform>
                     </Image>
 
-                    <Label x:Name = "NameSong" Content="Unknown"  Foreground="White" Margin="376,186,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left"/>
-                    <Label x:Name = "NameArtist" Content="Unknown" Foreground="White" Height="24" Margin="379,229,356,0" Grid.Row="1" VerticalAlignment="Top">
+
+                    <Label x:Name = "NameSong" Content="Unknown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Foreground="White" Margin="0,185,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Width="800" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="0.055"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="0.205"/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label x:Name = "NameArtist" Content="Unknown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Margin="2,232,-2,0" Grid.Row="1" VerticalAlignment="Top">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -121,8 +170,13 @@
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
+                    <Button Style="{StaticResource ImageButtonStyle}" Click="ToggleSound" BorderBrush = "Transparent"
+                                        Margin="5,0">
+                        <Image Grid.Row="1" Margin="29,282,742,-281" Source="/volume-high_new.png"/>
+                    </Button>
 
-                    <Image Grid.Row="1" Margin="42,264,734,144" Source="/volume-high_new.png"/>
+
+
                 </Grid>
             </Viewbox>
         </Grid>
