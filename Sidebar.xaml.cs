@@ -1,43 +1,39 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using Microsoft.Win32;
+using System;
 using System.Windows;
-using Microsoft.Win32;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace WpfTuneForgePlayer
 {
     public partial class Sidebar : UserControl
     {
         public event Action<string> MusicSelected;
+        public event EventHandler ShowMusicDirectory;
+        private MainWindow _mainWindow;
+
         public Sidebar()
         {
             InitializeComponent();
+
         }
+
         private void Favorite_Click(object sender, RoutedEventArgs e)
         {
-                    MessageBox.Show("Favorite clicked");
+            MessageBox.Show("Favorite clicked");
         }
-        
+
         private void LanguageClick(object sender, RoutedEventArgs e)
         {
-                    MessageBox.Show("Language clicked");
+            MessageBox.Show("Language clicked");
         }
-        
+
         private void MusicClick(object sender, RoutedEventArgs e)
         {
-            var openFileDialog = new OpenFileDialog
-            {
-                Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*",
-                FilterIndex = 1,
-                RestoreDirectory = true
-            };
+            ShowMusicDirectory?.Invoke(this, EventArgs.Empty);
 
-            if (openFileDialog.ShowDialog() == true)
-            {
-                MusicSelected?.Invoke(openFileDialog.FileName);
-            }
-            
         }
-        
+
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Settings clicked");
@@ -45,6 +41,11 @@ namespace WpfTuneForgePlayer
         private void CloseSidebar(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void BackToStartPage(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainContentFrame.Navigate(new StartPage());
         }
     }
 }

@@ -1,12 +1,16 @@
-﻿using System;
+﻿using MaxMind.Db;
+using NAudio.Wave;
+using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using NAudio.Wave;
 using System.Windows.Threading;
+
 
 namespace WpfTuneForgePlayer
 {
@@ -21,6 +25,9 @@ namespace WpfTuneForgePlayer
         private bool _isSoundOn;
         private bool _userIsDragging;
         private bool _IsSelectedSongFavorite;
+        private ImageSource _albumArtImage;
+        //Main class 
+        private StartPage _startPage;
 
         public string CurrentMusicPath
         {
@@ -30,32 +37,40 @@ namespace WpfTuneForgePlayer
 
         private void InitTimerMusic()
         {
-            MusicTrackBar.Value = 0;
-            MusicTrackBar.Maximum = 1000;
-            MusicTrackBar.Value = 0;
+            _startPage.MusicTrackBar.Value = 0;
+            _startPage.MusicTrackBar.Maximum = 1000;
+            _startPage.MusicTrackBar.Value = 0;
 
-            MusicTrackBar.PreviewMouseDown += (s, e) => _userIsDragging = true;
-            MusicTrackBar.PreviewMouseUp += MusicTrackBar_MouseUp;
+            _startPage.MusicTrackBar.PreviewMouseDown += (s, e) => _userIsDragging = true;
+            _startPage.MusicTrackBar.PreviewMouseUp += MusicTrackBar_MouseUp;
 
             _timer.Interval = TimeSpan.FromMilliseconds(500);
             _timer.Tick += TimerTime_Tick;
         }
 
+        private void InitDefaultAlbumArt()
+        {
+            _albumArtImage = _startPage.MusicLogo.Source;
+        }
+
         private BitmapImage GetAlbumArt(string path)
         {
             if (!File.Exists(path))
+            {
                 return null;
+            }
 
             using var tagFile = TagLib.File.Create(path);
             if (tagFile.Tag.Pictures.Length == 0)
             {
-                MessageBox.Show("File not have album art", "DEBUG");
                 return null;
             }
 
             var bin = tagFile.Tag.Pictures[0].Data.Data;
             if (bin.Length == 0)
+            {
                 return null;
+            }
 
             using var ms = new MemoryStream(bin);
             var image = new BitmapImage();
@@ -72,11 +87,12 @@ namespace WpfTuneForgePlayer
             var albumImage = GetAlbumArt(path);
             if (albumImage == null)
             {
-                MessageBox.Show("Not found" + path, "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                _startPage.MusicLogo.Source = _albumArtImage;
+                return;
             }
-               
 
-            MusicLogo.Source = albumImage;
+
+            _startPage.MusicLogo.Source = albumImage;
         }
 
         private void TakeArtistSongName(string path)
@@ -102,23 +118,44 @@ namespace WpfTuneForgePlayer
                     }
                 }
 
-                NameArtist.Content = artist;
-                NameSong.Content = title;
+                _startPage.NameArtist.Content = artist;
+                _startPage.NameSong.Content = title;
             }
             catch
             {
-                NameArtist.Content = "";
-                NameSong.Content = "";
+                _startPage.NameArtist.Content = "";
+                _startPage.NameSong.Content = "";
             }
+        }
+
+        private void InitMusic(string path)
+        {
+            _audioFile = new AudioFileReader(CurrentMusicPath);
+            outputDevice = new WaveOutEvent();
+            outputDevice.Init(_audioFile);
+            outputDevice.PlaybackStopped += OnPlaybackStopped;
+            _isSoundOn = true;
+        }
+        private void PlayMusic()
+        {
+            if (_audioFile == null || outputDevice == null)
+            {
+                MessageBox.Show("No music device initialized.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            outputDevice.Volume = 1f;
+            outputDevice.Play();
+            _isMusicPlaying = true;
         }
 
         private void MusicTrackBar_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (_audioFile == null) return;
 
-            double frac = MusicTrackBar.Value / MusicTrackBar.Maximum;
+            double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
             _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
-            StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
+            _startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
             _userIsDragging = false;
         }
 
@@ -128,10 +165,10 @@ namespace WpfTuneForgePlayer
                 return;
 
             double progress = _audioFile.CurrentTime.TotalSeconds / _audioFile.TotalTime.TotalSeconds;
-            MusicTrackBar.Value = progress * MusicTrackBar.Maximum;
+            _startPage.MusicTrackBar.Value = progress * _startPage.MusicTrackBar.Maximum;
 
-            StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
-            EndMusicLabel.Content = _audioFile.TotalTime.ToString(@"mm\:ss");
+            _startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
+            _startPage.EndMusicLabel.Content = _audioFile.TotalTime.ToString(@"mm\:ss");
         }
 
         private void ToggleSound(object sender, RoutedEventArgs e)
@@ -143,13 +180,18 @@ namespace WpfTuneForgePlayer
             }
 
             _isSoundOn = !_isSoundOn;
-            outputDevice.Volume = _isSoundOn ? 1f : 0f;
-
-            string iconPath = _isSoundOn
-                ? "D:\\gitnext\\csharpProject\\TuneForrge\\TuneForge\\assets\\menu\\volume-high_b.png"
-                : "D:\\gitnext\\csharpProject\\TuneForrge\\TuneForge\\assets\\menu\\volume-high_c.png";
-
-            MusicLogo.Source = new BitmapImage(new Uri(iconPath));
+            if(_isSoundOn)
+            {
+                outputDevice.Volume = 1f;
+                var imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_new.png");
+                _startPage.SoundButton.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+            }
+            else
+            {
+                var imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_c.png");
+                _startPage.SoundButton.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+                outputDevice.Volume = 0f;
+            }
         }
 
         private void OnClickMusic(object sender, RoutedEventArgs e)
@@ -168,14 +210,8 @@ namespace WpfTuneForgePlayer
                 try
                 {
                     TakeArtistSongName(CurrentMusicPath);
-                    _audioFile = new AudioFileReader(CurrentMusicPath);
-                    outputDevice = new WaveOutEvent();
-                    outputDevice.Init(_audioFile);
-                    outputDevice.PlaybackStopped += OnPlaybackStopped;
-                    _isSoundOn = true;
-                    outputDevice.Volume = 1f;
-                    outputDevice.Play();
-                    _isMusicPlaying = true;
+                    InitMusic(_currentMusicPath);
+                    PlayMusic();
                     UpdateAlbumArt(CurrentMusicPath);
                     _timer.Start();
                     _newMusicPath = CurrentMusicPath;
@@ -217,14 +253,17 @@ namespace WpfTuneForgePlayer
             _audioFile = null;
 
             _isMusicPlaying = false;
-            MusicTrackBar.Value = 0;
-            StartMusicLabel.Content = "00:00";
-            EndMusicLabel.Content = "00:00";
+            _startPage.MusicTrackBar.Value = 0;
+            _startPage.StartMusicLabel.Content = "00:00";
+            _startPage.EndMusicLabel.Content = "00:00";
 
-            MusicLogo.Source = null;
+            // If song don`t have album art, set default
+            BitmapImage image = new BitmapImage();
+            image = _startPage.MusicLogo.Source as BitmapImage;
+            _startPage.MusicLogo.Source = image;
         }
 
-        private void OnPlaybackStopped(object? sender, StoppedEventArgs e)
+        private void OnPlaybackStopped(object sender, StoppedEventArgs e)
         {
             _timer.Stop();
 
@@ -261,10 +300,15 @@ namespace WpfTuneForgePlayer
 
             _IsSelectedSongFavorite = !_IsSelectedSongFavorite;
             string path = _IsSelectedSongFavorite
-                ? "D:\\gitnext\\csharpProject\\TuneForrge\\TuneForge\\assets\\sidebar\\favorite_a.png"
-                : "D:\\gitnext\\csharpProject\\TuneForrge\\TuneForge\\assets\\menu\\favorite_b.png";
+                ? System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\favorite_b.png")
+                : System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\sidebar\\favorite_a.png");
 
-            MusicLogo.Source = new BitmapImage(new Uri(path));
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path, UriKind.Absolute);
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();
+            _startPage.FavoriteSong.Source = bitmap;
         }
 
         private void RepeatSong(object sender, RoutedEventArgs e)

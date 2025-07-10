@@ -17,5 +17,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key ="SidebarStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
     </Application.Resources>
 </Application>

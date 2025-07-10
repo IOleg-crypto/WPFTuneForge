@@ -1,0 +1,130 @@
+﻿<Page x:Class="WpfTuneForgePlayer.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTuneForgePlayer"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StartPage">
+
+    <Grid>
+        <Viewbox Stretch="Uniform">
+            <Grid Width="800" Height="450" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="43*" />
+                </Grid.RowDefinitions>
+
+                <Frame x:Name="MainContentFrame" Grid.Column="2" NavigationUIVisibility="Hidden"/>
+
+
+                <Grid VerticalAlignment="Top" Height="120" Margin="0,280,0,0" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="267*" />
+                        <ColumnDefinition Width="267*" />
+                        <ColumnDefinition Width="134*" />
+                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="42*"/>
+                        <ColumnDefinition Width="86*" />
+                    </Grid.ColumnDefinitions>
+
+
+
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Horizontal"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="0,46,0,0"
+                                   Height="80" >
+                            <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
+                                   Margin="5,0"/>
+
+                            <Button Style="{StaticResource ImageButtonStyle}"
+                                   BorderBrush = "Transparent" Cursor="Hand" Margin="5,0">
+                                <Image Source="/pause.png" Width="97" Height="88"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent"
+                                   Margin="5,0"/>
+                        </StackPanel>
+                        <Button Style="{StaticResource ImageButtonStyle}" >
+                            <Image Source="/previous.png" Margin="0,31,188,-20"/>
+                        </Button>
+
+                        <Button Style="{StaticResource ImageButtonStyle}">
+                            <Image Source="/next.png" Margin="195,56,-6,6" RenderTransformOrigin="0.5,0.5">
+
+                            </Image>
+                        </Button>
+                    </Grid>
+
+
+                    <Label x:Name="StartMusicLabel" Content="00:00" Foreground="White" FontSize="14"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,20,0,0" Grid.Column="0"/>
+                    <Label x:Name="EndMusicLabel" Content="00:00" Foreground="White" FontSize="14"
+                          Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <Slider x:Name = "MusicTrackBar" Margin="38,10,39,77" Grid.ColumnSpan="6"
+                           Grid.Column="0" />
+
+
+
+
+                    <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
+                                   Margin="5,0">
+                        <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="/favorite_a.png" Grid.Column="2" Grid.ColumnSpan="3"/>
+                    </Button>
+
+
+
+                    <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent">
+                        <Image Margin="724,-19,-500,120" Source="/repeatSong.png" Grid.Column="5"/>
+                    </Button>
+
+
+                    <Image Source="/songHaoticPlaylist.png" HorizontalAlignment="Left" Width="26" RenderTransformOrigin="-1.834,0.31" Margin="29,-18,0,121" Grid.Column="4" Grid.ColumnSpan="2">
+                    </Image>
+                </Grid>
+
+                <Image x:Name = "MusicLogo" Margin="306,5,294,0" Source="/musicLogo.jpg" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+
+                <Label x:Name = "NameSong" Content="Unknown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Foreground="White" Margin="0,185,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Width="800" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0.055"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0.205"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label x:Name = "NameArtist" Content="Unknown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Margin="2,232,-2,0" Grid.Row="1" VerticalAlignment="Top">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.165"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label x:Name ="NameProgram" Content="TuneForge" HorizontalAlignment="Left" Foreground="White" Height="35" Margin="702,-10,0,0" VerticalAlignment="Top" Width="88" FontSize="16" Grid.RowSpan="2"/>
+            </Grid>
+        </Viewbox>
+        <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
+Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
+            <Image x:Name="SoundButton" Grid.Row="1" Margin="-83,187,549,98" Source="/volume-high_new.png" />
+        </Button>
+    </Grid>
+</Page>

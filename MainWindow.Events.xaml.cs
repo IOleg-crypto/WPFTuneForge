@@ -17,17 +17,6 @@ namespace WpfTuneForgePlayer
 {
     public partial class MainWindow : Window
     {
-        private void ToggleSidebar(object sender, RoutedEventArgs e)
-        {
-            if (Sidebar.Visibility == Visibility.Visible)
-            {
-                SideBar.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                Sidebar.Visibility = Visibility.Visible;
-            }
-        }
         private void OnMusicSelected(string path)
         {
             CurrentMusicPath = path;
@@ -38,6 +27,19 @@ namespace WpfTuneForgePlayer
         private void ActionHandle()
         {
             Sidebar.MusicSelected += OnMusicSelected;
+        }
+
+        private void InitMusicDirectory()
+        {
+            _startPage = new StartPage();
+            MainContentFrame.Navigate(_startPage);
+
+
+            Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
+        }
+        private void OnShowMusicDirectory(object? sender, EventArgs e)
+        {
+            MainContentFrame.Navigate(new MusicDirectory());
         }
     }
 }

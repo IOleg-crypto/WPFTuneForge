@@ -6,14 +6,12 @@
     <Grid Margin="10" VerticalAlignment="Stretch" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- Займе весь доступний простір -->
             <RowDefinition Height="Auto"/>
-            <!-- Під кнопку Close -->
         </Grid.RowDefinitions>
 
-        <!-- Верхня частина зі всіма кнопками крім Close -->
-        <StackPanel Grid.Row="0">
-            <Button Margin="0,5" Padding="5" HorizontalContentAlignment="Left" Background="Transparent" BorderBrush="Transparent" Foreground="White" >
+        <!-- Sidebar elements-->
+        <StackPanel x:Name ="SidebarPanel" Grid.Row="0">
+            <Button Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
                     <Image x:Name="FavoriteSong" Source="/favoriter.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
@@ -21,7 +19,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Margin="0,5" Padding="5" HorizontalContentAlignment="Left" Background="Transparent" BorderBrush="Transparent" Foreground="White" >
+            <Button Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="language.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
@@ -29,7 +27,7 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="SelectMusic" Click="MusicClick" Margin="0,5" Padding="5" HorizontalContentAlignment="Left" Background="Transparent" BorderBrush="Transparent" Foreground="White" >
+            <Button x:Name="SelectMusic" Click="MusicClick" Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/music.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
@@ -37,24 +35,13 @@
                 </StackPanel>
             </Button>
 
-            <Button Margin="0,5" Padding="5" HorizontalContentAlignment="Left" Background="Transparent" BorderBrush="Transparent" Foreground="White" >
+            <Button Click="SettingsClick" Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/settings.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
                     <TextBlock VerticalAlignment="Center" FontSize="14">Settings</TextBlock>
                 </StackPanel>
             </Button>
-
-            <Separator Margin="0,10"/>
         </StackPanel>
-
-        <!-- Нижня кнопка Close -->
-        <Button Grid.Row="1" Click="CloseSidebar" Margin="0,5" Padding="5" HorizontalContentAlignment="Left" Background="Transparent" BorderBrush="Transparent" Foreground="White" >
-            <StackPanel Orientation="Horizontal" >
-                <Image Source="/exit.png" Width="24" Height="24" Margin="0,0,10,0">
-                </Image>
-                <TextBlock VerticalAlignment="Center" FontSize="14">Close</TextBlock>
-            </StackPanel>
-        </Button>
     </Grid>
 </UserControl>

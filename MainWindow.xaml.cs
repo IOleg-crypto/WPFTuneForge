@@ -23,13 +23,11 @@ namespace WpfTuneForgePlayer
         public MainWindow()
         {
             InitializeComponent();
+            InitMusicDirectory();
             ActionHandle();
             InitTimerMusic();
+            InitDefaultAlbumArt();
         }
 
-        private void MusicTrackBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
     }
 }

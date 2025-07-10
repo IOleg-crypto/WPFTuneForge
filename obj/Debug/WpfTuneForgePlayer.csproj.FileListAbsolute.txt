@@ -42,3 +42,9 @@ D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneF.C02B39D7.Up2Date
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.exe
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.pdb
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.exe.config
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\MaxMind.Db.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\MaxMind.Db.xml
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\MusicDirectory.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\MusicDirectory.baml
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\StartPage.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\StartPage.baml
