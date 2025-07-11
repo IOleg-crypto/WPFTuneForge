@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfTuneForgePlayer.ViewModel;
 
+
 namespace WpfTuneForgePlayer
 {
     /// <summary>
@@ -28,9 +29,6 @@ namespace WpfTuneForgePlayer
             InitMusicDirectory();
             ActionHandle();
             InitTimerMusic();
-            InitDefaultAlbumArt();
-
         }
-
     }
 }

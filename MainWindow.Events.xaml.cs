@@ -37,13 +37,11 @@ namespace WpfTuneForgePlayer
             _startPage.DataContext = _viewModel;
             _viewModel.MainWindow = this;
             MainContentFrame.Navigate(_startPage);
-
-
             Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
         }
         private void OnShowMusicDirectory(object sender, EventArgs e)
         {
-            MainContentFrame.Navigate(new MusicDirectory());
+            MainContentFrame.Navigate(new MusicDirectory(_viewModel));
         }
     }
 }

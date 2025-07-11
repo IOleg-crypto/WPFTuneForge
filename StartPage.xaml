@@ -65,15 +65,12 @@
                     <Label x:Name="EndMusicLabel" Content="{Binding EndTime}" Foreground="White" FontSize="14"
                           Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Slider x:Name = "MusicTrackBar" Margin="38,10,39,77" Grid.ColumnSpan="6"
-                           Grid.Column="0" />
-
-
+                    <Slider x:Name = "MusicTrackBar"  Value="{Binding TrackPosition, Mode=TwoWay}" Minimum="0" Maximum="1000" ClipToBounds="True" Margin="38,10,39,77" Grid.ColumnSpan="6" Grid.Column="0" />
 
 
                     <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent" Command="{Binding SelectFavoriteSong}" 
                                    Margin="5,0">
-                        <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="pack://siteoforigin:,,,/assets/sidebar/favorite_a.png" Grid.Column="2" Grid.ColumnSpan="3"/>
+                        <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="{Binding FavoriteSong}" Grid.Column="2" Grid.ColumnSpan="3"/>
                     </Button>
 
 
@@ -88,7 +85,7 @@
                 </Grid>
 
 
-                <Image x:Name = "MusicLogo"  Margin="306,5,294,0" Source="pack://siteoforigin:,,,/assets/menu/musicLogo.jpg" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+                <Image x:Name = "MusicLogo"  Margin="306,5,294,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
 
                     <Image.RenderTransform>
                         <TransformGroup>

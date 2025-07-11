@@ -22,9 +22,9 @@ namespace WpfTuneForgePlayer
         private bool _isSoundOn;
         private bool _userIsDragging;
         private bool _IsSelectedSongFavorite;
-        private ImageSource _albumArtImage;
+
         //Main class 
-        private StartPage _startPage;
+        private StartPage _startPage = new();
         
         
 
@@ -47,10 +47,7 @@ namespace WpfTuneForgePlayer
             _timer.Tick += TimerTime_Tick;
         }
 
-        private void InitDefaultAlbumArt()
-        {
-            _albumArtImage = _startPage.MusicLogo.Source;
-        }
+        
 
         private BitmapImage GetAlbumArt(string path)
         {
@@ -81,20 +78,19 @@ namespace WpfTuneForgePlayer
             return image;
         }
 
-        private void UpdateAlbumArt(string path)
+        public void UpdateAlbumArt(string path)
         {
             var albumImage = GetAlbumArt(path);
             if (albumImage == null)
             {
-                _startPage.MusicLogo.Source = _albumArtImage;
                 return;
             }
 
 
-            _startPage.MusicLogo.Source = albumImage;
+            _viewModel.AlbumArt = albumImage;
         }
 
-        private void TakeArtistSongName(string path)
+        public void TakeArtistSongName(string path)
         {
             try
             {
@@ -164,11 +160,14 @@ namespace WpfTuneForgePlayer
             if (_audioFile == null || !_isMusicPlaying || _userIsDragging)
                 return;
 
-            double progress = _audioFile.CurrentTime.TotalSeconds / _audioFile.TotalTime.TotalSeconds;
-            _startPage.MusicTrackBar.Value = progress * _startPage.MusicTrackBar.Maximum;
+            if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            {
+                double progress = _audioFile.CurrentTime.TotalSeconds / _audioFile.TotalTime.TotalSeconds;
+                _viewModel.TrackPosition = progress * _startPage.MusicTrackBar.Maximum;
 
-            _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
-            _viewModel.EndTime = _audioFile.TotalTime.ToString(@"mm\:ss");
+                _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
+                _viewModel.EndTime = _audioFile.TotalTime.ToString(@"mm\:ss");
+            }
         }
 
         public void ToggleSound(object sender, RoutedEventArgs e)
@@ -260,9 +259,16 @@ namespace WpfTuneForgePlayer
             //_startPage.EndMusicLabel.Content = "00:00";
 
             // If song don`t have album art, set default
-            BitmapImage image = new BitmapImage();
-            image = _startPage.MusicLogo.Source as BitmapImage;
-            _startPage.MusicLogo.Source = image;
+            var defaultImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/menu/musicLogo.jpg");
+            if (File.Exists(defaultImagePath))
+            {
+                var image = new BitmapImage(new Uri(defaultImagePath, UriKind.Absolute));
+                _viewModel.AlbumArt = image;
+            }
+            else
+            {
+                _viewModel.AlbumArt = null;
+            }
         }
 
         private void OnPlaybackStopped(object sender, StoppedEventArgs e)
@@ -286,7 +292,7 @@ namespace WpfTuneForgePlayer
             if (_audioFile != null)
             {
                 _audioFile.CurrentTime = TimeSpan.Zero;
-                //outputDevice?.Pause();
+                outputDevice?.Pause();
             }
         }
 
@@ -310,7 +316,7 @@ namespace WpfTuneForgePlayer
             bitmap.UriSource = new Uri(path, UriKind.Absolute);
             bitmap.CacheOption = BitmapCacheOption.OnLoad;
             bitmap.EndInit();
-            _startPage.FavoriteSong.Source = bitmap;
+            _viewModel.FavoriteSong = bitmap;
         }
 
         public void RepeatSong(object sender, RoutedEventArgs e)

@@ -47,7 +47,7 @@
                     <Button Width="28" Height="28"
                             Background="Transparent"
                             BorderThickness="0"
-                            Cursor="Hand"
+                            Cursor="Hand" Click="OpenMusicFolder"
                             >
                         <Image Source="pack://siteoforigin:,,,/assets/menu/folderchoose.png" Stretch="Uniform"/>
                     </Button>
@@ -58,90 +58,35 @@
         <!-- CONTENT -->
         <ScrollViewer Grid.Row="1"
                       VerticalScrollBarVisibility="Auto">
-            <WrapPanel HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       ItemWidth="160"
-                       ItemHeight="240"
-                       Margin="0,0,0,10">
+            <ItemsControl ItemsSource="{Binding Songs}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-                <Border Background="#222"
-                        CornerRadius="8"
-                        Margin="2"
-                        Width="160"
-                        Height="240"
-                        HorizontalAlignment="Left"
-                        >
-                    <StackPanel>
-                        <Image
-                               Height="140"
-                               Stretch="UniformToFill"
-                               Margin="0,0,0,4"
-                               ClipToBounds="True"
-                               />
-
-                        <Separator Margin="4,0" Background="#444"/>
-
-                        <TextBlock Text="Artist Name" 
-                                   Foreground="#DDD"
-                                   FontWeight="SemiBold"
-                                   HorizontalAlignment ="Center"
-                                   Margin="6,4,6,0"
-                                   TextTrimming="CharacterEllipsis"/>
-
-                        <TextBlock Text="Song Title" 
-                                   Foreground="White"
-                                   Margin="6,0,6,0"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Center"
-                                   FontSize="13"/>
-
-                        <TextBlock Text="03:45"
-                                   Foreground="#888"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,6,0,0"/>
-                    </StackPanel>
-                </Border>
-
-                <Border Background="#222"
-                        CornerRadius="5"
-                        Margin="2"
-                        Width="160"
-                        HorizontalAlignment="Left"
-                        Height="240"
-                        >
-                    <StackPanel>
-                        <Image
-                               Height="140"
-                               Stretch="UniformToFill"
-                               Margin="0,0,0,4"
-                               ClipToBounds="True"
-                               />
-
-                        <Separator Margin="4,0" Background="#444"/>
-
-                        <TextBlock Text="Another Artist"
-                                   Foreground="#DDD"
-                                   FontWeight="SemiBold"
-                                   HorizontalAlignment ="Center"
-                                   Margin="6,4,6,0"
-                                   TextTrimming="CharacterEllipsis"/>
-
-                        <TextBlock Text="Another Song"
-                                   Foreground="White"
-                                   Margin="6,0,6,0"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Center"
-                                   FontSize="13"/>
-
-                        <TextBlock Text="04:12"
-                                   Foreground="#888"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,6,0,0"/>
-                    </StackPanel>
-                </Border>
-            </WrapPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="160" Height="240" Background="#222" CornerRadius="8" Margin="4" Cursor="Hand">
+                            <StackPanel>
+                                <Image Source="{Binding AlbumArt}" Height="140" Stretch="Uniform" Margin="0,0,0,4"/>
+                                <Separator Margin="4,0" Background="#444"/>
+                                <TextBlock Text="{Binding Artist}" Foreground="#DDD" FontWeight="SemiBold"
+                               HorizontalAlignment="Center" Margin="6,4,6,0" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="{Binding Title}" Foreground="White" TextWrapping="Wrap"
+                               TextAlignment="Center" FontSize="13" Margin="6,0,6,0"/>
+                                <TextBlock Text="{Binding Duration}" Foreground="#888" FontSize="12"
+                               HorizontalAlignment="Center" Margin="0,6,0,0"/>
+                            </StackPanel>
+                            <Border.InputBindings>
+                                <MouseBinding Gesture="LeftClick"
+                                  Command="{Binding DataContext.PlaySelectedSongCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                  CommandParameter="{Binding}"/>
+                            </Border.InputBindings>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </Page>
