@@ -26,7 +26,7 @@
                         BorderThickness="0"
                         Cursor="Hand"
                         Click="BackToMainPage">
-                    <Image Source="/exit2.png" Stretch="Uniform"/>
+                    <Image Source="pack://siteoforigin:,,,/assets/sidebar/exit2.png" Stretch="Uniform"/>
                 </Button>
 
                 <TextBlock Grid.Column="1"
@@ -49,7 +49,7 @@
                             BorderThickness="0"
                             Cursor="Hand"
                             >
-                        <Image Source="/folderchoose.png" Stretch="Uniform"/>
+                        <Image Source="pack://siteoforigin:,,,/assets/menu/folderchoose.png" Stretch="Uniform"/>
                     </Button>
                 </StackPanel>
             </Grid>

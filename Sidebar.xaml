@@ -13,7 +13,7 @@
         <StackPanel x:Name ="SidebarPanel" Grid.Row="0">
             <Button Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
-                    <Image x:Name="FavoriteSong" Source="/favoriter.png" Width="24" Height="24" Margin="0,0,10,0">
+                    <Image x:Name="FavoriteSong" Source="pack://siteoforigin:,,,/assets/sidebar/favoriter.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
                     <TextBlock VerticalAlignment="Center" FontSize="14">Favorite</TextBlock>
                 </StackPanel>
@@ -21,7 +21,7 @@
 
             <Button Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="language.png" Width="24" Height="24" Margin="0,0,10,0">
+                    <Image Source="pack://siteoforigin:,,,/assets/sidebar/language.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
                     <TextBlock VerticalAlignment="Center" FontSize="14">Language</TextBlock>
                 </StackPanel>
@@ -29,7 +29,7 @@
 
             <Button x:Name="SelectMusic" Click="MusicClick" Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="/music.png" Width="24" Height="24" Margin="0,0,10,0">
+                    <Image Source="pack://siteoforigin:,,,/assets/sidebar/music.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
                     <TextBlock VerticalAlignment="Center" FontSize="14">Music</TextBlock>
                 </StackPanel>
@@ -37,7 +37,7 @@
 
             <Button Click="SettingsClick" Style="{StaticResource SidebarStyle}" >
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="/settings.png" Width="24" Height="24" Margin="0,0,10,0">
+                    <Image Source="pack://siteoforigin:,,,/assets/sidebar/settings.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>
                     <TextBlock VerticalAlignment="Center" FontSize="14">Settings</TextBlock>
                 </StackPanel>

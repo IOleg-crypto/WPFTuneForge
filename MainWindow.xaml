@@ -17,9 +17,9 @@
     TextOptions.TextFormattingMode="Display"
     TextOptions.TextRenderingMode="ClearType"
     UseLayoutRounding="True"
-    SnapsToDevicePixels="True" Icon="/icon.png"
+    SnapsToDevicePixels="True" Icon="pack://siteoforigin:,,,/assets/icon/icon.png"   
     >
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="142.2"/>

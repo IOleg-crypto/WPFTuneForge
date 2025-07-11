@@ -37,24 +37,23 @@
                                    VerticalAlignment="Top"
                                    Margin="0,46,0,0"
                                    Height="80" >
-                            <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
+                            <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent"
                                    Margin="5,0"/>
 
                             <Button Style="{StaticResource ImageButtonStyle}"
                                    BorderBrush = "Transparent" Cursor="Hand" Margin="5,0">
-                                <Image Source="/pause.png" Width="97" Height="88"/>
+                                <Image Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
                             </Button>
 
                             <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent"
                                    Margin="5,0"/>
                         </StackPanel>
                         <Button Style="{StaticResource ImageButtonStyle}" >
-                            <Image Source="/previous.png" Margin="0,31,188,-20"/>
+                            <Image Source="pack://siteoforigin:,,,/assets/menu/previous.png" Margin="0,31,188,-20"/>
                         </Button>
 
                         <Button Style="{StaticResource ImageButtonStyle}">
-                            <Image Source="/next.png" Margin="195,56,-6,6" RenderTransformOrigin="0.5,0.5">
-
+                            <Image Source="pack://siteoforigin:,,,/assets/menu/next.png" Margin="195,56,-6,6" RenderTransformOrigin="0.5,0.5">
                             </Image>
                         </Button>
                     </Grid>
@@ -73,21 +72,21 @@
 
                     <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
                                    Margin="5,0">
-                        <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="/favorite_a.png" Grid.Column="2" Grid.ColumnSpan="3"/>
+                        <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="pack://siteoforigin:,,,/assets/sidebar/favorite_a.png" Grid.Column="2" Grid.ColumnSpan="3"/>
                     </Button>
 
 
 
                     <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent">
-                        <Image Margin="724,-19,-500,120" Source="/repeatSong.png" Grid.Column="5"/>
+                        <Image Margin="724,-19,-500,120" Source="pack://siteoforigin:,,,/assets/menu/repeatSong.png" Grid.Column="5"/>
                     </Button>
 
 
-                    <Image Source="/songHaoticPlaylist.png" HorizontalAlignment="Left" Width="26" RenderTransformOrigin="-1.834,0.31" Margin="29,-18,0,121" Grid.Column="4" Grid.ColumnSpan="2">
+                    <Image Source="pack://siteoforigin:,,,/assets/menu/songHaoticPlaylist.png" HorizontalAlignment="Left" Width="26" RenderTransformOrigin="-1.834,0.31" Margin="29,-18,0,121" Grid.Column="4" Grid.ColumnSpan="2">
                     </Image>
                 </Grid>
 
-                <Image x:Name = "MusicLogo" Margin="306,5,294,0" Source="/musicLogo.jpg" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+                <Image x:Name = "MusicLogo" Margin="306,5,294,0" Source="pack://siteoforigin:,,,/assets/menu/musicLogo.jpg" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
 
                     <Image.RenderTransform>
                         <TransformGroup>
@@ -124,7 +123,7 @@
         </Viewbox>
         <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
 Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
-            <Image x:Name="SoundButton" Grid.Row="1" Margin="-83,187,549,98" Source="/volume-high_new.png" />
+            <Image x:Name="SoundButton" Grid.Row="1" Margin="-83,187,549,98" Source="pack://siteoforigin:,,,/assets/menu/volume-high_new.png" />
         </Button>
     </Grid>
 </Page>

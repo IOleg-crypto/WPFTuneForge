@@ -37,7 +37,7 @@ namespace WpfTuneForgePlayer
 
             Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
         }
-        private void OnShowMusicDirectory(object? sender, EventArgs e)
+        private void OnShowMusicDirectory(object sender, EventArgs e)
         {
             MainContentFrame.Navigate(new MusicDirectory());
         }
