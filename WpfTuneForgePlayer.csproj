@@ -143,6 +143,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MainWindow.Events.xaml.cs" />
+    <Compile Include="Model\Command.cs" />
     <Compile Include="MusicDirectory.xaml.cs">
       <DependentUpon>MusicDirectory.xaml</DependentUpon>
     </Compile>
@@ -152,7 +153,8 @@
     <Compile Include="StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TuneForge.Audio.cs" />
+    <Compile Include="AudioModel\TuneForge.Audio.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -201,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="folderchoose.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8.1">

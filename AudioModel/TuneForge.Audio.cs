@@ -28,6 +28,7 @@ namespace WpfTuneForgePlayer
         private ImageSource _albumArtImage;
         //Main class 
         private StartPage _startPage;
+        
 
         public string CurrentMusicPath
         {
@@ -155,7 +156,7 @@ namespace WpfTuneForgePlayer
 
             double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
             _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
-            _startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
+            //_startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
             _userIsDragging = false;
         }
 
@@ -167,7 +168,7 @@ namespace WpfTuneForgePlayer
             double progress = _audioFile.CurrentTime.TotalSeconds / _audioFile.TotalTime.TotalSeconds;
             _startPage.MusicTrackBar.Value = progress * _startPage.MusicTrackBar.Maximum;
 
-            _startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
+            //_startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
             _startPage.EndMusicLabel.Content = _audioFile.TotalTime.ToString(@"mm\:ss");
         }
 
@@ -194,7 +195,7 @@ namespace WpfTuneForgePlayer
             }
         }
 
-        private void OnClickMusic(object sender, RoutedEventArgs e)
+        public void OnClickMusic(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(CurrentMusicPath))
             {
@@ -254,7 +255,7 @@ namespace WpfTuneForgePlayer
 
             _isMusicPlaying = false;
             _startPage.MusicTrackBar.Value = 0;
-            _startPage.StartMusicLabel.Content = "00:00";
+            //_startPage.StartMusicLabel.Content = "00:00";
             _startPage.EndMusicLabel.Content = "00:00";
 
             // If song don`t have album art, set default

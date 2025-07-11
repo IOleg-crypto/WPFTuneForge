@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfTuneForgePlayer"
+      xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel" 
+      d:DataContext="{d:DesignInstance Type=viewModel:MusicViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StartPage">
@@ -40,7 +42,7 @@
                             <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent"
                                    Margin="5,0"/>
 
-                            <Button Style="{StaticResource ImageButtonStyle}"
+                            <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding PlayCommand}"
                                    BorderBrush = "Transparent" Cursor="Hand" Margin="5,0">
                                 <Image Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
                             </Button>
@@ -59,9 +61,9 @@
                     </Grid>
 
 
-                    <Label x:Name="StartMusicLabel" Content="00:00" Foreground="White" FontSize="14"
+                    <Label x:Name="StartMusicLabel" Content="{Binding CurrentTime}" Foreground="White" FontSize="14"
                           HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,20,0,0" Grid.Column="0"/>
-                    <Label x:Name="EndMusicLabel" Content="00:00" Foreground="White" FontSize="14"
+                    <Label x:Name="EndMusicLabel" Content="{Binding EndTime}" Foreground="White" FontSize="14"
                           Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
                     <Slider x:Name = "MusicTrackBar" Margin="38,10,39,77" Grid.ColumnSpan="6"

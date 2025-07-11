@@ -12,11 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfTuneForgePlayer.ViewModel;
 
 namespace WpfTuneForgePlayer
 {
     public partial class MainWindow : Window
     {
+        private MusicViewModel _viewModel = new();
         private void OnMusicSelected(string path)
         {
             CurrentMusicPath = path;
@@ -32,6 +34,8 @@ namespace WpfTuneForgePlayer
         private void InitMusicDirectory()
         {
             _startPage = new StartPage();
+            _startPage.DataContext = _viewModel;
+            _viewModel.MainWindow = this;
             MainContentFrame.Navigate(_startPage);
 
 
