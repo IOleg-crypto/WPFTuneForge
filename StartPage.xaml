@@ -35,9 +35,9 @@
 
                     <Grid Grid.Column="1">
                         <StackPanel Orientation="Horizontal"
-                                   HorizontalAlignment="Center"
+                                   HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
-                                   Margin="0,46,0,0"
+                                   Margin="68,48,0,0"
                                    Height="80" >
                             <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent"
                                    Margin="5,0"/>
@@ -47,21 +47,20 @@
                                 <Image Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
                             </Button>
 
-                            <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent"
-                                   Margin="5,0"/>
+
                         </StackPanel>
-                        <Button Style="{StaticResource ImageButtonStyle}" >
+                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding _startMusic}" >
                             <Image Source="pack://siteoforigin:,,,/assets/menu/previous.png" Margin="0,31,188,-20"/>
                         </Button>
 
-                        <Button Style="{StaticResource ImageButtonStyle}">
+                        <Button Style="{StaticResource ImageButtonStyle}" Command ="{Binding _endMusic}">
                             <Image Source="pack://siteoforigin:,,,/assets/menu/next.png" Margin="195,56,-6,6" RenderTransformOrigin="0.5,0.5">
                             </Image>
                         </Button>
                     </Grid>
 
 
-                    <Label x:Name="StartMusicLabel" Content="{Binding CurrentTime}" Foreground="White" FontSize="14"
+                    <Label x:Name="StartMusicLabel" Content="{Binding CurrentTime}"  Foreground="White" FontSize="14"
                           HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,20,0,0" Grid.Column="0"/>
                     <Label x:Name="EndMusicLabel" Content="{Binding EndTime}" Foreground="White" FontSize="14"
                           Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
@@ -72,14 +71,14 @@
 
 
 
-                    <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
+                    <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent" Command="{Binding SelectFavoriteSong}" 
                                    Margin="5,0">
                         <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="pack://siteoforigin:,,,/assets/sidebar/favorite_a.png" Grid.Column="2" Grid.ColumnSpan="3"/>
                     </Button>
 
 
 
-                    <Button Style="{StaticResource ImageButtonStyle}"  BorderBrush = "Transparent">
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding RepeatCommand}" BorderBrush = "Transparent">
                         <Image Margin="724,-19,-500,120" Source="pack://siteoforigin:,,,/assets/menu/repeatSong.png" Grid.Column="5"/>
                     </Button>
 
@@ -88,7 +87,8 @@
                     </Image>
                 </Grid>
 
-                <Image x:Name = "MusicLogo" Margin="306,5,294,0" Source="pack://siteoforigin:,,,/assets/menu/musicLogo.jpg" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+
+                <Image x:Name = "MusicLogo"  Margin="306,5,294,0" Source="pack://siteoforigin:,,,/assets/menu/musicLogo.jpg" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
 
                     <Image.RenderTransform>
                         <TransformGroup>
@@ -100,7 +100,7 @@
                     </Image.RenderTransform>
                 </Image>
 
-                <Label x:Name = "NameSong" Content="Unknown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Foreground="White" Margin="0,185,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Width="800" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
+                <Label x:Name = "NameSong" Content="{Binding Artist}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Foreground="White" Margin="0,185,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Width="800" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
                     <Label.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -110,7 +110,7 @@
                         </TransformGroup>
                     </Label.RenderTransform>
                 </Label>
-                <Label x:Name = "NameArtist" Content="Unknown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Margin="2,232,-2,0" Grid.Row="1" VerticalAlignment="Top">
+                <Label x:Name = "NameArtist" Content="{Binding Title}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Margin="2,232,-2,0" Grid.Row="1" VerticalAlignment="Top">
                     <Label.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

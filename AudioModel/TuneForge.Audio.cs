@@ -1,15 +1,12 @@
-﻿using MaxMind.Db;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using System;
 using System.IO;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using WpfTuneForgePlayer.ViewModel;
 
 
 namespace WpfTuneForgePlayer
@@ -28,6 +25,7 @@ namespace WpfTuneForgePlayer
         private ImageSource _albumArtImage;
         //Main class 
         private StartPage _startPage;
+        
         
 
         public string CurrentMusicPath
@@ -119,13 +117,14 @@ namespace WpfTuneForgePlayer
                     }
                 }
 
-                _startPage.NameArtist.Content = artist;
-                _startPage.NameSong.Content = title;
+                _viewModel.Artist = artist;
+                
+                _viewModel.Title = title;
             }
             catch
             {
-                _startPage.NameArtist.Content = "";
-                _startPage.NameSong.Content = "";
+                _viewModel.Artist = "";
+                _viewModel.Title = "";
             }
         }
 
@@ -156,7 +155,7 @@ namespace WpfTuneForgePlayer
 
             double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
             _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
-            //_startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
+            _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
             _userIsDragging = false;
         }
 
@@ -168,11 +167,11 @@ namespace WpfTuneForgePlayer
             double progress = _audioFile.CurrentTime.TotalSeconds / _audioFile.TotalTime.TotalSeconds;
             _startPage.MusicTrackBar.Value = progress * _startPage.MusicTrackBar.Maximum;
 
-            //_startPage.StartMusicLabel.Content = _audioFile.CurrentTime.ToString(@"mm\:ss");
-            _startPage.EndMusicLabel.Content = _audioFile.TotalTime.ToString(@"mm\:ss");
+            _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
+            _viewModel.EndTime = _audioFile.TotalTime.ToString(@"mm\:ss");
         }
 
-        private void ToggleSound(object sender, RoutedEventArgs e)
+        public void ToggleSound(object sender, RoutedEventArgs e)
         {
             if (outputDevice == null)
             {
@@ -256,7 +255,9 @@ namespace WpfTuneForgePlayer
             _isMusicPlaying = false;
             _startPage.MusicTrackBar.Value = 0;
             //_startPage.StartMusicLabel.Content = "00:00";
-            _startPage.EndMusicLabel.Content = "00:00";
+            _viewModel.CurrentTime="00:00";
+            _viewModel.EndTime = "00:00";
+            //_startPage.EndMusicLabel.Content = "00:00";
 
             // If song don`t have album art, set default
             BitmapImage image = new BitmapImage();
@@ -280,22 +281,22 @@ namespace WpfTuneForgePlayer
             }
         }
 
-        private void StartMusic(object sender, RoutedEventArgs e)
+        public void StartMusic(object sender, RoutedEventArgs e)
         {
             if (_audioFile != null)
             {
                 _audioFile.CurrentTime = TimeSpan.Zero;
-                outputDevice?.Pause();
+                //outputDevice?.Pause();
             }
         }
 
-        private void EndMusic(object sender, RoutedEventArgs e)
+        public void EndMusic(object sender, RoutedEventArgs e)
         {
             if (_audioFile != null)
                 _audioFile.CurrentTime = _audioFile.TotalTime - TimeSpan.FromMilliseconds(500);
         }
 
-        private void SelectFavoriteSongToPlayList(object sender, RoutedEventArgs e)
+        public void SelectFavoriteSongToPlayList(object sender, RoutedEventArgs e)
         {
             if (outputDevice == null || _audioFile == null) return;
 
@@ -312,7 +313,7 @@ namespace WpfTuneForgePlayer
             _startPage.FavoriteSong.Source = bitmap;
         }
 
-        private void RepeatSong(object sender, RoutedEventArgs e)
+        public void RepeatSong(object sender, RoutedEventArgs e)
         {
             if (_audioFile == null || outputDevice == null)
                 return;

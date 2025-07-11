@@ -12,8 +12,9 @@ namespace WpfTuneForgePlayer.ViewModel
 {
     public class MusicViewModel : INotifyPropertyChanged
     {
-        private string _artist;
-        private string _title;
+        // Data to bind to UI
+        private string _artist = "Unknown";
+        private string _title = "Unknown";
         private ImageSource _albumArt;
         private double _trackPosition;
         private string _currentTime = "00:00";
@@ -25,11 +26,17 @@ namespace WpfTuneForgePlayer.ViewModel
         }
 
 
-        // Init Commands
+        // Init Commands to using in StartPage
         private void InitCommands()
         {
             PlayCommand = new RelayCommand(() => MainWindow?.OnClickMusic(this , null));
-            //StopCommand = new RelayCommand(() => MainWindow?.StopMusic());
+            SelectFavoriteSong = new RelayCommand(() => MainWindow?.SelectFavoriteSongToPlayList(this, null));
+            _ToggleSound = new RelayCommand(() => MainWindow?.ToggleSound(this, null));
+            RepeatCommand = new RelayCommand(() => MainWindow?.RepeatSong(this, null));
+            _startMusic= new RelayCommand(() => MainWindow?.StartMusic(this, null));
+            _endMusic= new RelayCommand(() => MainWindow?.EndMusic(this, null));
+            
+            //StopCommand = new RelayCommand(() => MainWindow?.);
             //RepeatCommand = new RelayCommand(() => MainWindow?.RepeatMusic());
         }
 
@@ -74,11 +81,18 @@ namespace WpfTuneForgePlayer.ViewModel
 
         }
 
+        public ImageSource _AlbumArt { get => _albumArt; set { _albumArt = value; OnPropertyChanged(nameof(AlbumArt)); } }
+
         // Commands
         public ICommand PlayCommand { get; set; }
-        public ICommand StopCommand { get; set; }
         public ICommand RepeatCommand { get; set; }
 
+        public ICommand SelectFavoriteSong { get; set; }
+        public ICommand _ToggleSound { get; set; }
+        public ICommand _startMusic { get; set; }
+        public ICommand _endMusic { get; set; }
+
+        // INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {
