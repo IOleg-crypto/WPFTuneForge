@@ -1,6 +1,3 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: .NET TuneForge
 
 on:
@@ -20,19 +17,42 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
     - name: Create ZIP package with .exe and assets/
       run: |
         mkdir package
-        copy build\Release\MyAppImGUI.exe package\
-        xcopy /E /I /Y myAppImGUI\assets package\assets
-        powershell -Command "Compress-Archive -Path package\* -DestinationPath build\Release\MyAppImGUI.zip"
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+        xcopy /E /I /Y bin\Release\assets package\assets
+        xcopy /Y bin\Release\*.dll package\assets\
+        xcopy /Y bin\Release\*.pdb package\assets\
+        xcopy /Y bin\Release\*.xml package\assets\
+        xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
+        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
+
+    - name: List ZIP content
+      run: powershell -Command "Expand-Archive -Path bin\Release\TuneForge.zip -DestinationPath test_extract; dir test_extract -Recurse"
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: build-${{ github.run_number }}
+        name: "TuneForge Release"
+        body: |
+          • Commit: ${{ inputs.commit_sha || github.sha }}
+          • Message: ${{ inputs.release_message }}
+        files: bin/Release/TuneForge.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
