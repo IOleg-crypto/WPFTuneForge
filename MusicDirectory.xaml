@@ -1,13 +1,15 @@
-﻿<Page x:Class="WpfTuneForgePlayer.MusicDirectory"
+﻿<Page x:Class="WpfTuneForgePlayer.MusicDirectory" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Background="Black"
+      Background="Black"  TextOptions.TextRenderingMode="ClearType"
+      TextOptions.TextFormattingMode="Display"
+      UseLayoutRounding="True"
+      SnapsToDevicePixels="True"
       >
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -19,7 +21,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Button Grid.Column="0"
                         Width="32" Height="32"
                         Background="Transparent"
@@ -36,24 +38,34 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
 
-                <!-- Вибір папки -->
+
                 <StackPanel Grid.Column="2"
                             Orientation="Horizontal"
-                            VerticalAlignment="Center"
-                            >
+                            VerticalAlignment="Center">
                     <TextBlock Text="Choose folder"
                                Foreground="White"
                                VerticalAlignment="Center"/>
                     <Button Width="28" Height="28"
                             Background="Transparent"
                             BorderThickness="0"
-                            Cursor="Hand" Click="OpenMusicFolder"
-                            >
+                            Cursor="Hand" Click="OpenMusicFolder">
                         <Image Source="pack://siteoforigin:,,,/assets/menu/folderchoose.png" Stretch="Uniform"/>
                     </Button>
                 </StackPanel>
             </Grid>
         </Border>
+
+
+        <TextBlock x:Name="InfoInDirectory"
+                   Grid.Row="1"
+                   Text="Please choose a folder with music"
+                   Foreground="Gray"
+                   FontSize="18"
+                   FontWeight="SemiBold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   Visibility="Collapsed" Margin="0,0,60,4"/>
 
         <!-- CONTENT -->
         <ScrollViewer Grid.Row="1"
@@ -68,20 +80,56 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Width="160" Height="240" Background="#222" CornerRadius="8" Margin="4" Cursor="Hand">
-                            <StackPanel>
-                                <Image Source="{Binding AlbumArt}" Height="140" Stretch="Uniform" Margin="0,0,0,4"/>
-                                <Separator Margin="4,0" Background="#444"/>
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </Border.RenderTransform>
+                            <Border.RenderTransformOrigin>0.5,0.5</Border.RenderTransformOrigin>
+
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                     To="1.05" Duration="0:0:0.15" />
+                                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                     To="1.05" Duration="0:0:0.15" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                     To="1" Duration="0:0:0.15" />
+                                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                     To="1" Duration="0:0:0.15" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                            <!-- CONTENT -->
+                            <StackPanel >
+                                <Image Source="{Binding AlbumArt}" Height="140" Stretch="Uniform" Margin="0,0,0,4" />
+                                <Separator Margin="4,0" Background="#444" />
                                 <TextBlock Text="{Binding Artist}" Foreground="#DDD" FontWeight="SemiBold"
-                               HorizontalAlignment="Center" Margin="6,4,6,0" TextTrimming="CharacterEllipsis"/>
+                       HorizontalAlignment="Center" Margin="6,4,6,0" TextTrimming="CharacterEllipsis" />
                                 <TextBlock Text="{Binding Title}" Foreground="White" TextWrapping="Wrap"
-                               TextAlignment="Center" FontSize="13" Margin="6,0,6,0"/>
+                       TextAlignment="Center" FontSize="13" Margin="6,0,6,0" />
                                 <TextBlock Text="{Binding Duration}" Foreground="#888" FontSize="12"
-                               HorizontalAlignment="Center" Margin="0,6,0,0"/>
+                       HorizontalAlignment="Center" Margin="0,6,0,0" />
                             </StackPanel>
+
                             <Border.InputBindings>
                                 <MouseBinding Gesture="LeftClick"
-                                  Command="{Binding DataContext.PlaySelectedSongCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                                  CommandParameter="{Binding}"/>
+                          Command="{Binding DataContext.PlaySelectedSongCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                          CommandParameter="{Binding}" />
                             </Border.InputBindings>
                         </Border>
                     </DataTemplate>

@@ -43,5 +43,13 @@ namespace WpfTuneForgePlayer
         {
             MainContentFrame.Navigate(new MusicDirectory(_viewModel));
         }
+        private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+        private void Close_Click(object sender, RoutedEventArgs e) => Close();
+
+        private void DragWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
     }
 }

@@ -8,8 +8,11 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DataContext="{d:DesignInstance Type=viewModel:MusicViewModel}"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="StartPage">
+      Title="StartPage"
+      TextOptions.TextRenderingMode="ClearType"
+      TextOptions.TextFormattingMode="Display"
+      UseLayoutRounding="True"
+      SnapsToDevicePixels="True">
 
     <Grid>
         <Viewbox Stretch="Uniform">
@@ -93,7 +96,7 @@
                 </Grid>
 
 
-                <Image x:Name = "MusicLogo"  Margin="306,5,294,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+                <Image x:Name = "MusicLogo"  Margin="300,10,300,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
 
                     <Image.RenderTransform>
                         <TransformGroup>
@@ -115,7 +118,7 @@
                         </TransformGroup>
                     </Label.RenderTransform>
                 </Label>
-                <Label x:Name = "NameArtist" Content="{Binding Title}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Margin="2,232,-2,0" Grid.Row="1" VerticalAlignment="Top">
+                <Label x:Name = "NameArtist" Content="{Binding Title}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Margin="2,232,-2,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="12">
                     <Label.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -130,7 +133,7 @@
         </Viewbox>
         <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding toggleAudio}" BorderBrush = "Transparent"
 Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
-            <Image x:Name="SoundButton" Grid.Row="1" Margin="-83,187,537,89" Source="{Binding SoundStatus}" />
+            <Image x:Name="SoundButton" Grid.Row="1" Margin="-80,203,564,88" Source="{Binding SoundStatus}" />
         </Button>
     </Grid>
 </Page>

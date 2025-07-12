@@ -15,23 +15,47 @@ using System.Windows.Shapes;
 using WpfTuneForgePlayer.ViewModel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using WinForm = System.Windows.Forms;
+using System.Collections.Specialized; 
 
 namespace WpfTuneForgePlayer
 {
-    /// <summary>
-    /// Interaction logic for MusicDirectory.xaml
-    /// </summary>
     public partial class MusicDirectory : Page
     {
         private StartPage _startPage;
         private MusicViewModel _viewModel;
+
         public MusicDirectory(MusicViewModel vm)
         {
             InitializeComponent();
             _startPage = new StartPage();
             _viewModel = vm;
             DataContext = vm;
+
+            if (_viewModel.Songs is INotifyCollectionChanged incc)
+            {
+                incc.CollectionChanged += Songs_CollectionChanged;
+            }
+
+            CheckCollectionSongs();
         }
+
+        private void Songs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            CheckCollectionSongs();
+        }
+
+        private void CheckCollectionSongs()
+        {
+            if (_viewModel.Songs != null && _viewModel.Songs.Count == 0)
+            {
+                InfoInDirectory.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                InfoInDirectory.Visibility = Visibility.Collapsed;
+            }
+        }
+
         private void BackToMainPage(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow is MainWindow mainWindow)
@@ -42,13 +66,14 @@ namespace WpfTuneForgePlayer
             }
         }
 
-        private void OpenMusicFolder(object sender , RoutedEventArgs e)
+        private void OpenMusicFolder(object sender, RoutedEventArgs e)
         {
-            WinForm.FolderBrowserDialog folderBrowserDialog = new WinForm.FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == WinForm.DialogResult.OK)
+            var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 _viewModel.LoadSongs(folderBrowserDialog.SelectedPath);
             }
         }
     }
 }
+
