@@ -1,0 +1,38 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET TuneForge
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'Optional: Commit SHA to checkout (defaults to current HEAD)'
+        required: false
+      release_message:
+        description: 'Message to include in the release'
+        required: true
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Create ZIP package with .exe and assets/
+      run: |
+        mkdir package
+        copy build\Release\MyAppImGUI.exe package\
+        xcopy /E /I /Y myAppImGUI\assets package\assets
+        powershell -Command "Compress-Archive -Path package\* -DestinationPath build\Release\MyAppImGUI.zip"
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
