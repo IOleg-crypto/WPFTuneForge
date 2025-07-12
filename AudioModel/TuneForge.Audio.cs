@@ -129,7 +129,7 @@ namespace WpfTuneForgePlayer
         {
             if (_audioFile == null || outputDevice == null)
             {
-                MessageBox.Show("No music device initialized.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please, select a song.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -167,7 +167,7 @@ namespace WpfTuneForgePlayer
         {
             if (outputDevice == null)
             {
-                MessageBox.Show("No music device initialized.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Without music, there is no sound.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
