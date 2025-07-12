@@ -20,12 +20,15 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _currentTime = "00:00";
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
+        // Icon using to show if sound is muted or not
+        private ImageSource _soundStatus;
 
         // Constructor
         public MusicViewModel()
         {
             AlbumArt = LoadImageOrDefault("assets/menu/musicLogo.jpg");
             FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
+            SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
             InitCommands();
         }
 
@@ -70,6 +73,8 @@ namespace WpfTuneForgePlayer.ViewModel
             RepeatCommand = new RelayCommand(() => MainWindow?.RepeatSong(this, null));
             _startMusic = new RelayCommand(() => MainWindow?.StartMusic(this, null));
             _endMusic = new RelayCommand(() => MainWindow?.EndMusic(this, null));
+            toggleAudio = new RelayCommand(() => MainWindow?.ToggleSound(this, null));
+            changeMusicTime = new RelayCommand(() => MainWindow?.SliderChanged());
 
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
@@ -148,6 +153,14 @@ namespace WpfTuneForgePlayer.ViewModel
             set { _endTime = value; OnPropertyChanged(nameof(EndTime)); }
         }
 
+        public ImageSource SoundStatus
+        {
+            get => _soundStatus;
+            set { _soundStatus = value; OnPropertyChanged(nameof(SoundStatus)); }
+        }
+
+
+
         // Commands
         public ICommand PlayCommand { get; set; }
         public ICommand RepeatCommand { get; set; }
@@ -156,6 +169,10 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand _startMusic { get; set; }
         public ICommand _endMusic { get; set; }
         public ICommand PlaySelectedSongCommand { get; set; }
+        // Needed to toggle sound(mute/unmute)
+        public ICommand toggleAudio { get; set; }
+        // Needed to change music time with slider
+        public ICommand changeMusicTime { get; set; }
 
         // INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;

@@ -36,13 +36,6 @@ namespace WpfTuneForgePlayer
 
         private void InitTimerMusic()
         {
-            _startPage.MusicTrackBar.Value = 0;
-            _startPage.MusicTrackBar.Maximum = 1000;
-            _startPage.MusicTrackBar.Value = 0;
-
-            _startPage.MusicTrackBar.PreviewMouseDown += (s, e) => _userIsDragging = true;
-            _startPage.MusicTrackBar.PreviewMouseUp += MusicTrackBar_MouseUp;
-
             _timer.Interval = TimeSpan.FromMilliseconds(500);
             _timer.Tick += TimerTime_Tick;
         }
@@ -145,7 +138,7 @@ namespace WpfTuneForgePlayer
             _isMusicPlaying = true;
         }
 
-        private void MusicTrackBar_MouseUp(object sender, MouseButtonEventArgs e)
+        public void SliderChanged()
         {
             if (_audioFile == null) return;
 
@@ -183,12 +176,12 @@ namespace WpfTuneForgePlayer
             {
                 outputDevice.Volume = 1f;
                 var imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_new.png");
-                _startPage.SoundButton.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+                _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
             }
             else
             {
                 var imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_c.png");
-                _startPage.SoundButton.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+                _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
                 outputDevice.Volume = 0f;
             }
         }
@@ -252,11 +245,9 @@ namespace WpfTuneForgePlayer
             _audioFile = null;
 
             _isMusicPlaying = false;
-            _startPage.MusicTrackBar.Value = 0;
-            //_startPage.StartMusicLabel.Content = "00:00";
+            _viewModel.TrackPosition = 0;
             _viewModel.CurrentTime="00:00";
             _viewModel.EndTime = "00:00";
-            //_startPage.EndMusicLabel.Content = "00:00";
 
             // If song don`t have album art, set default
             var defaultImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/menu/musicLogo.jpg");

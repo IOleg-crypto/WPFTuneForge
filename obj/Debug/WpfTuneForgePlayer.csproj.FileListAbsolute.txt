@@ -65,3 +65,6 @@ D:\gitnext\WpfTuneForgePlayer\bin\Debug\System.Numerics.Vectors.xml
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\Microsoft.Xaml.Behaviors.xml

@@ -2,9 +2,10 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"   
       xmlns:local="clr-namespace:WpfTuneForgePlayer"
-      xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel" 
+      xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DataContext="{d:DesignInstance Type=viewModel:MusicViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -65,7 +66,14 @@
                     <Label x:Name="EndMusicLabel" Content="{Binding EndTime}" Foreground="White" FontSize="14"
                           Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Slider x:Name = "MusicTrackBar"  Value="{Binding TrackPosition, Mode=TwoWay}" Minimum="0" Maximum="1000" ClipToBounds="True" Margin="38,10,39,77" Grid.ColumnSpan="6" Grid.Column="0" />
+                    <Slider x:Name="MusicTrackBar" Value="{Binding TrackPosition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Maximum="1000" Minimum="0" ClipToBounds="True" Margin="38,10,39,77" Grid.ColumnSpan="6"
+        Grid.Column="0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding changeMusicTime}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Slider>
 
 
                     <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent" Command="{Binding SelectFavoriteSong}" 
@@ -120,9 +128,9 @@
                 <Label x:Name ="NameProgram" Content="TuneForge" HorizontalAlignment="Left" Foreground="White" Height="35" Margin="702,-10,0,0" VerticalAlignment="Top" Width="88" FontSize="16" Grid.RowSpan="2"/>
             </Grid>
         </Viewbox>
-        <Button Style="{StaticResource ImageButtonStyle}" BorderBrush = "Transparent"
+        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding toggleAudio}" BorderBrush = "Transparent"
 Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
-            <Image x:Name="SoundButton" Grid.Row="1" Margin="-83,187,549,98" Source="pack://siteoforigin:,,,/assets/menu/volume-high_new.png" />
+            <Image x:Name="SoundButton" Grid.Row="1" Margin="-83,187,537,89" Source="{Binding SoundStatus}" />
         </Button>
     </Grid>
 </Page>
