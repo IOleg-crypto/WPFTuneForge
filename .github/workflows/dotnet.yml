@@ -44,9 +44,6 @@ jobs:
         xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
         powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
 
-    - name: Cleanup package folder
-      run: rmdir /S /Q package
-
     - name: List ZIP content
       run: powershell -Command "Expand-Archive -Path bin\Release\TuneForge.zip -DestinationPath test_extract; dir test_extract -Recurse"
 
