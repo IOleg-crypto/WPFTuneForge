@@ -180,6 +180,12 @@ namespace WpfTuneForgePlayer.ViewModel
             set { _soundStatus = value; OnPropertyChanged(nameof(SoundStatus)); }
         }
 
+        public bool GetStatusOnSlider
+        {
+            get => MainWindow.isSliderEnabled;
+            set { MainWindow.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
+        }
+
 
 
         // Commands

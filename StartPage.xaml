@@ -62,7 +62,7 @@
                     <Label x:Name="EndMusicLabel" Content="{Binding EndTime}" Foreground="White" FontSize="14"
                            Grid.Column="4" Margin="11,20,0,70" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Slider x:Name="MusicTrackBar" Value="{Binding TrackPosition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    <Slider x:Name="MusicTrackBar" Value="{Binding TrackPosition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding GetStatusOnSlider}"
                             Maximum="1000" Minimum="0" ClipToBounds="True" Margin="38,10,39,77" Grid.ColumnSpan="6" Grid.Column="0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PreviewMouseLeftButtonUp">

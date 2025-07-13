@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Xml.Linq;
 using WpfTuneForgePlayer.ViewModel;
 
 
@@ -22,6 +23,7 @@ namespace WpfTuneForgePlayer
         private bool _isSoundOn;
         private bool _userIsDragging;
         private bool _IsSelectedSongFavorite;
+        private bool _isSliderEnabled = false;
 
         //Main class 
         private StartPage _startPage = new();
@@ -33,6 +35,8 @@ namespace WpfTuneForgePlayer
             get => _currentMusicPath ?? string.Empty;
             set => _currentMusicPath = value;
         }
+
+        public bool isSliderEnabled { get => _isSliderEnabled; set => _isSliderEnabled = value; }
 
         private void InitTimerMusic()
         {
@@ -140,8 +144,9 @@ namespace WpfTuneForgePlayer
 
         public void SliderChanged()
         {
-            if (_audioFile == null) return;
-
+            if (_audioFile == null || outputDevice == null) return;
+            // _isSliderEnabled need to prevent situation (user cannot move slider while he don`t selected any song)
+            _isSliderEnabled = true;
             double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
             _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
             _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
@@ -167,7 +172,7 @@ namespace WpfTuneForgePlayer
         {
             if (outputDevice == null)
             {
-                MessageBox.Show("Without music, there is no sound.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //MessageBox.Show("Without music, there is no sound.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

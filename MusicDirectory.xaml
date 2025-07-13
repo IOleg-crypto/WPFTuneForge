@@ -87,7 +87,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Width="160" Height="240" Background="#222" CornerRadius="8" Margin="4" Cursor="Hand">
+                        <Border Width="160" Height="240" Background="#1F1F22" CornerRadius="8" Margin="4" Cursor="Hand">
                             <Border.RenderTransform>
                                 <ScaleTransform ScaleX="1" ScaleY="1" />
                             </Border.RenderTransform>
