@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:wpfTuneForgePlayer="clr-namespace:WpfTuneForgePlayer"
     Title="TuneForge"
-    Width="960" Height="480"
+    Width="960" Height="500"
     WindowStyle="None"
     AllowsTransparency="True"
     Background="Transparent"

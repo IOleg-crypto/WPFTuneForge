@@ -78,6 +78,10 @@
                     <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding RepeatCommand}" BorderBrush="Transparent">
                         <Image Margin="724,-19,-500,120" Source="pack://siteoforigin:,,,/assets/menu/repeatSong.png" Grid.Column="5"/>
                     </Button>
+                    
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding ShuffleCommand}" BorderBrush="Transparent">
+                        <Image Margin="794,-19,-500,120" Source="pack://siteoforigin:,,,/assets/menu/volume-high_new.png" Grid.Column="6"/>
+                    </Button>
 
                     <Image Source="pack://siteoforigin:,,,/assets/menu/songHaoticPlaylist.png" HorizontalAlignment="Left" Width="26" RenderTransformOrigin="-1.834,0.31" Margin="29,-18,0,121" Grid.Column="4" Grid.ColumnSpan="2"/>
                 </Grid>
@@ -125,7 +129,7 @@
 
         <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding toggleAudio}" BorderBrush="Transparent"
                 Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
-            <Image x:Name="SoundButton" Grid.Row="1" Margin="-84,192,554,77" Source="{Binding SoundStatus}" RenderTransformOrigin="0.5,0.5" >
+            <Image x:Name="SoundButton" Grid.Row="1" Margin="-77,208,562,80" Source="{Binding SoundStatus}" RenderTransformOrigin="0.5,0.5" >
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
