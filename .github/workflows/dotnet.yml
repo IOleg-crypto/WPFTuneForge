@@ -38,9 +38,9 @@ jobs:
       run: |
         mkdir package
         xcopy /E /I /Y bin\Release\assets package\assets
-        xcopy /Y bin\Release\*.dll package\assets\
-        xcopy /Y bin\Release\*.pdb package\assets\
-        xcopy /Y bin\Release\*.xml package\assets\
+        xcopy /Y bin\Release\*.dll package\
+        xcopy /Y bin\Release\*.pdb package\
+        xcopy /Y bin\Release\*.xml package\
         xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
         powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
 
