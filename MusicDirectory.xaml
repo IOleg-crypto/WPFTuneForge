@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- HEADER -->
-        <Border Grid.Row="0" Background="#1A1A1A" CornerRadius="6" Padding="8" Margin="0,0,0,10">
+        <Border Grid.Row="0" Background="Black" CornerRadius="6" Padding="8" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -42,6 +42,14 @@
                 <StackPanel Grid.Column="2"
                             Orientation="Horizontal"
                             VerticalAlignment="Center">
+
+                    <Button Width="28" Height="28"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Cursor="Hand" Command="{Binding reloadMusicPage}">
+                        <Image Source="pack://siteoforigin:,,,/assets/menu/newrepeat.png" Stretch="Uniform" Margin="0,0,5,0">
+                        </Image>
+                    </Button>
                     <TextBlock Text="Choose folder"
                                Foreground="White"
                                VerticalAlignment="Center"/>

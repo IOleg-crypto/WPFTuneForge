@@ -24,6 +24,11 @@ namespace WpfTuneForgePlayer
         private StartPage _startPage;
         private MusicViewModel _viewModel;
 
+        public string CurrentDirectory
+        {
+            get; set;
+        }
+
         public MusicDirectory(MusicViewModel vm)
         {
             InitializeComponent();
@@ -72,6 +77,7 @@ namespace WpfTuneForgePlayer
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 _viewModel.LoadSongs(folderBrowserDialog.SelectedPath);
+                _viewModel.TakeCurrentDirectory = folderBrowserDialog.SelectedPath;
             }
         }
     }

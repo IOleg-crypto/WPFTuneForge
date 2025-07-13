@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -22,7 +24,20 @@ namespace WpfTuneForgePlayer.ViewModel
         private ImageSource _favoriteSong;
         // Icon using to show if sound is muted or not
         private ImageSource _soundStatus;
+        // List of supported audio file extensions
+        private List<string> SupportedExtensionsSong = new List<string>()
+        {
+            ".wav",  // WaveFileReader
+            ".aiff", // AiffFileReader
+            ".mp3",  // Mp3FileReader
+            ".wma",  // MediaFoundationReader
+            ".aac",  // MediaFoundationReader
+            ".mp4",  // MediaFoundationReader (audio stream only)
+            ".ogg",  // Requires NVorbis
+            ".flac", // Requires NAudio.Flac
+        };
 
+        public string TakeCurrentDirectory { get; set; }
         // Constructor
         public MusicViewModel()
         {
@@ -75,6 +90,7 @@ namespace WpfTuneForgePlayer.ViewModel
             _endMusic = new RelayCommand(() => MainWindow?.EndMusic(this, null));
             toggleAudio = new RelayCommand(() => MainWindow?.ToggleSound(this, null));
             changeMusicTime = new RelayCommand(() => MainWindow?.SliderChanged());
+            reloadMusicPage = new RelayCommand(() => LoadSongs(TakeCurrentDirectory));
 
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
@@ -89,8 +105,13 @@ namespace WpfTuneForgePlayer.ViewModel
 
         public void LoadSongs(string folder)
         {
+            if(String.IsNullOrEmpty(folder))
+            {
+                return;
+            }
             Songs.Clear();
-            var files = Directory.GetFiles(folder, "*.mp3");
+            // Get all supported files
+            var files = SupportedExtensionsSong.SelectMany(ext => Directory.GetFiles(folder, "*" + ext, SearchOption.AllDirectories)).ToList();
             foreach (var path in files)
             {
                 var file = TagLib.File.Create(path);
@@ -173,6 +194,8 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand toggleAudio { get; set; }
         // Needed to change music time with slider
         public ICommand changeMusicTime { get; set; }
+        // Needed to reload music page(if music is deleted)
+        public ICommand reloadMusicPage { get; set; }
 
         // INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
