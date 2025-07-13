@@ -14,7 +14,7 @@ namespace WpfTuneForgePlayer.ViewModel
 {
     public class MusicViewModel : INotifyPropertyChanged
     {
-        // Private fields
+        // ===== Private fields =====
         private string _artist = "Unknown";
         private string _title = "Unknown";
         private ImageSource _albumArt;
@@ -22,9 +22,9 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _currentTime = "00:00";
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
-        // Icon using to show if sound is muted or not
-        private ImageSource _soundStatus;
-        // List of supported audio file extensions
+        private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
+
+        // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
         {
             ".wav",  // WaveFileReader
@@ -38,7 +38,8 @@ namespace WpfTuneForgePlayer.ViewModel
         };
 
         public string TakeCurrentDirectory { get; set; }
-        // Constructor
+
+        // ===== Constructor =====
         public MusicViewModel()
         {
             AlbumArt = LoadImageOrDefault("assets/menu/musicLogo.jpg");
@@ -47,7 +48,7 @@ namespace WpfTuneForgePlayer.ViewModel
             InitCommands();
         }
 
-        // Load default image with file existence check
+        // Load an image from file or return null if not found
         public ImageSource LoadImageOrDefault(string relativePath)
         {
             var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
@@ -59,11 +60,11 @@ namespace WpfTuneForgePlayer.ViewModel
             image.UriSource = new Uri(fullPath, UriKind.Absolute);
             image.CacheOption = BitmapCacheOption.OnLoad;
             image.EndInit();
-            image.Freeze();
+            image.Freeze(); // Makes it cross-thread accessible
             return image;
         }
 
-        // Load album art from TagLib file
+        // Extract album art from a TagLib file
         private ImageSource LoadAlbumArt(TagLib.File tagFile)
         {
             if (tagFile.Tag.Pictures.Length == 0) return null;
@@ -79,7 +80,7 @@ namespace WpfTuneForgePlayer.ViewModel
             return image;
         }
 
-        // Init commands for UI
+        // ===== Initialize UI Commands =====
         private void InitCommands()
         {
             PlayCommand = new RelayCommand(() => MainWindow?.OnClickMusic(this, null));
@@ -92,6 +93,7 @@ namespace WpfTuneForgePlayer.ViewModel
             changeMusicTime = new RelayCommand(() => MainWindow?.SliderChanged());
             reloadMusicPage = new RelayCommand(() => LoadSongs(TakeCurrentDirectory));
 
+            // When a song is selected from the list, set it as current and update UI
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)
@@ -103,15 +105,19 @@ namespace WpfTuneForgePlayer.ViewModel
             });
         }
 
+        // Load all songs with supported extensions from given folder
         public void LoadSongs(string folder)
         {
-            if(String.IsNullOrEmpty(folder))
-            {
-                return;
-            }
+            if (String.IsNullOrEmpty(folder)) return;
+
             Songs.Clear();
-            // Get all supported files
-            var files = SupportedExtensionsSong.SelectMany(ext => Directory.GetFiles(folder, "*" + ext, SearchOption.AllDirectories)).ToList();
+
+            // Find all matching audio files
+            var files = SupportedExtensionsSong
+                .SelectMany(ext => Directory.GetFiles(folder, "*" + ext, SearchOption.AllDirectories))
+                .ToList();
+
+            // Populate the Songs collection
             foreach (var path in files)
             {
                 var file = TagLib.File.Create(path);
@@ -128,7 +134,7 @@ namespace WpfTuneForgePlayer.ViewModel
             }
         }
 
-        // Public properties
+        // ===== Public Properties (bindable in XAML) =====
         public ObservableCollection<SongModel> Songs { get; set; } = new();
         public MainWindow MainWindow { get; set; }
 
@@ -180,15 +186,14 @@ namespace WpfTuneForgePlayer.ViewModel
             set { _soundStatus = value; OnPropertyChanged(nameof(SoundStatus)); }
         }
 
+        // Whether the slider is currently allowed to be moved by user
         public bool GetStatusOnSlider
         {
             get => MainWindow.isSliderEnabled;
             set { MainWindow.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
         }
 
-
-
-        // Commands
+        // ===== Commands (bindable in XAML via MVVM) =====
         public ICommand PlayCommand { get; set; }
         public ICommand RepeatCommand { get; set; }
         public ICommand SelectFavoriteSong { get; set; }
@@ -196,14 +201,11 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand _startMusic { get; set; }
         public ICommand _endMusic { get; set; }
         public ICommand PlaySelectedSongCommand { get; set; }
-        // Needed to toggle sound(mute/unmute)
-        public ICommand toggleAudio { get; set; }
-        // Needed to change music time with slider
-        public ICommand changeMusicTime { get; set; }
-        // Needed to reload music page(if music is deleted)
-        public ICommand reloadMusicPage { get; set; }
+        public ICommand toggleAudio { get; set; }        // Toggle mute/unmute
+        public ICommand changeMusicTime { get; set; }    // Handle slider time change
+        public ICommand reloadMusicPage { get; set; }    // Reload songs in case of changes
 
-        // INotifyPropertyChanged implementation
+        // ===== INotifyPropertyChanged implementation =====
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

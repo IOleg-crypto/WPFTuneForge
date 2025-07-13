@@ -7,6 +7,7 @@ using System.Windows.Media;
 
 namespace WpfTuneForgePlayer.AudioModel
 {
+    // Class for song model(needed for StackPanel)
      public class SongModel
      {
           public string Title { get; set; }
