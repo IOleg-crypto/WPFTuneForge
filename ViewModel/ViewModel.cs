@@ -30,8 +30,15 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
-        private int _selectedOutputDeviceIndex;
         private DispatcherTimer _deviceCheckTimer;
+
+        private bool _isMonoEnabled;
+        // Force mono output
+        public bool IsMonoEnabled
+        {
+            get => _isMonoEnabled;
+            set { _isMonoEnabled = value; OnPropertyChanged(nameof(IsMonoEnabled)); }
+        }
 
         // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
@@ -252,6 +259,7 @@ namespace WpfTuneForgePlayer.ViewModel
 
         private void LoadOutputDevices()
         {
+            // Not regular situation, but just in case
             try
             {
                 var enumerator = new MMDeviceEnumerator();
