@@ -1,0 +1,50 @@
+<FileList>
+	<File Reference="ActiproSoftware.Shared.Wpf.dll">
+		<ToolboxItems UIFramework="WPF" VSCategory="Actipro Shared Library (for WPF)" BlendCategory="Actipro Shared Library (for WPF)">
+
+			<Item Type="ActiproSoftware.Windows.Controls.AdvancedTextBlock" />
+			<Item Type="ActiproSoftware.Windows.Controls.AnimatedExpander" />
+			<Item Type="ActiproSoftware.Windows.Controls.AnimatedExpanderDecorator" />
+			<Item Type="ActiproSoftware.Windows.Controls.AnimatedProgressBar" />
+			<Item Type="ActiproSoftware.Windows.Controls.Avatar" />
+			<Item Type="ActiproSoftware.Windows.Controls.AvatarGroup" />
+			<Item Type="ActiproSoftware.Windows.Controls.Badge" />
+			<Item Type="ActiproSoftware.Windows.Controls.Card" />
+			<Item Type="ActiproSoftware.Windows.Controls.CircularProgressBar" />
+			<Item Type="ActiproSoftware.Windows.Controls.CustomDrawElement" />
+			<Item Type="ActiproSoftware.Windows.Controls.DropShadowChrome" />
+			<Item Type="ActiproSoftware.Windows.Controls.DynamicImage" />
+			<Item Type="ActiproSoftware.Windows.Controls.EditableContentControl" />
+			<Item Type="ActiproSoftware.Windows.Controls.HorizontalListBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.InfoBar" />
+			<Item Type="ActiproSoftware.Windows.Controls.NumericBadge" />
+			<Item Type="ActiproSoftware.Windows.Controls.PixelSnapper" />
+			<Item Type="ActiproSoftware.Windows.Controls.PopupButton" />
+			<Item Type="ActiproSoftware.Windows.Controls.RadialSlider" />
+			<Item Type="ActiproSoftware.Windows.Controls.RadioButtonList" />
+			<Item Type="ActiproSoftware.Windows.Controls.ReflectionContentControl" />
+			<Item Type="ActiproSoftware.Windows.Controls.ResizableContentControl" />
+			<Item Type="ActiproSoftware.Windows.Controls.RingSlice" />
+			<Item Type="ActiproSoftware.Windows.Controls.RingSpinner" />
+			<Item Type="ActiproSoftware.Windows.Controls.TitleBarMenu" />
+			<Item Type="ActiproSoftware.Windows.Controls.ToggleSwitch" />
+			<Item Type="ActiproSoftware.Windows.Controls.UserPromptControl" />
+			<Item Type="ActiproSoftware.Windows.Controls.ZeroSizeContentControl" />
+			<Item Type="ActiproSoftware.Windows.Controls.ColorSelection.ColorComponentSlider" />
+			<Item Type="ActiproSoftware.Windows.Controls.ColorSelection.GradientBrushSlider" />
+			<Item Type="ActiproSoftware.Windows.Controls.ColorSelection.SpectrumColorPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.ColorSelection.SpectrumSlice" />
+			<Item Type="ActiproSoftware.Windows.Controls.ColorSelection.SpectrumSlider" />
+			<Item Type="ActiproSoftware.Windows.Controls.Primitives.ShadowChrome" />
+			<Item Type="ActiproSoftware.Windows.Controls.Rendering.CanvasControl" />
+			<Item Type="ActiproSoftware.Windows.Media.Animation.ToggleTransitionPresenter" />
+			<Item Type="ActiproSoftware.Windows.Media.Animation.TransitionPresenter" />
+			<Item Type="ActiproSoftware.Windows.Media.Animation.TransitionPreview" />
+			<Item Type="ActiproSoftware.Windows.Shapes.SemiEllipse" />
+			<Item Type="ActiproSoftware.Windows.Shapes.Triangle" />
+			<Item Type="ActiproSoftware.Windows.Shapes.Wave" />
+			<Item Type="ActiproSoftware.Windows.Shapes.ZigZag" />
+
+		</ToolboxItems>
+	</File>
+</FileList>

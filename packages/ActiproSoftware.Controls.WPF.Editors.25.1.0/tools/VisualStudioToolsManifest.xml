@@ -1,0 +1,63 @@
+<FileList>
+	<File Reference="ActiproSoftware.Editors.Wpf.dll">
+		<ToolboxItems UIFramework="WPF" VSCategory="Actipro Editors (for WPF)" BlendCategory="Actipro Editors (for WPF)">
+
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.AutoCompleteBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.BrushEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.BrushPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.ByteEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.BytePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Calculator" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.ColorEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.ColorPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.CornerRadiusEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.CornerRadiusPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.CountryComboBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.CurrencyComboBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.DateEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.DatePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.DateTimeEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.DateTimePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.DoubleEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.DoublePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.EnumEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.EnumListBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.EnumPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.GradientStopSlider" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.GuidEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.HsbColorPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int16EditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int16Picker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int32EditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int32Picker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int32RectEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int32RectPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int64EditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Int64Picker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.MaskedTextBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.MonthCalendar" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.PointEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.PointPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.RadialHuePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Rating" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.RatingItem" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.RectEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.RectPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.SaturationBrightnessPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.SingleEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.SinglePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.SizeEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.SizePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.ThicknessEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.ThicknessPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.TimeEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.TimePicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.TimeSpanEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.TimeSpanPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.VectorEditBox" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.VectorPicker" />
+			<Item Type="ActiproSoftware.Windows.Controls.Editors.Primitives.Spinner" />
+
+		</ToolboxItems>
+	</File>
+</FileList>

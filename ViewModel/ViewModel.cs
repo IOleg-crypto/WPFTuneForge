@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.Model;
+
 
 namespace WpfTuneForgePlayer.ViewModel
 {
@@ -23,6 +25,7 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
+        private int _selectedOutputDeviceIndex;
 
         // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
@@ -46,6 +49,7 @@ namespace WpfTuneForgePlayer.ViewModel
             FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
             InitCommands();
+            LoadOutputDevices();
         }
 
         // Load an image from file or return null if not found
@@ -211,5 +215,39 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public ObservableCollection<string> OutputDevices { get; } = new();
+        
+
+        public int SelectedOutputDeviceIndex
+        {
+            get => _selectedOutputDeviceIndex;
+            set
+            {
+                if (_selectedOutputDeviceIndex != value)
+                {
+                    _selectedOutputDeviceIndex = value;
+                    OnPropertyChanged(nameof(SelectedOutputDeviceIndex));
+                }
+            }
+        }
+
+        private void LoadOutputDevices()
+        {
+            OutputDevices.Clear();
+            for (int i = 0; i < WaveOut.DeviceCount; i++)
+            {
+                var deviceInfo = WaveOut.GetCapabilities(i);
+                OutputDevices.Add(deviceInfo.ProductName);
+            }
+
+           
+        }
+
+        public void SaveSettings()
+        {
+           
+            Properties.Settings.Default.Save();
+        }
+
     }
 }

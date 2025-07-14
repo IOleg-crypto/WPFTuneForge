@@ -1,0 +1,47 @@
+﻿<Page x:Class="WpfTuneForgePlayer.Views.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"   
+      xmlns:local="clr-namespace:WpfTuneForgePlayer.Views"
+      xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      d:DataContext="{d:DesignInstance Type={x:Type viewModel:MusicViewModel}}"
+      mc:Ignorable="d" 
+      TextOptions.TextRenderingMode="ClearType"
+      TextOptions.TextFormattingMode="Display"
+      UseLayoutRounding="True"
+      SnapsToDevicePixels="True">
+
+    <Grid Background="#111">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Settings"
+               FontSize="26"
+               Foreground="White"
+               FontWeight="Bold"
+               Margin="20"
+               HorizontalAlignment="Left"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+            <Label Content="Current device:"
+                   Foreground="White"
+                   FontSize="18"
+                   VerticalAlignment="Center"
+                   Width="160"/>
+
+            <ComboBox Width="350"
+                      Height="32"
+                      ItemsSource="{Binding OutputDevices}"
+                      Background="#222"
+                      Foreground="White"
+                      BorderBrush="Gray"
+                      FontSize="16"
+                      />
+        </StackPanel>
+    </Grid>
+</Page>
