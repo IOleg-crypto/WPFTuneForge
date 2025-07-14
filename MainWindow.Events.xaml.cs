@@ -32,7 +32,6 @@ namespace WpfTuneForgePlayer
         {
             Sidebar.MusicSelected += OnMusicSelected;
             Sidebar.NavigateToSettings += OnNavigateToSettings;
-            //Sidebar.NavigateToStartPage += (_, __) => NavigateToStartPage();
             Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
         }
 

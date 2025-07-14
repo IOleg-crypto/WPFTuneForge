@@ -10,6 +10,7 @@ using System.Timers;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.Model;
 using WinForm = System.Windows.Forms;
@@ -30,7 +31,7 @@ namespace WpfTuneForgePlayer.ViewModel
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
         private int _selectedOutputDeviceIndex;
-        private Timer _deviceCheckTimer;
+        private DispatcherTimer _deviceCheckTimer;
 
         // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
@@ -222,7 +223,7 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
 
         private string _selectedOutputDevice;
         public string SelectedOutputDevice
@@ -240,9 +241,12 @@ namespace WpfTuneForgePlayer.ViewModel
 
         public void StartDeviceMonitoring()
         {
-            _deviceCheckTimer = new Timer(500);
-            _deviceCheckTimer.Elapsed += (s, e) => LoadOutputDevices();
-            _deviceCheckTimer.AutoReset = true;
+            // Better DispatcherTimer than Timer(from WinForm - it shit , which kill performance at all)
+            _deviceCheckTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(3)
+            };
+            _deviceCheckTimer.Tick += (s, e) => LoadOutputDevices();
             _deviceCheckTimer.Start();
         }
 
@@ -254,22 +258,33 @@ namespace WpfTuneForgePlayer.ViewModel
                 var devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
                 var deviceNames = devices.Select(d => d.FriendlyName).ToList();
 
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    if (!deviceNames.SequenceEqual(OutputDevices))
-                    {
-                        OutputDevices.Clear();
-                        foreach (var name in deviceNames)
-                            OutputDevices.Add(name);
-                    }
 
-                    var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-                    SelectedOutputDevice = defaultDevice?.FriendlyName;
-                });
+                var currentDevices = OutputDevices.ToList();
+
+                bool devicesChanged = deviceNames.Count != currentDevices.Count ||
+                                      !deviceNames.SequenceEqual(currentDevices);
+
+                var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                string defaultDeviceName = defaultDevice?.FriendlyName;
+                // Needed to check if default device changed , to avoid infinite check
+                if (devicesChanged || defaultDeviceName != SelectedOutputDevice)
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        if (devicesChanged)
+                        {
+                            OutputDevices.Clear();
+                            foreach (var name in deviceNames)
+                                OutputDevices.Add(name);
+                        }
+
+                        SelectedOutputDevice = defaultDeviceName;
+                    });
+                }
             }
             catch (Exception ex)
             {
-                WinForm.MessageBox.Show(ex.Message, "Error", WinForm.MessageBoxButtons.OK, WinForm.MessageBoxIcon.Error);
+                WinForm.MessageBox.Show(ex.Message, "Error with devices", WinForm.MessageBoxButtons.OK, WinForm.MessageBoxIcon.Error);
             }
         }
     }
