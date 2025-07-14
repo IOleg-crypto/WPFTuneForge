@@ -13,7 +13,7 @@
       UseLayoutRounding="True"
       SnapsToDevicePixels="True">
 
-    <Grid Background="#111">
+    <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="80"/>
@@ -26,6 +26,14 @@
                FontWeight="Bold"
                Margin="20"
                HorizontalAlignment="Left"/>
+        <Button Grid.Column="0"
+        Width="47"
+        Background="Transparent"
+        BorderThickness="0"
+        Cursor="Hand"
+        Click="BackToStartPage" Margin="0,20,0,27" HorizontalAlignment="Right">
+            <Image Source="pack://siteoforigin:,,,/assets/sidebar/exit2.png" Stretch="Uniform" Height="29" Width="29"/>
+        </Button>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
             <Label Content="Current device:"
@@ -37,8 +45,12 @@
             <ComboBox Width="350"
                       Height="32"
                       ItemsSource="{Binding OutputDevices}"
+                      SelectedItem="{Binding SelectedOutputDevice, Mode=TwoWay}"
+                      IsEditable="False"
+                      IsReadOnly="True"
+                      IsHitTestVisible="False"
                       Background="#222"
-                      Foreground="White"
+                      Foreground="Black"
                       BorderBrush="Gray"
                       FontSize="16"
                       />

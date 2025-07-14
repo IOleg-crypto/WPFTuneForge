@@ -12,8 +12,8 @@ namespace WpfTuneForgePlayer
     {
         public event Action<string> MusicSelected;
         public event EventHandler ShowMusicDirectory;
+        public event EventHandler NavigateToSettings;
         private MainWindow _mainWindow;
-        private MusicViewModel _viewModel = new MusicViewModel();
 
         public Sidebar()
         {
@@ -32,14 +32,7 @@ namespace WpfTuneForgePlayer
 
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
-            if (_mainWindow != null)
-            {
-                _mainWindow.MainContentFrame.Navigate(new Settings());
-            }
-            else
-            {
-                MessageBox.Show("MainWindow is not initialized");
-            }
+            NavigateToSettings?.Invoke(this, EventArgs.Empty);
         }
 
         private void CloseSidebar(object sender, RoutedEventArgs e)
@@ -55,9 +48,5 @@ namespace WpfTuneForgePlayer
             }
         }
 
-        public void SetMainWindow(MainWindow mainWindow)
-        {
-            _mainWindow = mainWindow;
-        }
     }
 }

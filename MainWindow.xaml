@@ -23,7 +23,7 @@
             BorderThickness="1"
             SnapsToDevicePixels="True">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity="0.3" />
+            <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.3" />
         </Border.Effect>
 
         <Grid>

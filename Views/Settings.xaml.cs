@@ -21,9 +21,16 @@ namespace WpfTuneForgePlayer.Views
     /// </summary>
     public partial class Settings : Page
     {
+        public event EventHandler backToStartPage;
         public Settings()
         {
             InitializeComponent();
         }
+
+        private void BackToStartPage(object sender, RoutedEventArgs e)
+        {
+            backToStartPage?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 }

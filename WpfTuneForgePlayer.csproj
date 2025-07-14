@@ -55,6 +55,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WpfTuneForgePlayer.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiproSoftware.Editors.Wpf, Version=25.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
       <HintPath>packages\ActiproSoftware.Controls.WPF.Editors.25.1.0\lib\net462\ActiproSoftware.Editors.Wpf.dll</HintPath>

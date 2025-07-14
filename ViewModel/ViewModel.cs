@@ -1,15 +1,19 @@
-﻿using NAudio.Wave;
+﻿using NAudio.CoreAudioApi;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Timers;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.Model;
+using WinForm = System.Windows.Forms;
+
 
 
 namespace WpfTuneForgePlayer.ViewModel
@@ -26,6 +30,7 @@ namespace WpfTuneForgePlayer.ViewModel
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
         private int _selectedOutputDeviceIndex;
+        private Timer _deviceCheckTimer;
 
         // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
@@ -41,6 +46,7 @@ namespace WpfTuneForgePlayer.ViewModel
         };
 
         public string TakeCurrentDirectory { get; set; }
+        public ObservableCollection<string> OutputDevices { get; set; } = new();
 
         // ===== Constructor =====
         public MusicViewModel()
@@ -49,6 +55,7 @@ namespace WpfTuneForgePlayer.ViewModel
             FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
             InitCommands();
+            StartDeviceMonitoring();
             LoadOutputDevices();
         }
 
@@ -215,39 +222,55 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public ObservableCollection<string> OutputDevices { get; } = new();
         
 
-        public int SelectedOutputDeviceIndex
+        private string _selectedOutputDevice;
+        public string SelectedOutputDevice
         {
-            get => _selectedOutputDeviceIndex;
+            get => _selectedOutputDevice;
             set
             {
-                if (_selectedOutputDeviceIndex != value)
+                if (_selectedOutputDevice != value)
                 {
-                    _selectedOutputDeviceIndex = value;
-                    OnPropertyChanged(nameof(SelectedOutputDeviceIndex));
+                    _selectedOutputDevice = value;
+                    OnPropertyChanged(nameof(SelectedOutputDevice));
                 }
             }
         }
 
+        public void StartDeviceMonitoring()
+        {
+            _deviceCheckTimer = new Timer(500);
+            _deviceCheckTimer.Elapsed += (s, e) => LoadOutputDevices();
+            _deviceCheckTimer.AutoReset = true;
+            _deviceCheckTimer.Start();
+        }
+
         private void LoadOutputDevices()
         {
-            OutputDevices.Clear();
-            for (int i = 0; i < WaveOut.DeviceCount; i++)
+            try
             {
-                var deviceInfo = WaveOut.GetCapabilities(i);
-                OutputDevices.Add(deviceInfo.ProductName);
+                var enumerator = new MMDeviceEnumerator();
+                var devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
+                var deviceNames = devices.Select(d => d.FriendlyName).ToList();
+
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    if (!deviceNames.SequenceEqual(OutputDevices))
+                    {
+                        OutputDevices.Clear();
+                        foreach (var name in deviceNames)
+                            OutputDevices.Add(name);
+                    }
+
+                    var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                    SelectedOutputDevice = defaultDevice?.FriendlyName;
+                });
             }
-
-           
+            catch (Exception ex)
+            {
+                WinForm.MessageBox.Show(ex.Message, "Error", WinForm.MessageBoxButtons.OK, WinForm.MessageBoxIcon.Error);
+            }
         }
-
-        public void SaveSettings()
-        {
-           
-            Properties.Settings.Default.Save();
-        }
-
     }
 }
