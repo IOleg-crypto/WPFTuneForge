@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfTuneForgePlayer.ViewModel;
+using WpfTuneForgePlayer.Views;
+using WpfTuneForgePlayer.AudioModel;
 
 namespace WpfTuneForgePlayer.Views
 {
@@ -32,6 +34,12 @@ namespace WpfTuneForgePlayer.Views
         {
             backToStartPage?.Invoke(this, EventArgs.Empty);
         }
+        private void OpenInfoDialog(object sender, RoutedEventArgs e)
+        {
+            var authorWindow = new AuthorInfo();
+            authorWindow.ShowDialog();
+        }
 
+        
     }
 }

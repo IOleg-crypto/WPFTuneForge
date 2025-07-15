@@ -1,0 +1,97 @@
+﻿<Window x:Class="WpfTuneForgePlayer.Views.AuthorInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanMinimize"
+        TextOptions.TextRenderingMode="ClearType"
+        TextOptions.TextFormattingMode="Display"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        Title="AuthorInfo"
+        Height="300" Width="600">
+
+    <Border Background="Black"
+            CornerRadius="16"
+            BorderBrush="#333"
+            BorderThickness="1"
+            SnapsToDevicePixels="True">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.3" />
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- TOP CUSTOM BAR -->
+            <Grid Grid.Row="0" Background="#1A1A1A" MouseDown="DragWindow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="TuneForge"
+                           Foreground="White"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="16,0"/>
+
+                <!-- Close Button -->
+                <Button Content="✕"
+                        Width="32" Height="32"
+                        FontSize="14"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Cursor="Hand"
+                        ToolTip="Close"
+                        Click="Close_Click"
+                        HorizontalAlignment="Right"/>
+            </Grid>
+
+            <!-- MAIN CONTENT -->
+            <Grid Grid.Row="1" Margin="20,10,20,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Avatar / Image -->
+                <Border Grid.Column="0" Margin="0,0,20,0">
+                    <Image Source="pack://siteoforigin:,,,/assets/menu/logogithub.jpg"
+                           Width="150" Height="120"
+                           Stretch="UniformToFill"/>
+                </Border>
+
+                <!-- Text info -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="GitHub profile:"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <TextBlock FontSize="16" Foreground="LightBlue">
+                        <Hyperlink NavigateUri="https://github.com/IOleg-crypto"
+                                   RequestNavigate="Hyperlink_RequestNavigate">
+                            https://github.com/IOleg-crypto
+                        </Hyperlink>
+                    </TextBlock>
+
+                    <TextBlock Text="This application is a music player developed using WPF, MVVM, and the NAudio library."
+                               FontSize="16"
+                               Foreground="White"
+                               TextWrapping="Wrap"
+                               TextAlignment="Left"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

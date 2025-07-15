@@ -241,6 +241,9 @@
     <Compile Include="MainWindow.Events.xaml.cs" />
     <Compile Include="Model\Command.cs" />
     <Compile Include="ViewModel\DeviceViewModel.cs" />
+    <Compile Include="Views\AuthorInfo.xaml.cs">
+      <DependentUpon>AuthorInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MusicDirectory.xaml.cs">
       <DependentUpon>MusicDirectory.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AuthorInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MusicDirectory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

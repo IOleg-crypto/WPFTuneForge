@@ -12,7 +12,7 @@
       TextOptions.TextRenderingMode="ClearType"
       TextOptions.TextFormattingMode="Display"
       UseLayoutRounding="True"
-      SnapsToDevicePixels="True">
+      SnapsToDevicePixels="True" d:DesignHeight="287.2">
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
@@ -55,18 +55,29 @@
                       BorderBrush="Gray"
                       FontSize="16"/>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="661">
-            <Label Foreground="White" Width="177" VerticalAlignment="Center" FontSize ="18" RenderTransformOrigin="0.5,0.5" Margin="95,0,0,0" >
-                <Label.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform AngleY="-0.265"/>
-                        <RotateTransform/>
-                        <TranslateTransform Y="-0.746"/>
-                    </TransformGroup>
-                </Label.RenderTransform> Force mono output
-            </Label>
-            <shared:ToggleSwitch Content="ToggleSwitch" HorizontalContentAlignment="Center" Height="31" Width="86"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Width="661" Margin="2,78,0,0" Grid.RowSpan="2">
+            <Label Content="Sample rate:"
+       Foreground="White"
+       FontSize="18"
+       VerticalAlignment="Center"
+       Width="160" Margin="153,0,0,0"/>
+            <ComboBox x:Name="SampleRateSelector" SelectedIndex="0" IsHitTestVisible="False"  Width="150" Height="30" Margin="0,0,28,0">
+                <ComboBoxItem Content="44100 Hz" />
+                <ComboBoxItem Content="48000 Hz" />
+                <ComboBoxItem Content="96000 Hz" />
+            </ComboBox>
         </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="661"/>
+        <Button HorizontalAlignment="Center"  Content="About"
+        Click="OpenInfoDialog"
+        FontSize="14"
+        Grid.Row="2"
+        FontWeight="Normal"
+        Background="Transparent"
+        Foreground="White"
+        BorderBrush="Gray"
+        Cursor="Hand"
+        VerticalAlignment="Stretch"
+        Margin="0,235,397,0" Width="104"/>
     </Grid>
 </Page>

@@ -22,6 +22,7 @@ namespace WpfTuneForgePlayer.AudioModel
         private bool _isSoundOn;
         private bool _IsSelectedSongFavorite;
         private bool _isSliderEnabled = false;
+       
 
         private StartPage _startPage = new();
 
@@ -52,6 +53,7 @@ namespace WpfTuneForgePlayer.AudioModel
 
         private void InitMusic(string path)
         {
+
             _audioFile = new AudioFileReader(CurrentMusicPath);
             outputDevice = new WaveOutEvent();
             outputDevice.Init(_audioFile);
