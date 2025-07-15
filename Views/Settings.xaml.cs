@@ -22,9 +22,10 @@ namespace WpfTuneForgePlayer.Views
     public partial class Settings : Page
     {
         public event EventHandler backToStartPage;
-        public Settings()
+        public Settings(DeviceOutputModel deviceOutputModel)
         {
             InitializeComponent();
+            this.DataContext = deviceOutputModel;
         }
 
         private void BackToStartPage(object sender, RoutedEventArgs e)

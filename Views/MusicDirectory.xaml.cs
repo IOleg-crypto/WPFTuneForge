@@ -16,6 +16,7 @@ using WpfTuneForgePlayer.ViewModel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using WinForm = System.Windows.Forms;
 using System.Collections.Specialized; 
+using WpfTuneForgePlayer.Views;
 
 namespace WpfTuneForgePlayer
 {
@@ -35,6 +36,7 @@ namespace WpfTuneForgePlayer
             _startPage = new StartPage();
             _viewModel = vm;
             DataContext = vm;
+            
 
             if (_viewModel.Songs is INotifyCollectionChanged incc)
             {

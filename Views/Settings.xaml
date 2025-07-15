@@ -7,7 +7,7 @@
       xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" x:Class="WpfTuneForgePlayer.Views.Settings"
-      d:DataContext="{d:DesignInstance Type={x:Type viewModel:MusicViewModel}}"
+      d:DataContext="{d:DesignInstance Type={x:Type viewModel:DeviceOutputModel}}"
       mc:Ignorable="d" 
       TextOptions.TextRenderingMode="ClearType"
       TextOptions.TextFormattingMode="Display"
@@ -50,7 +50,7 @@
                       IsEditable="False"
                       IsReadOnly="True"
                       IsHitTestVisible="False"
-                      Background="Transparent"
+                      Background="Black"
                       Foreground="Black"
                       BorderBrush="Gray"
                       FontSize="16"/>

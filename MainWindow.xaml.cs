@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
+using WpfTuneForgePlayer.Views;
 
 
 namespace WpfTuneForgePlayer
@@ -26,9 +29,16 @@ namespace WpfTuneForgePlayer
         public MainWindow()
         {
             InitializeComponent();
-            InitMusicDirectory();
+
+            _viewModel = new MusicViewModel();
+            audioService = new AudioService(_viewModel);
+            audioMetaService = new AudioMetaService(_viewModel);
+
+            _deviceOutputModel = new DeviceOutputModel();
+            _viewModel.MainWindow = this;
+
+            NavigateToStartPage();
             ActionHandle();
-            InitTimerMusic();
         }
     }
 }

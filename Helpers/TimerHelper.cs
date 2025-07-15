@@ -1,11 +1,6 @@
-﻿using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Threading;
-using TagLib.Mpeg;
+using NAudio.Wave;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
 
@@ -15,11 +10,13 @@ namespace WpfTuneForgePlayer.Helpers
     {
         private DispatcherTimer timer;
         private AudioService _audioService;
-        private MusicViewModel _viewModel = new();
-        
+        private MusicViewModel _viewModel;
 
-        public TimerHelper(TimeSpan interval)
+        public TimerHelper(TimeSpan interval, AudioService audioService, MusicViewModel viewModel)
         {
+            _audioService = audioService;
+            _viewModel = viewModel;
+
             timer = new DispatcherTimer
             {
                 Interval = interval
@@ -32,19 +29,18 @@ namespace WpfTuneForgePlayer.Helpers
 
         public void TimerTime_Tick(object sender, EventArgs e)
         {
-            if (_audioService._audioFile == null || !_audioService._isMusicPlaying || _audioService._userIsDragging)
+            if (_audioService._outputDevice == null || !_audioService._isMusicPlaying || _audioService._userIsDragging)
                 return;
 
-            if (_audioService.waveOutEvent != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            if (_audioService._outputDevice.PlaybackState == PlaybackState.Playing)
             {
-                double progress = _audioFile.CurrentTime.TotalSeconds / _audioFile.TotalTime.TotalSeconds;
-                _viewModel.TrackPosition = progress * _startPage.MusicTrackBar.Maximum;
+                double progress = _audioService.audioFile.CurrentTime.TotalSeconds /
+                                  _audioService.audioFile.TotalTime.TotalSeconds;
 
-                _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
-                _viewModel.EndTime = _audioFile.TotalTime.ToString(@"mm\:ss");
+                _viewModel.TrackPosition = progress * _audioService.startPage.MusicTrackBar.Maximum;
+                _viewModel.CurrentTime = _audioService.audioFile.CurrentTime.ToString(@"mm\:ss");
+                _viewModel.EndTime = _audioService.audioFile.TotalTime.ToString(@"mm\:ss");
             }
         }
-
-
     }
 }

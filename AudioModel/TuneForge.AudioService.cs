@@ -12,41 +12,38 @@ using WpfTuneForgePlayer.ViewModel;
 
 namespace WpfTuneForgePlayer.AudioModel
 {
-    class AudioService
+    public class AudioService
     {
-        // Audio output device and file reader
         private WaveOutEvent outputDevice;
         private AudioFileReader _audioFile;
         private TimerHelper _timer;
-        private MusicViewModel _viewModel = new();
-        private AudioMetaService _audioMetaService;;
-        private bool _isMusicPlaying;
+        private MusicViewModel _viewModel;
+        private AudioMetaService _audioMetaService;
         private bool _isSoundOn;
-        private bool _userIsDragging;
         private bool _IsSelectedSongFavorite;
         private bool _isSliderEnabled = false;
 
-        // StartPage instance
         private StartPage _startPage = new();
 
-        // Music path property (safe with null fallback)
-
-
-        // Public access to slider enabled state
         public bool isSliderEnabled { get => _isSliderEnabled; set => _isSliderEnabled = value; }
+        public bool _isMusicPlaying;
+        public bool _userIsDragging;
 
-        // Current and new music file paths
         private string _currentMusicPath;
         private string _newMusicPath;
 
-        public WaveOutEvent waveOutEvent { get => outputDevice; set => outputDevice = value; }
-        public AudioFileReader audioFileReader { get => _audioFile; set => _audioFile = value; }
+        public WaveOutEvent _outputDevice { get => outputDevice; set => outputDevice = value; }
+        public AudioFileReader audioFile { get => _audioFile; set => _audioFile = value; }
+        public TimerHelper _timerHelper { get => _timer; set => _timer = value; }
+        public StartPage startPage { get => _startPage; set => _startPage = value; }
 
-        public AudioService()
+        public AudioService(MusicViewModel viewModel)
         {
-            _timer = new TimerHelper(TimeSpan.FromMilliseconds(500)); // 500ms by default
-            
+            _viewModel = viewModel;
+            _audioMetaService = new AudioMetaService(_viewModel);
+            _timer = new TimerHelper(TimeSpan.FromMilliseconds(700), this, _viewModel);
         }
+
         public string CurrentMusicPath
         {
             get => _currentMusicPath ?? string.Empty;

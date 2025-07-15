@@ -14,18 +14,24 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfTuneForgePlayer.ViewModel;
 using WpfTuneForgePlayer.Views;
+using WpfTuneForgePlayer.AudioModel;
 
 namespace WpfTuneForgePlayer
 {
     public partial class MainWindow : Window
     {
-        private MusicViewModel _viewModel = new();
+        private MusicViewModel _viewModel;
+        private DeviceOutputModel _deviceOutputModel;
+        private AudioService audioService;
+        private AudioMetaService audioMetaService;
+
+       
 
         private void OnMusicSelected(string path)
         {
-            CurrentMusicPath = path;
-            TakeArtistSongName(path);
-            UpdateAlbumArt(path);
+            audioService.CurrentMusicPath = path;
+            audioMetaService.TakeArtistSongName(path);
+            audioMetaService.UpdateAlbumArt(path);
         }
 
         private void ActionHandle()
@@ -35,12 +41,6 @@ namespace WpfTuneForgePlayer
             Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
         }
 
-        private void InitMusicDirectory()
-        {
-            NavigateToStartPage();
-            _viewModel.MainWindow = this;
-        }
-
         private void OnShowMusicDirectory(object sender, EventArgs e)
         {
             MainContentFrame.Navigate(new MusicDirectory(_viewModel));
@@ -48,23 +48,21 @@ namespace WpfTuneForgePlayer
 
         private void OnNavigateToSettings(object sender, EventArgs e)
         {
-            var settingsPage = new Settings();
-            settingsPage.DataContext = _viewModel;
-
+            var settingsPage = new Settings(_deviceOutputModel);
             settingsPage.backToStartPage += (_, __) => NavigateToStartPage();
-
             MainContentFrame.Navigate(settingsPage);
         }
 
         private void NavigateToStartPage()
         {
-            var startPage = new StartPage();
-            startPage.DataContext = _viewModel;
+            var startPage = new StartPage
+            {
+                DataContext = _viewModel
+            };
             MainContentFrame.Navigate(startPage);
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
-
         private void Close_Click(object sender, RoutedEventArgs e) => Close();
 
         private void DragWindow(object sender, MouseButtonEventArgs e)

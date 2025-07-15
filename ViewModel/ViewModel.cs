@@ -30,8 +30,13 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
-        
+
         private AudioService audioService;
+        private AudioMetaService audioMetaService;
+        private DeviceOutputModel __deviceOutputModel;
+
+        public DeviceOutputModel DeviceOutputModel => __deviceOutputModel;
+
 
 
         private bool _isMonoEnabled;
@@ -64,8 +69,16 @@ namespace WpfTuneForgePlayer.ViewModel
             AlbumArt = LoadImageOrDefault("assets/menu/musicLogo.jpg");
             FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
-            audioService = new AudioService();
+            InitAudioService();
             InitCommands();
+        }
+
+        private void InitAudioService()
+        {
+            audioService = new AudioService(this);
+            audioMetaService = new AudioMetaService(this);
+            __deviceOutputModel = new DeviceOutputModel();
+            __deviceOutputModel.StartDeviceMonitoring();
         }
 
         // Load an image from file or return null if not found
@@ -103,16 +116,16 @@ namespace WpfTuneForgePlayer.ViewModel
         // ===== Initialize UI Commands =====
         private void InitCommands()
         {
-            PlayCommand = new RelayCommand(() => MainWindow?.OnClickMusic(this, null));
-            SelectFavoriteSong = new RelayCommand(() => MainWindow?.SelectFavoriteSongToPlayList(this, null));
-            _ToggleSound = new RelayCommand(() => MainWindow?.ToggleSound(this, null));
-            RepeatCommand = new RelayCommand(() => MainWindow?.RepeatSong(this, null));
-            _startMusic = new RelayCommand(() => MainWindow?.StartMusic(this, null));
-            _endMusic = new RelayCommand(() => MainWindow?.EndMusic(this, null));
-            toggleAudio = new RelayCommand(() => MainWindow?.ToggleSound(this, null));
-            changeMusicTime = new RelayCommand(() => MainWindow?.SliderChanged());
+            PlayCommand = new RelayCommand(() => audioService.OnClickMusic(this, null));
+            SelectFavoriteSong = new RelayCommand(() => audioService?.SelectFavoriteSongToPlayList(this, null));
+            _ToggleSound = new RelayCommand(() => audioService?.ToggleSound(this, null));
+            RepeatCommand = new RelayCommand(() => audioService?.RepeatSong(this, null));
+            _startMusic = new RelayCommand(() => audioService?.StartMusic(this, null));
+            _endMusic = new RelayCommand(() => audioService?.EndMusic(this, null));
+            toggleAudio = new RelayCommand(() => audioService?.ToggleSound(this, null));
+            changeMusicTime = new RelayCommand(() => audioService?.SliderChanged());
             reloadMusicPage = new RelayCommand(() => LoadSongs(TakeCurrentDirectory));
-            TakeTimer = new RelayCommand(() => MainWindow?.TimerTime_Tick(null, null));
+            TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(null, null));
 
             // When a song is selected from the list, set it as current and update UI
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
@@ -120,8 +133,8 @@ namespace WpfTuneForgePlayer.ViewModel
                 if (song != null)
                 {
                     audioService.CurrentMusicPath = song.FilePath;
-                    MainWindow?.TakeArtistSongName(song.FilePath);
-                    MainWindow?.UpdateAlbumArt(song.FilePath);
+                    audioMetaService.TakeArtistSongName(song.FilePath);
+                    audioMetaService?.UpdateAlbumArt(song.FilePath);
                 }
             });
         }
@@ -210,8 +223,8 @@ namespace WpfTuneForgePlayer.ViewModel
         // Whether the slider is currently allowed to be moved by user
         public bool GetStatusOnSlider
         {
-            get => MainWindow.isSliderEnabled;
-            set { MainWindow.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
+            get => audioService.isSliderEnabled;
+            set { audioService.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
         }
 
         // ===== Commands (bindable in XAML via MVVM) =====
