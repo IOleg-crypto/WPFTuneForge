@@ -30,7 +30,9 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
-        private DispatcherTimer _deviceCheckTimer;
+        
+        private AudioService audioService;
+
 
         private bool _isMonoEnabled;
         // Force mono output
@@ -54,7 +56,7 @@ namespace WpfTuneForgePlayer.ViewModel
         };
 
         public string TakeCurrentDirectory { get; set; }
-        public ObservableCollection<string> OutputDevices { get; set; } = new();
+        
 
         // ===== Constructor =====
         public MusicViewModel()
@@ -62,9 +64,8 @@ namespace WpfTuneForgePlayer.ViewModel
             AlbumArt = LoadImageOrDefault("assets/menu/musicLogo.jpg");
             FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
+            audioService = new AudioService();
             InitCommands();
-            StartDeviceMonitoring();
-            LoadOutputDevices();
         }
 
         // Load an image from file or return null if not found
@@ -111,13 +112,14 @@ namespace WpfTuneForgePlayer.ViewModel
             toggleAudio = new RelayCommand(() => MainWindow?.ToggleSound(this, null));
             changeMusicTime = new RelayCommand(() => MainWindow?.SliderChanged());
             reloadMusicPage = new RelayCommand(() => LoadSongs(TakeCurrentDirectory));
+            TakeTimer = new RelayCommand(() => MainWindow?.TimerTime_Tick(null, null));
 
             // When a song is selected from the list, set it as current and update UI
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)
                 {
-                    MainWindow.CurrentMusicPath = song.FilePath;
+                    audioService.CurrentMusicPath = song.FilePath;
                     MainWindow?.TakeArtistSongName(song.FilePath);
                     MainWindow?.UpdateAlbumArt(song.FilePath);
                 }
@@ -224,6 +226,8 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand changeMusicTime { get; set; }    // Handle slider time change
         public ICommand reloadMusicPage { get; set; }    // Reload songs in case of changes
 
+        public ICommand TakeTimer { get; set; }
+
         // ===== INotifyPropertyChanged implementation =====
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -232,68 +236,8 @@ namespace WpfTuneForgePlayer.ViewModel
         }
 
 
-        private string _selectedOutputDevice;
-        public string SelectedOutputDevice
-        {
-            get => _selectedOutputDevice;
-            set
-            {
-                if (_selectedOutputDevice != value)
-                {
-                    _selectedOutputDevice = value;
-                    OnPropertyChanged(nameof(SelectedOutputDevice));
-                }
-            }
-        }
+        
 
-        public void StartDeviceMonitoring()
-        {
-            // Better DispatcherTimer than Timer(from WinForm - it shit , which kill performance at all)
-            _deviceCheckTimer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(3)
-            };
-            _deviceCheckTimer.Tick += (s, e) => LoadOutputDevices();
-            _deviceCheckTimer.Start();
-        }
-
-        private void LoadOutputDevices()
-        {
-            // Not regular situation, but just in case
-            try
-            {
-                var enumerator = new MMDeviceEnumerator();
-                var devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
-                var deviceNames = devices.Select(d => d.FriendlyName).ToList();
-
-
-                var currentDevices = OutputDevices.ToList();
-
-                bool devicesChanged = deviceNames.Count != currentDevices.Count ||
-                                      !deviceNames.SequenceEqual(currentDevices);
-
-                var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-                string defaultDeviceName = defaultDevice?.FriendlyName;
-                // Needed to check if default device changed , to avoid infinite check
-                if (devicesChanged || defaultDeviceName != SelectedOutputDevice)
-                {
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        if (devicesChanged)
-                        {
-                            OutputDevices.Clear();
-                            foreach (var name in deviceNames)
-                                OutputDevices.Add(name);
-                        }
-
-                        SelectedOutputDevice = defaultDeviceName;
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                WinForm.MessageBox.Show(ex.Message, "Error with devices", WinForm.MessageBoxButtons.OK, WinForm.MessageBoxIcon.Error);
-            }
-        }
+        
     }
 }

@@ -234,9 +234,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AudioModel\TuneForge.AudioMetaService.cs" />
+    <Compile Include="AudioModel\TuneForge.AudioService.cs" />
     <Compile Include="AudioModel\TuneForge.SongModel.cs" />
+    <Compile Include="Helpers\TimerHelper.cs" />
     <Compile Include="MainWindow.Events.xaml.cs" />
     <Compile Include="Model\Command.cs" />
+    <Compile Include="ViewModel\DeviceViewModel.cs" />
     <Compile Include="Views\MusicDirectory.xaml.cs">
       <DependentUpon>MusicDirectory.xaml</DependentUpon>
     </Compile>
