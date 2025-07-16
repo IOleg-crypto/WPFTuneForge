@@ -126,6 +126,7 @@ namespace WpfTuneForgePlayer.ViewModel
             changeMusicTime = new RelayCommand(() => audioService?.SliderChanged());
             reloadMusicPage = new RelayCommand(() => LoadSongs(TakeCurrentDirectory));
             TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(null, null));
+            SelectChaoticallySong = new RelayCommand(() => audioService?.ChaoticPlaySong(this, null));
 
             // When a song is selected from the list, set it as current and update UI
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
@@ -240,6 +241,8 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand reloadMusicPage { get; set; }    // Reload songs in case of changes
 
         public ICommand TakeTimer { get; set; }
+
+        public ICommand SelectChaoticallySong { get; set; }
 
         // ===== INotifyPropertyChanged implementation =====
         public event PropertyChangedEventHandler PropertyChanged;

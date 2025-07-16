@@ -73,15 +73,21 @@
                     </Slider>
 
                     <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent" Command="{Binding SelectFavoriteSong}" Margin="5,0">
-                        <Image x:Name="FavoriteSong" Margin="647,-18,-430,119" Source="{Binding FavoriteSong}" Grid.Column="2" Grid.ColumnSpan="3"/>
+                        <Image x:Name="FavoriteSong" Margin="664,-18,-430,119" Source="{Binding FavoriteSong}" Grid.Column="2" Grid.ColumnSpan="3"/>
                     </Button>
 
                     <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding RepeatCommand}" BorderBrush="Transparent">
                         <Image Margin="724,-19,-500,120" Source="pack://siteoforigin:,,,/assets/menu/repeatSong.png" Grid.Column="5"/>
                     </Button>
 
-                    <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent"/>
-                    <Image Source="pack://siteoforigin:,,,/assets/menu/songHaoticPlaylist.png" HorizontalAlignment="Left" Width="26" RenderTransformOrigin="-1.834,0.31" Margin="29,-18,0,121" Grid.Column="4" Grid.ColumnSpan="2"/>
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding SelectChaoticallySong}" BorderBrush="Transparent" Margin="5,0,62,0" Grid.Column="4" Grid.ColumnSpan="2">
+                        <Image Source="pack://siteoforigin:,,,/assets/menu/songHaoticPlaylist.png"
+           HorizontalAlignment="Left"
+           Width="26"
+           Cursor="Hand"
+           RenderTransformOrigin="-1.834,0.31"
+           Margin="27,-18,0,121" />
+                    </Button>
                 </Grid>
 
                 <Image x:Name="MusicLogo" Margin="300,10,300,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">

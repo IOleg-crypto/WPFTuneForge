@@ -10,6 +10,8 @@ using System.Windows.Media.Imaging;
 using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
 
+using WinForm = System.Windows.Forms;
+
 namespace WpfTuneForgePlayer.AudioModel
 {
     public class AudioService
@@ -22,7 +24,8 @@ namespace WpfTuneForgePlayer.AudioModel
         private bool _isSoundOn;
         private bool _IsSelectedSongFavorite;
         private bool _isSliderEnabled = false;
-       
+        private readonly Random _random = new Random();
+
 
         private StartPage _startPage = new();
 
@@ -250,6 +253,45 @@ namespace WpfTuneForgePlayer.AudioModel
             _timer.Start();
             outputDevice.Play();
             _isMusicPlaying = true;
+        }
+        public void ChaoticPlaySong(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel.Songs.Count == 0)
+            {
+                MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            int index = _random.Next(_viewModel.Songs.Count);
+            CurrentMusicPath = _viewModel.Songs[index].FilePath;
+
+            StopAndDisposeCurrentMusic();
+
+            try
+            {
+                _audioMetaService.TakeArtistSongName(CurrentMusicPath);
+                _audioMetaService?.UpdateAlbumArt(CurrentMusicPath);
+
+                _audioFile = new AudioFileReader(CurrentMusicPath);
+
+                if (outputDevice == null)
+                {
+                    outputDevice = new WaveOutEvent();
+                    outputDevice.PlaybackStopped += OnPlaybackStopped;
+                }
+
+
+                outputDevice.Init(_audioFile);
+                outputDevice.Play();
+
+                _newMusicPath = CurrentMusicPath;
+                _isMusicPlaying = true;
+                _timer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error:: {ex.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
      
