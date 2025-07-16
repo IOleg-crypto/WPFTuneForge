@@ -46,7 +46,7 @@
 
                             <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding PlayCommand}"
                                     BorderBrush="Transparent" Cursor="Hand" Margin="5,0">
-                                <Image Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
+                                <Image x:Name="PlayButton" Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
                             </Button>
                         </StackPanel>
                         <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding _startMusic}">

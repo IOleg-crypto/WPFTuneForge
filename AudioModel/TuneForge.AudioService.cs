@@ -177,6 +177,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 // Toggle pause/play
                 if (_isMusicPlaying)
                 {
+
                     _timer.Stop();
                     outputDevice.Pause();
                 }
