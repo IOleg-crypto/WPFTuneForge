@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
+using NAudio.CoreAudioApi;
 
 using WinForm = System.Windows.Forms;
 
@@ -25,6 +26,7 @@ namespace WpfTuneForgePlayer.AudioModel
         private bool _IsSelectedSongFavorite;
         private bool _isSliderEnabled = false;
         private readonly Random _random = new Random();
+        private MMDeviceEnumerator enumerator;
 
 
         private StartPage _startPage = new();
@@ -46,6 +48,7 @@ namespace WpfTuneForgePlayer.AudioModel
             _viewModel = viewModel;
             _audioMetaService = new AudioMetaService(_viewModel);
             _timer = new TimerHelper(TimeSpan.FromMilliseconds(700), this, _viewModel);
+            enumerator = new MMDeviceEnumerator();
         }
 
         public string CurrentMusicPath
@@ -102,7 +105,20 @@ namespace WpfTuneForgePlayer.AudioModel
             _userIsDragging = false;
         }
 
-        // Timer tick updates slider position and current time
+        public void IncreaseSound(object sender, RoutedEventArgs e)
+        {
+            MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            float currentVolume = device.AudioEndpointVolume.MasterVolumeLevelScalar;
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = currentVolume + 0.1f;
+        }
+        public void DecreaseSound(object sender, RoutedEventArgs e)
+        {
+            MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            float currentVolume = device.AudioEndpointVolume.MasterVolumeLevelScalar;
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = currentVolume - 0.1f;
+        }
+
+
 
 
         // Toggle mute/unmute
@@ -110,10 +126,12 @@ namespace WpfTuneForgePlayer.AudioModel
         {
             if (outputDevice == null) return;
 
+            MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             _isSoundOn = !_isSoundOn;
             if (_isSoundOn)
             {
-                outputDevice.Volume = 1f;
+               
+                device.AudioEndpointVolume.Mute = false; 
                 var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_new.png");
                 _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
             }
@@ -121,7 +139,7 @@ namespace WpfTuneForgePlayer.AudioModel
             {
                 var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_c.png");
                 _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
-                outputDevice.Volume = 0f;
+                device.AudioEndpointVolume.Mute = true;
             }
         }
 

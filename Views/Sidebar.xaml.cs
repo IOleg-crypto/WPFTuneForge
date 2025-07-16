@@ -19,9 +19,10 @@ namespace WpfTuneForgePlayer
         {
             InitializeComponent();
         }
-
+        // TODO : finish Favorite section(maybe)
         private void Favorite_Click(object sender, RoutedEventArgs e)
         {
+            
             MessageBox.Show("Favorite clicked");
         }
 
