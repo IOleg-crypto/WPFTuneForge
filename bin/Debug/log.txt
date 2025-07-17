@@ -1,0 +1,7 @@
+[11:26:58] Timer stopped
+[11:26:58] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[11:26:58] Init music - AudioFileReader and WaveOutEvent
+[11:26:58] Play music
+[11:26:58] Timer started
+[11:27:08] Music paused
+[11:27:08] Timer stopped
