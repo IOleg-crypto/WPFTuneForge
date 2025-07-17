@@ -20,7 +20,7 @@ namespace WpfTuneForgePlayer.AudioModel
         // Extract album art from music file using TagLib
         private BitmapImage GetAlbumArt(string path)
         {
-            if (!File.Exists(path)) return null;
+            if (!File.Exists(path)) Environment.Exit(1);
 
             using var tagFile = TagLib.File.Create(path);
             if (tagFile.Tag.Pictures.Length == 0) return null;
