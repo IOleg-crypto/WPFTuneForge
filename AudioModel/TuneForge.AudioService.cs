@@ -118,9 +118,6 @@ namespace WpfTuneForgePlayer.AudioModel
             device.AudioEndpointVolume.MasterVolumeLevelScalar = currentVolume - 0.1f;
         }
 
-
-
-
         // Toggle mute/unmute
         public void ToggleSound(object sender, RoutedEventArgs e)
         {
@@ -133,11 +130,23 @@ namespace WpfTuneForgePlayer.AudioModel
                
                 device.AudioEndpointVolume.Mute = false; 
                 var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_new.png");
+                if(!File.Exists(imagePath))
+                {
+                    MessageBox.Show("Image not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Environment.Exit(1);
+                    return;
+                }
                 _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
             }
             else
             {
                 var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_c.png");
+                if (!File.Exists(imagePath))
+                {
+                    MessageBox.Show("Image not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Environment.Exit(1);
+                    return;
+                }
                 _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
                 device.AudioEndpointVolume.Mute = true;
             }
@@ -220,7 +229,9 @@ namespace WpfTuneForgePlayer.AudioModel
             }
             else
             {
-                _viewModel.AlbumArt = null;
+                MessageBox.Show("Default image not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Environment.Exit(1);
+
             }
         }
 
@@ -253,6 +264,13 @@ namespace WpfTuneForgePlayer.AudioModel
             string path = _IsSelectedSongFavorite
                 ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\favorite_b.png")
                 : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\sidebar\\favorite_a.png");
+
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("Image not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Environment.Exit(1);
+                return;
+            }
 
             var bitmap = new BitmapImage();
             bitmap.BeginInit();
