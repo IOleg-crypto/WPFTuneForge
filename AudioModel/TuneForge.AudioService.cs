@@ -24,11 +24,9 @@ namespace WpfTuneForgePlayer.AudioModel
         private AudioMetaService _audioMetaService;
         private bool _isSoundOn;
         private bool _IsSelectedSongFavorite;
-        private bool _isSliderEnabled = false;
+        private bool _isSliderEnabled = true;
         private readonly Random _random = new Random();
         private MMDeviceEnumerator enumerator;
-
-
         private StartPage _startPage = new();
 
         public bool isSliderEnabled { get => _isSliderEnabled; set => _isSliderEnabled = value; }
@@ -59,7 +57,7 @@ namespace WpfTuneForgePlayer.AudioModel
 
         private void InitMusic(string path)
         {
-
+            SimpleLogger.Log("Init music - AudioFileReader and WaveOutEvent");
             _audioFile = new AudioFileReader(CurrentMusicPath);
             outputDevice = new WaveOutEvent();
             outputDevice.Init(_audioFile);
@@ -68,6 +66,7 @@ namespace WpfTuneForgePlayer.AudioModel
         }
         private void PlayMusic()
         {
+            SimpleLogger.Log("Play music");
             if (_audioFile == null || outputDevice == null)
             {
                 MessageBox.Show("Please, select a song.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -98,11 +97,11 @@ namespace WpfTuneForgePlayer.AudioModel
         {
             if (_audioFile == null || outputDevice == null) return;
 
-            _isSliderEnabled = true; // allow slider interaction
+            _isSliderEnabled = false; // allow slider interaction
             double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
             _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
             _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
-            _userIsDragging = false;
+            
         }
 
         public void IncreaseSound(object sender, RoutedEventArgs e)
@@ -124,13 +123,17 @@ namespace WpfTuneForgePlayer.AudioModel
             if (outputDevice == null) return;
 
             MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-            _isSoundOn = !_isSoundOn;
+
+            bool currentlyMuted = device.AudioEndpointVolume.Mute;
+            _isSoundOn = currentlyMuted; 
+
             if (_isSoundOn)
             {
-               
-                device.AudioEndpointVolume.Mute = false; 
+                device.AudioEndpointVolume.Mute = false;
+
                 var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_new.png");
-                if(!File.Exists(imagePath))
+                SimpleLogger.Log("Changed icon: " + imagePath);
+                if (!File.Exists(imagePath))
                 {
                     MessageBox.Show("Image not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                     Environment.Exit(1);
@@ -140,7 +143,10 @@ namespace WpfTuneForgePlayer.AudioModel
             }
             else
             {
+                device.AudioEndpointVolume.Mute = true;
+
                 var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\volume-high_c.png");
+                SimpleLogger.Log("Changed icon: " + imagePath);
                 if (!File.Exists(imagePath))
                 {
                     MessageBox.Show("Image not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -148,8 +154,9 @@ namespace WpfTuneForgePlayer.AudioModel
                     return;
                 }
                 _viewModel.SoundStatus = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
-                device.AudioEndpointVolume.Mute = true;
             }
+
+            SimpleLogger.Log("System mute state: " + device.AudioEndpointVolume.Mute);
         }
 
         // Called when the play button is clicked
@@ -186,12 +193,13 @@ namespace WpfTuneForgePlayer.AudioModel
                 // Toggle pause/play
                 if (_isMusicPlaying)
                 {
-
+                    SimpleLogger.Log("Music paused");
                     _timer.Stop();
                     outputDevice.Pause();
                 }
                 else
                 {
+                    SimpleLogger.Log("Music play");
                     _timer.Start();
                     outputDevice.Play();
                 }
@@ -224,6 +232,7 @@ namespace WpfTuneForgePlayer.AudioModel
             var defaultImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/menu/musicLogo.jpg");
             if (File.Exists(defaultImagePath))
             {
+                SimpleLogger.Log("Set default icon logo for album art" + defaultImagePath);
                 var image = new BitmapImage(new Uri(defaultImagePath, UriKind.Absolute));
                 _viewModel.AlbumArt = image;
             }
@@ -234,9 +243,6 @@ namespace WpfTuneForgePlayer.AudioModel
 
             }
         }
-
-        // Restart song if playback was stopped unexpectedly
-
 
         // Set playback to start (0 sec)
         public void StartMusic(object sender, RoutedEventArgs e)
@@ -301,6 +307,7 @@ namespace WpfTuneForgePlayer.AudioModel
 
             int index = _random.Next(_viewModel.Songs.Count);
             CurrentMusicPath = _viewModel.Songs[index].FilePath;
+            SimpleLogger.Log($"Playing music: {CurrentMusicPath}");
 
             StopAndDisposeCurrentMusic();
 

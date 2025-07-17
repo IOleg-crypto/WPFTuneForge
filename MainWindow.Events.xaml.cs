@@ -12,9 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfTuneForgePlayer.AudioModel;
+using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
 using WpfTuneForgePlayer.Views;
-using WpfTuneForgePlayer.AudioModel;
 
 namespace WpfTuneForgePlayer
 {
@@ -25,8 +26,7 @@ namespace WpfTuneForgePlayer
         private AudioService audioService;
         private AudioMetaService audioMetaService;
 
-       
-
+      
         private void OnMusicSelected(string path)
         {
             audioService.CurrentMusicPath = path;
@@ -70,5 +70,6 @@ namespace WpfTuneForgePlayer
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
         }
+        
     }
 }

@@ -8,7 +8,6 @@
     WindowStyle="None"
     AllowsTransparency="True"
     Background="Transparent"
-    ResizeMode="CanMinimize"
     TextOptions.TextRenderingMode="ClearType"
     TextOptions.TextFormattingMode="Display"
     UseLayoutRounding="True"

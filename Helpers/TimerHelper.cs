@@ -24,8 +24,14 @@ namespace WpfTuneForgePlayer.Helpers
             timer.Tick += TimerTime_Tick;
         }
 
-        public void Start() => timer.Start();
-        public void Stop() => timer.Stop();
+        public void Start() {
+            SimpleLogger.Log("Timer started");
+            timer.Start();
+        }
+        public void Stop() { 
+            SimpleLogger.Log("Timer stopped");
+            timer.Stop(); 
+        }
 
         public void TimerTime_Tick(object sender, EventArgs e)
         {

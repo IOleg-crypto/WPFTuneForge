@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfTuneForgePlayer.Helpers;
+using System.IO;
 
 namespace WpfTuneForgePlayer
 {
@@ -13,5 +15,11 @@ namespace WpfTuneForgePlayer
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            File.WriteAllText("log.txt", string.Empty);
+            ExternalConsoleLogger.StartConsoleWatcher("log.txt");
+        }
     }
 }

@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
 using WpfTuneForgePlayer.Views;
+using WpfTuneForgePlayer.Helpers;
 
 
 namespace WpfTuneForgePlayer
