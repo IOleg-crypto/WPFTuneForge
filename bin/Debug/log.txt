@@ -1,10 +1,7 @@
-[16:56:11] Playing music: C:\Users\38063\Music\Adele - Hello.mp3
-[16:56:11] Timer stopped
-[16:56:11] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[16:56:11] Timer started
-[16:56:12] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
-[16:56:12] Timer stopped
-[16:56:12] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[16:56:12] Timer started
-[16:56:21] Music paused
-[16:56:21] Timer stopped
+[18:22:31] Timer stopped
+[18:22:31] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:22:31] Init music - AudioFileReader and WaveOutEvent
+[18:22:31] Play music
+[18:22:31] Timer started
+[18:22:36] Music paused
+[18:22:36] Timer stopped

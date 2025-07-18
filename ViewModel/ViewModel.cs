@@ -33,17 +33,6 @@ namespace WpfTuneForgePlayer.ViewModel
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private DeviceOutputModel __deviceOutputModel;
-        public DeviceOutputModel DeviceOutputModel => __deviceOutputModel;
-
-
-
-        private bool _isMonoEnabled;
-        // Force mono output
-        public bool IsMonoEnabled
-        {
-            get => _isMonoEnabled;
-            set { _isMonoEnabled = value; OnPropertyChanged(nameof(IsMonoEnabled)); }
-        }
 
         // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
@@ -156,6 +145,7 @@ namespace WpfTuneForgePlayer.ViewModel
         public ObservableCollection<SongModel> Songs { get; set; } = new();
         public BindingCommands Commands { get; private set; }
         public MainWindow MainWindow { get; set; }
+        public DeviceOutputModel DeviceOutputModel => __deviceOutputModel;
 
         public string Artist
         {

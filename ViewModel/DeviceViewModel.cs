@@ -52,8 +52,7 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             try
             {
-                var enumerator = new MMDeviceEnumerator(); // без using
-
+                var enumerator = new MMDeviceEnumerator(); 
                 var devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
                 var deviceNames = devices.Select(d => d.FriendlyName).ToList();
 

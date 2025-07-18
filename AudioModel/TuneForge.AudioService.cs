@@ -24,7 +24,7 @@ namespace WpfTuneForgePlayer.AudioModel
         private AudioMetaService _audioMetaService;
         private bool _isSoundOn;
         private bool _IsSelectedSongFavorite;
-        private bool _isSliderEnabled = true;
+        private bool _isSliderEnabled = false;
         private readonly Random _random = new Random();
         private MMDeviceEnumerator enumerator;
         private StartPage _startPage = new();
@@ -76,6 +76,7 @@ namespace WpfTuneForgePlayer.AudioModel
             outputDevice.Volume = 1f;
             outputDevice.Play();
             _isMusicPlaying = true;
+            _viewModel.GetStatusOnSlider = true;
         }
         private void OnPlaybackStopped(object sender, StoppedEventArgs e)
         {
@@ -96,8 +97,6 @@ namespace WpfTuneForgePlayer.AudioModel
         public void SliderChanged()
         {
             if (_audioFile == null || outputDevice == null) return;
-
-            _isSliderEnabled = false; // allow slider interaction
             double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
             _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
             _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
@@ -177,6 +176,7 @@ namespace WpfTuneForgePlayer.AudioModel
             {
                 try
                 {
+                    _viewModel.GetStatusOnSlider = true;
                     _audioMetaService.TakeArtistSongName(CurrentMusicPath);
                     InitMusic(_currentMusicPath);
                     PlayMusic();
