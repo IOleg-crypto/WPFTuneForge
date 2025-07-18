@@ -112,6 +112,7 @@ namespace WpfTuneForgePlayer.AudioModel
         }
         public void DecreaseSound(object sender, RoutedEventArgs e)
         {
+
             MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             float currentVolume = device.AudioEndpointVolume.MasterVolumeLevelScalar;
             device.AudioEndpointVolume.MasterVolumeLevelScalar = currentVolume - 0.1f;

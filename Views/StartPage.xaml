@@ -44,16 +44,16 @@
                                    Height="80" >
                             <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent" Margin="5,0"/>
 
-                            <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding PlayCommand}"
+                            <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.PlayCommand}"
                                     BorderBrush="Transparent" Cursor="Hand" Margin="5,0">
                                 <Image x:Name="PlayButton" Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
                             </Button>
                         </StackPanel>
-                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding _startMusic}">
+                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.StartMusic}">
                             <Image Source="pack://siteoforigin:,,,/assets/menu/previous.png" Margin="0,31,188,-20"/>
                         </Button>
 
-                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding _endMusic}">
+                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.EndMusic}">
                             <Image Source="pack://siteoforigin:,,,/assets/menu/next.png" Margin="195,56,-6,6" RenderTransformOrigin="0.5,0.5"/>
                         </Button>
                     </Grid>
@@ -67,20 +67,20 @@
                             Maximum="1000" Minimum="0" ClipToBounds="True" Margin="38,10,39,77" Grid.ColumnSpan="6" Grid.Column="0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
-                                <i:InvokeCommandAction Command="{Binding changeMusicTime}"/>
+                                <i:InvokeCommandAction Command="{Binding Commands.ChangeMusicTime}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Slider>
 
-                    <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent" Command="{Binding SelectFavoriteSong}" Margin="5,0">
+                    <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent" Command="{Binding Commands.SelectFavoriteSong}" Margin="5,0">
                         <Image x:Name="FavoriteSong" Margin="664,-18,-430,119" Source="{Binding FavoriteSong}" Grid.Column="2" Grid.ColumnSpan="3"/>
                     </Button>
 
-                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding RepeatCommand}" BorderBrush="Transparent">
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.RepeatCommand}" BorderBrush="Transparent">
                         <Image Margin="724,-19,-500,120" Source="pack://siteoforigin:,,,/assets/menu/repeatSong.png" Grid.Column="5"/>
                     </Button>
 
-                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding SelectChaoticallySong}" BorderBrush="Transparent" Margin="5,0,62,0" Grid.Column="4" Grid.ColumnSpan="2">
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.SelectChaoticallySong}" BorderBrush="Transparent" Margin="5,0,62,0" Grid.Column="4" Grid.ColumnSpan="2">
                         <Image Source="pack://siteoforigin:,,,/assets/menu/songHaoticPlaylist.png"
            HorizontalAlignment="Left"
            Width="26"
@@ -131,7 +131,7 @@
             </Grid>
         </Viewbox>
 
-        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding toggleAudio}" BorderBrush="Transparent"
+        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.ToggleAudio}" BorderBrush="Transparent"
                 Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
             <Image x:Name="SoundButton" Grid.Row="1" Margin="-77,208,562,80" Source="{Binding SoundStatus}" RenderTransformOrigin="0.5,0.5" >
                 <Image.RenderTransform>

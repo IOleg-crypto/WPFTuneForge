@@ -242,6 +242,7 @@
     <Compile Include="MainWindow.Events.xaml.cs" />
     <Compile Include="Model\Command.cs" />
     <Compile Include="ViewModel\DeviceViewModel.cs" />
+    <Compile Include="ViewModel\BindingCommands.cs" />
     <Compile Include="Views\AuthorInfo.xaml.cs">
       <DependentUpon>AuthorInfo.xaml</DependentUpon>
     </Compile>

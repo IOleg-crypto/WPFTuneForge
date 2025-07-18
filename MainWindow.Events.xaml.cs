@@ -63,7 +63,11 @@ namespace WpfTuneForgePlayer
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
-        private void Close_Click(object sender, RoutedEventArgs e) => Close();
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            ExternalConsoleLogger.StopConsoleWatcher();
+            Close();
+        }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {

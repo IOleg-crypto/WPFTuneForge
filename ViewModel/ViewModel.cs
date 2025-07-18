@@ -68,7 +68,7 @@ namespace WpfTuneForgePlayer.ViewModel
             FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
             InitAudioService();
-            InitCommands();
+            
         }
 
         private void InitAudioService()
@@ -77,6 +77,15 @@ namespace WpfTuneForgePlayer.ViewModel
             audioMetaService = new AudioMetaService(this);
             __deviceOutputModel = new DeviceOutputModel();
             __deviceOutputModel.StartDeviceMonitoring();
+            InitICommand();
+            
+        }
+
+        private void InitICommand()
+        {
+            Commands = new BindingCommands();
+            Commands.InitCommands(this, audioService, audioMetaService);
+
         }
 
         // Load an image from file or return null if not found
@@ -111,32 +120,7 @@ namespace WpfTuneForgePlayer.ViewModel
             return image;
         }
 
-        // ===== Initialize UI Commands =====
-        private void InitCommands()
-        {
-            PlayCommand = new RelayCommand(() => audioService.OnClickMusic(this, null));
-            SelectFavoriteSong = new RelayCommand(() => audioService?.SelectFavoriteSongToPlayList(this, null));
-            _ToggleSound = new RelayCommand(() => audioService?.ToggleSound(this, null));
-            RepeatCommand = new RelayCommand(() => audioService?.RepeatSong(this, null));
-            _startMusic = new RelayCommand(() => audioService?.StartMusic(this, null));
-            _endMusic = new RelayCommand(() => audioService?.EndMusic(this, null));
-            toggleAudio = new RelayCommand(() => audioService?.ToggleSound(this, null));
-            changeMusicTime = new RelayCommand(() => audioService?.SliderChanged());
-            reloadMusicPage = new RelayCommand(() => LoadSongs(TakeCurrentDirectory));
-            TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(null, null));
-            SelectChaoticallySong = new RelayCommand(() => audioService?.ChaoticPlaySong(this, null));
-
-            // When a song is selected from the list, set it as current and update UI
-            PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
-            {
-                if (song != null)
-                {
-                    audioService.CurrentMusicPath = song.FilePath;
-                    audioMetaService.TakeArtistSongName(song.FilePath);
-                    audioMetaService?.UpdateAlbumArt(song.FilePath);
-                }
-            });
-        }
+    
 
         // Load all songs with supported extensions from given folder
         public void LoadSongs(string folder)
@@ -167,8 +151,10 @@ namespace WpfTuneForgePlayer.ViewModel
             }
         }
 
+
         // ===== Public Properties (bindable in XAML) =====
         public ObservableCollection<SongModel> Songs { get; set; } = new();
+        public BindingCommands Commands { get; private set; }
         public MainWindow MainWindow { get; set; }
 
         public string Artist
@@ -226,21 +212,7 @@ namespace WpfTuneForgePlayer.ViewModel
             set { audioService.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
         }
 
-        // ===== Commands (bindable in XAML via MVVM) =====
-        public ICommand PlayCommand { get; set; }
-        public ICommand RepeatCommand { get; set; }
-        public ICommand SelectFavoriteSong { get; set; }
-        public ICommand _ToggleSound { get; set; }
-        public ICommand _startMusic { get; set; }
-        public ICommand _endMusic { get; set; }
-        public ICommand PlaySelectedSongCommand { get; set; }
-        public ICommand toggleAudio { get; set; }        // Toggle mute/unmute
-        public ICommand changeMusicTime { get; set; }    // Handle slider time change
-        public ICommand reloadMusicPage { get; set; }    // Reload songs in case of changes
-
-        public ICommand TakeTimer { get; set; }
-
-        public ICommand SelectChaoticallySong { get; set; }
+        
 
         // ===== INotifyPropertyChanged implementation =====
         public event PropertyChangedEventHandler PropertyChanged;
