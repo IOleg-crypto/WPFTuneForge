@@ -1,174 +1,22 @@
-[13:27:24] Timer stopped
-[13:27:24] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[13:27:24] Init music - AudioFileReader and WaveOutEvent
-[13:27:25] Play music
-[13:27:25] Timer started
-[13:27:26] Play music - TimerTime_Tick
-[13:27:27] Play music - TimerTime_Tick
-[13:27:27] Slider Value: 0, Maximum: 1000
-[13:27:27] Current time: 00:02
-[13:27:27] Play music - TimerTime_Tick
-[13:27:28] Play music - TimerTime_Tick
-[13:27:28] Slider Value: 0, Maximum: 1000
-[13:27:28] Current time: 00:44
-[13:27:28] Play music - TimerTime_Tick
-[13:27:29] Play music - TimerTime_Tick
-[13:27:29] Play music - TimerTime_Tick
-[13:27:30] Play music - TimerTime_Tick
-[13:27:31] Play music - TimerTime_Tick
-[13:27:32] Slider Value: 0, Maximum: 1000
-[13:27:32] Current time: 00:47
-[13:27:32] Play music - TimerTime_Tick
-[13:27:32] Play music - TimerTime_Tick
-[13:27:32] Play music - TimerTime_Tick
-[13:27:33] Play music - TimerTime_Tick
-[13:27:33] Play music - TimerTime_Tick
-[13:27:34] Play music - TimerTime_Tick
-[13:27:34] Play music - TimerTime_Tick
-[13:27:35] Play music - TimerTime_Tick
-[13:27:36] Play music - TimerTime_Tick
-[13:27:36] Slider Value: 0, Maximum: 1000
-[13:27:36] Current time: 02:09
-[13:27:36] Play music - TimerTime_Tick
-[13:27:37] Play music - TimerTime_Tick
-[13:27:37] Play music - TimerTime_Tick
-[13:27:38] Play music - TimerTime_Tick
-[13:27:38] Play music - TimerTime_Tick
-[13:27:38] Play music - TimerTime_Tick
-[13:27:39] Play music - TimerTime_Tick
-[13:27:39] Play music - TimerTime_Tick
-[13:27:40] Play music - TimerTime_Tick
-[13:27:41] Play music - TimerTime_Tick
-[13:27:41] Play music - TimerTime_Tick
-[13:27:42] Play music - TimerTime_Tick
-[13:27:42] Play music - TimerTime_Tick
-[13:27:43] Play music - TimerTime_Tick
-[13:27:43] Play music - TimerTime_Tick
-[13:27:43] Play music - TimerTime_Tick
-[13:27:44] Play music - TimerTime_Tick
-[13:27:45] Play music - TimerTime_Tick
-[13:27:46] Play music - TimerTime_Tick
-[13:27:46] Play music - TimerTime_Tick
-[13:27:46] Play music - TimerTime_Tick
-[13:27:47] Play music - TimerTime_Tick
-[13:27:47] Play music - TimerTime_Tick
-[13:27:48] Play music - TimerTime_Tick
-[13:27:48] Play music - TimerTime_Tick
-[13:27:49] Play music - TimerTime_Tick
-[13:27:49] Play music - TimerTime_Tick
-[13:27:50] Play music - TimerTime_Tick
-[13:27:51] Play music - TimerTime_Tick
-[13:27:51] Play music - TimerTime_Tick
-[13:27:51] Play music - TimerTime_Tick
-[13:27:52] Play music - TimerTime_Tick
-[13:27:52] Play music - TimerTime_Tick
-[13:27:53] Play music - TimerTime_Tick
-[13:27:53] Play music - TimerTime_Tick
-[13:27:54] Play music - TimerTime_Tick
-[13:27:55] Play music - TimerTime_Tick
-[13:27:55] Play music - TimerTime_Tick
-[13:27:56] Play music - TimerTime_Tick
-[13:27:56] Play music - TimerTime_Tick
-[13:27:56] Play music - TimerTime_Tick
-[13:27:57] Play music - TimerTime_Tick
-[13:27:57] Play music - TimerTime_Tick
-[13:27:58] Play music - TimerTime_Tick
-[13:27:59] Play music - TimerTime_Tick
-[13:27:59] Play music - TimerTime_Tick
-[13:28:00] Play music - TimerTime_Tick
-[13:28:00] Play music - TimerTime_Tick
-[13:28:01] Play music - TimerTime_Tick
-[13:28:01] Play music - TimerTime_Tick
-[13:28:02] Play music - TimerTime_Tick
-[13:28:02] Play music - TimerTime_Tick
-[13:28:03] Play music - TimerTime_Tick
-[13:28:03] Play music - TimerTime_Tick
-[13:28:04] Play music - TimerTime_Tick
-[13:28:05] Play music - TimerTime_Tick
-[13:28:05] Play music - TimerTime_Tick
-[13:28:05] Play music - TimerTime_Tick
-[13:28:06] Play music - TimerTime_Tick
-[13:28:06] Play music - TimerTime_Tick
-[13:28:07] Play music - TimerTime_Tick
-[13:28:07] Play music - TimerTime_Tick
-[13:28:08] Play music - TimerTime_Tick
-[13:28:09] Play music - TimerTime_Tick
-[13:28:09] Play music - TimerTime_Tick
-[13:28:10] Play music - TimerTime_Tick
-[13:28:10] Play music - TimerTime_Tick
-[13:28:10] Play music - TimerTime_Tick
-[13:28:11] Play music - TimerTime_Tick
-[13:28:11] Play music - TimerTime_Tick
-[13:28:12] Play music - TimerTime_Tick
-[13:28:13] Play music - TimerTime_Tick
-[13:28:13] Play music - TimerTime_Tick
-[13:28:14] Play music - TimerTime_Tick
-[13:28:14] Play music - TimerTime_Tick
-[13:28:15] Play music - TimerTime_Tick
-[13:28:15] Play music - TimerTime_Tick
-[13:28:15] Play music - TimerTime_Tick
-[13:28:16] Play music - TimerTime_Tick
-[13:28:17] Play music - TimerTime_Tick
-[13:28:17] Play music - TimerTime_Tick
-[13:28:18] Play music - TimerTime_Tick
-[13:28:18] Play music - TimerTime_Tick
-[13:28:19] Play music - TimerTime_Tick
-[13:28:19] Play music - TimerTime_Tick
-[13:28:20] Play music - TimerTime_Tick
-[13:28:20] Play music - TimerTime_Tick
-[13:28:20] Play music - TimerTime_Tick
-[13:28:21] Play music - TimerTime_Tick
-[13:28:23] Play music - TimerTime_Tick
-[13:28:23] Play music - TimerTime_Tick
-[13:28:24] Play music - TimerTime_Tick
-[13:28:24] Play music - TimerTime_Tick
-[13:28:24] Play music - TimerTime_Tick
-[13:28:25] Play music - TimerTime_Tick
-[13:28:26] Play music - TimerTime_Tick
-[13:28:27] Play music - TimerTime_Tick
-[13:28:28] Play music - TimerTime_Tick
-[13:28:28] Play music - TimerTime_Tick
-[13:28:28] Play music - TimerTime_Tick
-[13:28:29] Play music - TimerTime_Tick
-[13:28:29] Play music - TimerTime_Tick
-[13:28:30] Play music - TimerTime_Tick
-[13:28:31] Play music - TimerTime_Tick
-[13:28:31] Play music - TimerTime_Tick
-[13:28:32] Play music - TimerTime_Tick
-[13:28:33] Play music - TimerTime_Tick
-[13:28:33] Play music - TimerTime_Tick
-[13:28:34] Play music - TimerTime_Tick
-[13:28:34] Play music - TimerTime_Tick
-[13:28:35] Play music - TimerTime_Tick
-[13:28:37] Play music - TimerTime_Tick
-[13:28:38] Play music - TimerTime_Tick
-[13:28:39] Play music - TimerTime_Tick
-[13:28:39] Play music - TimerTime_Tick
-[13:28:40] Play music - TimerTime_Tick
-[13:28:41] Play music - TimerTime_Tick
-[13:28:42] Play music - TimerTime_Tick
-[13:28:42] Play music - TimerTime_Tick
-[13:28:43] Play music - TimerTime_Tick
-[13:28:43] Play music - TimerTime_Tick
-[13:28:44] Play music - TimerTime_Tick
-[13:28:44] Play music - TimerTime_Tick
-[13:28:45] Play music - TimerTime_Tick
-[13:28:45] Play music - TimerTime_Tick
-[13:28:46] Play music - TimerTime_Tick
-[13:28:47] Play music - TimerTime_Tick
-[13:28:48] Play music - TimerTime_Tick
-[13:28:48] Play music - TimerTime_Tick
-[13:28:48] Play music - TimerTime_Tick
-[13:28:49] Play music - TimerTime_Tick
-[13:28:49] Play music - TimerTime_Tick
-[13:28:50] Play music - TimerTime_Tick
-[13:28:51] Play music - TimerTime_Tick
-[13:28:51] Play music - TimerTime_Tick
-[13:28:53] Play music - TimerTime_Tick
-[13:28:53] Play music - TimerTime_Tick
-[13:28:54] Play music - TimerTime_Tick
-[13:28:54] Play music - TimerTime_Tick
-[13:28:55] Play music - TimerTime_Tick
-[13:28:56] Play music - TimerTime_Tick
-[13:28:56] Play music - TimerTime_Tick
-[13:28:57] Play music - TimerTime_Tick
+[15:17:55] Timer stopped
+[15:17:55] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[15:17:55] Init music - AudioFileReader and WaveOutEvent
+[15:17:56] Play music
+[15:17:56] Timer started
+[15:17:56] Play music - TimerTime_Tick
+[15:17:57] Play music - TimerTime_Tick
+[15:17:58] Play music - TimerTime_Tick
+[15:17:58] Play music - TimerTime_Tick
+[15:17:58] Play music - TimerTime_Tick
+[15:17:59] Play music - TimerTime_Tick
+[15:17:59] Play music - TimerTime_Tick
+[15:18:00] Play music - TimerTime_Tick
+[15:18:00] Play music - TimerTime_Tick
+[15:18:01] Play music - TimerTime_Tick
+[15:18:02] Play music - TimerTime_Tick
+[15:18:02] Play music - TimerTime_Tick
+[15:18:03] Play music - TimerTime_Tick
+[15:18:03] Play music - TimerTime_Tick
+[15:18:03] Play music - TimerTime_Tick
+[15:18:03] Music paused
+[15:18:03] Timer stopped

@@ -247,6 +247,9 @@
     <Compile Include="Views\AuthorInfo.xaml.cs">
       <DependentUpon>AuthorInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FavoriteSongs.xaml.cs">
+      <DependentUpon>FavoriteSongs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MusicDirectory.xaml.cs">
       <DependentUpon>MusicDirectory.xaml</DependentUpon>
     </Compile>
@@ -273,6 +276,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AuthorInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FavoriteSongs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

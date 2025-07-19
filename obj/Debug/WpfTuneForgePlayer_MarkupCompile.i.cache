@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\gitnext\WpfTuneForgePlayer\App.xaml
-61232033858
+7-376478768
 
-22-528768683
+231860007467
 67112986695
-MainWindow.xaml;Views\AuthorInfo.xaml;Views\MusicDirectory.xaml;Views\Settings.xaml;Views\Sidebar.xaml;Views\StartPage.xaml;
+MainWindow.xaml;Views\AuthorInfo.xaml;Views\FavoriteSongs.xaml;Views\MusicDirectory.xaml;Views\Settings.xaml;Views\Sidebar.xaml;Views\StartPage.xaml;
 
 True
 

@@ -30,6 +30,7 @@ namespace WpfTuneForgePlayer.ViewModel
         private string _endTime = "00:00";
         private ImageSource _favoriteSong;
         private ImageSource _soundStatus; // Icon that shows whether sound is muted or not
+        private ImageSource playPauseButton;
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private DeviceOutputModel __deviceOutputModel;
@@ -58,6 +59,7 @@ namespace WpfTuneForgePlayer.ViewModel
             AlbumArt = ImageLoader.LoadImageOrDefault("assets/menu/musicLogo.jpg");
             FavoriteSong = ImageLoader.LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = ImageLoader.LoadImageOrDefault("assets/menu/volume-high_new.png");
+            playPauseButton = ImageLoader.LoadImageOrDefault("assets/menu/pause.png");
             InitAudioService();
             
         }
@@ -168,6 +170,12 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             get => audioService.isSliderEnabled;
             set { audioService.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
+        }
+
+        public ImageSource PlayPauseButton
+        {
+            get => playPauseButton;
+            set { playPauseButton = value; OnPropertyChanged(nameof(PlayPauseButton)); }
         }
 
         

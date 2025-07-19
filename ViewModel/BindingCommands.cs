@@ -30,16 +30,16 @@ namespace WpfTuneForgePlayer.ViewModel
  
         public void InitCommands(MusicViewModel viewModel , AudioService audioService, AudioMetaService audioMetaService)
         {
-            PlayCommand = new RelayCommand(() => audioService.OnClickMusic(this, null));
-            SelectFavoriteSong = new RelayCommand(() => audioService.SelectFavoriteSongToPlayList(this, null));
-            ToggleSound = new RelayCommand(() => audioService.ToggleSound(this, null));
-            RepeatCommand = new RelayCommand(() => audioService.RepeatSong(this, null));
-            ToggleSound = new RelayCommand(() => audioService.ToggleSound(this, null));
-            EndMusic = new RelayCommand(() => audioService.EndMusic(this, null));
+            PlayCommand = new RelayCommand(() => audioService.OnClickMusic(viewModel, null));
+            SelectFavoriteSong = new RelayCommand(() => audioService.SelectFavoriteSongToPlayList(viewModel, null));
+            RepeatCommand = new RelayCommand(() => audioService.RepeatSong(viewModel, null));
+            ToggleAudio = new RelayCommand(() => audioService.ToggleSound(viewModel, null));
+            EndMusic = new RelayCommand(() => audioService.EndMusic(viewModel, null));
             ChangeMusicTime = new RelayCommand(() => audioService.SliderChanged());
             ReloadMusicPage = new RelayCommand(() => viewModel.LoadSongs(viewModel.TakeCurrentDirectory));
-            TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(null, null));
-            SelectChaoticallySong = new RelayCommand(() => audioService.ChaoticPlaySong(this, null));
+            TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(viewModel, null));
+            SelectChaoticallySong = new RelayCommand(() => audioService.ChaoticPlaySong(viewModel, null));
+            StartMusic = new RelayCommand(() => audioService.StartMusic(viewModel, null));
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)

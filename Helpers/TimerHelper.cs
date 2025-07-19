@@ -36,6 +36,7 @@ namespace WpfTuneForgePlayer.Helpers
 
         public void TimerTime_Tick(object sender, EventArgs e)
         {
+            SimpleLogger.Log("Play music - TimerTime_Tick");
             if (_audioService.audioFile == null || !_audioService._isMusicPlaying || _audioService.isUserDragging)
                 return;
 
@@ -43,7 +44,6 @@ namespace WpfTuneForgePlayer.Helpers
             {
                 double progress = _audioService.audioFile.CurrentTime.TotalSeconds / _audioService.audioFile.TotalTime.TotalSeconds;
                 _viewModel.TrackPosition = progress * _audioService.startPage.MusicTrackBar.Maximum;
-                SimpleLogger.Log("Play music - TimerTime_Tick");
                 _viewModel.CurrentTime = _audioService.audioFile.CurrentTime.ToString(@"mm\:ss");
                 _viewModel.EndTime = _audioService.audioFile.TotalTime.ToString(@"mm\:ss");
             }

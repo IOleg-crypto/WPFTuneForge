@@ -109,12 +109,8 @@ namespace WpfTuneForgePlayer.AudioModel
 
             double frac = _viewModel.TrackPosition / 1000.0;
             TimeSpan currentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
-
-            // Встановлюємо час відтворення
             _audioFile.CurrentTime = currentTime;
-
-            // Оновлюємо ViewModel
-            _viewModel.TrackPosition = _startPage.MusicTrackBar.Value;  // позиція слайдера (число)
+            _viewModel.TrackPosition = _startPage.MusicTrackBar.Value;  
             _viewModel.CurrentTime = currentTime.ToString(@"mm\:ss");
             SimpleLogger.Log($"Current time: {_viewModel.CurrentTime}");
 
@@ -144,6 +140,7 @@ namespace WpfTuneForgePlayer.AudioModel
             MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
 
             bool currentlyMuted = device.AudioEndpointVolume.Mute;
+            SimpleLogger.Log("Current ToggleSound");
             _isSoundOn = currentlyMuted; 
 
             if (_isSoundOn)
@@ -217,12 +214,14 @@ namespace WpfTuneForgePlayer.AudioModel
                 if (_isMusicPlaying)
                 {
                     SimpleLogger.Log("Music paused");
+                    //_viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\Play1.png"), UriKind.Absolute));
                     _timer.Stop();
                     outputDevice.Pause();
                 }
                 else
                 {
                     SimpleLogger.Log("Music play");
+                    //_viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png"), UriKind.Absolute));
                     _timer.Start();
                     outputDevice.Play();
                 }

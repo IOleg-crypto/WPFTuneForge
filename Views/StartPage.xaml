@@ -46,7 +46,7 @@
 
                             <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.PlayCommand}"
                                     BorderBrush="Transparent" Cursor="Hand" Margin="5,0">
-                                <Image x:Name="PlayButton" Source="pack://siteoforigin:,,,/assets/menu/pause.png" Width="97" Height="88"/>
+                                <Image x:Name="PlayButton" Source="{Binding PlayPauseButton}" Width="97" Height="88"/>
                             </Button>
                         </StackPanel>
                         <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.StartMusic}">
@@ -89,8 +89,10 @@
            Margin="27,-18,0,121" />
                     </Button>
                 </Grid>
-
                 <Image x:Name="MusicLogo" Margin="300,10,300,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+                    <Image.Effect>
+                        <DropShadowEffect/>
+                    </Image.Effect>
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
