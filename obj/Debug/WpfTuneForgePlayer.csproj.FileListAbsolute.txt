@@ -127,3 +127,5 @@ D:\gitnext\WpfTuneForgePlayer\obj\Debug\Views\StartPage.baml
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\Avalonia\Resources.Inputs.cache
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\Views\AuthorInfo.g.cs
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\Views\AuthorInfo.baml
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\Views\FavoriteSongs.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Debug\Views\FavoriteSongs.baml

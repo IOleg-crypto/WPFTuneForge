@@ -15,7 +15,7 @@
 
         <!-- Sidebar elements-->
         <StackPanel x:Name ="SidebarPanel" Grid.Row="0">
-            <Button Style="{StaticResource SidebarStyle}" >
+            <Button Style="{StaticResource SidebarStyle}" Click="FavoriteClick" >
                 <StackPanel Orientation="Horizontal" >
                     <Image x:Name="FavoriteSong" Source="pack://siteoforigin:,,,/assets/sidebar/favoriter.png" Width="24" Height="24" Margin="0,0,10,0">
                     </Image>

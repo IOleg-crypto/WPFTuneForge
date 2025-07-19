@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfTuneForgePlayer.Helpers;
 
 namespace WpfTuneForgePlayer.Views
 {
@@ -23,6 +24,17 @@ namespace WpfTuneForgePlayer.Views
         public FavoriteSongs()
         {
             InitializeComponent();
+
+            var songs = new List<Song>
+            {
+                new Song { Title = "Song A", Artist = "Artist A", Duration = "3:45" },
+                new Song { Title = "Song B", Artist = "Artist B", Duration = "4:12" },
+                new Song { Title = "Song C", Artist = "Artist C", Duration = "2:58" }
+            };
+
+            FavoriteSongsGrid.ItemsSource = songs;
+
         }
+
     }
 }

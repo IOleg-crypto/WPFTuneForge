@@ -238,6 +238,7 @@
     <Compile Include="AudioModel\TuneForge.AudioService.cs" />
     <Compile Include="AudioModel\TuneForge.SongModel.cs" />
     <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\Song.cs" />
     <Compile Include="Helpers\TimerHelper.cs" />
     <Compile Include="MainWindow.Events.xaml.cs" />
     <Compile Include="Model\Command.cs" />

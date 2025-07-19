@@ -39,6 +39,8 @@ namespace WpfTuneForgePlayer
             Sidebar.MusicSelected += OnMusicSelected;
             Sidebar.NavigateToSettings += OnNavigateToSettings;
             Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
+            Sidebar.FavoritePage += NavigateToFavoritePage;
+            
         }
 
         private void OnShowMusicDirectory(object sender, EventArgs e)
@@ -60,6 +62,15 @@ namespace WpfTuneForgePlayer
                 DataContext = _viewModel
             };
             MainContentFrame.Navigate(startPage);
+        }
+
+        private void NavigateToFavoritePage(object sender, EventArgs e)
+        {
+            var favoriteSongs = new FavoriteSongs
+            {
+                DataContext = _viewModel
+            };
+            MainContentFrame.Navigate(favoriteSongs);
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;

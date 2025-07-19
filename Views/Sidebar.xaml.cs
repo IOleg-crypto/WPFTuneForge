@@ -13,17 +13,17 @@ namespace WpfTuneForgePlayer
         public event Action<string> MusicSelected;
         public event EventHandler ShowMusicDirectory;
         public event EventHandler NavigateToSettings;
+        public event EventHandler FavoritePage;
         private MainWindow _mainWindow;
 
         public Sidebar()
         {
             InitializeComponent();
         }
-        // TODO : finish Favorite section(maybe)
-        private void Favorite_Click(object sender, RoutedEventArgs e)
+
+        private void FavoriteClick(object sender, RoutedEventArgs e)
         {
-            
-            MessageBox.Show("Favorite clicked");
+            FavoritePage?.Invoke(this, EventArgs.Empty); 
         }
 
         private void MusicClick(object sender, RoutedEventArgs e)
