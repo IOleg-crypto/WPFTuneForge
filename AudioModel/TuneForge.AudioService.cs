@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using NAudio.CoreAudioApi;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
 using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
-using NAudio.CoreAudioApi;
-
 using WinForm = System.Windows.Forms;
 
 namespace WpfTuneForgePlayer.AudioModel
@@ -31,7 +31,7 @@ namespace WpfTuneForgePlayer.AudioModel
 
         public bool isSliderEnabled { get => _isSliderEnabled; set => _isSliderEnabled = value; }
         public bool _isMusicPlaying;
-        public bool _userIsDragging;
+        public bool isUserDragging = false;
 
         private string _currentMusicPath;
         private string _newMusicPath;
@@ -45,7 +45,7 @@ namespace WpfTuneForgePlayer.AudioModel
         {
             _viewModel = viewModel;
             _audioMetaService = new AudioMetaService(_viewModel);
-            _timer = new TimerHelper(TimeSpan.FromMilliseconds(700), this, _viewModel);
+            _timer = new TimerHelper(TimeSpan.FromMilliseconds(400), this, _viewModel);
             enumerator = new MMDeviceEnumerator();
         }
 
@@ -76,11 +76,17 @@ namespace WpfTuneForgePlayer.AudioModel
             outputDevice.Volume = 1f;
             outputDevice.Play();
             _isMusicPlaying = true;
-            _viewModel.GetStatusOnSlider = true;
         }
         private void OnPlaybackStopped(object sender, StoppedEventArgs e)
         {
             _timer.Stop();
+
+            if (e.Exception != null)
+            {
+                _isMusicPlaying = false;
+                MessageBox.Show($"Playback Error: {e.Exception.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (_isMusicPlaying && _audioFile != null && outputDevice != null)
             {
@@ -97,11 +103,24 @@ namespace WpfTuneForgePlayer.AudioModel
         public void SliderChanged()
         {
             if (_audioFile == null || outputDevice == null) return;
-            double frac = _startPage.MusicTrackBar.Value / _startPage.MusicTrackBar.Maximum;
-            _audioFile.CurrentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
-            _viewModel.CurrentTime = _audioFile.CurrentTime.ToString(@"mm\:ss");
-            
+
+            _isSliderEnabled = true; // allow slider interaction
+            SimpleLogger.Log($"Slider Value: {_startPage.MusicTrackBar.Value}, Maximum: {_startPage.MusicTrackBar.Maximum}");
+
+            double frac = _viewModel.TrackPosition / 1000.0;
+            TimeSpan currentTime = TimeSpan.FromSeconds(frac * _audioFile.TotalTime.TotalSeconds);
+
+            // Встановлюємо час відтворення
+            _audioFile.CurrentTime = currentTime;
+
+            // Оновлюємо ViewModel
+            _viewModel.TrackPosition = _startPage.MusicTrackBar.Value;  // позиція слайдера (число)
+            _viewModel.CurrentTime = currentTime.ToString(@"mm\:ss");
+            SimpleLogger.Log($"Current time: {_viewModel.CurrentTime}");
+
+            isUserDragging = false;
         }
+
 
         public void IncreaseSound(object sender, RoutedEventArgs e)
         {
@@ -168,6 +187,8 @@ namespace WpfTuneForgePlayer.AudioModel
                 return;
             }
 
+  
+
             // If a new song was selected, stop and clean up the old one
             if (_newMusicPath != CurrentMusicPath)
                 StopAndDisposeCurrentMusic();
@@ -183,6 +204,7 @@ namespace WpfTuneForgePlayer.AudioModel
                     _audioMetaService.UpdateAlbumArt(CurrentMusicPath);
                     _timer.Start();
                     _newMusicPath = CurrentMusicPath;
+                    isSliderEnabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -228,6 +250,8 @@ namespace WpfTuneForgePlayer.AudioModel
             _viewModel.TrackPosition = 0;
             _viewModel.CurrentTime = "00:00";
             _viewModel.EndTime = "00:00";
+
+            isSliderEnabled = false;
 
             // Set default album image if not available
             var defaultImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/menu/musicLogo.jpg");
@@ -305,6 +329,8 @@ namespace WpfTuneForgePlayer.AudioModel
                 MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
+            isSliderEnabled = true;
 
             int index = _random.Next(_viewModel.Songs.Count);
             CurrentMusicPath = _viewModel.Songs[index].FilePath;

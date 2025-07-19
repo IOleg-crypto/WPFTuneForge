@@ -1,6 +1,7 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Windows.Threading;
-using NAudio.Wave;
+using TagLib.Mpeg;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
 
@@ -35,15 +36,14 @@ namespace WpfTuneForgePlayer.Helpers
 
         public void TimerTime_Tick(object sender, EventArgs e)
         {
-            if (_audioService._outputDevice == null || !_audioService._isMusicPlaying || _audioService._userIsDragging)
+            if (_audioService.audioFile == null || !_audioService._isMusicPlaying || _audioService.isUserDragging)
                 return;
 
-            if (_audioService._outputDevice.PlaybackState == PlaybackState.Playing)
+            if (_audioService._outputDevice != null && _audioService._outputDevice.PlaybackState == PlaybackState.Playing)
             {
-                double progress = _audioService.audioFile.CurrentTime.TotalSeconds /
-                                  _audioService.audioFile.TotalTime.TotalSeconds;
-
+                double progress = _audioService.audioFile.CurrentTime.TotalSeconds / _audioService.audioFile.TotalTime.TotalSeconds;
                 _viewModel.TrackPosition = progress * _audioService.startPage.MusicTrackBar.Maximum;
+                SimpleLogger.Log("Play music - TimerTime_Tick");
                 _viewModel.CurrentTime = _audioService.audioFile.CurrentTime.ToString(@"mm\:ss");
                 _viewModel.EndTime = _audioService.audioFile.TotalTime.ToString(@"mm\:ss");
             }

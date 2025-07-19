@@ -26,6 +26,8 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand SelectChaoticallySong { get; set; }
         public ICommand PlaySelectedSongCommand { get; set; }
 
+
+ 
         public void InitCommands(MusicViewModel viewModel , AudioService audioService, AudioMetaService audioMetaService)
         {
             PlayCommand = new RelayCommand(() => audioService.OnClickMusic(this, null));
@@ -38,7 +40,6 @@ namespace WpfTuneForgePlayer.ViewModel
             ReloadMusicPage = new RelayCommand(() => viewModel.LoadSongs(viewModel.TakeCurrentDirectory));
             TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(null, null));
             SelectChaoticallySong = new RelayCommand(() => audioService.ChaoticPlaySong(this, null));
-
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)
@@ -47,7 +48,8 @@ namespace WpfTuneForgePlayer.ViewModel
                     audioMetaService.TakeArtistSongName(song.FilePath);
                     audioMetaService.UpdateAlbumArt(song.FilePath);
                 }
-            });
+            }); 
+
         }
     }
 }

@@ -34,6 +34,8 @@ namespace WpfTuneForgePlayer.ViewModel
         private AudioMetaService audioMetaService;
         private DeviceOutputModel __deviceOutputModel;
 
+        
+
         // Supported audio file extensions
         private List<string> SupportedExtensionsSong = new List<string>()
         {
@@ -53,9 +55,9 @@ namespace WpfTuneForgePlayer.ViewModel
         // ===== Constructor =====
         public MusicViewModel()
         {
-            AlbumArt = LoadImageOrDefault("assets/menu/musicLogo.jpg");
-            FavoriteSong = LoadImageOrDefault("assets/sidebar/favorite_a.png");
-            SoundStatus = LoadImageOrDefault("assets/menu/volume-high_new.png");
+            AlbumArt = ImageLoader.LoadImageOrDefault("assets/menu/musicLogo.jpg");
+            FavoriteSong = ImageLoader.LoadImageOrDefault("assets/sidebar/favorite_a.png");
+            SoundStatus = ImageLoader.LoadImageOrDefault("assets/menu/volume-high_new.png");
             InitAudioService();
             
         }
@@ -74,42 +76,8 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             Commands = new BindingCommands();
             Commands.InitCommands(this, audioService, audioMetaService);
-
         }
 
-        // Load an image from file or return null if not found
-        public ImageSource LoadImageOrDefault(string relativePath)
-        {
-            var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
-            if (!File.Exists(fullPath))
-                return null;
-
-            var image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(fullPath, UriKind.Absolute);
-            image.CacheOption = BitmapCacheOption.OnLoad;
-            image.EndInit();
-            image.Freeze(); // Makes it cross-thread accessible
-            return image;
-        }
-
-        // Extract album art from a TagLib file
-        private ImageSource LoadAlbumArt(TagLib.File tagFile)
-        {
-            if (tagFile.Tag.Pictures.Length == 0) return null;
-
-            var bin = tagFile.Tag.Pictures[0].Data.Data;
-            using var ms = new MemoryStream(bin);
-            var image = new BitmapImage();
-            image.BeginInit();
-            image.StreamSource = ms;
-            image.CacheOption = BitmapCacheOption.OnLoad;
-            image.EndInit();
-            image.Freeze();
-            return image;
-        }
-
-    
 
         // Load all songs with supported extensions from given folder
         public void LoadSongs(string folder)
@@ -134,8 +102,8 @@ namespace WpfTuneForgePlayer.ViewModel
                     Duration = file.Properties.Duration.ToString(@"mm\:ss"),
                     FilePath = path,
                     AlbumArt = file.Tag.Pictures.Length == 0
-                        ? LoadImageOrDefault("assets/menu/musicLogo.jpg")
-                        : LoadAlbumArt(file)
+                        ? ImageLoader.LoadImageOrDefault("assets/menu/musicLogo.jpg")
+                        : ImageLoader.LoadAlbumArt(file)
                 });
             }
         }
