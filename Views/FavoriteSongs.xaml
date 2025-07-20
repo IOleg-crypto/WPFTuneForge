@@ -12,7 +12,9 @@
     UseLayoutRounding="True"
     SnapsToDevicePixels="True"
     Background="#FF0A0A0A"
-    Title="FavoriteSongs">
+    Title="FavoriteSongs"
+    xmlns:ViewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
+    d:DataContext="{d:DesignInstance Type=ViewModel:MusicViewModel}">
 
     <Page.Resources>
         <Style TargetType="DataGridColumnHeader">
@@ -25,11 +27,19 @@
         </Style>
     </Page.Resources>
 
-    <Grid Margin="30">
+    <Grid Margin="25">
+        <Button Click="BackToMainPage" Width="35" Height="34" Margin="50,5,25,0" Foreground="Transparent" BorderBrush="Transparent"  Background="Transparent"  HorizontalAlignment="Right" Panel.ZIndex="999" VerticalAlignment="Top">
+            <Image Source="pack://siteoforigin:,,,/assets/sidebar/exit.png"
+           Stretch="Uniform"
+           Width="32"
+           Height="34"/>
+        </Button>
+
+
         <TextBlock Text="🎵 Favorite Songs"
                    FontSize="32"
                    FontWeight="Bold"
-                   Foreground="Cyan"
+                   Foreground="Gold"
                    Margin="0,0,0,20"
                    TextOptions.TextRenderingMode="ClearType"
                    >
@@ -38,11 +48,13 @@
             </TextBlock.Effect>
         </TextBlock>
 
+
+
         <Border Background="#22FFFFFF" 
                 CornerRadius="10"
                 Padding="15"
                 Margin="0,60,0,0"
-                Effect="{DynamicResource BlurEffect}">
+                >
 
             <DataGrid x:Name="FavoriteSongsGrid"
                       AutoGenerateColumns="False"
@@ -58,7 +70,7 @@
                       FontSize="16"
                       SelectionMode="Single"
                       SelectionUnit="FullRow"
-                      ScrollViewer.CanContentScroll="True">
+                      ScrollViewer.CanContentScroll="True" SelectionChanged="FavoriteSongsGrid_SelectionChanged">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="🎧 Title"  Binding="{Binding Title}" Width="2*" />
@@ -67,5 +79,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
+ 
     </Grid>
 </Page>

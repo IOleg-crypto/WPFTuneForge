@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfTuneForgePlayer.Helpers;
+using WpfTuneForgePlayer.ViewModel;
 
 namespace WpfTuneForgePlayer.Views
 {
@@ -21,10 +22,15 @@ namespace WpfTuneForgePlayer.Views
     /// </summary>
     public partial class FavoriteSongs : Page
     {
-        public FavoriteSongs()
+        private StartPage _startPage;
+        private MusicViewModel _viewModel;
+        public FavoriteSongs(MusicViewModel vm)
         {
             InitializeComponent();
-
+            _startPage = new StartPage();
+            _viewModel = vm;
+            DataContext = vm;
+            //Test data
             var songs = new List<Song>
             {
                 new Song { Title = "Song A", Artist = "Artist A", Duration = "3:45" },
@@ -36,5 +42,18 @@ namespace WpfTuneForgePlayer.Views
 
         }
 
+        private void FavoriteSongsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void BackToMainPage(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                _viewModel.MainWindow = mainWindow;
+                _startPage.DataContext = _viewModel;
+                mainWindow.MainContentFrame.Navigate(_startPage);
+            }
+        }
     }
 }

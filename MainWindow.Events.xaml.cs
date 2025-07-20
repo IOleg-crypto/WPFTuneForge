@@ -66,7 +66,7 @@ namespace WpfTuneForgePlayer
 
         private void NavigateToFavoritePage(object sender, EventArgs e)
         {
-            var favoriteSongs = new FavoriteSongs
+            var favoriteSongs = new FavoriteSongs(_viewModel)
             {
                 DataContext = _viewModel
             };

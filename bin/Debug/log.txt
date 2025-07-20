@@ -1,0 +1,49 @@
+[11:05:51] Timer stopped
+[11:05:51] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[11:05:51] Init music - AudioFileReader and WaveOutEvent
+[11:05:51] Play music
+[11:05:51] Timer started
+[11:05:52] Play music - TimerTime_Tick
+[11:05:52] Play music - TimerTime_Tick
+[11:05:52] Play music - TimerTime_Tick
+[11:05:53] Play music - TimerTime_Tick
+[11:05:53] Play music - TimerTime_Tick
+[11:05:54] Play music - TimerTime_Tick
+[11:05:55] Play music - TimerTime_Tick
+[11:05:55] Play music - TimerTime_Tick
+[11:05:56] Play music - TimerTime_Tick
+[11:05:57] Play music - TimerTime_Tick
+[11:05:57] Play music - TimerTime_Tick
+[11:05:58] Play music - TimerTime_Tick
+[11:05:58] Play music - TimerTime_Tick
+[11:05:58] Play music - TimerTime_Tick
+[11:05:59] Play music - TimerTime_Tick
+[11:06:00] Play music - TimerTime_Tick
+[11:06:01] Play music - TimerTime_Tick
+[11:06:01] Play music - TimerTime_Tick
+[11:06:02] Play music - TimerTime_Tick
+[11:06:02] Play music - TimerTime_Tick
+[11:06:03] Play music - TimerTime_Tick
+[11:06:03] Play music - TimerTime_Tick
+[11:06:04] Play music - TimerTime_Tick
+[11:06:05] Play music - TimerTime_Tick
+[11:06:06] Play music - TimerTime_Tick
+[11:06:06] Play music - TimerTime_Tick
+[11:06:06] Play music - TimerTime_Tick
+[11:06:07] Play music - TimerTime_Tick
+[11:06:07] Play music - TimerTime_Tick
+[11:06:08] Play music - TimerTime_Tick
+[11:06:09] Play music - TimerTime_Tick
+[11:06:09] Play music - TimerTime_Tick
+[11:06:10] Play music - TimerTime_Tick
+[11:06:11] Play music - TimerTime_Tick
+[11:06:11] Play music - TimerTime_Tick
+[11:06:11] Play music - TimerTime_Tick
+[11:06:12] Play music - TimerTime_Tick
+[11:06:12] Play music - TimerTime_Tick
+[11:06:13] Play music - TimerTime_Tick
+[11:06:14] Play music - TimerTime_Tick
+[11:06:15] Play music - TimerTime_Tick
+[11:06:15] Play music - TimerTime_Tick
+[11:06:15] Music paused
+[11:06:15] Timer stopped
