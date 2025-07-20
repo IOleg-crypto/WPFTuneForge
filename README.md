@@ -32,9 +32,7 @@ https://github.com/IOleg-crypto/TuneForge.git
 ````
 2. Install libraries using NuGet Package Manager
 ```
-dotnet add package NAudio
-dotnet add package taglib
-dotnet add package Microsoft.Xaml.Behaviors.Wpf
+dotnet restore
 ```
 
 
