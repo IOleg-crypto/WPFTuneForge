@@ -8,7 +8,7 @@ TuneForge is a Windows Forms application developed in C# for audio playback and 
 
 ## Features
 
-- Audio playback with support for common audio formats (MP3)
+- Audio playback with support for common audio formats (MP3 , WAV)
 ⚠️
 >
 > More formats could be added in the future
@@ -56,7 +56,3 @@ Contributions and suggestions are welcome. Feel free to open issues or submit pu
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-If you want me to customize this README based on more exact details or code files you provide, let me know!
