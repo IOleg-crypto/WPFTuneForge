@@ -1,0 +1,265 @@
+[12:27:51] Timer stopped
+[12:27:51] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:27:51] Init music - AudioFileReader and WaveOutEvent
+[12:27:51] Play music
+[12:27:51] Timer started
+[12:27:52] Play music - TimerTime_Tick
+[12:27:53] Play music - TimerTime_Tick
+[12:27:54] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[12:27:54] Timer stopped
+[12:27:54] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:27:54] Timer started
+[12:27:55] Play music - TimerTime_Tick
+[12:27:55] Play music - TimerTime_Tick
+[12:27:55] Play music - TimerTime_Tick
+[12:27:56] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[12:27:56] Timer stopped
+[12:27:56] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:27:56] Timer started
+[12:27:56] Play music - TimerTime_Tick
+[12:27:57] Play music - TimerTime_Tick
+[12:27:57] Play music - TimerTime_Tick
+[12:27:58] Play music - TimerTime_Tick
+[12:27:59] Play music - TimerTime_Tick
+[12:28:00] Play music - TimerTime_Tick
+[12:28:00] Play music - TimerTime_Tick
+[12:28:00] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[12:28:00] Timer stopped
+[12:28:00] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:28:00] Timer started
+[12:28:01] Play music - TimerTime_Tick
+[12:28:01] Play music - TimerTime_Tick
+[12:28:02] Play music - TimerTime_Tick
+[12:28:03] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[12:28:03] Timer stopped
+[12:28:03] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:28:03] Timer started
+[12:28:04] Play music - TimerTime_Tick
+[12:28:04] Play music - TimerTime_Tick
+[12:28:05] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[12:28:05] Timer stopped
+[12:28:05] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:28:05] Timer started
+[12:28:05] Play music - TimerTime_Tick
+[12:28:05] Playing music: C:\Users\38063\Music\Adele - Skyfall.mp3
+[12:28:05] Timer stopped
+[12:28:05] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:28:05] Timer started
+[12:28:06] Playing music: C:\Users\38063\Music\Adele - Someone Like You.mp3
+[12:28:06] Timer stopped
+[12:28:06] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:28:06] Timer started
+[12:28:07] Playing music: C:\Users\38063\Music\Adele - Sweetest Devotion.mp3
+[12:28:07] Timer stopped
+[12:28:07] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:28:07] Timer started
+[12:28:08] Play music - TimerTime_Tick
+[12:28:09] Play music - TimerTime_Tick
+[12:28:09] Play music - TimerTime_Tick
+[12:28:09] Play music - TimerTime_Tick
+[12:28:10] Play music - TimerTime_Tick
+[12:28:10] Play music - TimerTime_Tick
+[12:28:11] Play music - TimerTime_Tick
+[12:28:11] Play music - TimerTime_Tick
+[12:28:12] Play music - TimerTime_Tick
+[12:28:12] Play music - TimerTime_Tick
+[12:28:13] Play music - TimerTime_Tick
+[12:28:14] Play music - TimerTime_Tick
+[12:28:14] Play music - TimerTime_Tick
+[12:28:15] Play music - TimerTime_Tick
+[12:28:15] Play music - TimerTime_Tick
+[12:28:16] Play music - TimerTime_Tick
+[12:28:16] Play music - TimerTime_Tick
+[12:28:17] Play music - TimerTime_Tick
+[12:28:18] Play music - TimerTime_Tick
+[12:28:19] Play music - TimerTime_Tick
+[12:28:19] Play music - TimerTime_Tick
+[12:28:19] Play music - TimerTime_Tick
+[12:28:20] Play music - TimerTime_Tick
+[12:28:21] Play music - TimerTime_Tick
+[12:28:22] Play music - TimerTime_Tick
+[12:28:22] Play music - TimerTime_Tick
+[12:28:23] Play music - TimerTime_Tick
+[12:28:23] Play music - TimerTime_Tick
+[12:28:24] Play music - TimerTime_Tick
+[12:28:24] Play music - TimerTime_Tick
+[12:28:25] Play music - TimerTime_Tick
+[12:28:25] Play music - TimerTime_Tick
+[12:28:26] Play music - TimerTime_Tick
+[12:28:27] Play music - TimerTime_Tick
+[12:28:28] Play music - TimerTime_Tick
+[12:28:28] Play music - TimerTime_Tick
+[12:28:29] Play music - TimerTime_Tick
+[12:28:29] Play music - TimerTime_Tick
+[12:28:29] Play music - TimerTime_Tick
+[12:28:30] Play music - TimerTime_Tick
+[12:28:31] Play music - TimerTime_Tick
+[12:28:31] Play music - TimerTime_Tick
+[12:28:32] Play music - TimerTime_Tick
+[12:28:33] Play music - TimerTime_Tick
+[12:28:33] Play music - TimerTime_Tick
+[12:28:34] Play music - TimerTime_Tick
+[12:28:34] Play music - TimerTime_Tick
+[12:28:35] Play music - TimerTime_Tick
+[12:28:36] Play music - TimerTime_Tick
+[12:28:36] Play music - TimerTime_Tick
+[12:28:37] Play music - TimerTime_Tick
+[12:28:37] Play music - TimerTime_Tick
+[12:28:38] Play music - TimerTime_Tick
+[12:28:38] Play music - TimerTime_Tick
+[12:28:39] Play music - TimerTime_Tick
+[12:28:39] Play music - TimerTime_Tick
+[12:28:40] Play music - TimerTime_Tick
+[12:28:41] Play music - TimerTime_Tick
+[12:28:42] Play music - TimerTime_Tick
+[12:28:42] Play music - TimerTime_Tick
+[12:28:42] Play music - TimerTime_Tick
+[12:28:43] Play music - TimerTime_Tick
+[12:28:43] Play music - TimerTime_Tick
+[12:28:44] Play music - TimerTime_Tick
+[12:28:45] Play music - TimerTime_Tick
+[12:28:45] Play music - TimerTime_Tick
+[12:28:46] Play music - TimerTime_Tick
+[12:28:47] Play music - TimerTime_Tick
+[12:28:47] Play music - TimerTime_Tick
+[12:28:47] Play music - TimerTime_Tick
+[12:28:48] Play music - TimerTime_Tick
+[12:28:49] Play music - TimerTime_Tick
+[12:28:50] Play music - TimerTime_Tick
+[12:28:50] Play music - TimerTime_Tick
+[12:28:51] Play music - TimerTime_Tick
+[12:28:51] Play music - TimerTime_Tick
+[12:28:52] Play music - TimerTime_Tick
+[12:28:52] Play music - TimerTime_Tick
+[12:28:53] Play music - TimerTime_Tick
+[12:28:53] Play music - TimerTime_Tick
+[12:28:54] Play music - TimerTime_Tick
+[12:28:55] Play music - TimerTime_Tick
+[12:28:56] Play music - TimerTime_Tick
+[12:28:56] Play music - TimerTime_Tick
+[12:28:56] Play music - TimerTime_Tick
+[12:28:57] Play music - TimerTime_Tick
+[12:28:57] Play music - TimerTime_Tick
+[12:28:58] Play music - TimerTime_Tick
+[12:28:59] Play music - TimerTime_Tick
+[12:28:59] Play music - TimerTime_Tick
+[12:29:00] Play music - TimerTime_Tick
+[12:29:01] Play music - TimerTime_Tick
+[12:29:01] Play music - TimerTime_Tick
+[12:29:01] Play music - TimerTime_Tick
+[12:29:02] Play music - TimerTime_Tick
+[12:29:03] Play music - TimerTime_Tick
+[12:29:04] Play music - TimerTime_Tick
+[12:29:04] Play music - TimerTime_Tick
+[12:29:05] Play music - TimerTime_Tick
+[12:29:05] Play music - TimerTime_Tick
+[12:29:06] Play music - TimerTime_Tick
+[12:29:06] Play music - TimerTime_Tick
+[12:29:06] Play music - TimerTime_Tick
+[12:29:07] Play music - TimerTime_Tick
+[12:29:08] Play music - TimerTime_Tick
+[12:29:09] Play music - TimerTime_Tick
+[12:29:09] Play music - TimerTime_Tick
+[12:29:10] Play music - TimerTime_Tick
+[12:29:10] Play music - TimerTime_Tick
+[12:29:11] Play music - TimerTime_Tick
+[12:29:11] Play music - TimerTime_Tick
+[12:29:12] Play music - TimerTime_Tick
+[12:29:13] Play music - TimerTime_Tick
+[12:29:13] Play music - TimerTime_Tick
+[12:29:14] Play music - TimerTime_Tick
+[12:29:15] Play music - TimerTime_Tick
+[12:29:15] Play music - TimerTime_Tick
+[12:29:15] Play music - TimerTime_Tick
+[12:29:16] Play music - TimerTime_Tick
+[12:29:17] Play music - TimerTime_Tick
+[12:29:18] Play music - TimerTime_Tick
+[12:29:18] Play music - TimerTime_Tick
+[12:29:19] Play music - TimerTime_Tick
+[12:29:19] Play music - TimerTime_Tick
+[12:29:20] Play music - TimerTime_Tick
+[12:29:20] Play music - TimerTime_Tick
+[12:29:20] Play music - TimerTime_Tick
+[12:29:21] Play music - TimerTime_Tick
+[12:29:23] Play music - TimerTime_Tick
+[12:29:24] Play music - TimerTime_Tick
+[12:29:24] Play music - TimerTime_Tick
+[12:29:25] Play music - TimerTime_Tick
+[12:29:25] Play music - TimerTime_Tick
+[12:29:26] Play music - TimerTime_Tick
+[12:29:27] Play music - TimerTime_Tick
+[12:29:27] Play music - TimerTime_Tick
+[12:29:28] Play music - TimerTime_Tick
+[12:29:28] Play music - TimerTime_Tick
+[12:29:29] Play music - TimerTime_Tick
+[12:29:29] Play music - TimerTime_Tick
+[12:29:30] Play music - TimerTime_Tick
+[12:29:31] Play music - TimerTime_Tick
+[12:29:31] Play music - TimerTime_Tick
+[12:29:32] Play music - TimerTime_Tick
+[12:29:33] Play music - TimerTime_Tick
+[12:29:33] Play music - TimerTime_Tick
+[12:29:34] Play music - TimerTime_Tick
+[12:29:34] Play music - TimerTime_Tick
+[12:29:34] Play music - TimerTime_Tick
+[12:29:35] Play music - TimerTime_Tick
+[12:29:36] Play music - TimerTime_Tick
+[12:29:37] Play music - TimerTime_Tick
+[12:29:37] Play music - TimerTime_Tick
+[12:29:38] Play music - TimerTime_Tick
+[12:29:38] Play music - TimerTime_Tick
+[12:29:39] Play music - TimerTime_Tick
+[12:29:39] Play music - TimerTime_Tick
+[12:29:41] Play music - TimerTime_Tick
+[12:29:41] Play music - TimerTime_Tick
+[12:29:42] Play music - TimerTime_Tick
+[12:29:42] Play music - TimerTime_Tick
+[12:29:43] Play music - TimerTime_Tick
+[12:29:43] Play music - TimerTime_Tick
+[12:29:44] Play music - TimerTime_Tick
+[12:29:44] Play music - TimerTime_Tick
+[12:29:45] Play music - TimerTime_Tick
+[12:29:45] Play music - TimerTime_Tick
+[12:29:46] Play music - TimerTime_Tick
+[12:29:47] Play music - TimerTime_Tick
+[12:29:47] Play music - TimerTime_Tick
+[12:29:47] Play music - TimerTime_Tick
+[12:29:48] Play music - TimerTime_Tick
+[12:29:48] Play music - TimerTime_Tick
+[12:29:49] Play music - TimerTime_Tick
+[12:29:49] Play music - TimerTime_Tick
+[12:29:50] Play music - TimerTime_Tick
+[12:29:51] Play music - TimerTime_Tick
+[12:29:52] Play music - TimerTime_Tick
+[12:29:52] Play music - TimerTime_Tick
+[12:29:53] Play music - TimerTime_Tick
+[12:29:53] Play music - TimerTime_Tick
+[12:29:54] Play music - TimerTime_Tick
+[12:29:55] Current ToggleSound
+[12:29:55] Changed icon: D:\gitnext\WpfTuneForgePlayer\bin\Release\assets\menu\volume-high_c.png
+[12:29:55] System mute state: True
+[12:29:55] Play music - TimerTime_Tick
+[12:29:56] Current ToggleSound
+[12:29:56] Changed icon: D:\gitnext\WpfTuneForgePlayer\bin\Release\assets\menu\volume-high_new.png
+[12:29:56] System mute state: False
+[12:29:56] Play music - TimerTime_Tick
+[12:29:56] Play music - TimerTime_Tick
+[12:29:57] Play music - TimerTime_Tick
+[12:29:57] Play music - TimerTime_Tick
+[12:29:58] Play music - TimerTime_Tick
+[12:29:58] Play music - TimerTime_Tick
+[12:29:59] Play music - TimerTime_Tick
+[12:29:59] Playing music: C:\Users\38063\Music\Adele - Water Under The Bridge.mp3
+[12:29:59] Timer stopped
+[12:30:00] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:30:00] Timer started
+[12:30:01] Play music - TimerTime_Tick
+[12:30:01] Play music - TimerTime_Tick
+[12:30:01] Play music - TimerTime_Tick
+[12:30:02] Play music - TimerTime_Tick
+[12:30:02] Play music - TimerTime_Tick
+[12:30:03] Play music - TimerTime_Tick
+[12:30:03] Play music - TimerTime_Tick
+[12:30:04] Play music - TimerTime_Tick
+[12:30:04] Music paused
+[12:30:04] Timer stopped

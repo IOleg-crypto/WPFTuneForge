@@ -125,3 +125,7 @@ D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\Sidebar.g.cs
 D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\StartPage.g.cs
 D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\Settings.baml
 D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\StartPage.baml
+D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\AuthorInfo.baml
+D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\AuthorInfo.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\FavoriteSongs.g.cs
+D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\FavoriteSongs.baml
