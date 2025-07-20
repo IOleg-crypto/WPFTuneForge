@@ -271,18 +271,116 @@ namespace WpfTuneForgePlayer.AudioModel
         // Set playback to start (0 sec)
         public void StartMusic(object sender, RoutedEventArgs e)
         {
+            if (_viewModel.Songs.Count == 0)
+            {
+                MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             if (_audioFile != null)
             {
                 _audioFile.CurrentTime = TimeSpan.Zero;
                 outputDevice?.Pause();
             }
+            isSliderEnabled = true;
+
+            int updatedIndex = _viewModel.SelectedIndex - 1;
+
+            if (updatedIndex < _viewModel.Songs.Count)
+            {
+                _viewModel.SelectedIndex = updatedIndex;
+                CurrentMusicPath = _viewModel.Songs[updatedIndex].FilePath;
+                SimpleLogger.Log($"Playing music: {CurrentMusicPath}");
+            }
+            else
+            {
+                SimpleLogger.Log("Reached the end of the playlist.");
+
+                SimpleLogger.Log($"Playing music: {CurrentMusicPath}");
+            }
+            StopAndDisposeCurrentMusic();
+
+            try
+            {
+                _audioMetaService.TakeArtistSongName(CurrentMusicPath);
+                _audioMetaService?.UpdateAlbumArt(CurrentMusicPath);
+
+                _audioFile = new AudioFileReader(CurrentMusicPath);
+
+                if (outputDevice == null)
+                {
+                    outputDevice = new WaveOutEvent();
+                    outputDevice.PlaybackStopped += OnPlaybackStopped;
+                }
+
+
+                outputDevice.Init(_audioFile);
+                outputDevice.Play();
+
+                _newMusicPath = CurrentMusicPath;
+                _isMusicPlaying = true;
+                _timer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error:: {ex.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         // Set playback to end (almost finish)
         public void EndMusic(object sender, RoutedEventArgs e)
         {
+            if (_viewModel.Songs.Count == 0)
+            {
+                MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             if (_audioFile != null)
+            {
                 _audioFile.CurrentTime = _audioFile.TotalTime - TimeSpan.FromMilliseconds(500);
+            }
+            int updatedIndex = _viewModel.SelectedIndex + 1;
+
+            if (updatedIndex < _viewModel.Songs.Count)
+            {
+                _viewModel.SelectedIndex = updatedIndex;
+                CurrentMusicPath = _viewModel.Songs[updatedIndex].FilePath;
+                SimpleLogger.Log($"Playing music: {CurrentMusicPath}");
+            }
+            else
+            {
+                SimpleLogger.Log("Reached the end of the playlist.");
+
+                SimpleLogger.Log($"Playing music: {CurrentMusicPath}");
+            }
+
+            StopAndDisposeCurrentMusic();
+
+            try
+            {
+                _audioMetaService.TakeArtistSongName(CurrentMusicPath);
+                _audioMetaService?.UpdateAlbumArt(CurrentMusicPath);
+
+                _audioFile = new AudioFileReader(CurrentMusicPath);
+
+                if (outputDevice == null)
+                {
+                    outputDevice = new WaveOutEvent();
+                    outputDevice.PlaybackStopped += OnPlaybackStopped;
+                }
+
+
+                outputDevice.Init(_audioFile);
+                outputDevice.Play();
+
+                _newMusicPath = CurrentMusicPath;
+                _isMusicPlaying = true;
+                _timer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error:: {ex.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Toggle "favorite" status for current song

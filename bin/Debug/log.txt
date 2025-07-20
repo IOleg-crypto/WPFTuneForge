@@ -1,49 +1,103 @@
-[11:05:51] Timer stopped
-[11:05:51] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[11:05:51] Init music - AudioFileReader and WaveOutEvent
-[11:05:51] Play music
-[11:05:51] Timer started
-[11:05:52] Play music - TimerTime_Tick
-[11:05:52] Play music - TimerTime_Tick
-[11:05:52] Play music - TimerTime_Tick
-[11:05:53] Play music - TimerTime_Tick
-[11:05:53] Play music - TimerTime_Tick
-[11:05:54] Play music - TimerTime_Tick
-[11:05:55] Play music - TimerTime_Tick
-[11:05:55] Play music - TimerTime_Tick
-[11:05:56] Play music - TimerTime_Tick
-[11:05:57] Play music - TimerTime_Tick
-[11:05:57] Play music - TimerTime_Tick
-[11:05:58] Play music - TimerTime_Tick
-[11:05:58] Play music - TimerTime_Tick
-[11:05:58] Play music - TimerTime_Tick
-[11:05:59] Play music - TimerTime_Tick
-[11:06:00] Play music - TimerTime_Tick
-[11:06:01] Play music - TimerTime_Tick
-[11:06:01] Play music - TimerTime_Tick
-[11:06:02] Play music - TimerTime_Tick
-[11:06:02] Play music - TimerTime_Tick
-[11:06:03] Play music - TimerTime_Tick
-[11:06:03] Play music - TimerTime_Tick
-[11:06:04] Play music - TimerTime_Tick
-[11:06:05] Play music - TimerTime_Tick
-[11:06:06] Play music - TimerTime_Tick
-[11:06:06] Play music - TimerTime_Tick
-[11:06:06] Play music - TimerTime_Tick
-[11:06:07] Play music - TimerTime_Tick
-[11:06:07] Play music - TimerTime_Tick
-[11:06:08] Play music - TimerTime_Tick
-[11:06:09] Play music - TimerTime_Tick
-[11:06:09] Play music - TimerTime_Tick
-[11:06:10] Play music - TimerTime_Tick
-[11:06:11] Play music - TimerTime_Tick
-[11:06:11] Play music - TimerTime_Tick
-[11:06:11] Play music - TimerTime_Tick
-[11:06:12] Play music - TimerTime_Tick
-[11:06:12] Play music - TimerTime_Tick
-[11:06:13] Play music - TimerTime_Tick
-[11:06:14] Play music - TimerTime_Tick
-[11:06:15] Play music - TimerTime_Tick
-[11:06:15] Play music - TimerTime_Tick
-[11:06:15] Music paused
-[11:06:15] Timer stopped
+[12:14:03] Timer stopped
+[12:14:03] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:03] Init music - AudioFileReader and WaveOutEvent
+[12:14:03] Play music
+[12:14:04] Timer started
+[12:14:04] Play music - TimerTime_Tick
+[12:14:04] Play music - TimerTime_Tick
+[12:14:05] Play music - TimerTime_Tick
+[12:14:05] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[12:14:05] Timer stopped
+[12:14:05] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:05] Timer started
+[12:14:06] Play music - TimerTime_Tick
+[12:14:07] Play music - TimerTime_Tick
+[12:14:07] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[12:14:07] Timer stopped
+[12:14:07] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:07] Timer started
+[12:14:08] Play music - TimerTime_Tick
+[12:14:08] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[12:14:08] Timer stopped
+[12:14:08] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:08] Timer started
+[12:14:09] Play music - TimerTime_Tick
+[12:14:09] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[12:14:09] Timer stopped
+[12:14:09] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:09] Timer started
+[12:14:09] Play music - TimerTime_Tick
+[12:14:10] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[12:14:10] Timer stopped
+[12:14:10] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:10] Timer started
+[12:14:11] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[12:14:11] Timer stopped
+[12:14:11] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:11] Timer started
+[12:14:11] Playing music: C:\Users\38063\Music\Adele - Skyfall.mp3
+[12:14:11] Timer stopped
+[12:14:11] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:11] Timer started
+[12:14:12] Play music - TimerTime_Tick
+[12:14:12] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[12:14:12] Timer stopped
+[12:14:12] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:12] Timer started
+[12:14:13] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[12:14:13] Timer stopped
+[12:14:13] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:13] Timer started
+[12:14:13] Play music - TimerTime_Tick
+[12:14:13] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[12:14:13] Timer stopped
+[12:14:13] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:13] Timer started
+[12:14:14] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[12:14:14] Timer stopped
+[12:14:14] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:14] Timer started
+[12:14:14] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[12:14:14] Timer stopped
+[12:14:14] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:14] Timer started
+[12:14:15] Play music - TimerTime_Tick
+[12:14:15] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[12:14:15] Timer stopped
+[12:14:15] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:15] Timer started
+[12:14:15] Play music - TimerTime_Tick
+[12:14:16] Play music - TimerTime_Tick
+[12:14:17] Play music - TimerTime_Tick
+[12:14:18] Play music - TimerTime_Tick
+[12:14:18] Play music - TimerTime_Tick
+[12:14:18] Play music - TimerTime_Tick
+[12:14:19] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[12:14:19] Timer stopped
+[12:14:19] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:19] Timer started
+[12:14:19] Play music - TimerTime_Tick
+[12:14:20] Play music - TimerTime_Tick
+[12:14:21] Playing music: C:\Users\38063\Music\Adele - All I Ask.mp3
+[12:14:21] Timer stopped
+[12:14:21] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:21] Timer started
+[12:14:22] Play music - TimerTime_Tick
+[12:14:22] Play music - TimerTime_Tick
+[12:14:23] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[12:14:23] Timer stopped
+[12:14:23] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:23] Timer started
+[12:14:23] Play music - TimerTime_Tick
+[12:14:23] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[12:14:23] Timer stopped
+[12:14:23] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:23] Timer started
+[12:14:24] Play music - TimerTime_Tick
+[12:14:24] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[12:14:24] Timer stopped
+[12:14:24] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[12:14:24] Timer started
+[12:14:25] Play music - TimerTime_Tick
+[12:14:25] Music paused
+[12:14:25] Timer stopped

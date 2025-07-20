@@ -47,6 +47,9 @@ namespace WpfTuneForgePlayer.ViewModel
                     audioService.CurrentMusicPath = song.FilePath;
                     audioMetaService.TakeArtistSongName(song.FilePath);
                     audioMetaService.UpdateAlbumArt(song.FilePath);
+                    // Get index of the selected song in the list of songs
+                    int index = viewModel.Songs.IndexOf(song);
+                    viewModel.SelectedIndex = index;
                 }
             }); 
 

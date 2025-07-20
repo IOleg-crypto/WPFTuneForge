@@ -14,6 +14,7 @@ using System.Windows.Threading;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.Model;
 using WinForm = System.Windows.Forms;
+using WpfTuneForgePlayer.Helpers;
 
 
 
@@ -116,6 +117,17 @@ namespace WpfTuneForgePlayer.ViewModel
         public BindingCommands Commands { get; private set; }
         public MainWindow MainWindow { get; set; }
         public DeviceOutputModel DeviceOutputModel => __deviceOutputModel;
+#nullable enable
+        private int _selectedIndex;
+        public int SelectedIndex
+        {
+            get => _selectedIndex;
+            set
+            {
+                _selectedIndex= value;
+            }
+        }
+
 
         public string Artist
         {
