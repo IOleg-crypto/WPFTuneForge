@@ -33,13 +33,13 @@ namespace WpfTuneForgePlayer.ViewModel
             PlayCommand = new RelayCommand(() => audioService.OnClickMusic(viewModel, null));
             SelectFavoriteSong = new RelayCommand(() => audioService.SelectFavoriteSongToPlayList(viewModel, null));
             RepeatCommand = new RelayCommand(() => audioService.RepeatSong(viewModel, null));
-            ToggleAudio = new RelayCommand(() => audioService.ToggleSound(viewModel, null));
-            EndMusic = new RelayCommand(() => audioService.EndMusic(viewModel, null));
+            ToggleAudio = new RelayCommand(() => audioService._volumeService.ToggleSound());
+            EndMusic = new RelayCommand(() => audioService._musicNavigationService.EndMusic(viewModel, null));
             ChangeMusicTime = new RelayCommand(() => audioService.SliderChanged());
             ReloadMusicPage = new RelayCommand(() => viewModel.LoadSongs(viewModel.TakeCurrentDirectory));
             TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(viewModel, null));
             SelectChaoticallySong = new RelayCommand(() => audioService.ChaoticPlaySong(viewModel, null));
-            StartMusic = new RelayCommand(() => audioService.StartMusic(viewModel, null));
+            StartMusic = new RelayCommand(() => audioService._musicNavigationService.StartMusic(viewModel, null));
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)

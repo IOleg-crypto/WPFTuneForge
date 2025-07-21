@@ -37,7 +37,7 @@ namespace WpfTuneForgePlayer.AudioModel
             device.AudioEndpointVolume.MasterVolumeLevelScalar = Math.Max(device.AudioEndpointVolume.MasterVolumeLevelScalar - 0.1f, 0.0f);
         }
 
-        public void ToggleMute()
+        public void ToggleSound()
         {
             var device = GetDefaultDevice();
             if (audioService._outputDevice == null) return;

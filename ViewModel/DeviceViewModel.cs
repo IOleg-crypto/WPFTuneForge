@@ -31,7 +31,7 @@ namespace WpfTuneForgePlayer.ViewModel
             }
         }
 
-        
+     
         public void StartDeviceMonitoring()
         {
             _deviceCheckTimer = new DispatcherTimer
