@@ -129,3 +129,11 @@ D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\AuthorInfo.baml
 D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\AuthorInfo.g.cs
 D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\FavoriteSongs.g.cs
 D:\gitnext\WpfTuneForgePlayer\obj\Release\Views\FavoriteSongs.baml
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.abstractions.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.assert.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.core.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.execution.desktop.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.abstractions.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.assert.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.core.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Release\xunit.execution.desktop.xml

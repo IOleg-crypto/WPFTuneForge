@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTuneForgePlayer", "WpfTuneForgePlayer.csproj", "{069371DF-2D8C-4A50-B298-92B7296444C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTuneForgeNUnit", "..\WPFTuneForgeNUnit\WPFTuneForgeNUnit.csproj", "{EC8637A4-0A54-449E-BB51-3F5DBCA2DEB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{069371DF-2D8C-4A50-B298-92B7296444C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{069371DF-2D8C-4A50-B298-92B7296444C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{069371DF-2D8C-4A50-B298-92B7296444C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC8637A4-0A54-449E-BB51-3F5DBCA2DEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC8637A4-0A54-449E-BB51-3F5DBCA2DEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC8637A4-0A54-449E-BB51-3F5DBCA2DEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC8637A4-0A54-449E-BB51-3F5DBCA2DEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

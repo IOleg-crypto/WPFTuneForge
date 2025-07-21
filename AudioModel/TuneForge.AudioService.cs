@@ -57,6 +57,9 @@ namespace WpfTuneForgePlayer.AudioModel
 
         private void InitMusic(string path)
         {
+            if (string.IsNullOrEmpty(path)) {
+                return;
+            };
             SimpleLogger.Log("Init music - AudioFileReader and WaveOutEvent");
             _audioFile = new AudioFileReader(CurrentMusicPath);
             outputDevice = new WaveOutEvent();

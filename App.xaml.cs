@@ -20,7 +20,8 @@ namespace WpfTuneForgePlayer
             base.OnStartup(e);
             File.WriteAllText("log.txt", string.Empty);
 #if DEBUG
-            ExternalConsoleLogger.StartConsoleWatcher("log.txt");
+            ExternalConsoleLogge
+            r.StartConsoleWatcher("log.txt");
 #endif
         }
     }
