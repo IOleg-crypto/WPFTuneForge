@@ -1,0 +1,24 @@
+[12:24:45] Timer stopped
+[12:24:45] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:24:46] Init music - AudioFileReader and WaveOutEvent
+[12:24:46] Play music
+[12:24:46] Timer started
+[12:24:46] Play music - TimerTime_Tick
+[12:24:47] Play music - TimerTime_Tick
+[12:24:48] Play music - TimerTime_Tick
+[12:24:48] Play music - TimerTime_Tick
+[12:24:48] Play music - TimerTime_Tick
+[12:24:49] Play music - TimerTime_Tick
+[12:24:50] Playing music: C:\Users\38063\Music\Adele - I Miss You.mp3
+[12:24:50] Timer stopped
+[12:24:50] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:24:50] Timer started
+[12:24:50] Play music - TimerTime_Tick
+[12:24:50] Playing music: C:\Users\38063\Music\Adele - Hello.mp3
+[12:24:50] Timer stopped
+[12:24:50] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:24:50] Timer started
+[12:24:51] Playing music: C:\Users\38063\Music\Adele - All I Ask.mp3
+[12:24:51] Timer stopped
+[12:24:51] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Release\assets/menu/musicLogo.jpg
+[12:24:51] Timer started

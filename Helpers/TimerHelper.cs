@@ -37,7 +37,7 @@ namespace WpfTuneForgePlayer.Helpers
         public void TimerTime_Tick(object sender, EventArgs e)
         {
             SimpleLogger.Log("Play music - TimerTime_Tick");
-            if (_audioService.audioFile == null || !_audioService._isMusicPlaying || _audioService.isUserDragging)
+            if (_audioService.audioFile == null || !_audioService._isMusicPlaying)
                 return;
 
             if (_audioService._outputDevice != null && _audioService._outputDevice.PlaybackState == PlaybackState.Playing)

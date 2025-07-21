@@ -24,20 +24,17 @@ namespace WpfTuneForgePlayer.Views
     {
         private StartPage _startPage;
         private MusicViewModel _viewModel;
+        private List<Song> songs;
+
+        public List<Song> Songs { get => songs; set => songs = value; }
+
         public FavoriteSongs(MusicViewModel vm)
         {
             InitializeComponent();
             _startPage = new StartPage();
+            songs = new List<Song>();
             _viewModel = vm;
             DataContext = vm;
-            //Test data
-            var songs = new List<Song>
-            {
-                new Song { Title = "Song A", Artist = "Artist A", Duration = "3:45" },
-                new Song { Title = "Song B", Artist = "Artist B", Duration = "4:12" },
-                new Song { Title = "Song C", Artist = "Artist C", Duration = "2:58" }
-            };
-
             FavoriteSongsGrid.ItemsSource = songs;
 
         }
