@@ -8,7 +8,7 @@ TuneForge is a Windows Forms application developed in C# for audio playback and 
 
 ## Features
 
-- Audio playback with support for common audio formats (MP3)
+- Audio playback with support for common audio formats (MP3 , WAV)
 ⚠️
 >
 > More formats could be added in the future
@@ -32,9 +32,7 @@ https://github.com/IOleg-crypto/TuneForge.git
 ````
 2. Install libraries using NuGet Package Manager
 ```
-dotnet add package NAudio
-dotnet add package taglib
-dotnet add package Microsoft.Xaml.Behaviors.Wpf
+dotnet restore
 ```
 
 
@@ -56,7 +54,3 @@ Contributions and suggestions are welcome. Feel free to open issues or submit pu
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-If you want me to customize this README based on more exact details or code files you provide, let me know!
