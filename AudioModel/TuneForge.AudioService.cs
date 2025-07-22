@@ -170,15 +170,19 @@ namespace WpfTuneForgePlayer.AudioModel
                 // Toggle pause/play
                 if (_isMusicPlaying)
                 {
+                    _viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
+                    _startPage.PlayButton.Width = 110;
+                    _startPage.PlayButton.Margin = new Thickness(0, 0, 0, 0);
                     SimpleLogger.Log("Music paused");
-                    
                     _timer.Stop();
                     outputDevice.Pause();
                 }
                 else
                 {
+                    _viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\play.png")));
+                   _startPage.PlayButton.Width = 97;
+                    _startPage.PlayButton.Margin = new Thickness(0, -5, 8, 0);
                     SimpleLogger.Log("Music play");
-                   
                     _timer.Start();
                     outputDevice.Play();
                 }

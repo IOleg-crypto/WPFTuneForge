@@ -46,7 +46,8 @@
 
                             <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.PlayCommand}"
                                     BorderBrush="Transparent" Cursor="Hand" Margin="5,0">
-                                <Image x:Name="PlayButton" Source="{Binding PlayPauseButton}" Width="97" Height="88"/>
+                                <Image x:Name="PlayButton" Source="{Binding PlayPauseButton}"  Width="110" Height="88" Margin="0,-5,8,0">
+                                </Image>
                             </Button>
                         </StackPanel>
                         <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.StartMusic}">
@@ -142,6 +143,19 @@
                         <SkewTransform/>
                         <RotateTransform Angle="-0.441"/>
                         <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent"
+        Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
+            <Image x:Name="SoundButtonUp" Grid.Row="1" Margin="-33,200,514,87" Source ="/Views/high-volume.png"  RenderTransformOrigin="0.584,0.514" Height="18" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.441"/>
+                        <TranslateTransform X="0.002" Y="-0.015"/>
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>

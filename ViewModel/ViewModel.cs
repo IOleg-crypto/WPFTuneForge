@@ -60,7 +60,7 @@ namespace WpfTuneForgePlayer.ViewModel
             AlbumArt = ImageLoader.LoadImageOrDefault("assets/menu/musicLogo.jpg");
             FavoriteSong = ImageLoader.LoadImageOrDefault("assets/sidebar/favorite_a.png");
             SoundStatus = ImageLoader.LoadImageOrDefault("assets/menu/volume-high_new.png");
-            playPauseButton = ImageLoader.LoadImageOrDefault("assets/menu/pause.png");
+            playPauseButton = ImageLoader.LoadImageOrDefault("assets/menu/play.png");
             InitAudioService();
             
         }

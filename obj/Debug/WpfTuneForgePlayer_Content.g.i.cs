@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("exit2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/high-volume.png")]
 
 
