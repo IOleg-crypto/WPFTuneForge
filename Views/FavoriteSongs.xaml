@@ -58,7 +58,7 @@
 
             <DataGrid x:Name="FavoriteSongsGrid"
                       AutoGenerateColumns="False"
-                      CanUserAddRows="False"
+                      CanUserAddRows="True"
                       HeadersVisibility="Column"
                       RowBackground="#22000000"
                       AlternatingRowBackground="#33000000"
@@ -70,12 +70,12 @@
                       FontSize="16"
                       SelectionMode="Single"
                       SelectionUnit="FullRow"
-                      ScrollViewer.CanContentScroll="True" SelectionChanged="FavoriteSongsGrid_SelectionChanged">
+                      ScrollViewer.CanContentScroll="True">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="🎧 Title"  Binding="{Binding Title}" Width="2*" />
                     <DataGridTextColumn Header="👤 Artist" Binding="{Binding Artist}" Width="2*" />
-                    <DataGridTextColumn Header="⏱ Duration" Binding="{Binding Duration}" Width="*" />
+                    <DataGridTextColumn Header="⏱ Duration" Binding="{Binding Duration}" Width="2*" />
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

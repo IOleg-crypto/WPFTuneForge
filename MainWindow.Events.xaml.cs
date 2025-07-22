@@ -25,8 +25,11 @@ namespace WpfTuneForgePlayer
         private DeviceOutputModel _deviceOutputModel;
         private AudioService audioService;
         private AudioMetaService audioMetaService;
+        private FavoriteSongs favoriteSongs;
 
-      
+        public FavoriteSongs _favoriteSongs { get => favoriteSongs; set=> favoriteSongs = value; }
+
+
         private void OnMusicSelected(string path)
         {
             audioService.CurrentMusicPath = path;

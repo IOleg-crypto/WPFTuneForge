@@ -34,6 +34,7 @@ namespace WpfTuneForgePlayer
             _viewModel = new MusicViewModel();
             audioService = new AudioService(_viewModel);
             audioMetaService = new AudioMetaService(_viewModel);
+            _favoriteSongs = new FavoriteSongs(_viewModel);
 
             _deviceOutputModel = new DeviceOutputModel();
             _viewModel.MainWindow = this;

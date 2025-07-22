@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,25 +26,52 @@ namespace WpfTuneForgePlayer.Views
     {
         private StartPage _startPage;
         private MusicViewModel _viewModel;
-        private List<Song> songs;
+        private ObservableCollection<Song> songs;
 
-        public List<Song> Songs { get => songs; set => songs = value; }
+        public ObservableCollection<Song> Songs
+        {
+            get => songs;
+            set
+            {
+                songs = value;
+                FavoriteSongsGrid.ItemsSource = songs;
+            }
+        }
 
         public FavoriteSongs(MusicViewModel vm)
         {
             InitializeComponent();
             _startPage = new StartPage();
-            songs = new List<Song>();
-            _viewModel = vm;
+            _viewModel = vm;   
+            // Needed for binding (instead using DAMNNN MAINWINDOW)
+            Songs = _viewModel.SongGrid.Count > 0 ? _viewModel.SongGrid : ReadFile("FavoriteSong.bin");
             DataContext = vm;
             FavoriteSongsGrid.ItemsSource = songs;
 
         }
-
-        private void FavoriteSongsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // Read user favorite songs from file
+        public ObservableCollection<Song> ReadFile(string FileName)
         {
+            Songs = new ObservableCollection<Song>();
 
+            if (!File.Exists(FileName))
+            {
+                return Songs;
+            }
+            using (BinaryReader reader = new BinaryReader(File.Open(FileName, FileMode.Open)))
+            {
+                while (reader.BaseStream.Position < reader.BaseStream.Length)
+                {
+                    string artist = reader.ReadString();
+                    string title = reader.ReadString();
+                    string duration = reader.ReadString();
+
+                    Songs.Add(new Song(title, artist, duration));
+                }
+            }
+            return Songs;
         }
+
         private void BackToMainPage(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow is MainWindow mainWindow)

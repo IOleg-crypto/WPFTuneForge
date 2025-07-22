@@ -11,5 +11,12 @@ namespace WpfTuneForgePlayer.Helpers
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Duration { get; set; }
+
+        public Song(string title, string artist, string duration)
+        {
+            Title = title;
+            Artist = artist;
+            Duration = duration;
+        }
     }
 }

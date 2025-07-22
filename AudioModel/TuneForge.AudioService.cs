@@ -22,7 +22,6 @@ namespace WpfTuneForgePlayer.AudioModel
         private TimerHelper _timer;
         private MusicViewModel _viewModel;
         private AudioMetaService _audioMetaService;
-        private readonly Random _random = new Random();
         private StartPage _startPage = new();
         private VolumeService volumeService;
         private MusicNavigationService musicNavigationService;
@@ -35,6 +34,8 @@ namespace WpfTuneForgePlayer.AudioModel
 
         private string _currentMusicPath;
         private string _newMusicPath;
+
+        private string FileName = "FavoriteSong.bin";
 
         public WaveOutEvent _outputDevice { get => outputDevice; set => outputDevice = value; }
         public AudioFileReader audioFile { get => _audioFile; set => _audioFile = value; }
@@ -222,15 +223,14 @@ namespace WpfTuneForgePlayer.AudioModel
             }
         }
 
-        // Set playback to start (0 sec)
-       
-
         // Toggle "favorite" status for current song
         public void SelectFavoriteSongToPlayList(object sender, RoutedEventArgs e)
         {
-            if (outputDevice == null || _audioFile == null) return;
+            if (outputDevice == null || _audioFile == null || _viewModel == null)
+                return;
 
             _IsSelectedSongFavorite = !_IsSelectedSongFavorite;
+
             string path = _IsSelectedSongFavorite
                 ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\favorite_b.png")
                 : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\sidebar\\favorite_a.png");
@@ -242,18 +242,48 @@ namespace WpfTuneForgePlayer.AudioModel
                 return;
             }
 
-            var bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(path, UriKind.Absolute);
-            bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.EndInit();
-            _viewModel.FavoriteSong = bitmap;
+            try
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(path, UriKind.Absolute);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                _viewModel.FavoriteSong = bitmap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load favorite image.\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            // additional(TODO : Oleg)
-            string favoriteSongFile = "favoriteSong.txt";
-            
+            if (_IsSelectedSongFavorite)
+            {
+                if (_viewModel.Songs == null || _viewModel.Songs.Count == 0)
+                {
+                    MessageBox.Show("No songs available.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
+                if (_viewModel.SelectedIndex < 0 || _viewModel.SelectedIndex >= _viewModel.Songs.Count)
+                {
+                    MessageBox.Show("Invalid song selection.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+
+                var song = _viewModel.Songs[_viewModel.SelectedIndex];
+                _viewModel.SongGrid.Add(new Song(song.Artist, song.Title, song.Duration));
+                // Add the song to the playlist
+                using (BinaryWriter writer = new BinaryWriter(File.Open(FileName, FileMode.Create)))
+                {
+                    writer.Write(song.Artist);
+                    writer.Write(song.Title);
+                    writer.Write(song.Duration);
+                }
+            }
         }
+
 
         // Restart song from beginning
         public void RepeatSong(object sender, RoutedEventArgs e)
@@ -266,48 +296,7 @@ namespace WpfTuneForgePlayer.AudioModel
             outputDevice.Play();
             _isMusicPlaying = true;
         }
-        public void ChaoticPlaySong(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel.Songs.Count == 0)
-            {
-                MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            isSliderEnabled = true;
-
-            int index = _random.Next(_viewModel.Songs.Count);
-            CurrentMusicPath = _viewModel.Songs[index].FilePath;
-            SimpleLogger.Log($"Playing music: {CurrentMusicPath}");
-
-            StopAndDisposeCurrentMusic();
-
-            try
-            {
-                _audioMetaService.TakeArtistSongName(CurrentMusicPath);
-                _audioMetaService?.UpdateAlbumArt(CurrentMusicPath);
-
-                _audioFile = new AudioFileReader(CurrentMusicPath);
-
-                if (outputDevice == null)
-                {
-                    outputDevice = new WaveOutEvent();
-                    outputDevice.PlaybackStopped += OnPlaybackStopped;
-                }
-
-
-                outputDevice.Init(_audioFile);
-                outputDevice.Play();
-
-                _newMusicPath = CurrentMusicPath;
-                _isMusicPlaying = true;
-                _timer.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error:: {ex.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        
     }
      
 }

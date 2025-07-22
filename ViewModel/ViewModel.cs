@@ -114,10 +114,12 @@ namespace WpfTuneForgePlayer.ViewModel
 
         // ===== Public Properties (bindable in XAML) =====
         public ObservableCollection<SongModel> Songs { get; set; } = new();
+        public ObservableCollection<Song> SongGrid { get
+                ; set; } = new();
         public BindingCommands Commands { get; private set; }
         public MainWindow MainWindow { get; set; }
         public DeviceOutputModel DeviceOutputModel => __deviceOutputModel;
-#nullable enable
+
         private int _selectedIndex;
         public int SelectedIndex
         {
@@ -127,7 +129,6 @@ namespace WpfTuneForgePlayer.ViewModel
                 _selectedIndex= value;
             }
         }
-
 
         public string Artist
         {

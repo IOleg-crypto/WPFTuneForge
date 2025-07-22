@@ -16,6 +16,7 @@ namespace WpfTuneForgePlayer.AudioModel
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private MusicViewModel viewModel;
+        private readonly Random _random = new Random();
 
         public MusicNavigationService(MusicViewModel viewModel , AudioService audioService , AudioMetaService audioMetaService)
         {
@@ -23,6 +24,7 @@ namespace WpfTuneForgePlayer.AudioModel
             this.audioService = audioService;
             this.audioMetaService = audioMetaService;
         }
+        // Set playback to start (0 sec) and shift to previous song
         public void StartMusic(object sender, RoutedEventArgs e)
         {
             if (viewModel.Songs.Count == 0)
@@ -113,6 +115,48 @@ namespace WpfTuneForgePlayer.AudioModel
                 audioService.CurrentMusicPath = viewModel.Songs[updatedIndex].FilePath;
                 SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
             }
+
+            audioService.StopAndDisposeCurrentMusic();
+
+            try
+            {
+                audioMetaService.TakeArtistSongName(audioService.CurrentMusicPath);
+                audioMetaService?.UpdateAlbumArt(audioService.CurrentMusicPath);
+
+                audioService.audioFile = new AudioFileReader(audioService.CurrentMusicPath);
+
+                if (audioService._outputDevice == null)
+                {
+                    audioService._outputDevice = new WaveOutEvent();
+                    audioService._outputDevice.PlaybackStopped += audioService.OnPlaybackStopped;
+                }
+
+
+                audioService._outputDevice.Init(audioService.audioFile);
+                audioService._outputDevice.Play();
+
+                audioService.NewMusicPath = audioService.CurrentMusicPath;
+                audioService._isMusicPlaying = true;
+                audioService._timerHelper.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error:: {ex.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        public void ChaoticPlaySong(object sender, RoutedEventArgs e)
+        {
+            if (viewModel.Songs.Count == 0)
+            {
+                MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            audioService.isSliderEnabled = true;
+
+            int index = _random.Next(viewModel.Songs.Count);
+            audioService.CurrentMusicPath = viewModel.Songs[index].FilePath;
+            SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
 
             audioService.StopAndDisposeCurrentMusic();
 
