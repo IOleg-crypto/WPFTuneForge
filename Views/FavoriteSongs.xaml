@@ -73,8 +73,8 @@
                       ScrollViewer.CanContentScroll="True">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="🎧 Title"  Binding="{Binding Title}" Width="2*" />
                     <DataGridTextColumn Header="👤 Artist" Binding="{Binding Artist}" Width="2*" />
+                    <DataGridTextColumn Header="🎧 Title" Binding="{Binding Title}" Width="2*" />
                     <DataGridTextColumn Header="⏱ Duration" Binding="{Binding Duration}" Width="2*" />
                 </DataGrid.Columns>
             </DataGrid>

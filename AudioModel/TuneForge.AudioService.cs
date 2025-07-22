@@ -47,6 +47,8 @@ namespace WpfTuneForgePlayer.AudioModel
 
         public bool isSound { get => _isSoundOn; set => _isSoundOn = value; }
 
+        public bool IsSelectedSongFavorite { get => _IsSelectedSongFavorite; set => _IsSelectedSongFavorite = value; }
+
         public AudioService(MusicViewModel viewModel)
         {
             _viewModel = viewModel;
@@ -275,7 +277,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 var song = _viewModel.Songs[_viewModel.SelectedIndex];
                 _viewModel.SongGrid.Add(new Song(song.Artist, song.Title, song.Duration));
                 // Add the song to the playlist
-                using (BinaryWriter writer = new BinaryWriter(File.Open(FileName, FileMode.Create)))
+                using (var writer = new BinaryWriter(File.Open(FileName, File.Exists(FileName) ? FileMode.Append : FileMode.Create)))
                 {
                     writer.Write(song.Artist);
                     writer.Write(song.Title);
@@ -296,7 +298,7 @@ namespace WpfTuneForgePlayer.AudioModel
             outputDevice.Play();
             _isMusicPlaying = true;
         }
-        
+
     }
      
 }

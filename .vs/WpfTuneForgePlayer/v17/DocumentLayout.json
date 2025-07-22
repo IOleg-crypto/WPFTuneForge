@@ -11,60 +11,64 @@
       "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:views\\favoritesongs.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\audiomodel\\tuneforge.musicnavigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.musicnavigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\viewmodel\\deviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\deviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\viewmodel\\imageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\imageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\audiomodel\\tuneforge.audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\audiomodel\\tuneforge.audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\audiomodel\\tuneforge.audiometaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.audiometaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\audiomodel\\tuneforge.songmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.songmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\views\\musicdirectory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:views\\musicdirectory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\viewmodel\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\audiomodel\\tuneforge.volumeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.volumeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\helpers\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:helpers\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\helpers\\timerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:helpers\\timerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\audiomodel\\tuneforge.musicnavigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.musicnavigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\model\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\viewmodel\\deviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\deviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\viewmodel\\bindingcommands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\bindingcommands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\model\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:model\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|d:\\gitnext\\wpftuneforgeplayer\\viewmodel\\bindingcommands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\bindingcommands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\views\\musicdirectory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:views\\musicdirectory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\mainwindow.events.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:mainwindow.events.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\audiomodel\\tuneforge.volumeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.volumeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\viewmodel\\imageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\imageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\audiomodel\\tuneforge.audiometaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.audiometaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\audiomodel\\tuneforge.songmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:audiomodel\\tuneforge.songmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\viewmodel\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:viewmodel\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\helpers\\timerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|solutionrelative:helpers\\timerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{069371DF-2D8C-4A50-B298-92B7296444C4}|WpfTuneForgePlayer.csproj|D:\\gitnext\\WpfTuneForgePlayer\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -110,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Bookmark",
@@ -118,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -131,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "packages.config",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\packages.config",
               "RelativeDocumentMoniker": "packages.config",
@@ -141,6 +145,18 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2025-07-11T09:56:46.601Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Settings.xaml",
+              "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\Settings.xaml",
+              "RelativeDocumentMoniker": "Views\\Settings.xaml",
+              "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\Settings.xaml",
+              "RelativeToolTip": "Views\\Settings.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-22T16:07:13.544Z",
               "EditorCaption": ""
             },
             {
@@ -189,7 +205,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "FavoriteSongs.xaml.cs",
+              "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\FavoriteSongs.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\FavoriteSongs.xaml.cs",
+              "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\FavoriteSongs.xaml.cs*",
+              "RelativeToolTip": "Views\\FavoriteSongs.xaml.cs*",
+              "ViewState": "AgIAADQAAAAAAAAAAAAYwEQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T09:51:42.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "TuneForge.AudioMetaService.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.AudioMetaService.cs",
               "RelativeDocumentMoniker": "AudioModel\\TuneForge.AudioMetaService.cs",
@@ -202,33 +231,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
               "Title": "Command.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Model\\Command.cs",
               "RelativeDocumentMoniker": "Model\\Command.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\Model\\Command.cs",
               "RelativeToolTip": "Model\\Command.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T10:20:19.743Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "TuneForge.AudioService.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.AudioService.cs",
               "RelativeDocumentMoniker": "AudioModel\\TuneForge.AudioService.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.AudioService.cs",
               "RelativeToolTip": "AudioModel\\TuneForge.AudioService.cs",
-              "ViewState": "AgIAANQAAAAAAAAAAAAzwOEAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAwwBkBAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T09:56:38.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "ImageLoader.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\ViewModel\\ImageLoader.cs",
               "RelativeDocumentMoniker": "ViewModel\\ImageLoader.cs",
@@ -241,20 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FavoriteSongs.xaml.cs",
-              "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\FavoriteSongs.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\FavoriteSongs.xaml.cs",
-              "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\FavoriteSongs.xaml.cs",
-              "RelativeToolTip": "Views\\FavoriteSongs.xaml.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAA2wCUAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T09:51:42.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MusicDirectory.xaml",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\MusicDirectory.xaml",
               "RelativeDocumentMoniker": "Views\\MusicDirectory.xaml",
@@ -266,33 +282,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "DeviceViewModel.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\ViewModel\\DeviceViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\DeviceViewModel.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\ViewModel\\DeviceViewModel.cs",
               "RelativeToolTip": "ViewModel\\DeviceViewModel.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAgwGMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAcwGMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T09:50:24.876Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 7,
               "Title": "BindingCommands.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\ViewModel\\BindingCommands.cs",
               "RelativeDocumentMoniker": "ViewModel\\BindingCommands.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\ViewModel\\BindingCommands.cs",
               "RelativeToolTip": "ViewModel\\BindingCommands.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAABDwBwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAswBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T09:50:22.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "ViewModel.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\ViewModel\\ViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\ViewModel.cs",
@@ -305,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "TuneForge.SongModel.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.SongModel.cs",
               "RelativeDocumentMoniker": "AudioModel\\TuneForge.SongModel.cs",
@@ -318,33 +334,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "TuneForge.MusicNavigationService.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.MusicNavigationService.cs",
               "RelativeDocumentMoniker": "AudioModel\\TuneForge.MusicNavigationService.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.MusicNavigationService.cs",
               "RelativeToolTip": "AudioModel\\TuneForge.MusicNavigationService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAJ0AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAgwJ4AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T09:49:10.816Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "TuneForge.VolumeService.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.VolumeService.cs",
               "RelativeDocumentMoniker": "AudioModel\\TuneForge.VolumeService.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\AudioModel\\TuneForge.VolumeService.cs",
               "RelativeToolTip": "AudioModel\\TuneForge.VolumeService.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAgwEYAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-21T10:39:57.027Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Sidebar.xaml",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\Sidebar.xaml",
               "RelativeDocumentMoniker": "Views\\Sidebar.xaml",
@@ -356,20 +372,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 10,
               "Title": "MainWindow.Events.xaml.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\MainWindow.Events.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.Events.xaml.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\MainWindow.Events.xaml.cs",
               "RelativeToolTip": "MainWindow.Events.xaml.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-20T09:21:14.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
@@ -382,7 +398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -406,7 +422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "TimerHelper.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Helpers\\TimerHelper.cs",
               "RelativeDocumentMoniker": "Helpers\\TimerHelper.cs",
@@ -419,20 +435,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "Song.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Helpers\\Song.cs",
               "RelativeDocumentMoniker": "Helpers\\Song.cs",
               "ToolTip": "D:\\gitnext\\WpfTuneForgePlayer\\Helpers\\Song.cs",
               "RelativeToolTip": "Helpers\\Song.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-20T09:18:04.762Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "StartPage.xaml",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\StartPage.xaml",
               "RelativeDocumentMoniker": "Views\\StartPage.xaml",
@@ -444,7 +460,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Settings.xaml.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Views\\Settings.xaml.cs",
               "RelativeDocumentMoniker": "Views\\Settings.xaml.cs",
@@ -457,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Logger.cs",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\Helpers\\Logger.cs",
               "RelativeDocumentMoniker": "Helpers\\Logger.cs",
@@ -470,7 +486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "README.md",
               "DocumentMoniker": "D:\\gitnext\\WpfTuneForgePlayer\\README.md",
               "RelativeDocumentMoniker": "README.md",

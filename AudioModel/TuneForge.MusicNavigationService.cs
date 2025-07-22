@@ -38,6 +38,8 @@ namespace WpfTuneForgePlayer.AudioModel
                 audioService._outputDevice?.Pause();
             }
             audioService.isSliderEnabled = true;
+            // Needed to reset favorite icon
+            audioService.IsSelectedSongFavorite = false;
 
             int updatedIndex = viewModel.SelectedIndex - 1;
             if (updatedIndex < 0)
@@ -99,6 +101,9 @@ namespace WpfTuneForgePlayer.AudioModel
             {
                 audioService.audioFile.CurrentTime = audioService.audioFile.TotalTime - TimeSpan.FromMilliseconds(500);
             }
+            audioService.isSliderEnabled = true;
+            audioService.IsSelectedSongFavorite = false;
+
             int updatedIndex = viewModel.SelectedIndex + 1;
 
             if (updatedIndex < viewModel.Songs.Count)
@@ -151,7 +156,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            audioService.IsSelectedSongFavorite = false;
             audioService.isSliderEnabled = true;
 
             int index = _random.Next(viewModel.Songs.Count);
