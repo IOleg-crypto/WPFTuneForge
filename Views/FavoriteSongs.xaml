@@ -63,7 +63,7 @@
                       RowBackground="#22000000"
                       AlternatingRowBackground="#33000000"
                       Foreground="White"
-                      GridLinesVisibility="None"
+                      GridLinesVisibility="Horizontal"
                       Background="Transparent"
                       IsEnabled ="False"
                       BorderThickness="0"

@@ -1,4 +1,4 @@
-﻿<Page 
+﻿<Page  
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:WpfTuneForgePlayer"
       xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" x:Class="WpfTuneForgePlayer.StartPage"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+      xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+      x:Class="WpfTuneForgePlayer.StartPage"
       d:DataContext="{d:DesignInstance Type={x:Type viewModel:MusicViewModel}}"
       mc:Ignorable="d" 
       Title="StartPage"
@@ -16,8 +18,12 @@
       SnapsToDevicePixels="True">
 
     <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="133*"/>
+            <RowDefinition Height="113*"/>
+        </Grid.RowDefinitions>
 
-        <Viewbox Stretch="Uniform">
+        <Viewbox Stretch="Uniform" Grid.RowSpan="2">
             <Grid Width="800" Height="450" Background="Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*" />
@@ -35,6 +41,20 @@
                         <ColumnDefinition Width="42*"/>
                         <ColumnDefinition Width="86*" />
                     </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,-25,0,0" Panel.ZIndex="1">
+                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.DecreaseVolume}" Width="24" Height="24" Margin="4,0,4,0">
+                            <Image Source="pack://siteoforigin:,,,/assets/menu/decrease-volume.png" Width="24" Height="24"/>
+                        </Button>
+
+                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.ToggleAudio}" Width="24" Height="24" Margin="4,0,4,0">
+                            <Image Source="{Binding SoundStatus}" Width="24" Height="24"/>
+                        </Button>
+
+                        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.IncreaseVolume}" Width="24" Height="24" Margin="4,0,4,0">
+                            <Image Source="pack://siteoforigin:,,,/assets/menu/volumeup.png" Width="24" Height="24"/>
+                        </Button>
+                    </StackPanel>
 
                     <Grid Grid.Column="1">
                         <StackPanel Orientation="Horizontal"
@@ -83,13 +103,14 @@
 
                     <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.SelectChaoticallySong}" BorderBrush="Transparent" Margin="5,0,62,0" Grid.Column="4" Grid.ColumnSpan="2">
                         <Image Source="pack://siteoforigin:,,,/assets/menu/songHaoticPlaylist.png"
-           HorizontalAlignment="Left"
-           Width="26"
-           Cursor="Hand"
-           RenderTransformOrigin="-1.834,0.31"
-           Margin="27,-18,0,121" />
+                         HorizontalAlignment="Left"
+                         Width="26"
+                         Cursor="Hand"
+                         RenderTransformOrigin="-1.834,0.31"
+                         Margin="27,-18,0,121" />
                     </Button>
                 </Grid>
+
                 <Image x:Name="MusicLogo" Margin="300,10,300,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
                     <Image.Effect>
                         <DropShadowEffect/>
@@ -133,32 +154,5 @@
                        Margin="702,-10,0,0" VerticalAlignment="Top" Width="88" FontSize="16" Grid.RowSpan="2"/>
             </Grid>
         </Viewbox>
-
-        <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding Commands.ToggleAudio}" BorderBrush="Transparent"
-                Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
-            <Image x:Name="SoundButton" Grid.Row="1" Margin="-77,208,562,80" Source="{Binding SoundStatus}" RenderTransformOrigin="0.5,0.5" >
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-0.441"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        </Button>
-        <Button Style="{StaticResource ImageButtonStyle}" BorderBrush="Transparent"
-        Margin="109,79,0,60" HorizontalAlignment="Left" Width="509">
-            <Image x:Name="SoundButtonUp" Grid.Row="1" Margin="-33,200,514,87" Source ="/Views/high-volume.png"  RenderTransformOrigin="0.584,0.514" Height="18" >
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-0.441"/>
-                        <TranslateTransform X="0.002" Y="-0.015"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        </Button>
     </Grid>
 </Page>

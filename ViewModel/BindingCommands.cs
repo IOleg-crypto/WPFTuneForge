@@ -26,6 +26,10 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand SelectChaoticallySong { get; set; }
         public ICommand PlaySelectedSongCommand { get; set; }
 
+        public ICommand IncreaseVolume { get; set; }
+
+        public ICommand DecreaseVolume { get; set; }
+
 
  
         public void InitCommands(MusicViewModel viewModel , AudioService audioService, AudioMetaService audioMetaService)
@@ -52,6 +56,9 @@ namespace WpfTuneForgePlayer.ViewModel
                     viewModel.SelectedIndex = index;
                 }
             }); 
+
+            IncreaseVolume = new RelayCommand(() => audioService._volumeService.IncreaseVolume());
+            DecreaseVolume = new RelayCommand(() => audioService._volumeService.DecreaseVolume());
 
         }
     }

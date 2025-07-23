@@ -1,0 +1,1472 @@
+[16:35:24] Timer stopped
+[16:35:24] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[16:35:24] Timer started
+[16:35:25] Init music - AudioFileReader and WaveOutEvent
+[16:35:25] Play music
+[16:35:28] Play music - TimerTime_Tick
+[16:35:29] Play music - TimerTime_Tick
+[16:35:29] Play music - TimerTime_Tick
+[16:35:30] Play music - TimerTime_Tick
+[16:35:30] Play music - TimerTime_Tick
+[16:35:30] Play music - TimerTime_Tick
+[16:35:31] Play music - TimerTime_Tick
+[16:35:32] Play music - TimerTime_Tick
+[16:35:33] Play music - TimerTime_Tick
+[16:35:33] Play music - TimerTime_Tick
+[16:35:34] Play music - TimerTime_Tick
+[16:35:34] Play music - TimerTime_Tick
+[16:35:35] Play music - TimerTime_Tick
+[16:35:35] Play music - TimerTime_Tick
+[16:35:36] Play music - TimerTime_Tick
+[16:35:37] Play music - TimerTime_Tick
+[16:35:38] Play music - TimerTime_Tick
+[16:35:38] Play music - TimerTime_Tick
+[16:35:38] Play music - TimerTime_Tick
+[16:35:39] Play music - TimerTime_Tick
+[16:35:39] Play music - TimerTime_Tick
+[16:35:40] Play music - TimerTime_Tick
+[16:35:41] Play music - TimerTime_Tick
+[16:35:41] Play music - TimerTime_Tick
+[16:35:42] Play music - TimerTime_Tick
+[16:35:43] Play music - TimerTime_Tick
+[16:35:43] Play music - TimerTime_Tick
+[16:35:43] Play music - TimerTime_Tick
+[16:35:44] Play music - TimerTime_Tick
+[16:35:44] Play music - TimerTime_Tick
+[16:35:45] Play music - TimerTime_Tick
+[16:35:46] Play music - TimerTime_Tick
+[16:35:46] Music paused
+[16:35:46] Timer stopped
+[16:35:47] Music play
+[16:35:47] Timer started
+[16:35:48] Play music - TimerTime_Tick
+[16:35:48] Music paused
+[16:35:48] Timer stopped
+[16:35:49] Music play
+[16:35:49] Timer started
+[16:35:50] Play music - TimerTime_Tick
+[16:35:51] Play music - TimerTime_Tick
+[16:35:52] Play music - TimerTime_Tick
+[16:35:52] Play music - TimerTime_Tick
+[16:35:52] Play music - TimerTime_Tick
+[16:35:53] Play music - TimerTime_Tick
+[16:35:53] Play music - TimerTime_Tick
+[16:35:54] Play music - TimerTime_Tick
+[16:35:56] Play music - TimerTime_Tick
+[16:35:57] Play music - TimerTime_Tick
+[16:35:57] Play music - TimerTime_Tick
+[16:35:58] Play music - TimerTime_Tick
+[16:35:58] Play music - TimerTime_Tick
+[16:35:58] Play music - TimerTime_Tick
+[16:35:59] Play music - TimerTime_Tick
+[16:36:00] Play music - TimerTime_Tick
+[16:36:01] Play music - TimerTime_Tick
+[16:36:02] Play music - TimerTime_Tick
+[16:36:02] Play music - TimerTime_Tick
+[16:36:02] Play music - TimerTime_Tick
+[16:36:03] Play music - TimerTime_Tick
+[16:36:03] Play music - TimerTime_Tick
+[16:36:04] Play music - TimerTime_Tick
+[16:36:04] Play music - TimerTime_Tick
+[16:36:06] Play music - TimerTime_Tick
+[16:36:06] Play music - TimerTime_Tick
+[16:36:07] Play music - TimerTime_Tick
+[16:36:07] Play music - TimerTime_Tick
+[16:36:07] Play music - TimerTime_Tick
+[16:36:08] Play music - TimerTime_Tick
+[16:36:09] Play music - TimerTime_Tick
+[16:36:09] Play music - TimerTime_Tick
+[16:36:11] Play music - TimerTime_Tick
+[16:36:11] Play music - TimerTime_Tick
+[16:36:11] Play music - TimerTime_Tick
+[16:36:12] Play music - TimerTime_Tick
+[16:36:12] Play music - TimerTime_Tick
+[16:36:13] Play music - TimerTime_Tick
+[16:36:14] Play music - TimerTime_Tick
+[16:36:15] Play music - TimerTime_Tick
+[16:36:15] Play music - TimerTime_Tick
+[16:36:16] Play music - TimerTime_Tick
+[16:36:16] Play music - TimerTime_Tick
+[16:36:17] Play music - TimerTime_Tick
+[16:36:17] Play music - TimerTime_Tick
+[16:36:18] Play music - TimerTime_Tick
+[16:36:18] Play music - TimerTime_Tick
+[16:36:19] Play music - TimerTime_Tick
+[16:36:20] Play music - TimerTime_Tick
+[16:36:20] Play music - TimerTime_Tick
+[16:36:21] Play music - TimerTime_Tick
+[16:36:21] Play music - TimerTime_Tick
+[16:36:22] Play music - TimerTime_Tick
+[16:36:23] Play music - TimerTime_Tick
+[16:36:23] Play music - TimerTime_Tick
+[16:36:25] Play music - TimerTime_Tick
+[16:36:26] Play music - TimerTime_Tick
+[16:36:26] Play music - TimerTime_Tick
+[16:36:26] Play music - TimerTime_Tick
+[16:36:27] Play music - TimerTime_Tick
+[16:36:28] Play music - TimerTime_Tick
+[16:36:31] Play music - TimerTime_Tick
+[16:36:32] Play music - TimerTime_Tick
+[16:36:33] Play music - TimerTime_Tick
+[16:36:33] Play music - TimerTime_Tick
+[16:36:34] Play music - TimerTime_Tick
+[16:36:34] Play music - TimerTime_Tick
+[16:36:35] Play music - TimerTime_Tick
+[16:36:35] Play music - TimerTime_Tick
+[16:36:36] Play music - TimerTime_Tick
+[16:36:37] Play music - TimerTime_Tick
+[16:36:37] Play music - TimerTime_Tick
+[16:36:38] Play music - TimerTime_Tick
+[16:36:39] Play music - TimerTime_Tick
+[16:36:39] Play music - TimerTime_Tick
+[16:36:39] Play music - TimerTime_Tick
+[16:36:40] Play music - TimerTime_Tick
+[16:36:41] Play music - TimerTime_Tick
+[16:36:42] Play music - TimerTime_Tick
+[16:36:42] Play music - TimerTime_Tick
+[16:36:43] Play music - TimerTime_Tick
+[16:36:43] Play music - TimerTime_Tick
+[16:36:44] Play music - TimerTime_Tick
+[16:36:44] Play music - TimerTime_Tick
+[16:36:45] Play music - TimerTime_Tick
+[16:36:46] Play music - TimerTime_Tick
+[16:36:46] Play music - TimerTime_Tick
+[16:36:47] Play music - TimerTime_Tick
+[16:36:47] Play music - TimerTime_Tick
+[16:36:48] Play music - TimerTime_Tick
+[16:36:49] Play music - TimerTime_Tick
+[16:36:49] Play music - TimerTime_Tick
+[16:36:49] Play music - TimerTime_Tick
+[16:36:50] Play music - TimerTime_Tick
+[16:36:51] Play music - TimerTime_Tick
+[16:36:52] Play music - TimerTime_Tick
+[16:36:52] Play music - TimerTime_Tick
+[16:36:53] Play music - TimerTime_Tick
+[16:36:53] Play music - TimerTime_Tick
+[16:36:54] Play music - TimerTime_Tick
+[16:36:55] Play music - TimerTime_Tick
+[16:36:56] Play music - TimerTime_Tick
+[16:36:56] Play music - TimerTime_Tick
+[16:36:57] Play music - TimerTime_Tick
+[16:36:58] Play music - TimerTime_Tick
+[16:36:58] Play music - TimerTime_Tick
+[16:36:59] Play music - TimerTime_Tick
+[16:37:00] Play music - TimerTime_Tick
+[16:37:01] Play music - TimerTime_Tick
+[16:37:01] Play music - TimerTime_Tick
+[16:37:02] Play music - TimerTime_Tick
+[16:37:03] Play music - TimerTime_Tick
+[16:37:03] Play music - TimerTime_Tick
+[16:37:04] Play music - TimerTime_Tick
+[16:37:06] Play music - TimerTime_Tick
+[16:37:06] Play music - TimerTime_Tick
+[16:37:07] Play music - TimerTime_Tick
+[16:37:07] Play music - TimerTime_Tick
+[16:37:08] Play music - TimerTime_Tick
+[16:37:08] Play music - TimerTime_Tick
+[16:37:09] Play music - TimerTime_Tick
+[16:37:10] Play music - TimerTime_Tick
+[16:37:11] Play music - TimerTime_Tick
+[16:37:11] Play music - TimerTime_Tick
+[16:37:11] Play music - TimerTime_Tick
+[16:37:13] Play music - TimerTime_Tick
+[16:37:13] Play music - TimerTime_Tick
+[16:37:14] Play music - TimerTime_Tick
+[16:37:15] Play music - TimerTime_Tick
+[16:37:16] Play music - TimerTime_Tick
+[16:37:16] Play music - TimerTime_Tick
+[16:37:17] Play music - TimerTime_Tick
+[16:37:18] Play music - TimerTime_Tick
+[16:37:18] Play music - TimerTime_Tick
+[16:37:18] Play music - TimerTime_Tick
+[16:37:19] Play music - TimerTime_Tick
+[16:37:21] Play music - TimerTime_Tick
+[16:37:21] Play music - TimerTime_Tick
+[16:37:22] Play music - TimerTime_Tick
+[16:37:23] Play music - TimerTime_Tick
+[16:37:23] Play music - TimerTime_Tick
+[16:37:24] Play music - TimerTime_Tick
+[16:37:24] Play music - TimerTime_Tick
+[16:37:26] Play music - TimerTime_Tick
+[16:37:28] Play music - TimerTime_Tick
+[16:37:28] Play music - TimerTime_Tick
+[16:37:29] Play music - TimerTime_Tick
+[16:37:31] Play music - TimerTime_Tick
+[16:37:31] Play music - TimerTime_Tick
+[16:37:33] Play music - TimerTime_Tick
+[16:37:33] Play music - TimerTime_Tick
+[16:37:34] Play music - TimerTime_Tick
+[16:37:36] Play music - TimerTime_Tick
+[16:37:36] Play music - TimerTime_Tick
+[16:37:37] Play music - TimerTime_Tick
+[16:37:38] Play music - TimerTime_Tick
+[16:37:38] Play music - TimerTime_Tick
+[16:37:39] Play music - TimerTime_Tick
+[16:37:41] Play music - TimerTime_Tick
+[16:37:41] Play music - TimerTime_Tick
+[16:37:42] Play music - TimerTime_Tick
+[16:37:43] Play music - TimerTime_Tick
+[16:37:43] Play music - TimerTime_Tick
+[16:37:44] Play music - TimerTime_Tick
+[16:37:44] Play music - TimerTime_Tick
+[16:37:46] Play music - TimerTime_Tick
+[16:37:47] Play music - TimerTime_Tick
+[16:37:48] Play music - TimerTime_Tick
+[16:37:48] Play music - TimerTime_Tick
+[16:37:48] Play music - TimerTime_Tick
+[16:37:49] Play music - TimerTime_Tick
+[16:37:50] Play music - TimerTime_Tick
+[16:37:51] Play music - TimerTime_Tick
+[16:37:51] Play music - TimerTime_Tick
+[16:37:52] Play music - TimerTime_Tick
+[16:37:53] Play music - TimerTime_Tick
+[16:37:53] Play music - TimerTime_Tick
+[16:37:54] Play music - TimerTime_Tick
+[16:37:55] Play music - TimerTime_Tick
+[16:37:56] Play music - TimerTime_Tick
+[16:37:56] Play music - TimerTime_Tick
+[16:37:57] Play music - TimerTime_Tick
+[16:37:57] Play music - TimerTime_Tick
+[16:37:58] Play music - TimerTime_Tick
+[16:37:58] Play music - TimerTime_Tick
+[16:37:59] Play music - TimerTime_Tick
+[16:38:00] Play music - TimerTime_Tick
+[16:38:00] Play music - TimerTime_Tick
+[16:38:01] Play music - TimerTime_Tick
+[16:38:02] Play music - TimerTime_Tick
+[16:38:02] Play music - TimerTime_Tick
+[16:38:03] Play music - TimerTime_Tick
+[16:38:03] Play music - TimerTime_Tick
+[16:38:04] Play music - TimerTime_Tick
+[16:38:04] Play music - TimerTime_Tick
+[16:38:05] Play music - TimerTime_Tick
+[16:38:05] Play music - TimerTime_Tick
+[16:38:06] Play music - TimerTime_Tick
+[16:38:07] Play music - TimerTime_Tick
+[16:38:07] Play music - TimerTime_Tick
+[16:38:08] Play music - TimerTime_Tick
+[16:38:09] Play music - TimerTime_Tick
+[16:38:09] Play music - TimerTime_Tick
+[16:38:10] Play music - TimerTime_Tick
+[16:38:10] Play music - TimerTime_Tick
+[16:38:11] Play music - TimerTime_Tick
+[16:38:11] Play music - TimerTime_Tick
+[16:38:12] Play music - TimerTime_Tick
+[16:38:12] Play music - TimerTime_Tick
+[16:38:13] Play music - TimerTime_Tick
+[16:38:14] Play music - TimerTime_Tick
+[16:38:15] Play music - TimerTime_Tick
+[16:38:16] Play music - TimerTime_Tick
+[16:38:16] Play music - TimerTime_Tick
+[16:38:17] Play music - TimerTime_Tick
+[16:38:17] Play music - TimerTime_Tick
+[16:38:18] Play music - TimerTime_Tick
+[16:38:18] Play music - TimerTime_Tick
+[16:38:19] Play music - TimerTime_Tick
+[16:38:20] Play music - TimerTime_Tick
+[16:38:21] Play music - TimerTime_Tick
+[16:38:21] Play music - TimerTime_Tick
+[16:38:21] Play music - TimerTime_Tick
+[16:38:22] Play music - TimerTime_Tick
+[16:38:23] Play music - TimerTime_Tick
+[16:38:23] Play music - TimerTime_Tick
+[16:38:25] Play music - TimerTime_Tick
+[16:38:26] Play music - TimerTime_Tick
+[16:38:26] Play music - TimerTime_Tick
+[16:38:26] Play music - TimerTime_Tick
+[16:38:27] Play music - TimerTime_Tick
+[16:38:28] Play music - TimerTime_Tick
+[16:38:28] Play music - TimerTime_Tick
+[16:38:28] Play music - TimerTime_Tick
+[16:38:29] Play music - TimerTime_Tick
+[16:38:30] Play music - TimerTime_Tick
+[16:38:31] Play music - TimerTime_Tick
+[16:38:31] Play music - TimerTime_Tick
+[16:38:33] Play music - TimerTime_Tick
+[16:38:33] Play music - TimerTime_Tick
+[16:38:34] Play music - TimerTime_Tick
+[16:38:35] Play music - TimerTime_Tick
+[16:38:36] Play music - TimerTime_Tick
+[16:38:36] Play music - TimerTime_Tick
+[16:38:38] Play music - TimerTime_Tick
+[16:38:38] Play music - TimerTime_Tick
+[16:38:39] Play music - TimerTime_Tick
+[16:38:40] Play music - TimerTime_Tick
+[16:38:41] Play music - TimerTime_Tick
+[16:38:41] Play music - TimerTime_Tick
+[16:38:41] Play music - TimerTime_Tick
+[16:38:43] Play music - TimerTime_Tick
+[16:38:43] Play music - TimerTime_Tick
+[16:38:44] Play music - TimerTime_Tick
+[16:38:45] Play music - TimerTime_Tick
+[16:38:46] Play music - TimerTime_Tick
+[16:38:46] Play music - TimerTime_Tick
+[16:38:46] Play music - TimerTime_Tick
+[16:38:47] Play music - TimerTime_Tick
+[16:38:48] Play music - TimerTime_Tick
+[16:38:49] Play music - TimerTime_Tick
+[16:38:50] Play music - TimerTime_Tick
+[16:38:50] Play music - TimerTime_Tick
+[16:38:51] Play music - TimerTime_Tick
+[16:38:51] Play music - TimerTime_Tick
+[16:38:52] Play music - TimerTime_Tick
+[16:38:52] Play music - TimerTime_Tick
+[16:38:54] Play music - TimerTime_Tick
+[16:38:55] Play music - TimerTime_Tick
+[16:38:55] Play music - TimerTime_Tick
+[16:38:56] Play music - TimerTime_Tick
+[16:38:57] Play music - TimerTime_Tick
+[16:38:59] Play music - TimerTime_Tick
+[16:39:00] Play music - TimerTime_Tick
+[16:39:00] Play music - TimerTime_Tick
+[16:39:01] Play music - TimerTime_Tick
+[16:39:01] Play music - TimerTime_Tick
+[16:39:02] Play music - TimerTime_Tick
+[16:39:02] Play music - TimerTime_Tick
+[16:39:04] Play music - TimerTime_Tick
+[16:39:05] Play music - TimerTime_Tick
+[16:39:05] Play music - TimerTime_Tick
+[16:39:06] Play music - TimerTime_Tick
+[16:39:06] Play music - TimerTime_Tick
+[16:39:07] Play music - TimerTime_Tick
+[16:39:07] Play music - TimerTime_Tick
+[16:39:09] Play music - TimerTime_Tick
+[16:39:10] Play music - TimerTime_Tick
+[16:39:10] Play music - TimerTime_Tick
+[16:39:11] Play music - TimerTime_Tick
+[16:39:12] Play music - TimerTime_Tick
+[16:39:12] Play music - TimerTime_Tick
+[16:39:13] Play music - TimerTime_Tick
+[16:39:14] Play music - TimerTime_Tick
+[16:39:15] Play music - TimerTime_Tick
+[16:39:15] Play music - TimerTime_Tick
+[16:39:17] Play music - TimerTime_Tick
+[16:39:17] Play music - TimerTime_Tick
+[16:39:17] Play music - TimerTime_Tick
+[16:39:19] Play music - TimerTime_Tick
+[16:39:19] Play music - TimerTime_Tick
+[16:39:20] Play music - TimerTime_Tick
+[16:39:20] Play music - TimerTime_Tick
+[16:39:22] Play music - TimerTime_Tick
+[16:39:22] Play music - TimerTime_Tick
+[16:39:22] Play music - TimerTime_Tick
+[16:39:23] Play music - TimerTime_Tick
+[16:39:24] Play music - TimerTime_Tick
+[16:39:27] Play music - TimerTime_Tick
+[16:39:27] Play music - TimerTime_Tick
+[16:39:27] Play music - TimerTime_Tick
+[16:39:28] Play music - TimerTime_Tick
+[16:39:29] Play music - TimerTime_Tick
+[16:39:29] Play music - TimerTime_Tick
+[16:39:30] Play music - TimerTime_Tick
+[16:39:32] Play music - TimerTime_Tick
+[16:39:32] Play music - TimerTime_Tick
+[16:39:33] Play music - TimerTime_Tick
+[16:39:34] Play music - TimerTime_Tick
+[16:39:34] Play music - TimerTime_Tick
+[16:39:34] Play music - TimerTime_Tick
+[16:39:35] Play music - TimerTime_Tick
+[16:39:37] Play music - TimerTime_Tick
+[16:39:37] Play music - TimerTime_Tick
+[16:39:38] Play music - TimerTime_Tick
+[16:39:38] Play music - TimerTime_Tick
+[16:39:39] Play music - TimerTime_Tick
+[16:39:39] Play music - TimerTime_Tick
+[16:39:40] Play music - TimerTime_Tick
+[16:39:41] Play music - TimerTime_Tick
+[16:39:42] Play music - TimerTime_Tick
+[16:39:43] Play music - TimerTime_Tick
+[16:39:43] Play music - TimerTime_Tick
+[16:39:43] Play music - TimerTime_Tick
+[16:39:44] Play music - TimerTime_Tick
+[16:39:44] Play music - TimerTime_Tick
+[16:39:45] Play music - TimerTime_Tick
+[16:39:46] Play music - TimerTime_Tick
+[16:39:46] Play music - TimerTime_Tick
+[16:39:47] Play music - TimerTime_Tick
+[16:39:48] Play music - TimerTime_Tick
+[16:39:48] Play music - TimerTime_Tick
+[16:39:49] Play music - TimerTime_Tick
+[16:39:49] Play music - TimerTime_Tick
+[16:39:50] Play music - TimerTime_Tick
+[16:39:51] Play music - TimerTime_Tick
+[16:39:51] Play music - TimerTime_Tick
+[16:39:52] Play music - TimerTime_Tick
+[16:39:52] Play music - TimerTime_Tick
+[16:39:53] Play music - TimerTime_Tick
+[16:39:53] Play music - TimerTime_Tick
+[16:39:54] Play music - TimerTime_Tick
+[16:39:56] Play music - TimerTime_Tick
+[16:39:57] Play music - TimerTime_Tick
+[16:39:57] Play music - TimerTime_Tick
+[16:39:58] Play music - TimerTime_Tick
+[16:39:58] Play music - TimerTime_Tick
+[16:39:59] Play music - TimerTime_Tick
+[16:40:00] Play music - TimerTime_Tick
+[16:40:01] Play music - TimerTime_Tick
+[16:40:02] Play music - TimerTime_Tick
+[16:40:02] Play music - TimerTime_Tick
+[16:40:03] Play music - TimerTime_Tick
+[16:40:03] Play music - TimerTime_Tick
+[16:40:03] Play music - TimerTime_Tick
+[16:40:05] Play music - TimerTime_Tick
+[16:40:06] Play music - TimerTime_Tick
+[16:40:07] Play music - TimerTime_Tick
+[16:40:07] Play music - TimerTime_Tick
+[16:40:08] Play music - TimerTime_Tick
+[16:40:08] Play music - TimerTime_Tick
+[16:40:09] Play music - TimerTime_Tick
+[16:40:10] Play music - TimerTime_Tick
+[16:40:11] Play music - TimerTime_Tick
+[16:40:12] Play music - TimerTime_Tick
+[16:40:12] Play music - TimerTime_Tick
+[16:40:13] Play music - TimerTime_Tick
+[16:40:13] Play music - TimerTime_Tick
+[16:40:14] Timer stopped
+[16:40:14] Timer started
+[16:40:15] Timer stopped
+[16:40:15] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:16] Timer stopped
+[16:40:16] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:17] Timer stopped
+[16:40:17] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:18] Timer stopped
+[16:40:18] Timer started
+[16:40:22] Timer stopped
+[16:40:22] Timer started
+[16:40:22] Timer stopped
+[16:40:22] Timer started
+[16:40:22] Timer stopped
+[16:40:22] Timer started
+[16:40:25] Timer stopped
+[16:40:25] Timer started
+[16:40:25] Timer stopped
+[16:40:25] Timer started
+[16:40:29] Timer stopped
+[16:40:29] Timer started
+[16:40:32] Timer stopped
+[16:40:32] Timer started
+[16:40:32] Timer stopped
+[16:40:32] Timer started
+[16:40:36] Timer stopped
+[16:40:36] Timer started
+[16:40:40] Timer stopped
+[16:40:40] Timer started
+[16:40:40] Timer stopped
+[16:40:40] Timer started
+[16:40:44] Timer stopped
+[16:40:44] Timer started
+[16:40:44] Timer stopped
+[16:40:44] Timer started
+[16:40:49] Timer stopped
+[16:40:49] Timer started
+[16:40:49] Timer stopped
+[16:40:49] Timer started
+[16:40:54] Timer stopped
+[16:40:54] Timer started
+[16:40:54] Timer stopped
+[16:40:54] Timer started
+[16:40:57] Timer stopped
+[16:40:57] Timer started
+[16:40:57] Timer stopped
+[16:40:57] Timer started
+[16:40:58] Timer stopped
+[16:40:58] Timer started
+[16:40:58] Timer stopped
+[16:40:58] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:00] Timer started
+[16:41:00] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:01] Timer stopped
+[16:41:01] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
+[16:41:02] Timer stopped
+[16:41:02] Timer started
