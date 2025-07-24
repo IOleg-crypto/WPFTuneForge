@@ -1,83 +1,125 @@
-﻿<Page
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"   
-      xmlns:local="clr-namespace:WpfTuneForgePlayer.Views"
-      xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
-      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" x:Class="WpfTuneForgePlayer.Views.Settings"
-      d:DataContext="{d:DesignInstance Type={x:Type viewModel:DeviceOutputModel}}"
-      mc:Ignorable="d" 
-      TextOptions.TextRenderingMode="ClearType"
-      TextOptions.TextFormattingMode="Display"
-      UseLayoutRounding="True"
-      SnapsToDevicePixels="True" d:DesignHeight="287.2">
+﻿<Page 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfTuneForgePlayer.Views"
+    xmlns:viewModel="clr-namespace:WpfTuneForgePlayer.ViewModel"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    x:Class="WpfTuneForgePlayer.Views.Settings"
+    d:DataContext="{d:DesignInstance Type={x:Type viewModel:DeviceOutputModel}}"
+    mc:Ignorable="d"
+    TextOptions.TextRenderingMode="ClearType"
+    TextOptions.TextFormattingMode="Display"
+    UseLayoutRounding="True"
+    SnapsToDevicePixels="True"
+    Background="Black">
 
-    <Grid Background="Black">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Settings"
-               FontSize="26"
-               Foreground="White"
-               FontWeight="Bold"
-               Margin="20"
-               HorizontalAlignment="Left"/>
-        <Button Grid.Column="0"
-        Width="47"
-        Background="Transparent"
-        BorderThickness="0"
-        Cursor="Hand"
-        Click="BackToStartPage" Margin="0,20,0,27" HorizontalAlignment="Right">
-            <Image Source="pack://siteoforigin:,,,/assets/sidebar/exit2.png" Stretch="Uniform" Height="29" Width="29"/>
-        </Button>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
-            <Label Content="Current device:"
+        <DockPanel Grid.Row="0" Margin="0,10,0,20">
+            <Label Content="Settings"
+                   FontSize="28"
                    Foreground="White"
-                   FontSize="18"
-                   VerticalAlignment="Center"
-                   Width="160"/>
+                   FontWeight="Bold"
+                   DockPanel.Dock="Left"/>
 
-            <ComboBox Width="350"
-                      Height="32"
-                      ItemsSource="{Binding OutputDevices}"
-                      SelectedItem="{Binding SelectedOutputDevice, Mode=TwoWay}"
-                      IsEditable="False"
-                      IsReadOnly="True"
-                      IsHitTestVisible="False"
-                      Background="Black"
-                      Foreground="Black"
-                      BorderBrush="Gray"
-                      FontSize="16"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Width="661" Margin="2,78,0,0" Grid.RowSpan="2">
-            <Label Content="Sample rate:"
-       Foreground="White"
-       FontSize="18"
-       VerticalAlignment="Center"
-       Width="160" Margin="153,0,0,0"/>
-            <ComboBox x:Name="SampleRateSelector" SelectedIndex="0" IsHitTestVisible="False"  Width="150" Height="30" Margin="0,0,28,0">
-                <ComboBoxItem Content="44100 Hz" />
-                <ComboBoxItem Content="48000 Hz" />
-                <ComboBoxItem Content="96000 Hz" />
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Width="661"/>
-        <Button HorizontalAlignment="Center"  Content="About"
-        Click="OpenInfoDialog"
-        FontSize="14"
-        Grid.Row="2"
-        FontWeight="Normal"
-        Background="Transparent"
-        Foreground="White"
-        BorderBrush="Gray"
-        Cursor="Hand"
-        VerticalAlignment="Stretch"
-        Margin="0,235,397,0" Width="104"/>
+            <Button Width="40" Height="40"
+                    HorizontalAlignment="Right"
+                    Click="BackToStartPage"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    ToolTip="Back"
+                    Cursor="Hand"
+                    Margin="0,0,10,0">
+                <Image Source="pack://siteoforigin:,,,/assets/sidebar/exit2.png" Stretch="Uniform" />
+            </Button>
+        </DockPanel>
+
+
+        <Border Grid.Row="1"
+                Background="#22FFFFFF"
+                CornerRadius="12"
+                Padding="20"
+                BorderBrush="#555"
+                BorderThickness="1">
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <Label Content="Current device:"
+                           Foreground="White"
+                           FontSize="16"
+                           Width="140"
+                           VerticalAlignment="Center"/>
+
+                    <ComboBox Width="300"
+                              Height="32"
+                              ItemsSource="{Binding OutputDevices}"
+                              SelectedItem="{Binding SelectedOutputDevice, Mode=TwoWay}"
+                              Background="#111"
+                              Foreground="Black"
+                              BorderBrush="#444"
+                              FontSize="14">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <Label Content="Sample Rate:"
+                           Foreground="White"
+                           FontSize="16"
+                           Width="140"/>
+                    <TextBlock Text="{Binding SelectedOutputDevice.SampleRate, StringFormat=\{0\} Hz}"
+                               FontSize="14"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <Label Content="Channels:"
+                           Foreground="White"
+                           FontSize="16"
+                           Width="140"/>
+                    <TextBlock Text="{Binding SelectedOutputDevice.Channels}"
+                               FontSize="14"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Label Content="Automatic playback music"
+                          FontSize="14"
+                          Foreground="White" Width="182" Margin="3,0,0,0"/>
+                    <shared:ToggleSwitch Content="ToggleSwitch" Width="134" IsChecked="{Binding IsAutomaticPlayback}" ContentPlacement="Track"/>
+                </StackPanel>
+                <StackPanel Height ="50" Margin="0,20,0,0"  HorizontalAlignment="Center">
+                    <Label Content="More settings could be added in future..." HorizontalAlignment="Center"  Foreground ="Gray"></Label>
+                </StackPanel>
+            </StackPanel>
+            
+        </Border>
+
+        <Button Content="About"
+                Grid.Row="2"
+                Width="120"
+                Height="35"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Click="OpenInfoDialog"
+                Background="#333"
+                Foreground="White"
+                FontWeight="Bold"
+                BorderBrush="#555"
+                Cursor="Hand"
+                />
     </Grid>
 </Page>

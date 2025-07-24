@@ -35,6 +35,7 @@ namespace WpfTuneForgePlayer.ViewModel
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private DeviceOutputModel __deviceOutputModel;
+        
 
         
 
@@ -69,7 +70,7 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             audioService = new AudioService(this);
             audioMetaService = new AudioMetaService(this);
-            __deviceOutputModel = new DeviceOutputModel();
+            __deviceOutputModel = new DeviceOutputModel(audioService);
             __deviceOutputModel.StartDeviceMonitoring();
             InitICommand();
             

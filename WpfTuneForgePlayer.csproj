@@ -274,6 +274,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AudioModel\TuneForge.AudioDeviceInfo.cs" />
     <Compile Include="AudioModel\TuneForge.AudioMetaService.cs" />
     <Compile Include="AudioModel\TuneForge.AudioService.cs" />
     <Compile Include="AudioModel\TuneForge.MusicNavigationService.cs" />

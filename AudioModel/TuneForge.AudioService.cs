@@ -45,6 +45,8 @@ namespace WpfTuneForgePlayer.AudioModel
         public VolumeService _volumeService { get => volumeService; set => volumeService = value; }
         public MusicNavigationService _musicNavigationService { get => musicNavigationService; set => musicNavigationService = value; }
 
+        public MusicViewModel musicViewModel { get => _viewModel; set => _viewModel = value; }
+
         public bool isSound { get => _isSoundOn; set => _isSoundOn = value; }
 
         public bool IsSelectedSongFavorite { get => _IsSelectedSongFavorite; set => _IsSelectedSongFavorite = value; }
@@ -123,7 +125,7 @@ namespace WpfTuneForgePlayer.AudioModel
         {
             if (_audioFile == null || outputDevice == null) return;
 
-            _isSliderEnabled = true; // allow slider interaction
+            isSliderEnabled = true; // allow slider interaction
             SimpleLogger.Log($"Slider Value: {_startPage.MusicTrackBar.Value}, Maximum: {_startPage.MusicTrackBar.Maximum}");
 
             double frac = _viewModel.TrackPosition / 1000.0;
@@ -144,7 +146,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 return;
             }
             // If a new song was selected, stop and clean up the old one
-            if (_newMusicPath != CurrentMusicPath)
+            if (NewMusicPath != CurrentMusicPath)
                 StopAndDisposeCurrentMusic();
 
             if (outputDevice == null || _audioFile == null)
@@ -235,9 +237,9 @@ namespace WpfTuneForgePlayer.AudioModel
             if (outputDevice == null || _audioFile == null || _viewModel == null)
                 return;
 
-            _IsSelectedSongFavorite = !_IsSelectedSongFavorite;
+            IsSelectedSongFavorite = !IsSelectedSongFavorite;
 
-            string path = _IsSelectedSongFavorite
+            string path = IsSelectedSongFavorite
                 ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\favorite_b.png")
                 : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\sidebar\\favorite_a.png");
 

@@ -80,5 +80,7 @@ namespace WpfTuneForgePlayer.AudioModel
         {
             return enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
         }
+
+        
     }
 }

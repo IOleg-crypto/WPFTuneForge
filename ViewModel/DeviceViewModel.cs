@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Threading;
-using WinForm = System.Windows.Forms;
+using WpfTuneForgePlayer.AudioModel;
 
 namespace WpfTuneForgePlayer.ViewModel
 {
@@ -13,12 +13,22 @@ namespace WpfTuneForgePlayer.ViewModel
     {
         private DispatcherTimer _deviceCheckTimer;
 
-        public ObservableCollection<string> OutputDevices { get; set; } = new();
+        private bool AutomaticPlayback = false;
 
-        public DeviceOutputModel() => StartDeviceMonitoring();
+        private AudioService audioService;
 
-        private string _selectedOutputDevice;
-        public string SelectedOutputDevice
+        public ObservableCollection<AudioDeviceInfo> OutputDevices { get; set; } = new();
+
+        public DeviceOutputModel(AudioService audioService )
+        {
+            this.audioService = audioService;
+            StartDeviceMonitoring();
+            IsAutomaticPlaybackChanged(this , null);
+        }
+
+
+        private AudioDeviceInfo _selectedOutputDevice;
+        public AudioDeviceInfo SelectedOutputDevice
         {
             get => _selectedOutputDevice;
             set
@@ -31,7 +41,26 @@ namespace WpfTuneForgePlayer.ViewModel
             }
         }
 
-     
+        public bool IsAutomaticPlayback
+        {
+            get => AutomaticPlayback;
+            set { AutomaticPlayback = value; OnPropertyChanged(nameof(IsAutomaticPlayback)); }
+        }
+
+        private void IsAutomaticPlaybackChanged(object sender, PropertyChangedEventArgs e)
+        {
+  
+             if (IsAutomaticPlayback &&
+                    audioService.musicViewModel.CurrentTime == audioService.musicViewModel.EndTime)
+              {
+                    audioService._musicNavigationService.EndMusic(this, null);
+              }
+
+        }
+        
+
+
+
         public void StartDeviceMonitoring()
         {
             _deviceCheckTimer = new DispatcherTimer
@@ -40,8 +69,9 @@ namespace WpfTuneForgePlayer.ViewModel
             };
             _deviceCheckTimer.Tick += (s, e) => LoadOutputDevices();
             _deviceCheckTimer.Start();
-            LoadOutputDevices(); 
+            LoadOutputDevices();
         }
+
         public void StopDeviceMonitoring()
         {
             _deviceCheckTimer?.Stop();
@@ -52,22 +82,29 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             try
             {
-                var enumerator = new MMDeviceEnumerator(); 
+                var enumerator = new MMDeviceEnumerator();
                 var devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
-                var deviceNames = devices.Select(d => d.FriendlyName).ToList();
 
-                bool devicesChanged = deviceNames.Count != OutputDevices.Count ||
-                                      !deviceNames.SequenceEqual(OutputDevices);
+                var outputDevices = devices.Select(d => new AudioDeviceInfo
+                {
+                    Name = d.FriendlyName,
+                    Channels = d.AudioClient.MixFormat.Channels,
+                    SampleRate = d.AudioClient.MixFormat.SampleRate
+                }).ToList();
 
                 var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
                 string defaultDeviceName = defaultDevice?.FriendlyName;
 
-                if (devicesChanged || defaultDeviceName != SelectedOutputDevice)
+                bool devicesChanged = outputDevices.Count != OutputDevices.Count;
+
+                // Null check
+                var firstDeviceName = OutputDevices.FirstOrDefault()?.Name;
+                if (devicesChanged || firstDeviceName != defaultDeviceName)
                 {
                     if (App.Current.Dispatcher.CheckAccess())
-                        UpdateDevices(deviceNames, defaultDeviceName);
+                        UpdateDevices(outputDevices, defaultDeviceName);
                     else
-                        App.Current.Dispatcher.Invoke(() => UpdateDevices(deviceNames, defaultDeviceName));
+                        App.Current.Dispatcher.Invoke(() => UpdateDevices(outputDevices, defaultDeviceName));
                 }
             }
             catch (Exception ex)
@@ -76,19 +113,20 @@ namespace WpfTuneForgePlayer.ViewModel
             }
         }
 
-        private void UpdateDevices(List<string> deviceNames, string defaultDeviceName)
+        private void UpdateDevices(List<AudioDeviceInfo> newDevices, string defaultDeviceName)
         {
             OutputDevices.Clear();
-            foreach (var name in deviceNames)
+            foreach (var device in newDevices)
             {
-                OutputDevices.Add(name);
+                OutputDevices.Add(device);
             }
 
+            var defaultDevice = newDevices.FirstOrDefault(d => d.Name == defaultDeviceName);
 
-            if (deviceNames.Contains(defaultDeviceName))
-                SelectedOutputDevice = defaultDeviceName;
-            else if (deviceNames.Count > 0)
-                SelectedOutputDevice = deviceNames[0];
+            if (defaultDevice != null)
+                SelectedOutputDevice = defaultDevice;
+            else if (newDevices.Count > 0)
+                SelectedOutputDevice = newDevices[0];
             else
                 SelectedOutputDevice = null;
         }

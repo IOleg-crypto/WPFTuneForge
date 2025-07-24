@@ -102,7 +102,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 audioService.audioFile.CurrentTime = audioService.audioFile.TotalTime - TimeSpan.FromMilliseconds(500);
             }
             audioService.isSliderEnabled = true;
-            audioService.IsSelectedSongFavorite = false;
+            audioService.IsSelectedSongFavorite = true;
 
             int updatedIndex = viewModel.SelectedIndex + 1;
 

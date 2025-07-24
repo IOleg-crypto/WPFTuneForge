@@ -26,17 +26,14 @@ namespace WpfTuneForgePlayer.Helpers
         }
 
         public void Start() {
-            SimpleLogger.Log("Timer started");
             timer.Start();
         }
         public void Stop() { 
-            SimpleLogger.Log("Timer stopped");
             timer.Stop(); 
         }
 
         public void TimerTime_Tick(object sender, EventArgs e)
         {
-            SimpleLogger.Log("Play music - TimerTime_Tick");
             if (_audioService.audioFile == null || !_audioService._isMusicPlaying)
                 return;
 
