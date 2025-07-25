@@ -15,25 +15,33 @@ namespace WpfTuneForgePlayer.ViewModel
     public class DeviceOutputModel : INotifyPropertyChanged
     {
         private DispatcherTimer _deviceCheckTimer;
+        private DispatcherTimer _playbackTimer;
 
-        private bool AutomaticPlayback = false;
+        private bool _isSwitchingSong = false;
+        private bool _automaticPlayback = false;
 
         private AudioService audioService;
         private MusicViewModel viewModel;
         private AudioMetaService audioMetaService;
 
-        public ObservableCollection<AudioDeviceInfo> OutputDevices { get; set; } = new();
+        public ObservableCollection<AudioDeviceInfo> OutputDevices { get; } = new();
 
-        public DeviceOutputModel(AudioService audioService , MusicViewModel viewModel , AudioMetaService audioMetaService)
+        public DeviceOutputModel(AudioService audioService, MusicViewModel viewModel, AudioMetaService audioMetaService)
         {
             this.audioService = audioService;
             this.viewModel = viewModel;
             this.audioMetaService = audioMetaService;
+
             StartDeviceMonitoring();
+            StartPlaybackTimer();
         }
 
+        // --- Properties ---
 
-        private AudioDeviceInfo _selectedOutputDevice;
+        public MusicViewModel ViewModel => viewModel;
+
+        public bool SwitchingSong => _isSwitchingSong;
+
         public AudioDeviceInfo SelectedOutputDevice
         {
             get => _selectedOutputDevice;
@@ -46,93 +54,27 @@ namespace WpfTuneForgePlayer.ViewModel
                 }
             }
         }
+        private AudioDeviceInfo _selectedOutputDevice;
 
         public AudioMetaService AudioMetaService => audioMetaService;
+
         public AudioService AudioService => audioService;
 
         public bool IsAutomaticPlayback
         {
-            get => AutomaticPlayback;
-            set { AutomaticPlayback = value; 
-                if (AutomaticPlayback)
-                {
-                    AutomaticPlayback = value;
-                    OnPropertyChanged(nameof(IsAutomaticPlayback));
-                    IsAutomaticPlaybackChanged(); 
-                }
-                OnPropertyChanged(nameof(IsAutomaticPlayback)); }
-        }
-
-        private void IsAutomaticPlaybackChanged()
-        {
-
-            if (IsAutomaticPlayback &&
-           TimeSpan.TryParse(audioService.MusicViewModel.CurrentTime, out var current) &&
-           TimeSpan.TryParse(audioService.MusicViewModel.EndTime, out var end) &&
-           current >= end)
+            get => _automaticPlayback;
+            set
             {
-                if (viewModel.Songs.Count == 0)
+                if (_automaticPlayback != value)
                 {
-                    MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-                if (AudioService.AudioFile != null)
-                {
-                    AudioService.AudioFile.CurrentTime = AudioService.AudioFile.TotalTime - TimeSpan.FromMilliseconds(500);
-                }
-                AudioService.IsSliderEnabled = true;
-                AudioService.IsSelectedSongFavorite = true;
-
-                int updatedIndex = viewModel.SelectedIndex + 1;
-
-                if (updatedIndex < viewModel.Songs.Count)
-                {
-                    viewModel.SelectedIndex = updatedIndex;
-                    audioService.CurrentMusicPath = viewModel.Songs[updatedIndex].FilePath;
-                    SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
-                }
-                else
-                {
-                    SimpleLogger.Log("Reached the end of the playlist.");
-                    updatedIndex = 0;
-                    viewModel.SelectedIndex = updatedIndex;
-                    audioService.CurrentMusicPath = viewModel.Songs[updatedIndex].FilePath;
-                    SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
-                }
-
-                audioService.StopAndDisposeCurrentMusic();
-
-                try
-                {
-                    audioMetaService.TakeArtistSongName(audioService.CurrentMusicPath);
-                    audioMetaService?.UpdateAlbumArt(audioService.CurrentMusicPath);
-
-                    audioService.AudioFile = new AudioFileReader(audioService.CurrentMusicPath);
-
-                    if (audioService.OutputDevice == null)
-                    {
-                        audioService.OutputDevice = new WaveOutEvent();
-                        audioService.OutputDevice.PlaybackStopped += audioService.OnPlaybackStopped;
-                    }
-
-
-                    audioService.OutputDevice.Init(audioService.AudioFile);
-                    audioService.OutputDevice.Play();
-
-                    audioService.NewMusicPath = audioService.CurrentMusicPath;
-                    audioService.IsMusicPlaying = true;
-                    audioService.TimerHelper.Start();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error:: {ex.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
+                    _automaticPlayback = value;
+                    SimpleLogger.Log($"Setting playback : {_automaticPlayback}");
+                    OnPropertyChanged(nameof(IsAutomaticPlayback));
                 }
             }
-
         }
-        
 
-
+        // --- Device monitoring ---
 
         public void StartDeviceMonitoring()
         {
@@ -142,6 +84,7 @@ namespace WpfTuneForgePlayer.ViewModel
             };
             _deviceCheckTimer.Tick += (s, e) => LoadOutputDevices();
             _deviceCheckTimer.Start();
+
             LoadOutputDevices();
         }
 
@@ -169,9 +112,8 @@ namespace WpfTuneForgePlayer.ViewModel
                 string defaultDeviceName = defaultDevice?.FriendlyName;
 
                 bool devicesChanged = outputDevices.Count != OutputDevices.Count;
-
-                // Null check
                 var firstDeviceName = OutputDevices.FirstOrDefault()?.Name;
+
                 if (devicesChanged || firstDeviceName != defaultDeviceName)
                 {
                     if (App.Current.Dispatcher.CheckAccess())
@@ -189,22 +131,55 @@ namespace WpfTuneForgePlayer.ViewModel
         private void UpdateDevices(List<AudioDeviceInfo> newDevices, string defaultDeviceName)
         {
             OutputDevices.Clear();
+
             foreach (var device in newDevices)
-            {
                 OutputDevices.Add(device);
-            }
 
             var defaultDevice = newDevices.FirstOrDefault(d => d.Name == defaultDeviceName);
 
-            if (defaultDevice != null)
-                SelectedOutputDevice = defaultDevice;
-            else if (newDevices.Count > 0)
-                SelectedOutputDevice = newDevices[0];
-            else
-                SelectedOutputDevice = null;
+            SelectedOutputDevice = defaultDevice ?? newDevices.FirstOrDefault();
         }
 
-        // ==== INotifyPropertyChanged ====
+        // --- Playback timer and controls ---
+
+        private void StartPlaybackTimer()
+        {
+            _playbackTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(300)
+            };
+            _playbackTimer.Tick += (s, e) => CheckPlaybackPosition();
+            _playbackTimer.Start();
+        }
+
+        private void CheckPlaybackPosition()
+        {
+            if (IsAutomaticPlayback == false)
+                return;
+
+            if (TimeSpan.TryParse(viewModel.CurrentTime, out TimeSpan current) &&
+                TimeSpan.TryParse(viewModel.EndTime, out TimeSpan end))
+            {
+                SimpleLogger.Log($"Current time: {current}, End time: {end}");
+
+                if (current >= end - TimeSpan.FromMilliseconds(300))
+                {
+                    if (!_isSwitchingSong)
+                    {
+                        _isSwitchingSong = true;
+                        AudioService.MusicNavigationService.EndMusic(this, null);
+                    }
+                }
+                else
+                {
+                    _isSwitchingSong = false;
+                }
+            }
+        }
+        
+
+        // --- INotifyPropertyChanged implementation ---
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

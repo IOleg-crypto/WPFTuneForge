@@ -1,12 +1,79 @@
-[11:29:28] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[11:29:29] Init music - AudioFileReader and WaveOutEvent
-[11:29:29] Play music
-[11:29:46] Music paused
-[11:29:47] Music play
-[11:29:50] Music paused
-[11:29:52] Music play
-[11:29:54] Music paused
-[11:29:55] Music play
-[11:29:58] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
-[11:29:58] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[11:30:05] Music paused
+[13:08:12] Setting playback : True
+[13:08:13] Current time: 00:00:00, End time: 00:00:00
+[13:08:13] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[13:08:13] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[13:08:13] Current time: 00:00:00, End time: 00:00:00
+[13:08:13] Current time: 00:00:00, End time: 04:46:00
+[13:08:14] Current time: 00:00:00, End time: 04:46:00
+[13:08:15] Current time: 00:01:00, End time: 04:46:00
+[13:08:16] Current time: 00:02:00, End time: 04:46:00
+[13:08:16] Current time: 00:03:00, End time: 04:46:00
+[13:08:17] Current time: 00:03:00, End time: 04:46:00
+[13:08:17] Current time: 00:04:00, End time: 04:46:00
+[13:08:18] Current time: 00:04:00, End time: 04:46:00
+[13:08:18] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[13:08:18] Init music - AudioFileReader and WaveOutEvent
+[13:08:18] Play music
+[13:08:18] Current time: 00:00:00, End time: 00:00:00
+[13:08:18] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[13:08:18] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[13:08:18] Current time: 00:00:00, End time: 05:48:00
+[13:08:19] Music paused
+[13:08:19] Current time: 00:00:00, End time: 03:47:00
+[13:08:20] Current time: 00:01:00, End time: 03:47:00
+[13:08:20] Music play
+[13:08:20] Current time: 00:02:00, End time: 03:47:00
+[13:08:21] Current time: 00:02:00, End time: 03:47:00
+[13:08:22] Current time: 00:03:00, End time: 03:47:00
+[13:08:22] Current time: 00:03:00, End time: 03:47:00
+[13:08:22] Current time: 00:04:00, End time: 03:47:00
+[13:08:23] Current time: 00:04:00, End time: 03:47:00
+[13:08:23] Current time: 00:05:00, End time: 03:47:00
+[13:08:23] Current time: 00:05:00, End time: 03:47:00
+[13:08:25] Slider Value: 0, Maximum: 1000
+[13:08:25] Current time: 04:58
+[13:08:25] Current time: 04:58:00, End time: 03:47:00
+[13:08:25] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[13:08:25] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[13:08:25] Current time: 04:58:00, End time: 05:48:00
+[13:08:25] Current time: 04:59:00, End time: 05:48:00
+[13:08:26] Current time: 05:00:00, End time: 05:48:00
+[13:08:26] Slider Value: 0, Maximum: 1000
+[13:08:26] Current time: 05:00
+[13:08:27] Current time: 05:00:00, End time: 05:48:00
+[13:08:27] Current time: 05:00:00, End time: 05:48:00
+[13:08:27] Current time: 05:01:00, End time: 05:48:00
+[13:08:28] Current time: 05:01:00, End time: 05:48:00
+[13:08:28] Current time: 05:01:00, End time: 05:48:00
+[13:08:29] Slider Value: 0, Maximum: 1000
+[13:08:29] Current time: 05:48
+[13:08:29] Current time: 05:48:00, End time: 05:48:00
+[13:08:29] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[13:08:29] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[13:08:30] Current time: 00:00:00, End time: 03:49:00
+[13:08:30] Current time: 00:00:00, End time: 03:49:00
+[13:08:30] Current time: 00:01:00, End time: 03:49:00
+[13:08:31] Current time: 00:02:00, End time: 03:49:00
+[13:08:31] Current time: 00:02:00, End time: 03:49:00
+[13:08:32] Current time: 00:02:00, End time: 03:49:00
+[13:08:32] Current time: 00:03:00, End time: 03:49:00
+[13:08:32] Music paused
+[13:08:32] Current time: 00:03:00, End time: 03:49:00
+[13:08:33] Current time: 00:03:00, End time: 03:49:00
+[13:08:33] Current time: 00:04:00, End time: 03:49:00
+[13:08:34] Current time: 00:04:00, End time: 03:49:00
+[13:08:35] Current time: 00:05:00, End time: 03:49:00
+[13:08:36] Music play
+[13:08:36] Current time: 00:06:00, End time: 03:49:00
+[13:08:36] Current time: 00:07:00, End time: 03:49:00
+[13:08:36] Current time: 00:07:00, End time: 03:49:00
+[13:08:36] Music paused
+[13:08:37] Current time: 00:07:00, End time: 03:49:00
+[13:08:37] Current time: 00:08:00, End time: 03:49:00
+[13:08:37] Music play
+[13:08:37] Current time: 00:08:00, End time: 03:49:00
+[13:08:38] Music paused
+[13:08:38] Current time: 00:08:00, End time: 03:49:00
+[13:08:39] Music play
+[13:08:39] Current time: 00:09:00, End time: 03:49:00
+[13:08:39] Current time: 00:10:00, End time: 03:49:00
