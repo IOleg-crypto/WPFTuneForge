@@ -25,6 +25,7 @@ namespace WpfTuneForgePlayer.AudioModel
         private StartPage startPage = new();
         private VolumeService volumeService;
         private MusicNavigationService musicNavigationService;
+        private DeviceOutputModel deviceOutputModel;
         private bool isSoundOn;
         private bool isSelectedSongFavorite;
         private bool isSliderEnabled = false;
@@ -75,6 +76,12 @@ namespace WpfTuneForgePlayer.AudioModel
         {
             get => viewModel;
             set => viewModel = value;
+        }
+
+        public DeviceOutputModel DeviceOutputModel
+        {
+            get => deviceOutputModel;
+            set => deviceOutputModel = value;
         }
 
         public bool IsSound
@@ -158,8 +165,12 @@ namespace WpfTuneForgePlayer.AudioModel
                 MessageBox.Show($"Playback Error: {e.Exception.Message}", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
-            if (IsMusicPlaying && AudioFile != null && OutputDevice != null)
+            // if user checked automatic playback(toggle switch) and it switching automatically to next song
+            if (viewModel.DeviceOutputModel.IsAutomaticPlayback)
+            {
+                MusicNavigationService.EndMusic(this, null);  
+            }
+            else if (IsMusicPlaying && AudioFile != null && OutputDevice != null)
             {
                 TimerHelper.Start();
                 OutputDevice.Play();
@@ -220,19 +231,14 @@ namespace WpfTuneForgePlayer.AudioModel
                 // Toggle pause/play
                 if (IsMusicPlaying)
                 {
-                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
-                    StartPage.PlayButton.Width = 110;
-                    StartPage.PlayButton.Margin = new Thickness(0, 0, 0, 0);
+                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\play.png")));
                     SimpleLogger.Log("Music paused");
                     TimerHelper.Stop();
                     OutputDevice.Pause();
                 }
                 else
                 {
-                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\play.png")));
-                    StartPage.PlayButton.Width = 97;
-                    StartPage.PlayButton.Margin = new Thickness(0, -5, 8, 0);
-                    SimpleLogger.Log("Music play");
+                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
                     TimerHelper.Start();
                     OutputDevice.Play();
                 }

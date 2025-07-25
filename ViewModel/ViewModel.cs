@@ -72,6 +72,7 @@ namespace WpfTuneForgePlayer.ViewModel
             audioMetaService = new AudioMetaService(this);
             __deviceOutputModel = new DeviceOutputModel(audioService , this , audioMetaService);
             __deviceOutputModel.StartDeviceMonitoring();
+            audioService.DeviceOutputModel = DeviceOutputModel;
             InitICommand();
             
         }
@@ -119,7 +120,10 @@ namespace WpfTuneForgePlayer.ViewModel
                 ; set; } = new();
         public BindingCommands Commands { get; private set; }
         public MainWindow MainWindow { get; set; }
-        public DeviceOutputModel DeviceOutputModel => __deviceOutputModel;
+        public DeviceOutputModel DeviceOutputModel
+        {
+            get; set;
+        }
 
         private int _selectedIndex;
         public int SelectedIndex

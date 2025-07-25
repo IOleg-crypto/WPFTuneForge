@@ -120,29 +120,21 @@ namespace WpfTuneForgePlayer.AudioModel
                 MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if (AudioService.AudioFile != null)
-            {
-                AudioService.AudioFile.CurrentTime = AudioService.AudioFile.TotalTime - TimeSpan.FromMilliseconds(500);
-            }
+
             AudioService.IsSliderEnabled = true;
             AudioService.IsSelectedSongFavorite = true;
 
             int updatedIndex = ViewModel.SelectedIndex + 1;
 
-            if (updatedIndex < ViewModel.Songs.Count)
-            {
-                ViewModel.SelectedIndex = updatedIndex;
-                AudioService.CurrentMusicPath = ViewModel.Songs[updatedIndex].FilePath;
-                SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
-            }
-            else
+            if (updatedIndex >= ViewModel.Songs.Count)
             {
                 SimpleLogger.Log("Reached the end of the playlist.");
                 updatedIndex = 0;
-                ViewModel.SelectedIndex = updatedIndex;
-                AudioService.CurrentMusicPath = ViewModel.Songs[updatedIndex].FilePath;
-                SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
             }
+
+            ViewModel.SelectedIndex = updatedIndex;
+            AudioService.CurrentMusicPath = ViewModel.Songs[updatedIndex].FilePath;
+            SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
 
             AudioService.StopAndDisposeCurrentMusic();
 
@@ -153,12 +145,9 @@ namespace WpfTuneForgePlayer.AudioModel
 
                 AudioService.AudioFile = new AudioFileReader(AudioService.CurrentMusicPath);
 
-                if (AudioService.OutputDevice == null)
-                {
-                    AudioService.OutputDevice = new WaveOutEvent();
-                    AudioService.OutputDevice.PlaybackStopped += AudioService.OnPlaybackStopped;
-                }
-
+                AudioService.OutputDevice?.Dispose();
+                AudioService.OutputDevice = new WaveOutEvent();
+                AudioService.OutputDevice.PlaybackStopped += AudioService.OnPlaybackStopped;
 
                 AudioService.OutputDevice.Init(AudioService.AudioFile);
                 AudioService.OutputDevice.Play();

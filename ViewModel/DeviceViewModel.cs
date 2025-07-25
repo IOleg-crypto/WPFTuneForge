@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
+using TagLib.Mpeg;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.Helpers;
 
@@ -15,10 +16,7 @@ namespace WpfTuneForgePlayer.ViewModel
     public class DeviceOutputModel : INotifyPropertyChanged
     {
         private DispatcherTimer _deviceCheckTimer;
-        private DispatcherTimer _playbackTimer;
-
-        private bool _isSwitchingSong = false;
-        private bool _automaticPlayback = false;
+        private bool _automaticPlayback;
 
         private AudioService audioService;
         private MusicViewModel viewModel;
@@ -33,14 +31,11 @@ namespace WpfTuneForgePlayer.ViewModel
             this.audioMetaService = audioMetaService;
 
             StartDeviceMonitoring();
-            StartPlaybackTimer();
         }
 
         // --- Properties ---
 
         public MusicViewModel ViewModel => viewModel;
-
-        public bool SwitchingSong => _isSwitchingSong;
 
         public AudioDeviceInfo SelectedOutputDevice
         {
@@ -56,9 +51,17 @@ namespace WpfTuneForgePlayer.ViewModel
         }
         private AudioDeviceInfo _selectedOutputDevice;
 
-        public AudioMetaService AudioMetaService => audioMetaService;
+        public AudioMetaService AudioMetaService
+        {
+            get => audioMetaService;
+            set => audioMetaService = value;
+        }
 
-        public AudioService AudioService => audioService;
+        public AudioService AudioService
+        {
+            get => audioService;
+            //set { SimpleLogger.Log($"CheckPlaybackPosition: AudioService is {(AudioService == null ? "null" : "not null")}"); audioService = value; SimpleLogger.Log($"DeviceOutputModel ctor: AudioService is {(audioService == null ? "null" : "not null")}"); }
+        }
 
         public bool IsAutomaticPlayback
         {
@@ -139,45 +142,6 @@ namespace WpfTuneForgePlayer.ViewModel
 
             SelectedOutputDevice = defaultDevice ?? newDevices.FirstOrDefault();
         }
-
-        // --- Playback timer and controls ---
-
-        private void StartPlaybackTimer()
-        {
-            _playbackTimer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(300)
-            };
-            _playbackTimer.Tick += (s, e) => CheckPlaybackPosition();
-            _playbackTimer.Start();
-        }
-
-        private void CheckPlaybackPosition()
-        {
-            if (IsAutomaticPlayback == false)
-                return;
-
-            if (TimeSpan.TryParse(viewModel.CurrentTime, out TimeSpan current) &&
-                TimeSpan.TryParse(viewModel.EndTime, out TimeSpan end))
-            {
-                SimpleLogger.Log($"Current time: {current}, End time: {end}");
-
-                if (current >= end - TimeSpan.FromMilliseconds(300))
-                {
-                    if (!_isSwitchingSong)
-                    {
-                        _isSwitchingSong = true;
-                        AudioService.MusicNavigationService.EndMusic(this, null);
-                    }
-                }
-                else
-                {
-                    _isSwitchingSong = false;
-                }
-            }
-        }
-        
-
         // --- INotifyPropertyChanged implementation ---
 
         public event PropertyChangedEventHandler PropertyChanged;

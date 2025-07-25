@@ -39,6 +39,9 @@ namespace WpfTuneForgePlayer
             DeviceOutputModel = new DeviceOutputModel(AudioService , ViewModel , AudioMetaService);
             ViewModel.MainWindow = this;
 
+            ViewModel.DeviceOutputModel = DeviceOutputModel;
+            AudioService.DeviceOutputModel = DeviceOutputModel;
+
             NavigateToStartPage();
             ActionHandle();
         }
