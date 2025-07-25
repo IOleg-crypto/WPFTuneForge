@@ -70,7 +70,7 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             audioService = new AudioService(this);
             audioMetaService = new AudioMetaService(this);
-            __deviceOutputModel = new DeviceOutputModel(audioService);
+            __deviceOutputModel = new DeviceOutputModel(audioService , this , audioMetaService);
             __deviceOutputModel.StartDeviceMonitoring();
             InitICommand();
             
@@ -182,8 +182,8 @@ namespace WpfTuneForgePlayer.ViewModel
         // Whether the slider is currently allowed to be moved by user
         public bool GetStatusOnSlider
         {
-            get => audioService.isSliderEnabled;
-            set { audioService.isSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
+            get => audioService.IsSliderEnabled;
+            set { audioService.IsSliderEnabled = value; OnPropertyChanged(nameof(GetStatusOnSlider)); }
         }
 
         public ImageSource PlayPauseButton

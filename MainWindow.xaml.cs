@@ -31,13 +31,13 @@ namespace WpfTuneForgePlayer
         {
             InitializeComponent();
 
-            _viewModel = new MusicViewModel();
-            audioService = new AudioService(_viewModel);
-            audioMetaService = new AudioMetaService(_viewModel);
-            _favoriteSongs = new FavoriteSongs(_viewModel);
+            ViewModel = new MusicViewModel();
+            AudioService = new AudioService(ViewModel);
+            AudioMetaService = new AudioMetaService(ViewModel);
+            FavoriteSongs = new FavoriteSongs(ViewModel);
 
-            _deviceOutputModel = new DeviceOutputModel(audioService);
-            _viewModel.MainWindow = this;
+            DeviceOutputModel = new DeviceOutputModel(AudioService , ViewModel , AudioMetaService);
+            ViewModel.MainWindow = this;
 
             NavigateToStartPage();
             ActionHandle();

@@ -23,18 +23,46 @@ namespace WpfTuneForgePlayer
     {
         private MusicViewModel _viewModel;
         private DeviceOutputModel _deviceOutputModel;
-        private AudioService audioService;
-        private AudioMetaService audioMetaService;
-        private FavoriteSongs favoriteSongs;
+        private AudioService _audioService;
+        private AudioMetaService _audioMetaService;
+        private FavoriteSongs _favoriteSongs;
 
-        public FavoriteSongs _favoriteSongs { get => favoriteSongs; set=> favoriteSongs = value; }
+        public MusicViewModel ViewModel
+        {
+            get => _viewModel;
+            set => _viewModel = value;
+        }
+
+        public DeviceOutputModel DeviceOutputModel
+        {
+            get => _deviceOutputModel;
+            set => _deviceOutputModel = value;
+        }
+
+        public AudioService AudioService
+        {
+            get => _audioService;
+            set => _audioService = value;
+        }
+
+        public AudioMetaService AudioMetaService
+        {
+            get => _audioMetaService;
+            set => _audioMetaService = value;
+        }
+
+        public FavoriteSongs FavoriteSongs
+        {
+            get => _favoriteSongs;
+            set => _favoriteSongs = value;
+        }
 
 
         private void OnMusicSelected(string path)
         {
-            audioService.CurrentMusicPath = path;
-            audioMetaService.TakeArtistSongName(path);
-            audioMetaService.UpdateAlbumArt(path);
+            AudioService.CurrentMusicPath = path;
+            AudioMetaService.TakeArtistSongName(path);
+            AudioMetaService.UpdateAlbumArt(path);
         }
 
         private void ActionHandle()
@@ -43,17 +71,16 @@ namespace WpfTuneForgePlayer
             Sidebar.NavigateToSettings += OnNavigateToSettings;
             Sidebar.ShowMusicDirectory += OnShowMusicDirectory;
             Sidebar.FavoritePage += NavigateToFavoritePage;
-            
         }
 
         private void OnShowMusicDirectory(object sender, EventArgs e)
         {
-            MainContentFrame.Navigate(new MusicDirectory(_viewModel));
+            MainContentFrame.Navigate(new MusicDirectory(ViewModel));
         }
 
         private void OnNavigateToSettings(object sender, EventArgs e)
         {
-            var settingsPage = new Settings(_deviceOutputModel);
+            var settingsPage = new Settings(DeviceOutputModel);
             settingsPage.backToStartPage += (_, __) => NavigateToStartPage();
             MainContentFrame.Navigate(settingsPage);
         }
@@ -62,21 +89,22 @@ namespace WpfTuneForgePlayer
         {
             var startPage = new StartPage
             {
-                DataContext = _viewModel
+                DataContext = ViewModel
             };
             MainContentFrame.Navigate(startPage);
         }
 
         private void NavigateToFavoritePage(object sender, EventArgs e)
         {
-            var favoriteSongs = new FavoriteSongs(_viewModel)
+            var favoriteSongs = new FavoriteSongs(ViewModel)
             {
-                DataContext = _viewModel
+                DataContext = ViewModel
             };
             MainContentFrame.Navigate(favoriteSongs);
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             ExternalConsoleLogger.StopConsoleWatcher();
@@ -88,6 +116,5 @@ namespace WpfTuneForgePlayer
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
         }
-        
     }
 }

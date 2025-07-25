@@ -37,13 +37,13 @@ namespace WpfTuneForgePlayer.ViewModel
             PlayCommand = new RelayCommand(() => audioService.OnClickMusic(viewModel, null));
             SelectFavoriteSong = new RelayCommand(() => audioService.SelectFavoriteSongToPlayList(viewModel, null));
             RepeatCommand = new RelayCommand(() => audioService.RepeatSong(viewModel, null));
-            ToggleAudio = new RelayCommand(() => audioService._volumeService.ToggleSound());
-            EndMusic = new RelayCommand(() => audioService._musicNavigationService.EndMusic(viewModel, null));
+            ToggleAudio = new RelayCommand(() => audioService.VolumeService.ToggleSound());
+            EndMusic = new RelayCommand(() => audioService.MusicNavigationService.EndMusic(viewModel, null));
             ChangeMusicTime = new RelayCommand(() => audioService.SliderChanged());
             ReloadMusicPage = new RelayCommand(() => viewModel.LoadSongs(viewModel.TakeCurrentDirectory));
-            TakeTimer = new RelayCommand(() => audioService._timerHelper?.TimerTime_Tick(viewModel, null));
-            SelectChaoticallySong = new RelayCommand(() => audioService._musicNavigationService.ChaoticPlaySong(viewModel, null));
-            StartMusic = new RelayCommand(() => audioService._musicNavigationService.StartMusic(viewModel, null));
+            TakeTimer = new RelayCommand(() => audioService.TimerHelper?.TimerTime_Tick(viewModel, null));
+            SelectChaoticallySong = new RelayCommand(() => audioService.MusicNavigationService.ChaoticPlaySong(viewModel, null));
+            StartMusic = new RelayCommand(() => audioService.MusicNavigationService.StartMusic(viewModel, null));
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)
@@ -57,8 +57,8 @@ namespace WpfTuneForgePlayer.ViewModel
                 }
             }); 
 
-            IncreaseVolume = new RelayCommand(() => audioService._volumeService.IncreaseVolume());
-            DecreaseVolume = new RelayCommand(() => audioService._volumeService.DecreaseVolume());
+            IncreaseVolume = new RelayCommand(() => audioService.VolumeService.IncreaseVolume());
+            DecreaseVolume = new RelayCommand(() => audioService.VolumeService.DecreaseVolume());
 
         }
     }

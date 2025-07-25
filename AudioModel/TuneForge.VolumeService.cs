@@ -40,13 +40,13 @@ namespace WpfTuneForgePlayer.AudioModel
         public void ToggleSound()
         {
             var device = GetDefaultDevice();
-            if (audioService._outputDevice == null) return;
+            if (audioService.OutputDevice == null) return;
 
             bool currentlyMuted = device.AudioEndpointVolume.Mute;
             SimpleLogger.Log("Current ToggleSound");
-            audioService.isSound = currentlyMuted;
+            audioService.IsSound = currentlyMuted;
 
-            if (audioService.isSound)
+            if (audioService.IsSound)
             {
                 device.AudioEndpointVolume.Mute = false;
 

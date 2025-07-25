@@ -34,15 +34,15 @@ namespace WpfTuneForgePlayer.Helpers
 
         public void TimerTime_Tick(object sender, EventArgs e)
         {
-            if (_audioService.audioFile == null || !_audioService._isMusicPlaying)
+            if (_audioService.AudioFile == null || !_audioService.IsMusicPlaying)
                 return;
 
-            if (_audioService._outputDevice != null && _audioService._outputDevice.PlaybackState == PlaybackState.Playing)
+            if (_audioService.OutputDevice != null && _audioService.OutputDevice.PlaybackState == PlaybackState.Playing)
             {
-                double progress = _audioService.audioFile.CurrentTime.TotalSeconds / _audioService.audioFile.TotalTime.TotalSeconds;
-                _viewModel.TrackPosition = progress * _audioService.startPage.MusicTrackBar.Maximum;
-                _viewModel.CurrentTime = _audioService.audioFile.CurrentTime.ToString(@"mm\:ss");
-                _viewModel.EndTime = _audioService.audioFile.TotalTime.ToString(@"mm\:ss");
+                double progress = _audioService.AudioFile.CurrentTime.TotalSeconds / _audioService.AudioFile.TotalTime.TotalSeconds;
+                _viewModel.TrackPosition = progress * _audioService.StartPage.MusicTrackBar.Maximum;
+                _viewModel.CurrentTime = _audioService.AudioFile.CurrentTime.ToString(@"mm\:ss");
+                _viewModel.EndTime = _audioService.AudioFile.TotalTime.ToString(@"mm\:ss");
             }
         }
     }

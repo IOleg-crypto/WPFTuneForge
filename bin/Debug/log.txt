@@ -1,11 +1,12 @@
-[17:01:42] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[17:01:42] Init music - AudioFileReader and WaveOutEvent
-[17:01:42] Play music
-[17:01:53] Slider Value: 0, Maximum: 1000
-[17:01:53] Current time: 04:41
-[17:01:57] Slider Value: 0, Maximum: 1000
-[17:01:57] Current time: 04:48
-[17:02:25] Slider Value: 0, Maximum: 1000
-[17:02:25] Current time: 04:32
-[17:02:28] Slider Value: 0, Maximum: 1000
-[17:02:28] Current time: 04:47
+[11:29:28] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[11:29:29] Init music - AudioFileReader and WaveOutEvent
+[11:29:29] Play music
+[11:29:46] Music paused
+[11:29:47] Music play
+[11:29:50] Music paused
+[11:29:52] Music play
+[11:29:54] Music paused
+[11:29:55] Music play
+[11:29:58] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[11:29:58] Set default icon logo for album artD:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[11:30:05] Music paused

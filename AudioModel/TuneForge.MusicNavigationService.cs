@@ -16,71 +16,94 @@ namespace WpfTuneForgePlayer.AudioModel
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private MusicViewModel viewModel;
-        private readonly Random _random = new Random();
-
+        private Random _random = new Random();
+        public Random Random
+        {
+            get { return _random; }
+            set { _random = value; }
+        }
         public MusicNavigationService(MusicViewModel viewModel , AudioService audioService , AudioMetaService audioMetaService)
         {
             this.viewModel = viewModel;
             this.audioService = audioService;
             this.audioMetaService = audioMetaService;
         }
+
+        public AudioService AudioService
+        {
+            get => audioService;
+            set => audioService = value;
+        }
+
+        public AudioMetaService AudioMetaService
+        {
+            get => audioMetaService;
+            set => audioMetaService = value;
+        }
+
+        public MusicViewModel ViewModel
+        {
+            get => viewModel;
+            set => viewModel = value;
+        }
+
         // Set playback to start (0 sec) and shift to previous song
         public void StartMusic(object sender, RoutedEventArgs e)
         {
-            if (viewModel.Songs.Count == 0)
+            if (ViewModel.Songs.Count == 0)
             {
                 MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if (audioService.audioFile != null)
+            if (AudioService.AudioFile != null)
             {
-                audioService.audioFile.CurrentTime = TimeSpan.Zero;
-                audioService._outputDevice?.Pause();
+                AudioService.AudioFile.CurrentTime = TimeSpan.Zero;
+                AudioService.OutputDevice?.Pause();
             }
-            audioService.isSliderEnabled = true;
+            AudioService.IsSliderEnabled = true;
             // Needed to reset favorite icon
-            audioService.IsSelectedSongFavorite = false;
+            AudioService.IsSelectedSongFavorite = false;
 
-            int updatedIndex = viewModel.SelectedIndex - 1;
+            int updatedIndex = ViewModel.SelectedIndex - 1;
             if (updatedIndex < 0)
             {
-                updatedIndex = viewModel.Songs.Count; // return to end
+                updatedIndex = ViewModel.Songs.Count; // return to end
             }
 
-            if (updatedIndex < viewModel.Songs.Count)
+            if (updatedIndex < ViewModel.Songs.Count)
             {
-                viewModel.SelectedIndex = updatedIndex;
-                audioService.CurrentMusicPath = viewModel.Songs[updatedIndex].FilePath;
-                SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
+                ViewModel.SelectedIndex = updatedIndex;
+                AudioService.CurrentMusicPath = ViewModel.Songs[updatedIndex].FilePath;
+                SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
             }
             else
             {
                 SimpleLogger.Log("Reached the end of the playlist.");
 
-                SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
+                SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
             }
-            audioService.StopAndDisposeCurrentMusic();
+            AudioService.StopAndDisposeCurrentMusic();
 
             try
             {
-                audioMetaService.TakeArtistSongName(audioService.CurrentMusicPath);
-                audioMetaService?.UpdateAlbumArt(audioService.CurrentMusicPath);
+                AudioMetaService.TakeArtistSongName(AudioService.CurrentMusicPath);
+                AudioMetaService?.UpdateAlbumArt(AudioService.CurrentMusicPath);
 
-                audioService.audioFile = new AudioFileReader(audioService.CurrentMusicPath);
+                AudioService.AudioFile = new AudioFileReader(AudioService.CurrentMusicPath);
 
-                if (audioService._outputDevice == null)
+                if (AudioService.OutputDevice == null)
                 {
-                    audioService._outputDevice = new WaveOutEvent();
-                    audioService._outputDevice.PlaybackStopped += audioService.OnPlaybackStopped;
+                    AudioService.OutputDevice = new WaveOutEvent();
+                    AudioService.OutputDevice.PlaybackStopped += AudioService.OnPlaybackStopped;
                 }
 
 
-                audioService._outputDevice.Init(audioService.audioFile);
-                audioService._outputDevice.Play();
+                AudioService.OutputDevice.Init(AudioService.AudioFile);
+                AudioService.OutputDevice.Play();
 
-                audioService.NewMusicPath = audioService.CurrentMusicPath;
-                audioService._isMusicPlaying = true;
-                audioService._timerHelper.Start();
+                AudioService.NewMusicPath = AudioService.CurrentMusicPath;
+                AudioService.IsMusicPlaying = true;
+                AudioService.TimerHelper.Start();
             }
             catch (Exception ex)
             {
@@ -92,57 +115,57 @@ namespace WpfTuneForgePlayer.AudioModel
         // Set playback to end (almost finish)
         public void EndMusic(object sender, RoutedEventArgs e)
         {
-            if (viewModel.Songs.Count == 0)
+            if (ViewModel.Songs.Count == 0)
             {
                 MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if (audioService.audioFile != null)
+            if (AudioService.AudioFile != null)
             {
-                audioService.audioFile.CurrentTime = audioService.audioFile.TotalTime - TimeSpan.FromMilliseconds(500);
+                AudioService.AudioFile.CurrentTime = AudioService.AudioFile.TotalTime - TimeSpan.FromMilliseconds(500);
             }
-            audioService.isSliderEnabled = true;
-            audioService.IsSelectedSongFavorite = true;
+            AudioService.IsSliderEnabled = true;
+            AudioService.IsSelectedSongFavorite = true;
 
-            int updatedIndex = viewModel.SelectedIndex + 1;
+            int updatedIndex = ViewModel.SelectedIndex + 1;
 
-            if (updatedIndex < viewModel.Songs.Count)
+            if (updatedIndex < ViewModel.Songs.Count)
             {
-                viewModel.SelectedIndex = updatedIndex;
-                audioService.CurrentMusicPath = viewModel.Songs[updatedIndex].FilePath;
-                SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
+                ViewModel.SelectedIndex = updatedIndex;
+                AudioService.CurrentMusicPath = ViewModel.Songs[updatedIndex].FilePath;
+                SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
             }
             else
             {
                 SimpleLogger.Log("Reached the end of the playlist.");
                 updatedIndex = 0;
-                viewModel.SelectedIndex = updatedIndex;
-                audioService.CurrentMusicPath = viewModel.Songs[updatedIndex].FilePath;
-                SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
+                ViewModel.SelectedIndex = updatedIndex;
+                AudioService.CurrentMusicPath = ViewModel.Songs[updatedIndex].FilePath;
+                SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
             }
 
-            audioService.StopAndDisposeCurrentMusic();
+            AudioService.StopAndDisposeCurrentMusic();
 
             try
             {
-                audioMetaService.TakeArtistSongName(audioService.CurrentMusicPath);
-                audioMetaService?.UpdateAlbumArt(audioService.CurrentMusicPath);
+                AudioMetaService.TakeArtistSongName(AudioService.CurrentMusicPath);
+                AudioMetaService?.UpdateAlbumArt(AudioService.CurrentMusicPath);
 
-                audioService.audioFile = new AudioFileReader(audioService.CurrentMusicPath);
+                AudioService.AudioFile = new AudioFileReader(AudioService.CurrentMusicPath);
 
-                if (audioService._outputDevice == null)
+                if (AudioService.OutputDevice == null)
                 {
-                    audioService._outputDevice = new WaveOutEvent();
-                    audioService._outputDevice.PlaybackStopped += audioService.OnPlaybackStopped;
+                    AudioService.OutputDevice = new WaveOutEvent();
+                    AudioService.OutputDevice.PlaybackStopped += AudioService.OnPlaybackStopped;
                 }
 
 
-                audioService._outputDevice.Init(audioService.audioFile);
-                audioService._outputDevice.Play();
+                AudioService.OutputDevice.Init(AudioService.AudioFile);
+                AudioService.OutputDevice.Play();
 
-                audioService.NewMusicPath = audioService.CurrentMusicPath;
-                audioService._isMusicPlaying = true;
-                audioService._timerHelper.Start();
+                AudioService.NewMusicPath = AudioService.CurrentMusicPath;
+                AudioService.IsMusicPlaying = true;
+                AudioService.TimerHelper.Start();
             }
             catch (Exception ex)
             {
@@ -151,40 +174,40 @@ namespace WpfTuneForgePlayer.AudioModel
         }
         public void ChaoticPlaySong(object sender, RoutedEventArgs e)
         {
-            if (viewModel.Songs.Count == 0)
+            if (ViewModel.Songs.Count == 0)
             {
                 MessageBox.Show("No music available.", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            audioService.IsSelectedSongFavorite = false;
-            audioService.isSliderEnabled = true;
+            AudioService.IsSelectedSongFavorite = false;
+            AudioService.IsSliderEnabled = true;
 
-            int index = _random.Next(viewModel.Songs.Count);
-            audioService.CurrentMusicPath = viewModel.Songs[index].FilePath;
-            SimpleLogger.Log($"Playing music: {audioService.CurrentMusicPath}");
+            int index = Random.Next(ViewModel.Songs.Count);
+            AudioService.CurrentMusicPath = ViewModel.Songs[index].FilePath;
+            SimpleLogger.Log($"Playing music: {AudioService.CurrentMusicPath}");
 
-            audioService.StopAndDisposeCurrentMusic();
+            AudioService.StopAndDisposeCurrentMusic();
 
             try
             {
-                audioMetaService.TakeArtistSongName(audioService.CurrentMusicPath);
-                audioMetaService?.UpdateAlbumArt(audioService.CurrentMusicPath);
+                AudioMetaService.TakeArtistSongName(AudioService.CurrentMusicPath);
+                AudioMetaService?.UpdateAlbumArt(AudioService.CurrentMusicPath);
 
-                audioService.audioFile = new AudioFileReader(audioService.CurrentMusicPath);
+                AudioService.AudioFile = new AudioFileReader(AudioService.CurrentMusicPath);
 
-                if (audioService._outputDevice == null)
+                if (AudioService.OutputDevice == null)
                 {
-                    audioService._outputDevice = new WaveOutEvent();
-                    audioService._outputDevice.PlaybackStopped += audioService.OnPlaybackStopped;
+                    AudioService.OutputDevice = new WaveOutEvent();
+                    AudioService.OutputDevice.PlaybackStopped += AudioService.OnPlaybackStopped;
                 }
 
 
-                audioService._outputDevice.Init(audioService.audioFile);
-                audioService._outputDevice.Play();
+                AudioService.OutputDevice.Init(AudioService.AudioFile);
+                AudioService.OutputDevice.Play();
 
-                audioService.NewMusicPath = audioService.CurrentMusicPath;
-                audioService._isMusicPlaying = true;
-                audioService._timerHelper.Start();
+                AudioService.NewMusicPath = AudioService.CurrentMusicPath;
+                AudioService.IsMusicPlaying = true;
+                AudioService.TimerHelper.Start();
             }
             catch (Exception ex)
             {
