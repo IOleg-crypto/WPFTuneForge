@@ -13,6 +13,7 @@ namespace WpfTuneForgePlayer.ViewModel
 {
     public class BindingCommands
     {
+        // Commands for various UI actions
         public ICommand PlayCommand { get; set; }
         public ICommand SelectFavoriteSong { get; set; }
         public ICommand ToggleSound { get; set; }
@@ -25,25 +26,43 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand TakeTimer { get; set; }
         public ICommand SelectChaoticallySong { get; set; }
         public ICommand PlaySelectedSongCommand { get; set; }
-
         public ICommand IncreaseVolume { get; set; }
-
         public ICommand DecreaseVolume { get; set; }
 
-
- 
-        public void InitCommands(MusicViewModel viewModel , AudioService audioService, AudioMetaService audioMetaService)
+        // Initialize commands by binding them to methods in services and view model
+        public void InitCommands(MusicViewModel viewModel, AudioService audioService, AudioMetaService audioMetaService)
         {
+            // Play or pause music command
             PlayCommand = new RelayCommand(() => audioService.OnClickMusic(viewModel, null));
+
+            // Toggle favorite song in playlist
             SelectFavoriteSong = new RelayCommand(() => audioService.SelectFavoriteSongToPlayList(viewModel, null));
+
+            // Repeat current song
             RepeatCommand = new RelayCommand(() => audioService.RepeatSong(viewModel, null));
+
+            // Toggle mute/unmute sound
             ToggleAudio = new RelayCommand(() => audioService.VolumeService.ToggleSound());
+
+            // Play next song in playlist
             EndMusic = new RelayCommand(() => audioService.MusicNavigationService.EndMusic(viewModel, null));
+
+            // Change song playback position via slider
             ChangeMusicTime = new RelayCommand(() => audioService.SliderChanged());
+
+            // Reload the music list/page
             ReloadMusicPage = new RelayCommand(() => viewModel.LoadSongs(viewModel.TakeCurrentDirectory));
+
+            // Update timer manually (used for UI update)
             TakeTimer = new RelayCommand(() => audioService.TimerHelper?.TimerTime_Tick(viewModel, null));
+
+            // Play a random song
             SelectChaoticallySong = new RelayCommand(() => audioService.MusicNavigationService.ChaoticPlaySong(viewModel, null));
+
+            // Play previous song
             StartMusic = new RelayCommand(() => audioService.MusicNavigationService.StartMusic(viewModel, null));
+
+            // Play a specific song selected from the list
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>
             {
                 if (song != null)
@@ -51,15 +70,18 @@ namespace WpfTuneForgePlayer.ViewModel
                     audioService.CurrentMusicPath = song.FilePath;
                     audioMetaService.TakeArtistSongName(song.FilePath);
                     audioMetaService.UpdateAlbumArt(song.FilePath);
-                    // Get index of the selected song in the list of songs
+
+                    // Update selected index in the view model
                     int index = viewModel.Songs.IndexOf(song);
                     viewModel.SelectedIndex = index;
                 }
-            }); 
+            });
 
+            // Increase system volume
             IncreaseVolume = new RelayCommand(() => audioService.VolumeService.IncreaseVolume());
-            DecreaseVolume = new RelayCommand(() => audioService.VolumeService.DecreaseVolume());
 
+            // Decrease system volume
+            DecreaseVolume = new RelayCommand(() => audioService.VolumeService.DecreaseVolume());
         }
     }
 }

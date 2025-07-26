@@ -38,7 +38,7 @@ namespace WpfTuneForgePlayer
 
             DeviceOutputModel = new DeviceOutputModel(AudioService , ViewModel , AudioMetaService);
             ViewModel.MainWindow = this;
-
+            //Needed to fix bug with automatic playback music
             ViewModel.DeviceOutputModel = DeviceOutputModel;
             AudioService.DeviceOutputModel = DeviceOutputModel;
 

@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
@@ -21,12 +10,14 @@ namespace WpfTuneForgePlayer
 {
     public partial class MainWindow : Window
     {
+        // Private fields for core components and services
         private MusicViewModel _viewModel;
         private DeviceOutputModel _deviceOutputModel;
         private AudioService _audioService;
         private AudioMetaService _audioMetaService;
         private FavoriteSongs _favoriteSongs;
 
+        // Properties for accessing the fields
         public MusicViewModel ViewModel
         {
             get => _viewModel;
@@ -57,7 +48,10 @@ namespace WpfTuneForgePlayer
             set => _favoriteSongs = value;
         }
 
-
+        /// <summary>
+        /// Handles the event when a music track is selected.
+        /// Updates the current music path and metadata.
+        /// </summary>
         private void OnMusicSelected(string path)
         {
             AudioService.CurrentMusicPath = path;
@@ -65,6 +59,9 @@ namespace WpfTuneForgePlayer
             AudioMetaService.UpdateAlbumArt(path);
         }
 
+        /// <summary>
+        /// Attaches event handlers to sidebar actions.
+        /// </summary>
         private void ActionHandle()
         {
             Sidebar.MusicSelected += OnMusicSelected;
@@ -73,11 +70,17 @@ namespace WpfTuneForgePlayer
             Sidebar.FavoritePage += NavigateToFavoritePage;
         }
 
+        /// <summary>
+        /// Navigates to the music directory page.
+        /// </summary>
         private void OnShowMusicDirectory(object sender, EventArgs e)
         {
             MainContentFrame.Navigate(new MusicDirectory(ViewModel));
         }
 
+        /// <summary>
+        /// Navigates to the settings page, with callback to return to start page.
+        /// </summary>
         private void OnNavigateToSettings(object sender, EventArgs e)
         {
             var settingsPage = new Settings(DeviceOutputModel);
@@ -85,6 +88,9 @@ namespace WpfTuneForgePlayer
             MainContentFrame.Navigate(settingsPage);
         }
 
+        /// <summary>
+        /// Navigates to the start page and binds ViewModel as DataContext.
+        /// </summary>
         private void NavigateToStartPage()
         {
             var startPage = new StartPage
@@ -94,6 +100,9 @@ namespace WpfTuneForgePlayer
             MainContentFrame.Navigate(startPage);
         }
 
+        /// <summary>
+        /// Navigates to the favorite songs page and binds ViewModel as DataContext.
+        /// </summary>
         private void NavigateToFavoritePage(object sender, EventArgs e)
         {
             var favoriteSongs = new FavoriteSongs(ViewModel)
@@ -103,14 +112,23 @@ namespace WpfTuneForgePlayer
             MainContentFrame.Navigate(favoriteSongs);
         }
 
+        /// <summary>
+        /// Minimizes the window when minimize button is clicked.
+        /// </summary>
         private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
 
+        /// <summary>
+        /// Stops the external console logger and closes the window on close button click.
+        /// </summary>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             ExternalConsoleLogger.StopConsoleWatcher();
             Close();
         }
 
+        /// <summary>
+        /// Enables window dragging by mouse left button hold.
+        /// </summary>
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
