@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using TagLib.Mpeg;
 using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
+using System.IO;
 
 namespace WpfTuneForgePlayer.AudioModel
 {
@@ -122,7 +124,6 @@ namespace WpfTuneForgePlayer.AudioModel
             }
 
             AudioService.IsSliderEnabled = true;
-            AudioService.IsSelectedSongFavorite = true;
 
             int updatedIndex = ViewModel.SelectedIndex + 1;
 

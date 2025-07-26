@@ -27,7 +27,7 @@ namespace WpfTuneForgePlayer.AudioModel
         private MusicNavigationService musicNavigationService;
         private DeviceOutputModel deviceOutputModel;
         private bool isSoundOn;
-        private bool isSelectedSongFavorite;
+        private bool isSelectedSongFavorite = false;
         private bool isSliderEnabled = false;
         private bool isMusicPlaying;
 
@@ -220,6 +220,7 @@ namespace WpfTuneForgePlayer.AudioModel
                     PlayMusic();
                     NewMusicPath = CurrentMusicPath;
                     IsSliderEnabled = true;
+                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png"))); // To prevent bug , when user click and icon not changing
                 }
                 catch (Exception ex)
                 {
@@ -267,6 +268,19 @@ namespace WpfTuneForgePlayer.AudioModel
             MusicViewModel.EndTime = "00:00";
 
             IsSliderEnabled = false;
+
+            IsSelectedSongFavorite = false;
+
+            var defaultFavoriteIconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\sidebar\\favorite_a.png");
+            if (File.Exists(defaultFavoriteIconPath))
+            {
+                var emptyIcon = new BitmapImage(new Uri(defaultFavoriteIconPath, UriKind.Absolute));
+                MusicViewModel.FavoriteSong = emptyIcon;
+            }
+            else
+            {
+                MessageBox.Show("Default favorite icon not found", "TuneForge", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
             var defaultImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/menu/musicLogo.jpg");
             if (File.Exists(defaultImagePath))
