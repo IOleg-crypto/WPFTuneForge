@@ -32,14 +32,12 @@ TuneForge is a Windows Forms application developed in C# for audio playback and 
 ````
 https://github.com/IOleg-crypto/TuneForge.git
 ````
-2. Install libraries using NuGet Package Manager
+2. Restore NuGet packages (TagLib#, NAudio).
 ```
 dotnet restore
 ```
-
 3. Open the solution file in Visual Studio 2022.
-4. Restore NuGet packages (TagLib#, NAudio).
-5. Build and run the project.
+4. Build and run the project.
 
 ## Usage
 
