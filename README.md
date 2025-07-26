@@ -2,10 +2,6 @@
 
 TuneForge is a Windows Forms application developed in C# for audio playback and visualization. The project leverages the powerful TagLib library for audio metadata handling, and integrates a real-time audio visualizer for an enhanced user experience.
 
-⚠️ **TuneForge is currently in development and not fully implemented.**
->
-> Some features may be incomplete or unstable. Contributions and feedback are welcome!
-
 ## Features
 
 - Audio playback with support for common audio formats (MP3 , WAV)
@@ -24,6 +20,12 @@ TuneForge is a Windows Forms application developed in C# for audio playback and 
 - **NAudio**: For audio playback and processing
 - **Visual Studio 2022**: The IDE used for development
 
+## Preview
+![TuneForge Preview](https://i.imgur.com/4oqEfWo.png)
+![Favorite Preview](https://i.imgur.com/uS6bPaD.png)
+![Settings Preview](https://i.imgur.com/Ep5at1i.png)
+![Music Preview](https://i.imgur.com/X2s0IBV.png)
+
 ## Installation
 
 1. Clone the repository:
@@ -34,7 +36,6 @@ https://github.com/IOleg-crypto/TuneForge.git
 ```
 dotnet restore
 ```
-
 
 3. Open the solution file in Visual Studio 2022.
 4. Restore NuGet packages (TagLib#, NAudio).
