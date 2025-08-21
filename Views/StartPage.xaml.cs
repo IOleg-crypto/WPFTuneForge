@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using TagLib.Mpeg;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
+using WpfTuneForgePlayer.Shader;
 
 
 namespace WpfTuneForgePlayer
@@ -28,10 +29,15 @@ namespace WpfTuneForgePlayer
         public StartPage()
         {
             InitializeComponent();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+                BackgroundImageBlur.Loaded += (s, e) =>
+                {
+                    if (BlurShader is BlurEffect effect)
+                    {
+                        effect.PixelSize = new Point(1.0 / BackgroundImageBlur.ActualWidth,
+                                                     1.0 / BackgroundImageBlur.ActualHeight);
+                    }
+                };
 
         }
     }

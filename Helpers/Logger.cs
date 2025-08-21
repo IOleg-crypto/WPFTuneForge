@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControlzEx.Standard;
+using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -18,15 +19,30 @@ namespace WpfTuneForgePlayer.Helpers
                 File.WriteAllText(logFilePath, "Log start\n");
             }
 
-            var psi = new ProcessStartInfo
+            var logConsole = new ProcessStartInfo
             {
                 FileName = "powershell.exe",
                 Arguments = $"-NoExit -Command \"Get-Content -Path '{logFilePath}' -Wait\"",
                 UseShellExecute = true,
                 CreateNoWindow = false
+
             };
 
-            consoleProcess = Process.Start(psi);
+            consoleProcess = new Process
+            {
+                StartInfo = logConsole,
+                EnableRaisingEvents = true
+            };
+
+            consoleProcess.Exited += (sender, args) =>
+            {
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {
+                    System.Windows.Application.Current.Shutdown();
+                });
+            };
+
+            consoleProcess.Start();
         }
 
         public static Process ConsoleProcess => consoleProcess;

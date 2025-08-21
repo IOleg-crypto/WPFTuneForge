@@ -17,6 +17,7 @@ using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
 using WpfTuneForgePlayer.Views;
 using WpfTuneForgePlayer.Helpers;
+using WpfTuneForgePlayer.Shader;
 
 
 namespace WpfTuneForgePlayer
@@ -42,6 +43,7 @@ namespace WpfTuneForgePlayer
             ViewModel.DeviceOutputModel = DeviceOutputModel;
             AudioService.DeviceOutputModel = DeviceOutputModel;
 
+           
             NavigateToStartPage();
             ActionHandle();
         }
