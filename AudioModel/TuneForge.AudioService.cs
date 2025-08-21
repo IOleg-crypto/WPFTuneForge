@@ -292,14 +292,26 @@ namespace WpfTuneForgePlayer.AudioModel
                     return;
                 }
 
-                var song = MusicViewModel.Songs[MusicViewModel.SelectedIndex];
-                MusicViewModel.SongGrid.Add(new Song(song.Artist, song.Title, song.Duration));
+                var songModel = MusicViewModel.Songs[MusicViewModel.SelectedIndex];
 
-                using (var writer = new BinaryWriter(File.Open(FileName, File.Exists(FileName) ? FileMode.Append : FileMode.Create)))
+                if (!MusicViewModel.SongGrid.Any(s =>
+                        s.Title == songModel.Title &&
+                        s.Artist == songModel.Artist &&
+                        s.Duration == songModel.Duration))
                 {
-                    writer.Write(song.Artist);
-                    writer.Write(song.Title);
-                    writer.Write(song.Duration);
+                    var song = new Song(songModel.Title, songModel.Artist, songModel.Duration);
+                    MusicViewModel.SongGrid.Add(song); 
+                    using (var writer = new BinaryWriter(File.Open(FileName,
+                               File.Exists(FileName) ? FileMode.Append : FileMode.Create)))
+                    {
+                        writer.Write(song.Artist);
+                        writer.Write(song.Title);
+                        writer.Write(song.Duration);
+                    }
+                }
+                else
+                {
+                    SimpleLogger.Log($"Duplicate skipped: {songModel.Title} - {songModel.Artist}");
                 }
             }
         }

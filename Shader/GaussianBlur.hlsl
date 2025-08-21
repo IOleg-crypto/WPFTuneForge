@@ -14,7 +14,7 @@ float4 main(float2 uv : TEXCOORD) : COLOR
         }
     }
 
-    color /= 25.0;      // усереднення
-    color.a = 1.0;      // встановлюємо альфу повністю непрозору
+    color /= 25.0;      
+    color.a = 1.0;    
     return color;
 }

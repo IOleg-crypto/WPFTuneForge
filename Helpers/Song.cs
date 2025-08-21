@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfTuneForgePlayer.Helpers
 {
-    public class Song
+    public class Song : IEquatable<Song>
     {
         public string Title { get; set; }
         public string Artist { get; set; }
@@ -18,5 +18,21 @@ namespace WpfTuneForgePlayer.Helpers
             Artist = artist;
             Duration = duration;
         }
+
+        public bool Equals(Song other)
+        {
+            if (other is null) return false;
+            return Title == other.Title
+                && Artist == other.Artist
+                && Duration == other.Duration;
+        }
+
+        public override bool Equals(object obj) => Equals(obj as Song);
+
+        public override int GetHashCode() =>
+            HashCode.Combine(Title, Artist, Duration);
+
+        public static bool operator ==(Song left, Song right) => Equals(left, right);
+        public static bool operator !=(Song left, Song right) => !Equals(left, right);
     }
 }

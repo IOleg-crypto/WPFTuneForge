@@ -16,6 +16,9 @@ namespace WpfTuneForgePlayer
         private AudioService _audioService;
         private AudioMetaService _audioMetaService;
         private FavoriteSongs _favoriteSongs;
+        private Settings _settings;
+        private StartPage _startPage;
+      
 
         // Properties for accessing the fields
         public MusicViewModel ViewModel
@@ -83,9 +86,9 @@ namespace WpfTuneForgePlayer
         /// </summary>
         private void OnNavigateToSettings(object sender, EventArgs e)
         {
-            var settingsPage = new Settings(DeviceOutputModel);
-            settingsPage.backToStartPage += (_, __) => NavigateToStartPage();
-            MainContentFrame.Navigate(settingsPage);
+            _settings = new Settings(DeviceOutputModel);
+            _settings.backToStartPage += (_, __) => NavigateToStartPage();
+            MainContentFrame.Navigate(_settings);
         }
 
         /// <summary>
@@ -93,11 +96,11 @@ namespace WpfTuneForgePlayer
         /// </summary>
         private void NavigateToStartPage()
         {
-            var startPage = new StartPage
+            _startPage = new StartPage
             {
                 DataContext = ViewModel
             };
-            MainContentFrame.Navigate(startPage);
+            MainContentFrame.Navigate(_startPage);
         }
 
         /// <summary>
@@ -105,11 +108,11 @@ namespace WpfTuneForgePlayer
         /// </summary>
         private void NavigateToFavoritePage(object sender, EventArgs e)
         {
-            var favoriteSongs = new FavoriteSongs(ViewModel)
+            _favoriteSongs = new FavoriteSongs(ViewModel , _startPage)
             {
                 DataContext = ViewModel
             };
-            MainContentFrame.Navigate(favoriteSongs);
+            MainContentFrame.Navigate(_favoriteSongs);
         }
 
         /// <summary>

@@ -115,7 +115,19 @@ namespace WpfTuneForgePlayer.ViewModel
 
         // ===== Public properties (bindable in XAML) =====
         public ObservableCollection<SongModel> Songs { get; set; } = new();
-        public ObservableCollection<Song> SongGrid { get; set; } = new();
+        private ObservableCollection<Song> _songGrid = new();
+        public ObservableCollection<Song> SongGrid
+        {
+            get => _songGrid;
+            set
+            {
+                if (_songGrid != value)
+                {
+                    _songGrid = value;
+                    OnPropertyChanged(nameof(SongGrid)); 
+                }
+            }
+        }
         public BindingCommands Commands { get; private set; }
         public MainWindow MainWindow { get; set; }
         public DeviceOutputModel DeviceOutputModel { get; set; }

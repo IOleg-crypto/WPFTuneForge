@@ -34,31 +34,33 @@ namespace WpfTuneForgePlayer.Views
             set
             {
                 songs = value;
-                FavoriteSongsGrid.ItemsSource = songs;
             }
         }
 
-        public FavoriteSongs(MusicViewModel vm)
+        public FavoriteSongs(MusicViewModel vm , StartPage startPage)
         {
             InitializeComponent();
-            _startPage = new StartPage();
-            _viewModel = vm;   
+            _startPage = startPage;
+            _viewModel = vm;
             // Needed for binding (instead using DAMNNN MAINWINDOW)
-            Songs = _viewModel.SongGrid.Count > 0 ? _viewModel.SongGrid : ReadFile("FavoriteSong.bin");
+            Songs = _viewModel.SongGrid.Count > 0
+            ? _viewModel.SongGrid
+            : ReadFile("FavoriteSong.bin");
+            FavoriteSongsGrid.ItemsSource = Songs;
             DataContext = vm;
-            FavoriteSongsGrid.ItemsSource = songs;
 
         }
         // Read user favorite songs from file
-        public ObservableCollection<Song> ReadFile(string FileName)
+        public ObservableCollection<Song> ReadFile(string fileName)
         {
-            Songs = new ObservableCollection<Song>();
+            var result = new ObservableCollection<Song>(); 
 
-            if (!File.Exists(FileName))
-            {
-                return Songs;
-            }
-            using (BinaryReader reader = new BinaryReader(File.Open(FileName, FileMode.Open)))
+            if (!File.Exists(fileName))
+                return result;
+
+            var uniqueSongs = new HashSet<Song>();
+
+            using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
             {
                 while (reader.BaseStream.Position < reader.BaseStream.Length)
                 {
@@ -66,10 +68,20 @@ namespace WpfTuneForgePlayer.Views
                     string title = reader.ReadString();
                     string duration = reader.ReadString();
 
-                    Songs.Add(new Song(title, artist, duration));
+                    var song = new Song(title, artist, duration);
+
+                    if (uniqueSongs.Add(song))
+                    {
+                        result.Add(song);
+                    }
+                    else
+                    {
+                        SimpleLogger.Log($"Duplicate skipped: {title} - {artist}");
+                    }
                 }
             }
-            return Songs;
+
+            return result;
         }
 
         private void BackToMainPage(object sender, RoutedEventArgs e)

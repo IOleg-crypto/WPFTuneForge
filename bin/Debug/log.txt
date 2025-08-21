@@ -1,0 +1,25 @@
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: I Miss You - Adele
+[11:23:59] Duplicate skipped: I Miss You - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Love In The Dark - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Million Years Ago - Adele
+[11:23:59] Duplicate skipped: Remedy - Adele
+[11:23:59] Duplicate skipped: Remedy - Adele
+[11:23:59] Duplicate skipped: Remedy - Adele
+[11:23:59] Duplicate skipped: Remedy - Adele
+[11:23:59] Duplicate skipped: Remedy - Adele
+[11:23:59] Duplicate skipped: Hello - Adele
+[11:23:59] Duplicate skipped: I Miss You - Adele
+[11:23:59] Duplicate skipped: Love In The Dark - Adele
+[11:23:59] Duplicate skipped: I Miss You - Adele
+[11:25:29] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[11:25:29] Init music - AudioFileReader and WaveOutEvent
+[11:25:30] Play music
