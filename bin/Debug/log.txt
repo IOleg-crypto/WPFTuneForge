@@ -1,0 +1,105 @@
+[18:43:34] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[18:43:34] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:36] Playing music: C:\Users\38063\Music\Adele - Skyfall.mp3
+[18:43:36] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:37] Playing music: C:\Users\38063\Music\Adele - Someone Like You.mp3
+[18:43:37] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:38] Playing music: C:\Users\38063\Music\Adele - Sweetest Devotion.mp3
+[18:43:38] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:39] Playing music: C:\Users\38063\Music\Adele - Water Under The Bridge.mp3
+[18:43:39] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:40] Playing music: C:\Users\38063\Music\Adele - When We Were Young.mp3
+[18:43:40] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:43] Playing music: C:\Users\38063\Music\adele_-_skyfall_(z3.fm).mp3
+[18:43:43] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:48] Playing music: C:\Users\38063\Music\The_Cramps_-_Goo_Goo_Muck_(ringon.site).mp3
+[18:43:48] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:49] Reached the end of the playlist.
+[18:43:49] Playing music: C:\Users\38063\Music\Adele - All I Ask.mp3
+[18:43:49] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:50] Playing music: C:\Users\38063\Music\Adele - Hello.mp3
+[18:43:50] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:51] Playing music: C:\Users\38063\Music\Adele - I Miss You.mp3
+[18:43:51] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:52] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[18:43:52] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:53] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[18:43:53] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:55] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[18:43:55] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:57] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[18:43:57] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:58] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[18:43:58] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:58] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[18:43:58] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:43:59] Playing music: C:\Users\38063\Music\Adele - Skyfall.mp3
+[18:43:59] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:00] Playing music: C:\Users\38063\Music\Adele - Someone Like You.mp3
+[18:44:00] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:00] Playing music: C:\Users\38063\Music\Adele - Sweetest Devotion.mp3
+[18:44:00] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:00] Playing music: C:\Users\38063\Music\Adele - Water Under The Bridge.mp3
+[18:44:00] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:00] Playing music: C:\Users\38063\Music\Adele - When We Were Young.mp3
+[18:44:01] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:01] Playing music: C:\Users\38063\Music\adele_-_skyfall_(z3.fm).mp3
+[18:44:01] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:02] Playing music: C:\Users\38063\Music\The_Cramps_-_Goo_Goo_Muck_(ringon.site).mp3
+[18:44:02] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:02] Reached the end of the playlist.
+[18:44:02] Playing music: C:\Users\38063\Music\Adele - All I Ask.mp3
+[18:44:02] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:02] Playing music: C:\Users\38063\Music\Adele - Hello.mp3
+[18:44:02] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:02] Playing music: C:\Users\38063\Music\Adele - I Miss You.mp3
+[18:44:02] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:44:02] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[18:44:02] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:38] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[18:46:38] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:39] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[18:46:39] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:40] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[18:46:40] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:40] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[18:46:40] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:40] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[18:46:40] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:41] Playing music: C:\Users\38063\Music\Adele - Skyfall.mp3
+[18:46:41] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:42] Playing music: C:\Users\38063\Music\Adele - Someone Like You.mp3
+[18:46:42] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:43] Playing music: C:\Users\38063\Music\Adele - Sweetest Devotion.mp3
+[18:46:43] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:43] Playing music: C:\Users\38063\Music\Adele - Water Under The Bridge.mp3
+[18:46:43] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:44] Playing music: C:\Users\38063\Music\Adele - When We Were Young.mp3
+[18:46:44] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:45] Playing music: C:\Users\38063\Music\adele_-_skyfall_(z3.fm).mp3
+[18:46:45] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:45] Playing music: C:\Users\38063\Music\The_Cramps_-_Goo_Goo_Muck_(ringon.site).mp3
+[18:46:45] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:46] Reached the end of the playlist.
+[18:46:46] Playing music: C:\Users\38063\Music\Adele - All I Ask.mp3
+[18:46:46] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:47] Playing music: C:\Users\38063\Music\Adele - Hello.mp3
+[18:46:47] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:47] Playing music: C:\Users\38063\Music\Adele - I Miss You.mp3
+[18:46:47] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:48] Playing music: C:\Users\38063\Music\Adele - Love In The Dark.mp3
+[18:46:48] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:48] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[18:46:48] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:49] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[18:46:49] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:50] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[18:46:50] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:51] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[18:46:51] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:51] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[18:46:51] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:52] Playing music: C:\Users\38063\Music\Adele - Skyfall.mp3
+[18:46:52] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[18:46:52] Playing music: C:\Users\38063\Music\Adele - Someone Like You.mp3
+[18:46:52] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg

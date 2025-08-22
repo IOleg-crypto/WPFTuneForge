@@ -1,20 +1,26 @@
-﻿using System;
+﻿
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 
-namespace WpfTuneForgePlayer.Shader {
-
+namespace WpfTuneForgePlayer.Shader
+{
     public class BlurEffect : ShaderEffect
     {
-        private static readonly PixelShader _shader = new PixelShader
-        {
-            UriSource = new Uri("D:\\gitnext\\WpfTuneForgePlayer\\Shader\\GaussianBlur.ps")
-        };
-
         public BlurEffect()
         {
-            PixelShader = _shader;
+            PixelShader pixelShader = new PixelShader();
+
+            // Завантаження з диску через потік
+            using (FileStream fs = new FileStream(@"D:\gitnext\WpfTuneForgePlayer\Shader\GaussianBlur.ps", FileMode.Open, FileAccess.Read))
+            {
+                pixelShader.SetStreamSource(fs);
+            }
+
+            PixelShader = pixelShader;
+
+            // Після присвоєння PixelShader можна викликати UpdateShaderValue
             UpdateShaderValue(PixelSizeProperty);
         }
 
@@ -30,3 +36,4 @@ namespace WpfTuneForgePlayer.Shader {
         }
     }
 }
+
