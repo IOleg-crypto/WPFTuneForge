@@ -22,13 +22,10 @@ namespace WpfTuneForgePlayer
 {
     public partial class MusicDirectory : Page
     {
-        private StartPage _startPage;
-        private MusicViewModel _viewModel;
+        private readonly StartPage _startPage;
+        private readonly MusicViewModel _viewModel;
 
-        public string CurrentDirectory
-        {
-            get; set;
-        }
+        public string CurrentDirectory { get; set; }
 
         public MusicDirectory(MusicViewModel vm)
         {
@@ -36,31 +33,31 @@ namespace WpfTuneForgePlayer
             _startPage = new StartPage();
             _viewModel = vm;
             DataContext = vm;
-            
 
+            SubscribeToCollectionChanges();
+            UpdateInfoMessage();
+        }
+
+        private void SubscribeToCollectionChanges()
+        {
             if (_viewModel.Songs is INotifyCollectionChanged incc)
             {
                 incc.CollectionChanged += Songs_CollectionChanged;
             }
-
-            CheckCollectionSongs();
         }
 
         private void Songs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            CheckCollectionSongs();
+            UpdateInfoMessage();
         }
 
-        private void CheckCollectionSongs()
+
+        private void UpdateInfoMessage()
         {
-            if (_viewModel.Songs != null && _viewModel.Songs.Count == 0)
-            {
+            if (_viewModel.Songs == null || _viewModel.Songs.Count == 0)
                 InfoInDirectory.Visibility = Visibility.Visible;
-            }
             else
-            {
                 InfoInDirectory.Visibility = Visibility.Collapsed;
-            }
         }
 
         private void BackToMainPage(object sender, RoutedEventArgs e)
@@ -73,13 +70,17 @@ namespace WpfTuneForgePlayer
             }
         }
 
+
         private void OpenMusicFolder(object sender, RoutedEventArgs e)
         {
-            var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            using (var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                _viewModel.LoadSongs(folderBrowserDialog.SelectedPath);
-                _viewModel.TakeCurrentDirectory = folderBrowserDialog.SelectedPath;
+                if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string selectedPath = folderBrowserDialog.SelectedPath;
+                    _viewModel.LoadSongs(selectedPath);
+                    _viewModel.TakeCurrentDirectory = selectedPath;
+                }
             }
         }
     }

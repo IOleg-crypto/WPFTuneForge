@@ -29,16 +29,19 @@ namespace WpfTuneForgePlayer
         public StartPage()
         {
             InitializeComponent();
+            LoadBlurShader();
+        }
 
-                BackgroundImageBlur.Loaded += (s, e) =>
+        private void LoadBlurShader()
+        {
+            BackgroundImageBlur.Loaded += (s, e) =>
+            {
+                if (BlurShader is BlurEffect effect)
                 {
-                    if (BlurShader is BlurEffect effect)
-                    {
-                        effect.PixelSize = new Point(1.0 / BackgroundImageBlur.ActualWidth,
-                                                     1.0 / BackgroundImageBlur.ActualHeight);
-                    }
-                };
-
+                    effect.PixelSize = new Point(1.0 / BackgroundImageBlur.ActualWidth,
+                                                 1.0 / BackgroundImageBlur.ActualHeight);
+                }
+            };
         }
     }
 }

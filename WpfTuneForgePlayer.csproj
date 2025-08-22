@@ -290,7 +290,7 @@
     <Compile Include="Helpers\Song.cs" />
     <Compile Include="Helpers\TimerHelper.cs" />
     <Compile Include="MainWindow.Events.xaml.cs" />
-    <Compile Include="Core\Command.cs" />
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Shader\BlurEffect.cs" />
     <Compile Include="ViewModel\DeviceViewModel.cs" />
     <Compile Include="ViewModel\BindingCommands.cs" />
