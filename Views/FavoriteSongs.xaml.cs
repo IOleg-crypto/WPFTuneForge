@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfTuneForgePlayer.Helpers;
 using WpfTuneForgePlayer.ViewModel;
+using Path = System.IO.Path;
 
 namespace WpfTuneForgePlayer.Views
 {
@@ -26,6 +28,7 @@ namespace WpfTuneForgePlayer.Views
     {
         private readonly StartPage _startPage;
         private readonly MusicViewModel _viewModel;
+        private string _pathFileRead;
 
         public ObservableCollection<Song> Songs { get; private set; }
 
@@ -36,8 +39,14 @@ namespace WpfTuneForgePlayer.Views
             _viewModel = vm;
 
             SetupGrid();
+            InitPathReadFile();
             InitializeSongs();
             BindDataContext();
+        }
+
+        private void InitPathReadFile()
+        {
+            _pathFileRead = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "FavoriteSong.bin"); 
         }
 
         private void SetupGrid()
@@ -52,7 +61,7 @@ namespace WpfTuneForgePlayer.Views
         {
             Songs = _viewModel.SongGrid.Count > 0
                 ? _viewModel.SongGrid
-                : LoadSongsFromFile("FavoriteSong.bin");
+                : LoadSongsFromFile(_pathFileRead);
 
             _viewModel.SongGrid = Songs;
             FavoriteSongsGrid.ItemsSource = _viewModel.SongGrid;

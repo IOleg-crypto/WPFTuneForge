@@ -54,6 +54,12 @@
             </TextBlock.Effect>
         </TextBlock>
 
+        <Button Style="{StaticResource SaveButtonStyle}" Command="{Binding Commands.SaveFavoriteSongs}" Height="30"  
+        HorizontalContentAlignment="Center"
+        VerticalAlignment="Top" 
+        Margin="441,10,107,0"
+        Content="Save current favorite songs"></Button>
+
         <Border Grid.Row="1"
         Background="#22FFFFFF" 
         CornerRadius="10"
@@ -72,6 +78,7 @@
               CanUserSortColumns ="True"
               CanUserDeleteRows ="True"
               IsEnabled="True"
+                      
               IsReadOnly="False"
               BorderThickness="0"
               FontSize="16"
@@ -79,11 +86,10 @@
               SelectionUnit="FullRow"
               VerticalScrollBarVisibility="Visible"
               ItemsSource="{Binding FavoriteSongs}">
-
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="👤 Artist" Binding="{Binding Artist}" Width="2*" />
-                    <DataGridTextColumn Header="🎧 Title" Binding="{Binding Title}" Width="2*" />
-                    <DataGridTextColumn Header="⏱ Duration" Binding="{Binding Duration}" Width="2*" />
+                    <DataGridTextColumn Header="👤 Artist" Binding="{Binding Artist}" IsReadOnly="True"  Width="2*" />
+                    <DataGridTextColumn Header="🎧 Title" Binding="{Binding Title}" IsReadOnly="True" Width="2*" />
+                    <DataGridTextColumn Header="⏱ Duration" Binding="{Binding Duration}" IsReadOnly="True" Width="2*" />
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

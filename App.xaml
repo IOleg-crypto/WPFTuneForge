@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:WpfTuneForgePlayer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
         <Style x:Key="ImageButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -17,7 +18,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key ="SidebarStyle" TargetType="Button">
+
+
+        <Style x:Key="SidebarStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>
@@ -25,5 +28,29 @@
             <Setter Property="Padding" Value="5"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
         </Style>
+
+        <Style x:Key="SaveButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#4A90E2"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                CornerRadius="8"  
+                                Background="{TemplateBinding Background}"  
+                                BorderBrush="#2D6EBE"  
+                                BorderThickness="1"  
+                                Padding="6,0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

@@ -70,7 +70,6 @@ namespace WpfTuneForgePlayer.AudioModel
 
             AudioService.IsSliderEnabled = true;
             AudioService.IsSelectedSongFavorite = false;
-            // This bool sets to true , if 
             IsUserApplyNewMusic = true;
 
             if (IsUserApplyNewMusic)

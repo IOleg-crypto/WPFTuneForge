@@ -28,6 +28,7 @@ namespace WpfTuneForgePlayer.ViewModel
         public ICommand PlaySelectedSongCommand { get; set; }
         public ICommand IncreaseVolume { get; set; }
         public ICommand DecreaseVolume { get; set; }
+        public ICommand SaveFavoriteSongs { get; set; }
 
         // Initialize commands by binding them to methods in services and view model
         public void InitCommands(MusicViewModel viewModel, AudioService audioService, AudioMetaService audioMetaService)
@@ -61,6 +62,9 @@ namespace WpfTuneForgePlayer.ViewModel
 
             // Play previous song
             StartMusic = new RelayCommand(() => audioService.MusicNavigationService.StartMusic(viewModel, null));
+
+            // Save favorite song file
+            SaveFavoriteSongs = new RelayCommand(() => audioService.SaveFavoriteSongs(viewModel.SongGrid));
 
             // Play a specific song selected from the list
             PlaySelectedSongCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<SongModel>(song =>

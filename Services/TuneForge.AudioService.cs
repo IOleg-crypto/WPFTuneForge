@@ -2,8 +2,10 @@
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -326,6 +328,26 @@ namespace WpfTuneForgePlayer.AudioModel
             TimerHelper.Start();
             OutputDevice.Play();
             IsMusicPlaying = true;
+        }
+
+        public void SaveFavoriteSongs(ObservableCollection<Song> songs)
+        {
+            if (songs == null || songs.Count == 0)
+                return;
+
+            string dirProgram = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string filePath = Path.Combine(dirProgram, FileName);
+
+            using (var writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
+            {
+                foreach (Song song in songs)
+                {
+                    writer.Write(song.Artist ?? string.Empty);
+                    writer.Write(song.Title ?? string.Empty);
+                    writer.Write(song.Duration);
+                }
+            }
         }
     }
 }
