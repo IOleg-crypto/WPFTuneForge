@@ -280,21 +280,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AudioModel\TuneForge.AudioDeviceInfo.cs" />
-    <Compile Include="AudioModel\TuneForge.AudioMetaService.cs" />
-    <Compile Include="AudioModel\TuneForge.AudioService.cs" />
-    <Compile Include="AudioModel\TuneForge.MusicNavigationService.cs" />
-    <Compile Include="AudioModel\TuneForge.SongModel.cs" />
-    <Compile Include="AudioModel\TuneForge.VolumeService.cs" />
+    <Compile Include="Services\TuneForge.AudioDeviceInfo.cs" />
+    <Compile Include="Services\TuneForge.AudioMetaService.cs" />
+    <Compile Include="Services\TuneForge.AudioService.cs" />
+    <Compile Include="Services\TuneForge.MusicNavigationService.cs" />
+    <Compile Include="Services\TuneForge.SongModel.cs" />
+    <Compile Include="Services\TuneForge.VolumeService.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\Song.cs" />
     <Compile Include="Helpers\TimerHelper.cs" />
     <Compile Include="MainWindow.Events.xaml.cs" />
-    <Compile Include="Model\Command.cs" />
+    <Compile Include="Core\Command.cs" />
     <Compile Include="Shader\BlurEffect.cs" />
     <Compile Include="ViewModel\DeviceViewModel.cs" />
     <Compile Include="ViewModel\BindingCommands.cs" />
-    <Compile Include="ViewModel\ImageLoader.cs" />
+    <Compile Include="Services\ImageLoader.cs" />
     <Compile Include="Views\AuthorInfo.xaml.cs">
       <DependentUpon>AuthorInfo.xaml</DependentUpon>
     </Compile>

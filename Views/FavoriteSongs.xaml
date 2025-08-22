@@ -30,9 +30,7 @@
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- кнопки / заголовок -->
             <RowDefinition Height="*"/>
-            <!-- DataGrid -->
         </Grid.RowDefinitions>
 
         <Button Click="BackToMainPage" Width="35" Height="34" Margin="50,5,25,0" 
@@ -71,8 +69,10 @@
               Foreground="White"
               GridLinesVisibility="Horizontal"
               Background="Transparent"
+              CanUserSortColumns ="True"
+              CanUserDeleteRows ="True"
               IsEnabled="True"
-              IsReadOnly="True"
+              IsReadOnly="False"
               BorderThickness="0"
               FontSize="16"
               SelectionMode="Single"
