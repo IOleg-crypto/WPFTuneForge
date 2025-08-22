@@ -14,7 +14,12 @@ namespace WpfTuneForgePlayer.AudioModel
         private AudioMetaService audioMetaService;
         private MusicViewModel viewModel;
         private Random _random = new Random();
-
+        private bool _isUserApplyNewMusic;
+        public bool IsUserApplyNewMusic
+        {
+            get { return _isUserApplyNewMusic; }
+            set { _isUserApplyNewMusic = value; }
+        }
         public MusicNavigationService(MusicViewModel viewModel, AudioService audioService, AudioMetaService audioMetaService)
         {
             this.viewModel = viewModel;
@@ -65,7 +70,14 @@ namespace WpfTuneForgePlayer.AudioModel
 
             AudioService.IsSliderEnabled = true;
             AudioService.IsSelectedSongFavorite = false;
+            // This bool sets to true , if 
+            IsUserApplyNewMusic = true;
 
+            if (IsUserApplyNewMusic)
+            {
+                viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
+            }
+            
             int updatedIndex = ViewModel.SelectedIndex - 1;
             if (updatedIndex < 0)
                 updatedIndex = ViewModel.Songs.Count - 1; // Wrap around to the last song
@@ -114,6 +126,12 @@ namespace WpfTuneForgePlayer.AudioModel
             }
 
             AudioService.IsSliderEnabled = true;
+            IsUserApplyNewMusic = true;
+
+            if(IsUserApplyNewMusic)
+            {
+                viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
+            }
 
             int updatedIndex = ViewModel.SelectedIndex + 1;
             if (updatedIndex >= ViewModel.Songs.Count)

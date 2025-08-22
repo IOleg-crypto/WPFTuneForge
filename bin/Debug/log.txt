@@ -1,24 +1,60 @@
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: I Miss You - Adele
-[16:56:39] Duplicate skipped: I Miss You - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Love In The Dark - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Million Years Ago - Adele
-[16:56:39] Duplicate skipped: Remedy - Adele
-[16:56:39] Duplicate skipped: Remedy - Adele
-[16:56:39] Duplicate skipped: Remedy - Adele
-[16:56:39] Duplicate skipped: Remedy - Adele
-[16:56:39] Duplicate skipped: Remedy - Adele
-[16:56:39] Duplicate skipped: Hello - Adele
-[16:56:39] Duplicate skipped: I Miss You - Adele
-[16:56:39] Duplicate skipped: Love In The Dark - Adele
-[16:56:39] Duplicate skipped: I Miss You - Adele
-[16:56:39] Duplicate skipped: I Miss You - Adele
-[16:56:39] Duplicate skipped: When We Were Young - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: I Miss You - Adele
+[17:17:44] Duplicate skipped: I Miss You - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Love In The Dark - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Million Years Ago - Adele
+[17:17:44] Duplicate skipped: Remedy - Adele
+[17:17:44] Duplicate skipped: Remedy - Adele
+[17:17:44] Duplicate skipped: Remedy - Adele
+[17:17:44] Duplicate skipped: Remedy - Adele
+[17:17:44] Duplicate skipped: Remedy - Adele
+[17:17:44] Duplicate skipped: Hello - Adele
+[17:17:44] Duplicate skipped: I Miss You - Adele
+[17:17:44] Duplicate skipped: Love In The Dark - Adele
+[17:17:44] Duplicate skipped: I Miss You - Adele
+[17:17:44] Duplicate skipped: I Miss You - Adele
+[17:17:44] Duplicate skipped: When We Were Young - Adele
+[17:17:57] Playing music: C:\Users\38063\Music\Adele - Million Years Ago.mp3
+[17:17:57] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:01] Music paused
+[17:18:01] Music paused
+[17:18:04] Music paused
+[17:18:06] Music paused
+[17:18:11] Playing music: C:\Users\38063\Music\Adele - Remedy.mp3
+[17:18:11] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:12] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[17:18:12] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:13] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[17:18:13] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:15] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[17:18:15] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:16] Music paused
+[17:18:17] Music paused
+[17:18:19] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[17:18:19] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:20] Music paused
+[17:18:21] Music paused
+[17:18:23] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[17:18:23] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:24] Music paused
+[17:18:26] Music paused
+[17:18:29] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[17:18:29] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:29] Music paused
+[17:18:31] Music paused
+[17:18:32] Playing music: C:\Users\38063\Music\Adele - Set Fire To The Rain_(play.muzfan.net).mp3
+[17:18:32] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:33] Playing music: C:\Users\38063\Music\Adele - Send My Love (To Your New Lover).mp3
+[17:18:33] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:34] Playing music: C:\Users\38063\Music\Adele - Rolling In The Deep.mp3
+[17:18:34] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[17:18:36] Music paused
+[17:18:38] Music paused
