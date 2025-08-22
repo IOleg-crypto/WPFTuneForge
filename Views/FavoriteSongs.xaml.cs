@@ -40,13 +40,18 @@ namespace WpfTuneForgePlayer.Views
         public FavoriteSongs(MusicViewModel vm , StartPage startPage)
         {
             InitializeComponent();
+            FavoriteSongsGrid.Loaded += (s, e) =>
+            {
+                FavoriteSongsGrid.UpdateLayout();
+            };
             _startPage = startPage;
             _viewModel = vm;
             // Needed for binding (instead using DAMNNN MAINWINDOW)
             Songs = _viewModel.SongGrid.Count > 0
             ? _viewModel.SongGrid
             : ReadFile("FavoriteSong.bin");
-            FavoriteSongsGrid.ItemsSource = Songs;
+            vm.SongGrid = songs;
+            FavoriteSongsGrid.ItemsSource = vm.SongGrid;
             DataContext = vm;
 
         }

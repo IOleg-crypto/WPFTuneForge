@@ -156,3 +156,5 @@ D:\gitnext\WpfTuneForgePlayer\bin\Release\MaterialDesignThemes.Wpf.xml
 D:\gitnext\WpfTuneForgePlayer\bin\Release\Syncfusion.Shared.WPF.xml
 D:\gitnext\WpfTuneForgePlayer\bin\Release\Syncfusion.Tools.WPF.xml
 D:\gitnext\WpfTuneForgePlayer\bin\Release\FluentWPF.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\Microsoft.Bcl.HashCode.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\Microsoft.Bcl.HashCode.xml
