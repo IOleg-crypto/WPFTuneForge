@@ -26,15 +26,20 @@ namespace WpfTuneForgePlayer
     /// </summary>
     public partial class StartPage : Page
     {
+        private ShaderGL _shaderGL;
+
         public StartPage()
         {
             InitializeComponent();
-            LoadBlurShader();
+
+            _shaderGL = new ShaderGL();
+
+            GlControl.Loaded += _shaderGL.GlControl_Loaded;
+            GlControl.Render += _shaderGL.GlControl_Render;
+            _shaderGL.Width = (float)GlControl.ActualWidth;
+            _shaderGL.Height = (float)GlControl.ActualHeight;
+            GlControl.Start(_shaderGL.Settings);
         }
 
-        private void LoadBlurShader()
-        {
-            
-        }
     }
 }

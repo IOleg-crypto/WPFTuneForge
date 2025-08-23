@@ -9,7 +9,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
     xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
     xmlns:local1 ="clr-namespace:WpfTuneForgePlayer.Shader"
-    xmlns:gl="clr-namespace:GLWpfControl;assembly=GLWpfControl"
+    xmlns:glWpfControl="clr-namespace:OpenTK.Wpf;assembly=GLWpfControl"
     x:Class="WpfTuneForgePlayer.StartPage"
     d:DataContext="{d:DesignInstance Type={x:Type viewModel:MusicViewModel}}"
     mc:Ignorable="d" 
@@ -27,13 +27,9 @@
 
         <Viewbox Stretch="Uniform" Grid.RowSpan="2">
             <Grid Width="800" Height="450" Background="Black">
-
+                <glWpfControl:GLWpfControl x:Name="GlControl"/>
                 <Grid>
-                    <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240">
-                        <Image.Effect>
-                            <gl:GLWpfControl x:Name="BackgroundGL" Width="320" Height="240" HorizontalAlignment="Left" VerticalAlignment="Top"></gl:GLWpfControl>
-                        </Image.Effect>
-                    </Image>
+                    <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240"></Image>
                 </Grid>
 
                 <Grid>

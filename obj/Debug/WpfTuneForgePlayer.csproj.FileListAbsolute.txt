@@ -158,3 +158,8 @@ D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.exe
 D:\gitnext\WpfTuneForgePlayer\obj\Debug\WpfTuneForgePlayer.pdb
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\Microsoft.Bcl.HashCode.dll
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\Microsoft.Bcl.HashCode.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\GLWpfControl.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\GLWpfControl.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.xml

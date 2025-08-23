@@ -213,6 +213,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Pipelines, Version=9.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Pipelines.9.0.5\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -286,6 +287,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Mathematics\Vector2.cs" />
     <Compile Include="Services\TuneForge.AudioDeviceInfo.cs" />
     <Compile Include="Services\TuneForge.AudioMetaService.cs" />
     <Compile Include="Services\TuneForge.AudioService.cs" />
@@ -297,7 +299,7 @@
     <Compile Include="Helpers\TimerHelper.cs" />
     <Compile Include="MainWindow.Events.xaml.cs" />
     <Compile Include="Commands\Command.cs" />
-    <Compile Include="Shader\BlurEffect.cs" />
+    <Compile Include="Shader\ShaderGL.cs" />
     <Compile Include="ViewModel\DeviceViewModel.cs" />
     <Compile Include="ViewModel\BindingCommands.cs" />
     <Compile Include="Services\ImageLoader.cs" />
@@ -378,6 +380,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Shader\BlurShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
