@@ -9,6 +9,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
     xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
     xmlns:local1 ="clr-namespace:WpfTuneForgePlayer.Shader"
+    xmlns:gl="clr-namespace:GLWpfControl;assembly=GLWpfControl"
     x:Class="WpfTuneForgePlayer.StartPage"
     d:DataContext="{d:DesignInstance Type={x:Type viewModel:MusicViewModel}}"
     mc:Ignorable="d" 
@@ -30,7 +31,7 @@
                 <Grid>
                     <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240">
                         <Image.Effect>
-                            <local1:BlurEffect x:Name="BlurShader"></local1:BlurEffect>
+                            <gl:GLWpfControl x:Name="BackgroundGL" Width="320" Height="240" HorizontalAlignment="Left" VerticalAlignment="Top"></gl:GLWpfControl>
                         </Image.Effect>
                     </Image>
                 </Grid>

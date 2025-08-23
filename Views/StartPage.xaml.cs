@@ -34,14 +34,7 @@ namespace WpfTuneForgePlayer
 
         private void LoadBlurShader()
         {
-            BackgroundImageBlur.Loaded += (s, e) =>
-            {
-                if (BlurShader is BlurEffect effect)
-                {
-                    effect.PixelSize = new Point(1.0 / BackgroundImageBlur.ActualWidth,
-                                                 1.0 / BackgroundImageBlur.ActualHeight);
-                }
-            };
+            
         }
     }
 }
