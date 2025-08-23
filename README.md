@@ -15,6 +15,10 @@
 
 ---
 
+> [!IMPORTANT]  
+> TuneForge saves your favorite songs in a `FavoriteSong.bin` file within the program folder.
+> If this file is deleted, all your favorite songs will be lost.
+
 ## Technologies and Libraries
 
 * **C# with WPF + Windows Forms** — for the desktop GUI
@@ -28,6 +32,10 @@
 
 ![TuneForge Preview](https://i.imgur.com/4oqEfWo.png)
 ![Favorite Preview](https://i.imgur.com/uS6bPaD.png)
+
+> [!NOTE]  
+> To remove a song from the list, click on the song and press the **Delete** button.
+
 ![Settings Preview](https://i.imgur.com/Ep5at1i.png)
 ![Music Preview](https://i.imgur.com/X2s0IBV.png)
 
@@ -59,9 +67,7 @@ dotnet restore
 * View metadata such as artist, album, and title extracted by TagLib#.
 * Enjoy live audio visualization synchronized with playback.
 
-> [!IMPORTANT]  
-> TuneForge saves your favorite songs in a `FavoriteSong.bin` file within the program folder.
-> If this file is deleted, all your favorite songs will be lost.
+
 
 ---
 
