@@ -27,9 +27,14 @@
 
         <Viewbox Stretch="Uniform" Grid.RowSpan="2">
             <Grid Width="800" Height="450" Background="Black">
-                <glWpfControl:GLWpfControl x:Name="GlControl"/>
+                
                 <Grid>
-                    <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240"></Image>
+                    <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240">
+                        <Image.Effect>
+                            <BlurEffect x:Name="AlbumBlur" Radius="20"/>
+                        </Image.Effect>
+                    </Image> 
+                    <Rectangle Fill="Black" Opacity="0.3"/>
                 </Grid>
 
                 <Grid>

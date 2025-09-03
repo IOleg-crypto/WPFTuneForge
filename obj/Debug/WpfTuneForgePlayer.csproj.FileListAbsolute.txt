@@ -163,3 +163,6 @@ D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.dll
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\GLWpfControl.pdb
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.pdb
 D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.GLControl.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.GLControl.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Debug\OpenTK.GLControl.xml
