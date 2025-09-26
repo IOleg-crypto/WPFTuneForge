@@ -1,7 +1,6 @@
 ﻿using NAudio.Wave;
 using System;
 using System.Windows.Threading;
-using TagLib.Mpeg;
 using WpfTuneForgePlayer.AudioModel;
 using WpfTuneForgePlayer.ViewModel;
 

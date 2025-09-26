@@ -55,7 +55,7 @@ namespace WpfTuneForgePlayer
             if (_mainWindow != null)
             {
                 if (_viewModel == null)
-                    throw new InvalidOperationException("Sidebar.ViewModel не встановлено! Передайте MusicViewModel з MainWindow.");
+                    throw new InvalidOperationException("Sidebar.ViewModel not installed!Maybe it`s null");
                 _mainWindow.MainContentFrame.Navigate(new StartPage(_viewModel));
             }
         }

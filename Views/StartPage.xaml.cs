@@ -4,10 +4,11 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Drawing; // Додаємо для Bitmap
-using WpfTuneForgePlayer.Shader; // Додаємо для GaussianBlur
-using System.ComponentModel; // Додаємо для PropertyChangedEventArgs
-using WpfTuneForgePlayer.ViewModel; // Додаємо для MusicViewModel
+using System.Drawing; // для Bitmap
+using WpfTuneForgePlayer.Shader; // для GaussianBlur
+using System.ComponentModel; // для PropertyChangedEventArgs
+using WpfTuneForgePlayer.ViewModel; // для MusicViewModel
+using System.Runtime.InteropServices; // для DeleteObject
 
 namespace WpfTuneForgePlayer
 {
@@ -41,26 +42,17 @@ namespace WpfTuneForgePlayer
 
         private void SetPageBackgroundBlur()
         {
-            var imagePath = _viewModel.AlbumArtPath ?? "assets/menu/musicLogo.jpg";
-            if (string.IsNullOrEmpty(imagePath) || !System.IO.File.Exists(imagePath))
+            if (_viewModel.AlbumArt == null)
                 return;
-            using (Bitmap bmp = new Bitmap(imagePath))
+
+            BackgroundImageBlur.Source = _viewModel.AlbumArt;
+
+            var blurEffect = new BlurEffect
             {
-                // 2. Розмиття
-                var blur = new GaussianBlur(bmp);
-                Bitmap blurred = blur.Process(50); // 30 — радіус, можна змінити
-
-                // 3. Перетворення у BitmapSource для WPF
-                var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                    blurred.GetHbitmap(),
-                    IntPtr.Zero,
-                    System.Windows.Int32Rect.Empty,
-                    BitmapSizeOptions.FromEmptyOptions()
-                );
-
-                // 4. Встановлення як фон
-                BackgroundImageBlur.Source = bitmapSource;
-            }
+                Radius = 30,
+                RenderingBias = RenderingBias.Quality
+            };
+            BackgroundImageBlur.Effect = blurEffect;
         }
 
         private void AnimateBlur(double from, double to, TimeSpan duration)
@@ -81,5 +73,9 @@ namespace WpfTuneForgePlayer
             if (_blurEffect != null)
                 _blurEffect.Radius = radius;
         }
+
+        [DllImport("gdi32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool DeleteObject(IntPtr hObject);
     }
 }

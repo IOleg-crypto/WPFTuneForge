@@ -30,6 +30,9 @@
 
                 <Grid>
                     <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240">
+                        <Image.Effect>
+                            <BlurEffect Radius="5"/>
+                        </Image.Effect>
                     </Image>
                     <Rectangle Fill="Black" Opacity="0.3"/>
                 </Grid>
