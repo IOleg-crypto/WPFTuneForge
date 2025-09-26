@@ -302,6 +302,7 @@
     <Compile Include="Helpers\TimerHelper.cs" />
     <Compile Include="MainWindow.Events.xaml.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Shader\GaussianBlur.cs" />
     <Compile Include="Shader\ShaderGL.cs" />
     <Compile Include="ViewModel\DeviceViewModel.cs" />
     <Compile Include="ViewModel\BindingCommands.cs" />

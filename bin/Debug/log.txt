@@ -1,0 +1,4 @@
+[19:45:00] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[19:45:00] Init music - AudioFileReader and WaveOutEvent
+[19:45:00] Play music
+[19:48:53] Music paused
