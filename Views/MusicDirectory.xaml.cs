@@ -22,15 +22,15 @@ namespace WpfTuneForgePlayer
 {
     public partial class MusicDirectory : Page
     {
-        private readonly StartPage _startPage;
         private readonly MusicViewModel _viewModel;
 
         public string CurrentDirectory { get; set; }
 
         public MusicDirectory(MusicViewModel vm)
         {
+            if (vm == null)
+                throw new ArgumentNullException(nameof(vm), "MusicViewModel не може бути null!");
             InitializeComponent();
-            _startPage = new StartPage();
             _viewModel = vm;
             DataContext = vm;
 
@@ -65,8 +65,7 @@ namespace WpfTuneForgePlayer
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {
                 _viewModel.MainWindow = mainWindow;
-                _startPage.DataContext = _viewModel;
-                mainWindow.MainContentFrame.Navigate(_startPage);
+                mainWindow.MainContentFrame.Navigate(new StartPage(_viewModel));
             }
         }
 

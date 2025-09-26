@@ -29,6 +29,28 @@ namespace WpfTuneForgePlayer.ViewModel
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private DeviceOutputModel __deviceOutputModel;
+        
+        private string _albumArtPath;
+        public string AlbumArtPath
+        {
+            get => _albumArtPath;
+            set
+            {
+                if (_albumArtPath != value)
+                {
+                    _albumArtPath = value;
+                    OnPropertyChanged(nameof(AlbumArtPath));
+                    if (!string.IsNullOrEmpty(_albumArtPath) && System.IO.File.Exists(_albumArtPath))
+                    {
+                        AlbumArt = new BitmapImage(new Uri(_albumArtPath, UriKind.RelativeOrAbsolute));
+                    }
+                    else
+                    {
+                        AlbumArt = ImageLoader.LoadImageOrDefault("assets/menu/musicLogo.jpg");
+                    }
+                }
+            }
+        }
 
         // Supported audio file extensions for loading songs
         private readonly List<string> SupportedExtensionsSong = new()
@@ -189,6 +211,20 @@ namespace WpfTuneForgePlayer.ViewModel
         {
             get => _soundStatus;
             set { _soundStatus = value; OnPropertyChanged(nameof(SoundStatus)); }
+        }
+
+        private double _trackBarMaximum = 100.0;
+        public double TrackBarMaximum
+        {
+            get => _trackBarMaximum;
+            set
+            {
+                if (_trackBarMaximum != value)
+                {
+                    _trackBarMaximum = value;
+                    OnPropertyChanged(nameof(TrackBarMaximum));
+                }
+            }
         }
 
         /// <summary>

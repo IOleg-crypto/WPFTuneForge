@@ -28,22 +28,31 @@ namespace WpfTuneForgePlayer
     /// 
     public partial class MainWindow : Window
     {
+        private MusicViewModel _viewModel;
+        private StartPage _startPage;
+        private AudioService _audioService;
+        private AudioMetaService _audioMetaService;
+        private DeviceOutputModel _deviceOutputModel;
+        private FavoriteSongs _favoriteSongs;
+
+        public MusicViewModel ViewModel
+        {
+            get => _viewModel;
+            private set => _viewModel = value;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
-
             ViewModel = new MusicViewModel();
-            AudioService = new AudioService(ViewModel);
-            AudioMetaService = new AudioMetaService(ViewModel);
-            FavoriteSongs = new FavoriteSongs(ViewModel , _startPage);
-
-            DeviceOutputModel = new DeviceOutputModel(AudioService , ViewModel , AudioMetaService);
+            _startPage = new StartPage(ViewModel);
+            _audioService = new AudioService(ViewModel);
+            Sidebar.ViewModel = ViewModel;
+            _audioMetaService = new AudioMetaService(ViewModel);
+            _deviceOutputModel = new DeviceOutputModel(_audioService, ViewModel, _audioMetaService);
             ViewModel.MainWindow = this;
-            //Needed to fix bug with automatic playback music
-            ViewModel.DeviceOutputModel = DeviceOutputModel;
-            AudioService.DeviceOutputModel = DeviceOutputModel;
-
-           
+            ViewModel.DeviceOutputModel = _deviceOutputModel;
+            _audioService.DeviceOutputModel = _deviceOutputModel;
             NavigateToStartPage();
             ActionHandle();
         }

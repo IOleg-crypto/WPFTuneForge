@@ -4,9 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Drawing; 
-using WpfTuneForgePlayer.Shader;
-using WpfTuneForgePlayer.ViewModel;
+using System.Drawing; // Додаємо для Bitmap
+using WpfTuneForgePlayer.Shader; // Додаємо для GaussianBlur
+using System.ComponentModel; // Додаємо для PropertyChangedEventArgs
+using WpfTuneForgePlayer.ViewModel; // Додаємо для MusicViewModel
 
 namespace WpfTuneForgePlayer
 {
@@ -18,29 +19,38 @@ namespace WpfTuneForgePlayer
         public StartPage(MusicViewModel viewModel)
         {
             InitializeComponent();
-
-            SetPageBackgroundBlur(); 
-
             _viewModel = viewModel;
+            DataContext = viewModel;
+            _viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            SetPageBackgroundBlur();
 
             if (BackgroundImageBlur?.Effect is BlurEffect blur)
             {
                 _blurEffect = blur;
-                AnimateBlur(0, 25, TimeSpan.FromSeconds(10));
+                AnimateBlur(0, 25, TimeSpan.FromSeconds(2));
+            }
+        }
+
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(_viewModel.AlbumArtPath))
+            {
+                SetPageBackgroundBlur();
             }
         }
 
         private void SetPageBackgroundBlur()
         {
-            var imagePath = _viewModel.AlbumArt.ToString();
-            if (!System.IO.File.Exists(imagePath))
+            var imagePath = _viewModel.AlbumArtPath ?? "assets/menu/musicLogo.jpg";
+            if (string.IsNullOrEmpty(imagePath) || !System.IO.File.Exists(imagePath))
                 return;
             using (Bitmap bmp = new Bitmap(imagePath))
             {
+                // 2. Розмиття
                 var blur = new GaussianBlur(bmp);
-                Bitmap blurred = blur.Process(30); 
+                Bitmap blurred = blur.Process(50); // 30 — радіус, можна змінити
 
-
+                // 3. Перетворення у BitmapSource для WPF
                 var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                     blurred.GetHbitmap(),
                     IntPtr.Zero,
@@ -48,6 +58,7 @@ namespace WpfTuneForgePlayer
                     BitmapSizeOptions.FromEmptyOptions()
                 );
 
+                // 4. Встановлення як фон
                 BackgroundImageBlur.Source = bitmapSource;
             }
         }

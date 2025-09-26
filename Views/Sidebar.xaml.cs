@@ -15,10 +15,19 @@ namespace WpfTuneForgePlayer
         public event EventHandler NavigateToSettings;
         public event EventHandler FavoritePage;
         private MainWindow _mainWindow;
+        private MusicViewModel _viewModel;
+
 
         public Sidebar()
         {
             InitializeComponent();
+            
+        }
+
+        public MusicViewModel ViewModel
+        {
+            get => _viewModel;
+            set => _viewModel = value;
         }
 
         private void FavoriteClick(object sender, RoutedEventArgs e)
@@ -45,7 +54,9 @@ namespace WpfTuneForgePlayer
         {
             if (_mainWindow != null)
             {
-                _mainWindow.MainContentFrame.Navigate(new StartPage());
+                if (_viewModel == null)
+                    throw new InvalidOperationException("Sidebar.ViewModel не встановлено! Передайте MusicViewModel з MainWindow.");
+                _mainWindow.MainContentFrame.Navigate(new StartPage(_viewModel));
             }
         }
 

@@ -11,21 +11,18 @@ namespace WpfTuneForgePlayer
     public partial class MainWindow : Window
     {
         // Private fields for core components and services
-        private MusicViewModel _viewModel;
-        private DeviceOutputModel _deviceOutputModel;
-        private AudioService _audioService;
-        private AudioMetaService _audioMetaService;
-        private FavoriteSongs _favoriteSongs;
+        //private MusicViewModel viewModel;
+        //private DeviceOutputModel _deviceOutputModel;
+        //private AudioService _audioService;
+        //private AudioMetaService _audioMetaService;
+        //private FavoriteSongs _favoriteSongs;
         private Settings _settings;
-        private StartPage _startPage;
+        // Видалити поле _startPage
+        // private StartPage _startPage;
       
 
         // Properties for accessing the fields
-        public MusicViewModel ViewModel
-        {
-            get => _viewModel;
-            set => _viewModel = value;
-        }
+        
 
         public DeviceOutputModel DeviceOutputModel
         {
@@ -96,11 +93,11 @@ namespace WpfTuneForgePlayer
         /// </summary>
         private void NavigateToStartPage()
         {
-            _startPage = new StartPage
+            var startPage = new StartPage(ViewModel)
             {
                 DataContext = ViewModel
             };
-            MainContentFrame.Navigate(_startPage);
+            MainContentFrame.Navigate(startPage);
         }
 
         /// <summary>

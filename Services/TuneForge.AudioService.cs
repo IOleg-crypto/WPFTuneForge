@@ -23,7 +23,6 @@ namespace WpfTuneForgePlayer.AudioModel
         private TimerHelper timer;
         private MusicViewModel viewModel;
         private AudioMetaService audioMetaService;
-        private StartPage startPage = new();
         private VolumeService volumeService;
         private MusicNavigationService musicNavigationService;
         private DeviceOutputModel deviceOutputModel;
@@ -41,11 +40,10 @@ namespace WpfTuneForgePlayer.AudioModel
         public WaveOutEvent OutputDevice { get => outputDevice; set => outputDevice = value; }
         public AudioFileReader AudioFile { get => audioFile; set => audioFile = value; }
         public TimerHelper TimerHelper { get => timer; set => timer = value; }
-        public StartPage StartPage { get => startPage; set => startPage = value; }
-        public VolumeService VolumeService { get => volumeService; set => volumeService = value; }
-        public MusicNavigationService MusicNavigationService { get => musicNavigationService; set => musicNavigationService = value; }
         public MusicViewModel MusicViewModel { get => viewModel; set => viewModel = value; }
         public DeviceOutputModel DeviceOutputModel { get => deviceOutputModel; set => deviceOutputModel = value; }
+        public VolumeService VolumeService => volumeService;
+        public MusicNavigationService MusicNavigationService => musicNavigationService;
 
         public bool IsSound { get => isSoundOn; set => isSoundOn = value; }
         public bool IsSelectedSongFavorite { get => isSelectedSongFavorite; set => isSelectedSongFavorite = value; }
@@ -61,6 +59,7 @@ namespace WpfTuneForgePlayer.AudioModel
             this.viewModel = viewModel;
             audioMetaService = new AudioMetaService(viewModel);
             volumeService = new VolumeService(this, viewModel);
+            
             musicNavigationService = new MusicNavigationService(viewModel, this, audioMetaService);
             timer = new TimerHelper(TimeSpan.FromMilliseconds(400), this, viewModel);
         }
@@ -112,7 +111,7 @@ namespace WpfTuneForgePlayer.AudioModel
             // Automatic playback (next song)
             if (viewModel.DeviceOutputModel.IsAutomaticPlayback)
             {
-                MusicNavigationService.EndMusic(this, null);
+                musicNavigationService.EndMusic(this, null);
             }
             else if (IsMusicPlaying && AudioFile != null && OutputDevice != null)
             {
@@ -132,15 +131,15 @@ namespace WpfTuneForgePlayer.AudioModel
             if (AudioFile == null || OutputDevice == null) return;
 
             IsSliderEnabled = true;
-            SimpleLogger.Log($"Slider Value: {StartPage.MusicTrackBar.Value}, Maximum: {StartPage.MusicTrackBar.Maximum}");
+            SimpleLogger.Log($"Slider Value: {viewModel.TrackPosition}, Maximum: {viewModel.TrackBarMaximum}");
 
-            double frac = MusicViewModel.TrackPosition / 1000.0;
+            double frac = viewModel.TrackPosition / 1000.0;
             TimeSpan currentTime = TimeSpan.FromSeconds(frac * AudioFile.TotalTime.TotalSeconds);
             AudioFile.CurrentTime = currentTime;
-            MusicViewModel.TrackPosition = StartPage.MusicTrackBar.Value;
-            MusicViewModel.CurrentTime = currentTime.ToString(@"mm\:ss");
+            viewModel.TrackPosition = viewModel.TrackPosition;
+            viewModel.CurrentTime = currentTime.ToString(@"mm\:ss");
 
-            SimpleLogger.Log($"Current time: {MusicViewModel.CurrentTime}");
+            SimpleLogger.Log($"Current time: {viewModel.CurrentTime}");
         }
 
         // User clicks to play or pause music
@@ -161,7 +160,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 try
                 {
                     TimerHelper.Start();
-                    MusicViewModel.GetStatusOnSlider = true;
+                    viewModel.GetStatusOnSlider = true;
                     audioMetaService.TakeArtistSongName(CurrentMusicPath);
                     audioMetaService.UpdateAlbumArt(CurrentMusicPath);
                     InitMusic(CurrentMusicPath);
@@ -170,7 +169,7 @@ namespace WpfTuneForgePlayer.AudioModel
                     IsSliderEnabled = true;
 
                     // Update UI Play/Pause icon
-                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
+                    viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
                 }
                 catch (Exception ex)
                 {
@@ -182,14 +181,14 @@ namespace WpfTuneForgePlayer.AudioModel
                 // Toggle play/pause
                 if (IsMusicPlaying)
                 {
-                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\play.png")));
+                    viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\play.png")));
                     SimpleLogger.Log("Music paused");
                     TimerHelper.Stop();
                     OutputDevice.Pause();
                 }
                 else
                 {
-                    MusicViewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
+                    viewModel.PlayPauseButton = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\menu\\pause.png")));
                     TimerHelper.Start();
                     OutputDevice.Play();
                 }
@@ -215,9 +214,9 @@ namespace WpfTuneForgePlayer.AudioModel
             AudioFile = null;
 
             IsMusicPlaying = false;
-            MusicViewModel.TrackPosition = 0;
-            MusicViewModel.CurrentTime = "00:00";
-            MusicViewModel.EndTime = "00:00";
+            viewModel.TrackPosition = 0;
+            viewModel.CurrentTime = "00:00";
+            viewModel.EndTime = "00:00";
             IsSliderEnabled = false;
             IsSelectedSongFavorite = false;
 
@@ -225,7 +224,7 @@ namespace WpfTuneForgePlayer.AudioModel
             var defaultFavoriteIconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets\\sidebar\\favorite_a.png");
             if (File.Exists(defaultFavoriteIconPath))
             {
-                MusicViewModel.FavoriteSong = new BitmapImage(new Uri(defaultFavoriteIconPath, UriKind.Absolute));
+                viewModel.FavoriteSong = new BitmapImage(new Uri(defaultFavoriteIconPath, UriKind.Absolute));
             }
             else
             {
@@ -237,7 +236,7 @@ namespace WpfTuneForgePlayer.AudioModel
             if (File.Exists(defaultImagePath))
             {
                 SimpleLogger.Log("Set default album art: " + defaultImagePath);
-                MusicViewModel.AlbumArt = new BitmapImage(new Uri(defaultImagePath, UriKind.Absolute));
+                viewModel.AlbumArt = new BitmapImage(new Uri(defaultImagePath, UriKind.Absolute));
             }
             else
             {
@@ -249,7 +248,7 @@ namespace WpfTuneForgePlayer.AudioModel
         // Toggle favorite status for current song
         public void SelectFavoriteSongToPlayList(object sender, RoutedEventArgs e)
         {
-            if (OutputDevice == null || AudioFile == null || MusicViewModel == null)
+            if (OutputDevice == null || AudioFile == null || viewModel == null)
                 return;
 
             IsSelectedSongFavorite = !IsSelectedSongFavorite;
@@ -272,7 +271,7 @@ namespace WpfTuneForgePlayer.AudioModel
                 bitmap.UriSource = new Uri(path, UriKind.Absolute);
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.EndInit();
-                MusicViewModel.FavoriteSong = bitmap;
+                viewModel.FavoriteSong = bitmap;
             }
             catch (Exception ex)
             {
@@ -282,27 +281,27 @@ namespace WpfTuneForgePlayer.AudioModel
 
             if (IsSelectedSongFavorite)
             {
-                if (MusicViewModel.Songs == null || MusicViewModel.Songs.Count == 0)
+                if (viewModel.Songs == null || viewModel.Songs.Count == 0)
                 {
                     MessageBox.Show("No songs available.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                if (MusicViewModel.SelectedIndex < 0 || MusicViewModel.SelectedIndex >= MusicViewModel.Songs.Count)
+                if (viewModel.SelectedIndex < 0 || viewModel.SelectedIndex >= viewModel.Songs.Count)
                 {
                     MessageBox.Show("Invalid song selection.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                var songModel = MusicViewModel.Songs[MusicViewModel.SelectedIndex];
+                var songModel = viewModel.Songs[viewModel.SelectedIndex];
 
-                if (!MusicViewModel.SongGrid.Any(s =>
+                if (!viewModel.SongGrid.Any(s =>
                         s.Title == songModel.Title &&
                         s.Artist == songModel.Artist &&
                         s.Duration == songModel.Duration))
                 {
                     var song = new Song(songModel.Title, songModel.Artist, songModel.Duration);
-                    MusicViewModel.SongGrid.Add(song); 
+                    viewModel.SongGrid.Add(song); 
                     using (var writer = new BinaryWriter(File.Open(FileName,
                                File.Exists(FileName) ? FileMode.Append : FileMode.Create)))
                     {

@@ -54,7 +54,7 @@ namespace WpfTuneForgePlayer.Helpers
                 double progress = _audioService.AudioFile.CurrentTime.TotalSeconds / _audioService.AudioFile.TotalTime.TotalSeconds;
 
                 // Update track position slider maximum-scaled value
-                _viewModel.TrackPosition = progress * _audioService.StartPage.MusicTrackBar.Maximum;
+                _viewModel.TrackPosition = progress * _viewModel.TrackBarMaximum;
 
                 // Update current playback time display (formatted as mm:ss)
                 _viewModel.CurrentTime = _audioService.AudioFile.CurrentTime.ToString(@"mm\:ss");
