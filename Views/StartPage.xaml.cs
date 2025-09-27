@@ -24,11 +24,15 @@ namespace WpfTuneForgePlayer
             DataContext = viewModel;
             _viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetPageBackgroundBlur();
-
+            
+            
             if (BackgroundImageBlur?.Effect is BlurEffect blur)
             {
                 _blurEffect = blur;
-                AnimateBlur(0, 25, TimeSpan.FromSeconds(2));
+                if (_viewModel.isAnimatedGaussianBlur)
+                {
+                    AnimateBlur(0, 25, TimeSpan.FromSeconds(2));
+                }
             }
         }
 

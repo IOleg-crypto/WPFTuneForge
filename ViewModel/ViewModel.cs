@@ -29,6 +29,7 @@ namespace WpfTuneForgePlayer.ViewModel
         private AudioService audioService;
         private AudioMetaService audioMetaService;
         private DeviceOutputModel __deviceOutputModel;
+        private bool _isAnimatedGaussianBlur;
         
         private string _albumArtPath;
         public string AlbumArtPath
@@ -50,6 +51,20 @@ namespace WpfTuneForgePlayer.ViewModel
                     }
                 }
             }
+        }
+
+        public bool isAnimatedGaussianBlur
+        {
+            get => _isAnimatedGaussianBlur;
+            set
+            {
+                if (_isAnimatedGaussianBlur != value)
+                {
+                    _isAnimatedGaussianBlur = value;
+                    OnPropertyChanged(nameof(isAnimatedGaussianBlur));
+                }
+            }
+                            
         }
 
         // Supported audio file extensions for loading songs

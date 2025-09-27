@@ -89,7 +89,7 @@
                     <Label Content="Channels:"
                            Foreground="White"
                            FontSize="16"
-                           Width="140"/>
+                           Width="142"/>
                     <TextBlock Text="{Binding SelectedOutputDevice.Channels}"
                                FontSize="14"
                                Foreground="LightGray"
@@ -98,8 +98,14 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Label Content="Automatic playback music"
                           FontSize="14"
-                          Foreground="White" Width="182" Margin="3,0,0,0"/>
+                          Foreground="White" Width="176" Margin="3,0,0,0"/>
                     <shared:ToggleSwitch Content="ToggleSwitch" Width="134" IsChecked="{Binding IsAutomaticPlayback , Mode=TwoWay}" ContentPlacement="Track"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Label Content="Enable animated Gaussian Blur"
+          FontSize="14"
+          Foreground="White" Width="215" Margin="3,0,0,0"/>
+                    <shared:ToggleSwitch Content="ToggleSwitch" Width="69" IsChecked="{Binding ViewModel.isAnimatedGaussianBlur , Mode=TwoWay}" ContentPlacement="Track"/>
                 </StackPanel>
                 <StackPanel Height ="50" Margin="0,20,0,0"  HorizontalAlignment="Center">
                     <Label Content="More settings could be added in future..." HorizontalAlignment="Center"  Foreground ="Gray"></Label>
