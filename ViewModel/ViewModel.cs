@@ -228,7 +228,7 @@ namespace WpfTuneForgePlayer.ViewModel
             set { _soundStatus = value; OnPropertyChanged(nameof(SoundStatus)); }
         }
 
-        private double _trackBarMaximum = 100.0;
+        private double _trackBarMaximum = 1000.0;
         public double TrackBarMaximum
         {
             get => _trackBarMaximum;

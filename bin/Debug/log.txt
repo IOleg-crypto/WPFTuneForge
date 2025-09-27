@@ -1,3 +1,21 @@
-[09:19:18] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
-[09:19:18] Init music - AudioFileReader and WaveOutEvent
-[09:19:18] Play music
+[09:24:43] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[09:24:43] Init music - AudioFileReader and WaveOutEvent
+[09:24:44] Play music
+[09:25:01] Slider Value: 789,760331243238, Maximum: 1000
+[09:25:01] Current time: 02:47
+[09:25:50] Set default album art: D:\gitnext\WpfTuneForgePlayer\bin\Debug\assets/menu/musicLogo.jpg
+[09:25:50] Init music - AudioFileReader and WaveOutEvent
+[09:25:50] Play music
+[09:28:03] Slider Value: 774,401190382414, Maximum: 1000
+[09:28:03] Current time: 03:22
+[09:28:05] Slider Value: 893,390734143262, Maximum: 1000
+[09:28:05] Current time: 03:53
+[09:28:12] Slider Value: 919,199489165803, Maximum: 1000
+[09:28:12] Current time: 04:00
+[09:28:13] Slider Value: 920,920113331778, Maximum: 1000
+[09:28:13] Current time: 04:00
+[09:28:14] Slider Value: 922,214278886412, Maximum: 1000
+[09:28:14] Current time: 04:01
+[09:28:15] Slider Value: 973,362033760781, Maximum: 1000
+[09:28:15] Current time: 04:14
+[09:28:18] Music paused
