@@ -1,6 +1,9 @@
-name: .NET TuneForge 
+name: .NET TuneForge
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       commit_sha:
@@ -53,8 +56,8 @@ jobs:
         tag_name: build-${{ github.run_number }}
         name: "TuneForge Release"
         body: |
-          • Commit: ${{ inputs.commit_sha || github.sha }}
-          • Message: ${{ inputs.release_message }}
+          • Commit: ${{ github.event.inputs.commit_sha || github.sha }}
+          • Message: ${{ github.event.inputs.release_message || 'Auto release from push' }}
         files: bin/Release/TuneForge.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
