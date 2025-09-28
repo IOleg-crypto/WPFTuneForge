@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '*.md'
+      - '*.txt'
+      - '*.png'
   workflow_dispatch:
     inputs:
       commit_sha:
