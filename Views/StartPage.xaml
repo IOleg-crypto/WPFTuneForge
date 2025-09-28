@@ -29,9 +29,9 @@
             <Grid Width="800" Height="450" Background="Black">
 
                 <Grid>
-                    <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="320" Height="240">
+                    <Image Name ="BackgroundImageBlur" Source="{Binding AlbumArt}" Stretch="Uniform" Width="480" Height="340">
                         <Image.Effect>
-                            <BlurEffect Radius="5"/>
+                            <BlurEffect Radius="20"/>
                         </Image.Effect>
                     </Image>
                     <Rectangle Fill="Black" Opacity="0.3"/>
@@ -127,6 +127,9 @@
 
 
                     <Image x:Name="MusicLogo" Margin="300,10,300,0" Source="{Binding AlbumArt}" Grid.Row="1" Height="164" VerticalAlignment="Top" Width="200">
+                        <Image.Effect>
+                            <DropShadowEffect/>
+                        </Image.Effect>
                     </Image>
 
                     <Label x:Name="NameSong" Content="{Binding Artist}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"

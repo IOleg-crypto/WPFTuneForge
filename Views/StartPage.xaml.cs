@@ -4,11 +4,11 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Drawing; // для Bitmap
-using WpfTuneForgePlayer.Shader; // для GaussianBlur
-using System.ComponentModel; // для PropertyChangedEventArgs
-using WpfTuneForgePlayer.ViewModel; // для MusicViewModel
-using System.Runtime.InteropServices; // для DeleteObject
+using System.Drawing; 
+using WpfTuneForgePlayer.Shader; 
+using System.ComponentModel; 
+using WpfTuneForgePlayer.ViewModel; 
+using System.Runtime.InteropServices; 
 
 namespace WpfTuneForgePlayer
 {

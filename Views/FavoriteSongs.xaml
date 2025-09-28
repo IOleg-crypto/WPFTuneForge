@@ -57,7 +57,7 @@
         <Button Style="{StaticResource SaveButtonStyle}" Command="{Binding Commands.SaveFavoriteSongs}" Height="30"  
         HorizontalContentAlignment="Center"
         VerticalAlignment="Top" 
-        Margin="441,10,107,0"
+        Margin="375,10,107,0"
         Content="Save current favorite songs"></Button>
 
         <Border Grid.Row="1"
@@ -93,5 +93,12 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
+        <StackPanel>
+            <Label Content="* You can add or remove songs by editing the grid above. Changes will be saved when you click 'Save current favorite songs'." 
+                   Foreground="LightGray" 
+                   FontSize="12" 
+                   Margin="0,5,0,0"
+                   HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>
