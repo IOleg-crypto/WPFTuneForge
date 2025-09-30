@@ -36,13 +36,21 @@ on:
 jobs:
   build_and_test:
     runs-on: windows-2022
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.commit_sha || github.sha }}
         fetch-depth: 0
+
+    # Push temporary branch if workflow_dispatch, щоб статуси були на коміті
+    - name: Push temp branch for workflow_dispatch
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        BRANCH="ci-build-${{ github.run_number }}"
+        git checkout -B $BRANCH
+        git push origin $BRANCH --force
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -98,3 +106,10 @@ jobs:
         files: bin/Release/TuneForge.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Видаляємо тимчасову гілку
+    - name: Delete temp branch
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        BRANCH="ci-build-${{ github.run_number }}"
+        git push origin --delete $BRANCH || echo "No branch to delete"
