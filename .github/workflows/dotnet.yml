@@ -1,6 +1,14 @@
 name: .NET TuneForge
 
 on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+      - '*.txt'
+      - '*.png'
+
   workflow_dispatch:
     inputs:
       run_build:
@@ -44,16 +52,30 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
+    # Визначаємо, що робити
+    - name: Determine actions
+      id: actions
+      run: |
+        if [ "${{ github.event_name }}" = "push" ]; then
+          echo "run_build=true" >> $GITHUB_ENV
+          echo "run_tests=true" >> $GITHUB_ENV
+          echo "run_release=true" >> $GITHUB_ENV
+        else
+          echo "run_build=${{ github.event.inputs.run_build }}" >> $GITHUB_ENV
+          echo "run_tests=${{ github.event.inputs.run_tests }}" >> $GITHUB_ENV
+          echo "run_release=${{ github.event.inputs.run_release }}" >> $GITHUB_ENV
+        fi
+
     - name: Build solution
-      if: ${{ github.event.inputs.run_build == 'true' || github.event.inputs.run_tests == 'true' }}
+      if: env.run_build == 'true' || env.run_tests == 'true'
       run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
-    - name: Run tests
-      if: ${{ github.event.inputs.run_tests == 'true' }}
+    - name: Run xUnit tests
+      if: env.run_tests == 'true'
       run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
 
     - name: Create ZIP package
-      if: ${{ github.event.inputs.run_release == 'true' }}
+      if: env.run_release == 'true'
       run: |
         mkdir package
         xcopy /E /I /Y bin\Release\assets package\assets
@@ -64,7 +86,7 @@ jobs:
         powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
 
     - name: Create GitHub Release
-      if: ${{ github.event.inputs.run_release == 'true' }}
+      if: env.run_release == 'true'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
