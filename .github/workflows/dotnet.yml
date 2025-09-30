@@ -29,7 +29,6 @@ jobs:
         fetch-depth: 0
 
     - name: Push commit to temp branch (to trigger checks)
-      shell: bash
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -44,14 +43,13 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore WpfTuneForgePlayer.sln
-      shell: bash
 
-    - name: Build
-      run: dotnet build WpfTuneForgePlayer.sln --configuration Release --no-restore
+    - name: Build with MSBuild (required for WPF)
+      uses: microsoft/setup-msbuild@v1.1
+    - run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
     - name: Test
       run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
-      shell: bash
 
     - name: Create ZIP package with .exe and assets/
       run: |
@@ -62,11 +60,9 @@ jobs:
         xcopy /Y bin\Release\*.xml package\
         xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
         powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
-      shell: bash
 
     - name: List ZIP content
       run: powershell -Command "Expand-Archive -Path bin\Release\TuneForge.zip -DestinationPath test_extract; dir test_extract -Recurse"
-      shell: bash
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
@@ -81,10 +77,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
     - name: Delete temp branch
       if: always()
-      shell: bash
       run: |
         BRANCH="ci-build-${{ github.run_number }}"
         git push origin --delete $BRANCH || echo "No branch to delete"
