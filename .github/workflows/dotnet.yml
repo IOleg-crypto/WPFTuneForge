@@ -8,6 +8,7 @@ on:
       - '*.md'
       - '*.txt'
       - '*.png'
+
   workflow_dispatch:
     inputs:
       commit_sha:
@@ -23,6 +24,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.commit_sha || github.sha }}
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -54,14 +57,23 @@ jobs:
     - name: List ZIP content
       run: powershell -Command "Expand-Archive -Path bin\Release\TuneForge.zip -DestinationPath test_extract; dir test_extract -Recurse"
 
+    - name: Create Git tag
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git fetch --tags
+        git tag build-${{ github.run_number }} ${{ github.event.inputs.commit_sha || github.sha }}
+        git push origin build-${{ github.run_number }}
+
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
-        name: "TuneForge Release"
+        target_commitish: ${{ github.event.inputs.commit_sha || github.sha }}
+        name: "TuneForge Release #${{ github.run_number }}"
         body: |
           • Commit: ${{ github.event.inputs.commit_sha || github.sha }}
-          • Message: ${{ github.event.inputs.release_message || 'Auto release from push' }}
+          • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
         files: bin/Release/TuneForge.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
