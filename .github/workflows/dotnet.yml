@@ -63,32 +63,37 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
-    # Determine actions (PowerShell syntax)
     - name: Determine actions
       shell: pwsh
       run: |
-        if ("${{ github.event_name }}" -eq "push") {
-            "run_build=true" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-            "run_tests=true" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-            "run_release=true" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-        } else {
-            "run_build=${{ github.event.inputs.run_build }}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-            "run_tests=${{ github.event.inputs.run_tests }}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-            "run_release=${{ github.event.inputs.run_release }}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        $isPush = "${{ github.event_name }}" -eq "push"
+
+        function To-BoolString($value) {
+            if ($value -eq $null) { return 'false' }
+            return $value.ToString().ToLower()
         }
 
+        $run_build   = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_build }}) }
+        $run_tests   = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_tests }}) }
+        $run_release = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_release }}) }
+
+        # Записуємо у GITHUB_ENV
+        "run_build=$run_build"   | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
+        "run_tests=$run_tests"   | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
+        "run_release=$run_release" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
+
     - name: Build solution
-      if: env.run_build -eq 'true' -or env.run_tests -eq 'true'
+      if: env.run_build == 'true' -or env.run_tests == 'true'
       shell: pwsh
       run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
     - name: Run xUnit tests
-      if: env.run_tests -eq 'true'
+      if: env.run_tests == 'true'
       shell: pwsh
       run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
 
     - name: Create ZIP package
-      if: env.run_release -eq 'true'
+      if: env.run_release == 'true'
       shell: pwsh
       run: |
         mkdir package
@@ -100,7 +105,7 @@ jobs:
         Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip
 
     - name: Create GitHub Release
-      if: env.run_release -eq 'true'
+      if: env.run_release == 'true'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
@@ -113,10 +118,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Delete temporary branch
     - name: Delete temp branch
       if: github.event_name == 'workflow_dispatch'
       shell: pwsh
       run: |
         $branch = "ci-build-${{ github.run_number }}"
-        git push origin --delete $branch || Write-Host "No branch to delete"
+        try {
+            git push origin --delete $branch
+        } catch {
+            Write-Host "No branch to delete"
+        }
