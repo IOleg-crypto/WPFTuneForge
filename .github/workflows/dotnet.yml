@@ -1,25 +1,32 @@
 name: .NET TuneForge
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '*.md'
-      - '*.txt'
-      - '*.png'
-
   workflow_dispatch:
     inputs:
+      run_build:
+        description: 'Run build?'
+        required: true
+        default: 'true'
+        type: boolean
+      run_tests:
+        description: 'Run tests?'
+        required: true
+        default: 'true'
+        type: boolean
+      run_release:
+        description: 'Create release package?'
+        required: true
+        default: 'false'
+        type: boolean
       commit_sha:
-        description: 'Optional: Commit SHA to checkout (defaults to current HEAD)'
+        description: 'Commit SHA to build (defaults to HEAD)'
         required: false
       release_message:
-        description: 'Message to include in the release'
-        required: true
+        description: 'Release message (used if creating release)'
+        required: false
 
 jobs:
-  build:
+  build_and_test:
     runs-on: windows-2022
 
     steps:
@@ -34,17 +41,19 @@ jobs:
       with:
         dotnet-version: 8.0.411
 
-    - name: Restore dependencies
-      run: dotnet restore WpfTuneForgePlayer.sln
-
-    - name: Build with MSBuild (required for WPF)
+    - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
-    - run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
-    - name: Run xUnit tests
+    - name: Build solution
+      if: ${{ github.event.inputs.run_build == 'true' || github.event.inputs.run_tests == 'true' }}
+      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
+
+    - name: Run tests
+      if: ${{ github.event.inputs.run_tests == 'true' }}
       run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
 
-    - name: Create ZIP package with .exe and assets/
+    - name: Create ZIP package
+      if: ${{ github.event.inputs.run_release == 'true' }}
       run: |
         mkdir package
         xcopy /E /I /Y bin\Release\assets package\assets
@@ -54,10 +63,8 @@ jobs:
         xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
         powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
 
-    - name: List ZIP content
-      run: powershell -Command "Expand-Archive -Path bin\Release\TuneForge.zip -DestinationPath test_extract; dir test_extract -Recurse"
-
     - name: Create GitHub Release
+      if: ${{ github.event.inputs.run_release == 'true' }}
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
