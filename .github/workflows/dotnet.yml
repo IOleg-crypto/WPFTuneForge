@@ -44,9 +44,8 @@ jobs:
         ref: ${{ github.event.inputs.commit_sha || github.sha }}
         fetch-depth: 0
 
-    # Push temporary branch for workflow_dispatch to show statuses
     - name: Push temp branch for workflow_dispatch
-      if: github.event_name == 'workflow_dispatch'
+      if: ${{ github.event_name == 'workflow_dispatch' }}
       shell: pwsh
       run: |
         git config user.name "github-actions[bot]"
@@ -77,23 +76,22 @@ jobs:
         $run_tests   = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_tests }}) }
         $run_release = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_release }}) }
 
-        # Записуємо у GITHUB_ENV
         "run_build=$run_build"   | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
         "run_tests=$run_tests"   | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
         "run_release=$run_release" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
 
     - name: Build solution
-      if: env.run_build == 'true' -or env.run_tests == 'true'
+      if: ${{ env.run_build == 'true' || env.run_tests == 'true' }}
       shell: pwsh
       run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
     - name: Run xUnit tests
-      if: env.run_tests == 'true'
+      if: ${{ env.run_tests == 'true' }}
       shell: pwsh
       run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
 
     - name: Create ZIP package
-      if: env.run_release == 'true'
+      if: ${{ env.run_release == 'true' }}
       shell: pwsh
       run: |
         mkdir package
@@ -105,7 +103,7 @@ jobs:
         Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip
 
     - name: Create GitHub Release
-      if: env.run_release == 'true'
+      if: ${{ env.run_release == 'true' }}
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
@@ -119,7 +117,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Delete temp branch
-      if: github.event_name == 'workflow_dispatch'
+      if: ${{ github.event_name == 'workflow_dispatch' }}
       shell: pwsh
       run: |
         $branch = "ci-build-${{ github.run_number }}"
