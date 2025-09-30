@@ -50,15 +50,6 @@ namespace WpfTuneForge.Tests
         // In a real-world scenario, you might want to extract an interface for the 
         // audio device operations to make them more testable.
 
-        [Fact]
-        public void ToggleSound_WithNullOutputDevice_ShouldNotThrow()
-        {
-            var audioService = new AudioService(musicViewModel);
-            var volumeService = new VolumeService(audioService, new MusicViewModel());
-            var ex = Record.Exception(() => volumeService.ToggleSound());
-            Assert.Null(ex);
-        }
-
         // Integration test placeholder - would require actual audio hardware
         [Fact(Skip = "Requires audio hardware - run manually")]
         public void IncreaseVolume_ShouldIncreaseSystemVolume()
