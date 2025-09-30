@@ -53,7 +53,7 @@ namespace WpfTuneForge.Tests
         [Fact]
         public void ToggleSound_WithNullOutputDevice_ShouldNotThrow()
         {
-            var audioService = new AudioService(new MusicViewModel());
+            var audioService = new AudioService(musicViewModel);
             var volumeService = new VolumeService(audioService, new MusicViewModel());
             var ex = Record.Exception(() => volumeService.ToggleSound());
             Assert.Null(ex);

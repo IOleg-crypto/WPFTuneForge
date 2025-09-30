@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WpfTuneForge.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7790b38eb99b6d30d26e7a5cecb30712c811d795")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84869393eeae03013ca7a3904b36e35c14cdd86c")]
 [assembly: System.Reflection.AssemblyProductAttribute("WpfTuneForge.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WpfTuneForge.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
