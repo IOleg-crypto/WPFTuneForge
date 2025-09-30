@@ -5,9 +5,9 @@ VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTuneForgePlayer", "WpfTuneForgePlayer.csproj", "{069371DF-2D8C-4A50-B298-92B7296444C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTuneForge.Tests", "..\WpfTuneForge.Tests\WpfTuneForge.Tests.csproj", "{4E6736EE-DC49-4D34-A226-EF14783B760E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTuneForge.Tests", "WpfTuneForge.Tests\WpfTuneForge.Tests.csproj", "{6CE575EC-04A3-1E2F-A51C-B296372EEA7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,10 @@ Global
 		{069371DF-2D8C-4A50-B298-92B7296444C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{069371DF-2D8C-4A50-B298-92B7296444C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{069371DF-2D8C-4A50-B298-92B7296444C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E6736EE-DC49-4D34-A226-EF14783B760E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E6736EE-DC49-4D34-A226-EF14783B760E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E6736EE-DC49-4D34-A226-EF14783B760E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E6736EE-DC49-4D34-A226-EF14783B760E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE575EC-04A3-1E2F-A51C-B296372EEA7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE575EC-04A3-1E2F-A51C-B296372EEA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE575EC-04A3-1E2F-A51C-B296372EEA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE575EC-04A3-1E2F-A51C-B296372EEA7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

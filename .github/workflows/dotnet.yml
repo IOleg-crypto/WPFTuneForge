@@ -26,6 +26,15 @@ jobs:
     - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.commit_sha || github.sha }}
+        fetch-depth: 0
+
+    - name: Push commit to temp branch (to trigger checks)
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        BRANCH="ci-build-${{ github.run_number }}"
+        git checkout -B $BRANCH
+        git push origin $BRANCH --force
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -57,14 +66,6 @@ jobs:
     - name: List ZIP content
       run: powershell -Command "Expand-Archive -Path bin\Release\TuneForge.zip -DestinationPath test_extract; dir test_extract -Recurse"
 
-    - name: Create Git tag
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git fetch --tags
-        git tag build-${{ github.run_number }} ${{ github.event.inputs.commit_sha || github.sha }}
-        git push origin build-${{ github.run_number }}
-
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
@@ -77,3 +78,9 @@ jobs:
         files: bin/Release/TuneForge.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Delete temp branch
+      if: always()
+      run: |
+        BRANCH="ci-build-${{ github.run_number }}"
+        git push origin --delete $BRANCH || echo "No branch to delete"
