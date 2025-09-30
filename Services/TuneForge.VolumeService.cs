@@ -19,6 +19,10 @@ namespace WpfTuneForgePlayer.AudioModel
         // Constructor to initialize audio service and view model references
         public VolumeService(AudioService audioService, MusicViewModel viewModel)
         {
+            if(audioService == null || viewModel == null)
+            {
+                throw new ArgumentNullException("VolumeService: One or more constructor arguments are null");
+            }
             this.audioService = audioService;
             this.m_viewModel = viewModel;
         }

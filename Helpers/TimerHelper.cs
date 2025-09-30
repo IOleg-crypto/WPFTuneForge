@@ -15,6 +15,10 @@ namespace WpfTuneForgePlayer.Helpers
         // Constructor initializes the timer with specified interval and references to audio service and view model
         public TimerHelper(TimeSpan interval, AudioService audioService, MusicViewModel viewModel)
         {
+            if (interval == null || audioService == null || viewModel == null)
+            {
+                throw new ArgumentNullException("TimerHelper: One or more constructor arguments are null");
+            }
             _audioService = audioService;
             _viewModel = viewModel;
 
