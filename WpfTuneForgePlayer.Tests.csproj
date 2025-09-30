@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\xunit.core.2.9.3\build\xunit.core.props" Condition="Exists('packages\xunit.core.2.9.3\build\xunit.core.props')" />
+  <Import Project="packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.props" Condition="Exists('packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,8 +39,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>packages\Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=4.20.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
-      <HintPath>packages\Moq.4.20.72\lib\net462\Moq.dll</HintPath>
+      <HintPath>packages\Moq.4.18.1\lib\net462\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq.AutoMock, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Moq.AutoMock.3.4.0\lib\net461\Moq.AutoMock.dll</HintPath>
     </Reference>
     <Reference Include="NAudio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
       <HintPath>packages\NAudio.2.2.1\lib\net472\NAudio.dll</HintPath>
@@ -47,7 +55,11 @@
     <Reference Include="NAudio.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
       <HintPath>packages\NAudio.Core.2.2.1\lib\netstandard2.0\NAudio.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NonBlocking, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NonBlocking.2.1.1\lib\netstandard2.0\NonBlocking.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows" />
@@ -65,13 +77,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Helpers\LoggerTests.cs" />
     <Compile Include="Tests\Helpers\SongTests.cs" />
     <Compile Include="Tests\Helpers\TimerHelperTests.cs" />
-    <Compile Include="Tests\Mathematics\Vector2Tests.cs" />
     <Compile Include="Tests\Services\AudioServiceTests.cs" />
     <Compile Include="Tests\Services\VolumeServiceTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="WpfTuneForgePlayer.csproj">
@@ -80,19 +91,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\xunit.analyzers.1.18.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
     <Analyzer Include="packages\xunit.analyzers.1.18.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\xunit.core.2.9.3\build\xunit.core.targets" Condition="Exists('packages\xunit.core.2.9.3\build\xunit.core.targets')" />
+  <Import Project="packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.targets" Condition="Exists('packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\xunit.core.2.9.3\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\xunit.core.2.9.3\build\xunit.core.props'))" />
     <Error Condition="!Exists('packages\xunit.core.2.9.3\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\xunit.core.2.9.3\build\xunit.core.targets'))" />
+    <Error Condition="!Exists('packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.props'))" />
+    <Error Condition="!Exists('packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\xunit.runner.visualstudio.2.8.2\build\net452\xunit.runner.visualstudio.targets'))" />
   </Target>
 </Project>

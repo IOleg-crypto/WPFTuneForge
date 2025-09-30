@@ -6,21 +6,21 @@ Write-Host ""
 
 try {
     Write-Host "[1/4] Restoring NuGet packages..." -ForegroundColor Yellow
-    dotnet restore
+    dotnet restore WpfTuneForgePlayer.sln
     if ($LASTEXITCODE -ne 0) {
         throw "Failed to restore packages"
     }
 
     Write-Host ""
-    Write-Host "[2/4] Building test project..." -ForegroundColor Yellow
-    msbuild WpfTuneForgePlayer.Tests.csproj /p:Configuration=Debug /verbosity:minimal
+    Write-Host "[2/4] Building solution..." -ForegroundColor Yellow
+    msbuild WpfTuneForgePlayer.sln /p:Configuration=Debug /verbosity:minimal
     if ($LASTEXITCODE -ne 0) {
-        throw "Failed to build test project"
+        throw "Failed to build solution"
     }
 
     Write-Host ""
     Write-Host "[3/4] Running unit tests..." -ForegroundColor Yellow
-    dotnet test --verbosity normal --logger trx --results-directory TestResults
+    dotnet test WpfTuneForgePlayer.sln --verbosity normal --logger trx --results-directory TestResults
     if ($LASTEXITCODE -ne 0) {
         Write-Host "WARNING: Some tests failed or were skipped" -ForegroundColor Yellow
     }

@@ -1,0 +1,946 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Moq.AutoMock</name>
+    </assembly>
+    <members>
+        <member name="T:Moq.AutoMock.AutoMocker">
+            <summary>
+            An auto-mocking IoC container that generates mock objects using Moq.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.#ctor">
+            <summary>
+            Initializes an instance of AutoMockers.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.#ctor(Moq.MockBehavior)">
+            <summary>
+            Initializes an instance of AutoMockers.
+            </summary>
+            <param name="mockBehavior">The behavior to use for created mocks.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.#ctor(Moq.MockBehavior,Moq.DefaultValue)">
+            <summary>
+            Initializes an instance of AutoMockers.
+            </summary>
+            <param name="mockBehavior">The behavior to use for created mocks.</param>
+            <param name="defaultValue">The default value to use for created mocks.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.#ctor(Moq.MockBehavior,Moq.DefaultValue,System.Boolean)">
+            <summary>
+            Initializes an instance of AutoMockers.
+            </summary>
+            <param name="mockBehavior">The behavior to use for created mocks.</param>
+            <param name="defaultValue">The default value to use for created mocks.</param>
+            <param name="callBase">Whether to call the base virtual implementation for created mocks.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.#ctor(Moq.MockBehavior,Moq.DefaultValue,Moq.DefaultValueProvider,System.Boolean)">
+            <summary>
+            Initializes an instance of AutoMockers.
+            </summary>
+            <param name="mockBehavior">The behavior to use for created mocks.</param>
+            <param name="defaultValue">The default value to use for created mocks.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Whether to call the base virtual implementation for created mocks.</param>
+        </member>
+        <member name="P:Moq.AutoMock.AutoMocker.MockBehavior">
+            <summary>
+            Behavior of created mocks, according to the value set in the constructor.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.AutoMocker.DefaultValue">
+            <summary>
+            Specifies the behavior to use when returning default values for 
+            unexpected invocations on loose mocks created by this instance.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.AutoMocker.DefaultValueProvider">
+            <summary>
+            Gets the <see cref="T:Moq.DefaultValueProvider"/> instance that will be used
+            to produce default return values for unexpected invocations.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.AutoMocker.CallBase">
+            <summary>
+            Whether the base member virtual implementation will be called 
+            for created mocks if no setup is matched. Defaults to <c>false</c>.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.AutoMocker.Resolvers">
+            <summary>
+            A collection of resolves determining how a given dependency will be resolved.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.AutoMocker.ResolvedObjects">
+            <summary>
+            A collection of objects stored in this AutoMocker instance.
+            The keys are the types used when resolving services.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateInstance``1">
+            <summary>
+            Constructs an instance from known services. Any dependencies (constructor arguments)
+            are fulfilled by searching the container or, if not found, automatically generating
+            mocks.
+            </summary>
+            <typeparam name="T">A concrete type</typeparam>
+            <returns>An instance of T with all constructor arguments derived from services 
+            setup in the container.</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateInstance``1(System.Boolean)">
+            <summary>
+            Constructs an instance from known services. Any dependencies (constructor arguments)
+            are fulfilled by searching the container or, if not found, automatically generating
+            mocks.
+            </summary>
+            <typeparam name="T">A concrete type</typeparam>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <returns>An instance of T with all constructor arguments derived from services 
+            setup in the container.</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateInstance(System.Type)">
+            <summary>
+            Constructs an instance from known services. Any dependencies (constructor arguments)
+            are fulfilled by searching the container or, if not found, automatically generating
+            mocks.
+            </summary>
+            <param name="type">A concrete type</param>
+            <returns>An instance of type with all constructor arguments derived from services 
+            setup in the container.</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateInstance(System.Type,System.Boolean)">
+            <summary>
+            Constructs an instance from known services. Any dependencies (constructor arguments)
+            are fulfilled by searching the container or, if not found, automatically generating
+            mocks.
+            </summary>
+            <param name="type">A concrete type</param>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <returns>An instance of type with all constructor arguments derived from services 
+            setup in the container.</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1">
+            <summary> 
+            Constructs a self-mock from the services available in the container. A self-mock is 
+            a concrete object that has virtual and abstract members mocked. The purpose is so that 
+            you can test the majority of a class but mock out a resource. This is great for testing 
+            abstract classes, or avoiding breaking cohesion even further with a non-abstract class. 
+            </summary> 
+            <typeparam name="T">The instance that you want to build</typeparam> 
+            <returns>An instance with virtual and abstract members mocked</returns> 
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1(System.Boolean)">
+            <summary>
+            Constructs a self-mock from the services available in the container. A self-mock is 
+            a concrete object that has virtual and abstract members mocked. The purpose is so that 
+            you can test the majority of a class but mock out a resource. This is great for testing 
+            abstract classes, or avoiding breaking cohesion even further with a non-abstract class. 
+            </summary> 
+            <typeparam name="T">The instance that you want to build</typeparam> 
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param> 
+            <returns>An instance with virtual and abstract members mocked</returns> 
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})">
+            <summary>
+            Constructs a self-mock from the services available in the container. A self-mock is 
+            a concrete object that has virtual and abstract members mocked. The purpose is so that 
+            you can test the majority of a class but mock out a resource. This is great for testing 
+            abstract classes, or avoiding breaking cohesion even further with a non-abstract class. 
+            </summary> 
+            <typeparam name="T">The instance that you want to build</typeparam> 
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <param name="mockBehavior">Sets the Behavior property on the created Mock.</param>
+            <param name="defaultValue">Sets the DefaultValue propert on the created Mock.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Sets the CallBase property on the created Mock.</param>
+            <returns>An instance with virtual and abstract members mocked</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.WithSelfMock``2(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})">
+            <summary>
+            This constructs a self mock similar to <see cref="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})" />.
+            The created mock instance is automatically registered using both its implementation and service type.
+            </summary>
+            <typeparam name="TService">The service type</typeparam>
+            <typeparam name="TImplementation">The implementation type</typeparam>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <param name="mockBehavior">Sets the Behavior property on the created Mock.</param>
+            <param name="defaultValue">Sets the DefaultValue propert on the created Mock.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Sets the CallBase property on the created Mock.</param>
+            <returns>An instance with virtual and abstract members mocked</returns> 
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.WithSelfMock``1(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})">
+            <summary>
+            This constructs a self mock similar to <see cref="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})" />.
+            The created mock instance is automatically registered using both its implementation and service type.
+            </summary>
+            <typeparam name="T">The service type</typeparam>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <param name="mockBehavior">Sets the Behavior property on the created Mock.</param>
+            <param name="defaultValue">Sets the DefaultValue propert on the created Mock.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Sets the CallBase property on the created Mock.</param>
+            <returns>An instance with virtual and abstract members mocked</returns> 
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.WithSelfMock(System.Type,System.Type,System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})">
+            <summary>
+            This constructs a self mock similar to <see cref="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})" />.
+            The created mock instance is automatically registered using both its implementation and service type.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="implementationType">The implementation type of the service.</param>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <param name="mockBehavior">Sets the Behavior property on the created Mock.</param>
+            <param name="defaultValue">Sets the DefaultValue propert on the created Mock.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Sets the CallBase property on the created Mock.</param>
+            <returns>An instance with virtual and abstract members mocked</returns> 
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.WithSelfMock(System.Type,System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})">
+            <summary>
+            This constructs a self mock similar to <see cref="M:Moq.AutoMock.AutoMocker.CreateSelfMock``1(System.Boolean,System.Nullable{Moq.MockBehavior},System.Nullable{Moq.DefaultValue},Moq.DefaultValueProvider,System.Nullable{System.Boolean})" />.
+            The created mock instance is automatically registered using both its implementation and service type.
+            </summary>
+            <param name="implementationType">The implementation type of the service.</param>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <param name="mockBehavior">Sets the Behavior property on the created Mock.</param>
+            <param name="defaultValue">Sets the DefaultValue propert on the created Mock.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Sets the CallBase property on the created Mock.</param>
+            <returns>An instance with virtual and abstract members mocked</returns> 
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Use``1(``0)">
+            <summary>
+            Adds an instance to the container.
+            </summary>
+            <typeparam name="TService">The type that the instance will be registered as</typeparam>
+            <param name="service"></param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Use(System.Type,System.Object)">
+            <summary>
+            Adds an instance to the container.
+            </summary>
+            <param name="type">The type of service to use</param>
+            <param name="service">The service to use</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Use``1(Moq.Mock{``0})">
+            <summary>
+            Adds an instance to the container.
+            </summary>
+            <typeparam name="TService">The type that the instance will be registered as</typeparam>
+            <param name="mockedService">The mocked service</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Use``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Adds a mock object to the container that implements TService.
+            </summary>
+            <typeparam name="TService">The type that the instance will be registered as</typeparam>
+            <param name="setup">A shortcut for Mock.Of's syntax</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.With``2">
+            <summary>
+            Creates an instance of <typeparamref name="TImplementation"/> and registers it as for service type <typeparamref name="TService"/>.
+            This is a convenience method for Use&lt;<typeparamref name="TService"/>&gt;(CreateInstance&lt;<typeparamref name="TImplementation"/>&gt;())
+            </summary>
+            <typeparam name="TService">The service type</typeparam>
+            <typeparam name="TImplementation">The service implementation type</typeparam>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.With``1">
+            <summary>
+            Creates an instance of <typeparamref name="TImplementation"/> and registers it as for service type <typeparamref name="TImplementation"/>.
+            This is a convenience method for Use&lt;<typeparamref name="TImplementation"/>&gt;(CreateInstance&lt;<typeparamref name="TImplementation"/>&gt;())
+            </summary>
+            <typeparam name="TImplementation">The service implementation type</typeparam>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.With(System.Type,System.Type)">
+            <summary>
+            Creates an instance of <paramref name="implementationType"/> and registers it for service type <paramref name="serviceType"/>.
+            This is a convenience method for Use(<paramref name="serviceType"/>, CreateInstance(<paramref name="implementationType"/>))
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.With(System.Type)">
+            <summary>
+            Creates an instance of <paramref name="implementationType"/> and registers it for service type <paramref name="implementationType"/>.
+            This is a convenience method for Use(<paramref name="implementationType"/>, CreateInstance(<paramref name="implementationType"/>))
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Get``1">
+            <summary>
+            Searches and retrieves an object from the container that matches TService. This can be
+            a service setup explicitly via `.Use()` or implicitly with `.CreateInstance()`.
+            </summary>
+            <typeparam name="TService">The class or interface to search on</typeparam>
+            <returns>The object that implements TService</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Get``1(System.Boolean)">
+            <summary>
+            Searches and retrieves an object from the container that matches TService. This can be
+            a service setup explicitly via `.Use()` or implicitly with `.CreateInstance()`.
+            </summary>
+            <typeparam name="TService">The class or interface to search on</typeparam>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <returns>The object that implements TService</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Get(System.Type)">
+            <summary>
+            Searches and retrieves an object from the container that matches the serviceType. This can be
+            a service setup explicitly via `.Use()` or implicitly with `.CreateInstance()`.
+            </summary>
+            <param name="serviceType">The type of service to retrieve</param>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Get(System.Type,System.Boolean)">
+            <summary>
+            Searches and retrieves an object from the container that matches the serviceType. This can be
+            a service setup explicitly via `.Use()` or implicitly with `.CreateInstance()`.
+            </summary>
+            <param name="serviceType">The type of service to retrieve</param>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.System#IServiceProvider#GetService(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.GetMock``1">
+            <summary>
+            Searches and retrieves the mock that the container uses for TService.
+            </summary>
+            <typeparam name="TService">The class or interface to search on</typeparam>
+            <exception cref="T:System.ArgumentException">if the requested object wasn't a Mock</exception>
+            <returns>A mock of TService</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.GetMock``1(System.Boolean)">
+            <summary>
+            Searches and retrieves the mock that the container uses for TService.
+            </summary>
+            <typeparam name="TService">The class or interface to search on</typeparam>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <exception cref="T:System.ArgumentException">if the requested object wasn't a Mock</exception>
+            <returns>A mock of TService</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.GetMock(System.Type)">
+            <summary>
+            Searches and retrieves the mock that the container uses for serviceType.
+            </summary>
+            <param name="serviceType">The type of service to retrieve</param>
+            <returns>A mock of serviceType</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.GetMock(System.Type,System.Boolean)">
+            <summary>
+            Searches and retrieves the mock that the container uses for serviceType.
+            </summary>
+            <param name="serviceType">The type of service to retrieve</param>
+            <param name="enablePrivate">When true, non-public constructors will also be used to create mocks.</param>
+            <returns>A mock of serviceType</returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Setup``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            Shortcut for mock.Setup(...), creating the mock when necessary.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Setup``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Shortcut for mock.Setup(...), creating the mock when necessary.
+            For specific return types. E.g. primitive, structs
+            that cannot be inferred
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="setup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.SetupWithAny``1(System.String)">
+            <summary>
+            Specifies a setup on the mocked type for a call to a void method.
+            All parameters are filled with <see cref ="M:Moq.It.IsAny``1" /> according to the parameter's type.
+            </summary>
+            <remarks>
+            This may only be used on methods that are not overloaded.
+            This will create the mock when necessary.
+            </remarks>
+            <typeparam name="TService">The service type</typeparam>
+            <param name="methodName">The name of the expected method invocation.</param>
+            <exception cref="T:System.ArgumentNullException">When the methodName is null.</exception>
+            <exception cref="T:System.MissingMethodException">Thrown when no method with methodName is found.</exception>
+            <exception cref="T:System.Reflection.AmbiguousMatchException">Thrown when more that one method matches the passed method name.</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.SetupWithAny``2(System.String)">
+            <summary>
+            Specifies a setup on the mocked type for a call to a non-void (value-returning) method.
+            All parameters are filled with <see cref ="M:Moq.It.IsAny``1" /> according to the parameter's type.
+            </summary>
+            <remarks>
+            This may only be used on methods that are not overloaded.
+            This will create the mock when necessary.
+            </remarks>
+            <typeparam name="TService">The service type</typeparam>
+            <typeparam name="TReturn">The return type of the method</typeparam>
+            <param name="methodName">The name of the expected method invocation.</param>
+            <exception cref="T:System.ArgumentNullException">When the methodName is null.</exception>
+            <exception cref="T:System.MissingMethodException">Thrown when no method with methodName is found.</exception>
+            <exception cref="T:System.Reflection.AmbiguousMatchException">Thrown when more that one method matches the passed method name.</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.SetupAllProperties``1">
+            <summary>
+            Shortcut for mock.SetupAllProperties(), creating the mock when necessary
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.SetupSequence``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Shortcut for mock.SetupSequence(), creating the mock when necessary
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine(System.Type,System.Type[])">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to 
+            other interfaces. In the end, this just means that all given
+            types will be implemented by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.VerifyAll">
+            <summary>
+            This is a shortcut for calling `mock.VerifyAll()` on every mock that we have.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify">
+            <summary>
+            This is a shortcut for calling `mock.Verify()` on every mock that we have.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Verify a mock in the container.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <typeparam name="TResult">Return type of the full expression</typeparam>
+            <param name="expression"></param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},Moq.Times)">
+            <summary>
+            Verify a mock in the container.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <typeparam name="TResult">Return type of the full expression</typeparam>
+            <param name="expression"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Func{Moq.Times})">
+            <summary>
+            Verify a mock in the container.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <typeparam name="TResult">Return type of the full expression</typeparam>
+            <param name="expression"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
+            <summary>
+            Verify a mock in the container.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <typeparam name="TResult">Return type of the full expression</typeparam>
+            <param name="expression"></param>
+            <param name="failMessage"></param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},Moq.Times,System.String)">
+            <summary>
+            Verify a mock in the container.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <typeparam name="TResult">Return type of the full expression</typeparam>
+            <param name="expression"></param>
+            <param name="times"></param>
+            <param name="failMessage"></param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.AsDisposable">
+            <summary>
+            Retrieve an IDisposable instance that will dispose of all disposable
+            instances contained within this AutoMocker instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Action{``0}},Moq.Times)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Action{``0}},System.Func{Moq.Times})">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Action{``0}},System.String)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="failMessage">Message to show if verification fails.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Action{``0}},Moq.Times,System.String)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+            <param name="failMessage">Message to show if verification fails.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Action{``0}},System.Func{Moq.Times},System.String)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+            <param name="failMessage">Message to show if verification fails.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},Moq.Times)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Func{Moq.Times})">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.String)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="failMessage">Message to show if verification fails.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},Moq.Times,System.String)">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="expression">Expression to verify</param>
+            <param name="times">The number of times a method is allowed to be called.</param>
+            <param name="failMessage">Message to show if verification fails.</param>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Verify``1">
+            <summary>
+            Verifies that a specific invocation matching the given expression was performed
+            on the mock. Use in conjunction with the default Moq.MockBehavior.Loose.
+            </summary>
+            <typeparam name="T">Type of the mock</typeparam>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``2">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``3">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``4">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``5">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``6">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``7">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``8">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``9">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``10">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.AutoMocker.Combine``11">
+            <summary>
+            Combines all given types so that they are mocked by the same
+            mock. Some IoC containers call this "Forwarding" one type to
+            other interfaces. In the end, this just means that all given
+            types will be implemnted by the same instance.
+            </summary>
+        </member>
+        <member name="T:Moq.AutoMock.ConstructorTestsAttribute">
+            <summary>
+            An attribute used by Moq.AutoMock.TestGenerator to generate unit tests for null constructor arguments.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.ConstructorTestsAttribute.TargetType">
+            <summary>
+            The type of service to generate tests for.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.ConstructorTestsAttribute.#ctor">
+            <summary>
+            Create a new instance of the ConstructorTestsAttribute
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.ConstructorTestsAttribute.#ctor(System.Type)">
+            <summary>
+            Create a new instance of the ConstructorTestsAttribute specifying the targetType
+            </summary>
+            <param name="targetType"></param>
+        </member>
+        <member name="T:Moq.AutoMock.IAutoMockerDisposable">
+            <summary>
+            An interface that is used to clean up AutoMocker instances.
+            </summary>
+        </member>
+        <member name="T:Moq.AutoMock.MockExtensions">
+            <summary>
+            Extensions for <see cref="T:Moq.Mock" /> objects.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.MockExtensions.SetupWithAny``1(Moq.Mock{``0},System.String)">
+            <summary>
+            Specifies a setup on the mocked type for a call to a void method. 
+            All parameters are filled with <see cref ="M:Moq.It.IsAny``1" /> according to the parameter's type.
+            </summary>
+            <remarks>
+            This may only be used on methods that are not overloaded.
+            </remarks>
+            <typeparam name="T">Type of the mock</typeparam>
+            <param name="mock">The mock</param>
+            <param name="methodName">The name of the expected method invocation.</param>
+            <exception cref="T:System.ArgumentNullException">When mock or methodName is null.</exception>
+            <exception cref="T:System.MissingMethodException">Thrown when no method with methodName is found.</exception>
+            <exception cref="T:System.Reflection.AmbiguousMatchException">Thrown when more that one method matches the passed method name.</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Moq.AutoMock.MockExtensions.SetupWithAny``2(Moq.Mock{``0},System.String)">
+            <summary>
+            Specifies a setup on the mocked type for a call to a non-void (value-returning) method. 
+            All parameters are filled with <see cref ="M:Moq.It.IsAny``1" /> according to the parameter's type.
+            </summary>
+            <remarks>
+            This may only be used on methods that are not overloaded.
+            </remarks>
+            <typeparam name="T">Type of the mock</typeparam>
+            <typeparam name="TResult">The return type of the method</typeparam>
+            <param name="mock">The mock</param>
+            <param name="methodName">The name of the expected method invocation.</param>
+            <exception cref="T:System.ArgumentNullException">When mock or methodName is null.</exception>
+            <exception cref="T:System.MissingMethodException">Thrown when no method with methodName is found.</exception>
+            <exception cref="T:System.Reflection.AmbiguousMatchException">Thrown when more that one method matches the passed method name.</exception>
+            <returns></returns>
+        </member>
+        <member name="T:Moq.AutoMock.ObjectGraphContext">
+            <summary>
+            Handles state while creating an object graph.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.ObjectGraphContext.#ctor(System.Boolean)">
+            <summary>
+            Creates an instance with binding flags set according to `enablePrivate`.
+            </summary>
+            <param name="enablePrivate"></param>
+        </member>
+        <member name="M:Moq.AutoMock.ObjectGraphContext.#ctor(Moq.AutoMock.ObjectGraphContext)">
+            <summary>
+            Creates a new instance, copying the values for the Binding flags and the Visited types.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:Moq.AutoMock.ObjectGraphContext.BindingFlags">
+            <summary>
+            Flags passed to Mock constructor.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.ObjectGraphContext.VisitedTypes">
+            <summary>
+            Used internally to track which types have been created inside a call graph,
+            to detect cycles in the object graph.
+            </summary>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.ArrayResolver">
+            <summary>
+            Provides a means to create arrays.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.ArrayResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.AutoMockerDisposableResolver">
+            <summary>
+            A resolver that resolves instances for <see cref="T:Moq.AutoMock.IAutoMockerDisposable"/>.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.AutoMockerDisposableResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolve the <see cref="T:Moq.AutoMock.IAutoMockerDisposable"/> if one has not been found.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.CacheResolver">
+            <summary>
+            Provides the cache used by AutoMocker.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.CacheResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.CancellationTokenResolver">
+            <summary>
+            A resolve that can provide a <see cref="T:System.Threading.CancellationToken"/>
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.CancellationTokenResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.EnumerableResolver">
+            <summary>
+            A resolver that resolves IEnumerable&lt;T&gt; requested types.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.EnumerableResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolves IEnumerable&lt;T&gt; types.
+            </summary>
+            <param name="context">The resolution context.</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.FuncResolver">
+            <summary>
+            A resolver that resolves Func&lt;&gt; dependency types
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.FuncResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolves requested Func&lt;&gt; types.
+            </summary>
+            <param name="context">The resolution context.</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.IMockResolver">
+            <summary>
+            Base interface for all mock resolvers.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.IMockResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolve a dependency.
+            </summary>
+            <param name="context">The context to be used while resolving the dependency.</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.LazyResolver">
+            <summary>
+            A resolver that resolves Lazy&lt;T&gt; requested types.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.LazyResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolves Lazy&lt;T&gt; types.
+            </summary>
+            <param name="context">The resolution context.</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.MockResolutionContext">
+            <summary>
+            The context used to resolve types from an <c>AutoMocker</c> instance.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.MockResolutionContext.#ctor(Moq.AutoMock.AutoMocker,System.Type,Moq.AutoMock.ObjectGraphContext)">
+            <summary>
+            Initializes an instance of MockResolutionContext.
+            </summary>
+            <param name="autoMocker">The <c>AutoMocker</c> instance.</param>
+            <param name="requestType">The requested type to resolve.</param>
+            <param name="objectGraphContext">
+            Context within the object graph being created. This differs from the MockResolutionContext which is
+            only relevant for a single object creation.
+            </param>
+        </member>
+        <member name="P:Moq.AutoMock.Resolvers.MockResolutionContext.AutoMocker">
+            <summary>
+            The <c>AutoMocker</c> instance.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resolvers.MockResolutionContext.RequestType">
+            <summary>
+            The requested type to resolve.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resolvers.MockResolutionContext.Value">
+            <summary>
+            The value to use from the resolution.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resolvers.MockResolutionContext.ObjectGraphContext">
+            <summary>
+            Context within the object graph being created. This differs from the MockResolutionContext which is
+            only relevant for a single object creation.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resolvers.MockResolutionContext.ValueProvided">
+            <summary>
+            Indicates if a value was set on the Value property.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.MockResolutionContext.Deconstruct(Moq.AutoMock.AutoMocker@,System.Type@,System.Object@)">
+            <summary>
+            Deconstruct this instance into its individual properties.
+            </summary>
+            <param name="autoMocker">The <c>AutoMocker</c> instance.</param>
+            <param name="type">The requested type to resolve.</param>
+            <param name="value">The value to use for the requested type.</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.MockResolver">
+            <summary>
+            A resolver that resolves requested types with Mock&lt;T&gt; instances.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.MockResolver.#ctor(Moq.MockBehavior,Moq.DefaultValue,System.Boolean)">
+            <summary>
+            Initializes an instance of <c>MockResolver</c>.
+            </summary>
+            <param name="mockBehavior">Behavior of created mock.</param>
+            <param name="defaultValue">Specifies the behavior to use when returning default values for 
+            unexpected invocations on loose mocks created by this instance.</param>
+            <param name="callBase">Whether the base member virtual implementation will be called 
+            for created mocks if no setup is matched.</param>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.MockResolver.#ctor(Moq.MockBehavior,Moq.DefaultValue,Moq.DefaultValueProvider,System.Boolean)">
+            <summary>
+            Initializes an instance of <c>MockResolver</c>.
+            </summary>
+            <param name="mockBehavior">Behavior of created mock.</param>
+            <param name="defaultValue">Specifies the behavior to use when returning default values for 
+            unexpected invocations on loose mocks created by this instance.</param>
+            <param name="defaultValueProvider">The instance that will be used to produce default return values for unexpected invocations.</param>
+            <param name="callBase">Whether the base member virtual implementation will be called 
+            for created mocks if no setup is matched.</param>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.MockResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolves requested types with Mock instances.
+            </summary>
+            <param name="context">The resolution context.</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resolvers.SelfResolver">
+            <summary>
+            Resolves calls to retireve AutoMocker with itself.
+            </summary>
+        </member>
+        <member name="M:Moq.AutoMock.Resolvers.SelfResolver.Resolve(Moq.AutoMock.Resolvers.MockResolutionContext)">
+            <summary>
+            Resolves a request for AutoMocker with itself.
+            </summary>
+            <param name="context">The mock resolution context</param>
+        </member>
+        <member name="T:Moq.AutoMock.Resources.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+              This class was generated by MSBuild using the GenerateResource task.
+              To add or remove a member, edit your .resx file then rerun MSBuild.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resources.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resources.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Moq.AutoMock.Resources.Strings.VerifyWithValueReturn">
+            <summary>
+              Looks up a localized string similar to Use the Verify overload that allows specifying TReturn if the setup returns a value type..
+            </summary>
+        </member>
+    </members>
+</doc>

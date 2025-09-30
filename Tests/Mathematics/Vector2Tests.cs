@@ -43,5 +43,33 @@ namespace WpfTuneForgePlayer.Tests.Mathematics
             // Assert
             Assert.NotNull(vector);
         }
+
+        [Fact]
+        public void Constructor_WithStringParameters_ShouldCreateVector2()
+        {
+            // Arrange
+            object width = "width_value";
+            object height = "height_value";
+
+            // Act
+            var vector = new Vector2(width, height);
+
+            // Assert
+            Assert.NotNull(vector);
+        }
+
+        [Fact]
+        public void Constructor_WithNumericParameters_ShouldCreateVector2()
+        {
+            // Arrange
+            object width = 100.5;
+            object height = 200.75;
+
+            // Act
+            var vector = new Vector2(width, height);
+
+            // Assert
+            Assert.NotNull(vector);
+        }
     }
 }
