@@ -1,4 +1,4 @@
-name: .NET TuneForge
+name: MSBuild TuneForge
 
 on:
   push:
@@ -29,11 +29,14 @@ on:
       - '**/*.svg'
   workflow_dispatch:
     inputs:
-      run_build:
-        description: 'Run build?'
+      build_config:
+        description: 'Build configuration'
         required: true
-        default: 'true'
-        type: boolean
+        default: 'Release'
+        type: choice
+        options:
+          - Debug
+          - Release
       run_tests:
         description: 'Run tests?'
         required: true
@@ -63,8 +66,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        ref: ${{ github.event.inputs.commit_sha || github.sha }}
+        ref: ${{ env.COMMIT_SHA }}
         fetch-depth: 0
+
+    - name: Create temporary branch
+      run: |
+        git checkout -B $env:TEMP_BRANCH
+        echo "Temporary branch created: $env:TEMP_BRANCH"
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -126,11 +134,34 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
-        target_commitish: ${{ github.event.inputs.commit_sha || github.sha }}
+        target_commitish: ${{ env.COMMIT_SHA }}
         name: "TuneForge Release #${{ github.run_number }}"
         body: |
-          • Commit: ${{ github.event.inputs.commit_sha || github.sha }}
+          • Commit: ${{ env.COMMIT_SHA }}
           • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
-        files: bin/Release/TuneForge.zip
+        files: |
+          bin/Debug/TuneForge_Debug.zip
+          bin/Release/TuneForge_Release.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Delete temporary branch
+      run: |
+        git checkout main
+        git branch -D $env:TEMP_BRANCH
+        echo "Temporary branch deleted: $env:TEMP_BRANCH"
+
+    - name: Set commit status
+      if: always()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const state = '${{ job.status }}' === 'success' ? 'success' : 'failure';
+          github.repos.createCommitStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            sha: process.env.COMMIT_SHA,
+            state: state,
+            context: 'MSBuild TuneForge',
+            description: `Workflow finished with status: ${state}`
+          })
