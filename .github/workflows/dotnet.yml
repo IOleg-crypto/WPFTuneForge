@@ -1,131 +1,131 @@
-name: .NET TuneForge
+name: .NET CI/CD
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
-      configuration:
-        description: 'Build configuration (Debug/Release)'
+      run_debug:
+        description: "Запустити Debug build?"
         required: true
-        default: 'Release'
-        type: choice
-        options:
-          - Debug
-          - Release
-      run_tests:
-        description: 'Run tests?'
-        required: true
-        default: 'true'
+        default: "false"
         type: boolean
       run_release:
-        description: 'Create release package? (only valid for Release builds)'
+        description: "Запустити Release build?"
         required: true
-        default: 'false'
+        default: "true"
         type: boolean
-      commit_sha:
-        description: 'Commit SHA to build (defaults to HEAD)'
-        required: false
       release_message:
-        description: 'Release message (used if creating release)'
+        description: "Повідомлення для релізу (лише для Release)"
         required: false
 
 jobs:
-  build_and_test:
+  setup:
     runs-on: windows-2022
     outputs:
-      TEMP_BRANCH: ${{ steps.branch.outputs.name }}
+      temp_branch: ${{ steps.set_branch.outputs.temp_branch }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ github.event.inputs.commit_sha || github.sha }}
-        fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Create temp branch (visible to others)
-      id: branch
-      if: ${{ github.event_name == 'workflow_dispatch' }}
-      shell: pwsh
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        $branch = "ci-${{ github.event.inputs.configuration }}-${{ github.run_number }}"
-        git checkout -B $branch
-        git push origin $branch --force
-        echo "name=$branch" >> $env:GITHUB_OUTPUT
-        Write-Host "Created temp branch: $branch"
+      - name: Create temp branch (only for manual runs)
+        id: set_branch
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          $branch = "ci-build-${{ github.run_number }}"
+          git checkout -B $branch
+          git push origin $branch --force
+          echo "temp_branch=$branch" >> $env:GITHUB_OUTPUT
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.411
-
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
-
-    - name: Build solution (${{ github.event.inputs.configuration }})
-      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ github.event.inputs.configuration }} /p:PreferredToolArchitecture=x64 /m
-
-    - name: Run tests (${{ github.event.inputs.configuration }})
-      if: ${{ github.event.inputs.run_tests == 'true' }}
-      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration ${{ github.event.inputs.configuration }} --verbosity normal
-
-    - name: Create ZIP package (all builds)
-      run: |
-        mkdir package
-        xcopy /E /I /Y bin\${{ github.event.inputs.configuration }}\assets package\assets
-        xcopy /Y bin\${{ github.event.inputs.configuration }}\*.dll package\
-        xcopy /Y bin\${{ github.event.inputs.configuration }}\*.pdb package\
-        xcopy /Y bin\${{ github.event.inputs.configuration }}\*.xml package\
-        xcopy /Y bin\${{ github.event.inputs.configuration }}\WpfTuneForgePlayer.exe package\
-        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\${{ github.event.inputs.configuration }}\TuneForge.zip"
-
-    - name: Upload build artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: TuneForge-${{ github.event.inputs.configuration }}
-        path: bin/${{ github.event.inputs.configuration }}/TuneForge.zip
-
-  release:
+  build-debug:
+    if: ${{ github.event.inputs.run_debug == 'true' }}
+    needs: setup
     runs-on: windows-2022
-    needs: build_and_test
-    if: ${{ github.event.inputs.run_release == 'true' && github.event.inputs.configuration == 'Release' }}
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: TuneForge-Release
-        path: artifacts
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: build-${{ github.event.inputs.configuration }}-${{ github.run_number }}-${{ github.sha }}
-        target_commitish: ${{ github.event.inputs.commit_sha || github.sha }}
-        name: "TuneForge Release #${{ github.run_number }} (${{ github.event.inputs.configuration }})"
-        body: |
-          • Commit: ${{ github.event.inputs.commit_sha || github.sha }}
-          • Config: ${{ github.event.inputs.configuration }}
-          • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
-        files: artifacts/TuneForge.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cache NuGet
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - run: dotnet restore
+      - run: dotnet build --configuration Debug --no-restore
+      - run: dotnet test --configuration Debug --no-build --verbosity normal
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debug-${{ github.run_number }}
+          path: "**/bin/Debug/**"
+
+  build-release:
+    if: ${{ github.event.inputs.run_release == 'true' || github.event_name == 'push' }}
+    needs: setup
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Cache NuGet
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - run: dotnet restore
+      - run: dotnet build --configuration Release --no-restore
+      - run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Publish Release
+        run: dotnet publish --configuration Release -o out
+
+      - name: Package ZIP
+        run: |
+          mkdir package
+          xcopy /E /I /Y out package\
+          powershell -Command "Compress-Archive -Path package\* -DestinationPath out/TuneForge.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ github.run_number }}
+          path: out
+
+      - name: Create GitHub Release
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          name: "TuneForge Release #${{ github.run_number }}"
+          body: |
+            • Commit: ${{ github.sha }}
+            • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
+          files: out/TuneForge.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   cleanup:
-    runs-on: windows-2022
-    needs: [build_and_test, release]
     if: always() && github.event_name == 'workflow_dispatch'
+    needs: [build-debug, build-release]
+    runs-on: windows-2022
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: Delete temp branch
-      shell: pwsh
-      run: |
-        $branch = "${{ needs.build_and_test.outputs.TEMP_BRANCH }}"
-        if ($branch) {
-          git push origin --delete $branch
-          Write-Host "Deleted temp branch $branch"
-        } else {
-          Write-Host "No temp branch to delete"
-        }
+      - name: Delete temp branch
+        shell: pwsh
+        run: |
+          if ("${{ needs.setup.outputs.temp_branch }}") {
+            git push origin --delete ${{ needs.setup.outputs.temp_branch }}
+          }
