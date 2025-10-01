@@ -29,6 +29,9 @@ on:
       - '**/*.svg'
   workflow_dispatch:
     inputs:
+      commit_sha:
+        description: 'Commit SHA to build (defaults to HEAD)'
+        required: false
       build_config:
         description: 'Build configuration'
         required: true
@@ -47,9 +50,6 @@ on:
         required: true
         default: 'false'
         type: boolean
-      commit_sha:
-        description: 'Commit SHA to build (defaults to HEAD)'
-        required: false
       release_message:
         description: 'Release message (used if creating release)'
         required: false
@@ -58,7 +58,9 @@ jobs:
   build_and_test:
     runs-on: windows-2022
     env:
-      RUN_BUILD: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.run_build == 'true' }}
+      COMMIT_SHA: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit_sha || github.sha }}
+      SELECTED_CONFIG: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.build_config || 'Release' }}
+      RUN_BUILD: 'true'
       RUN_TESTS: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.run_tests == 'true' }}
       RUN_RELEASE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_release == 'true' }}
 
@@ -68,11 +70,6 @@ jobs:
       with:
         ref: ${{ env.COMMIT_SHA }}
         fetch-depth: 0
-
-    - name: Create temporary branch
-      run: |
-        git checkout -B $env:TEMP_BRANCH
-        echo "Temporary branch created: $env:TEMP_BRANCH"
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -95,8 +92,7 @@ jobs:
       run: dotnet restore WpfTuneForgePlayer.sln
 
     - name: Build solution
-      if: ${{ env.RUN_BUILD == 'true' || env.RUN_TESTS == 'true' }}
-      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
+      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ env.SELECTED_CONFIG }} /p:PreferredToolArchitecture=x64 /m
 
     - name: Run tests
       if: ${{ env.RUN_TESTS == 'true' }}
@@ -114,19 +110,19 @@ jobs:
       if: ${{ env.RUN_RELEASE == 'true' }}
       run: |
         mkdir package
-        xcopy /E /I /Y bin\Release\assets package\assets
-        xcopy /Y bin\Release\*.dll package\
-        xcopy /Y bin\Release\*.pdb package\
-        xcopy /Y bin\Release\*.xml package\
-        xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
-        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
+        xcopy /E /I /Y bin\${{ env.SELECTED_CONFIG }}\assets package\assets
+        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.dll package\
+        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.pdb package\
+        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.xml package\
+        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\WpfTuneForgePlayer.exe package\
+        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\${{ env.SELECTED_CONFIG }}\TuneForge_${{ env.SELECTED_CONFIG }}.zip"
 
     - name: Upload release package artifact
       if: ${{ always() && env.RUN_RELEASE == 'true' }}
       uses: actions/upload-artifact@v4
       with:
-        name: TuneForge-Release-${{ github.run_number }}
-        path: bin/Release/TuneForge.zip
+        name: TuneForge-${{ env.SELECTED_CONFIG }}-${{ github.run_number }}
+        path: bin/${{ env.SELECTED_CONFIG }}/TuneForge_${{ env.SELECTED_CONFIG }}.zip
         if-no-files-found: error
 
     - name: Create GitHub Release
@@ -139,29 +135,9 @@ jobs:
         body: |
           • Commit: ${{ env.COMMIT_SHA }}
           • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
-        files: |
-          bin/Debug/TuneForge_Debug.zip
-          bin/Release/TuneForge_Release.zip
+        files: bin/${{ env.SELECTED_CONFIG }}/TuneForge_${{ env.SELECTED_CONFIG }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Delete temporary branch
-      run: |
-        git checkout main
-        git branch -D $env:TEMP_BRANCH
-        echo "Temporary branch deleted: $env:TEMP_BRANCH"
 
-    - name: Set commit status
-      if: always()
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const state = '${{ job.status }}' === 'success' ? 'success' : 'failure';
-          github.repos.createCommitStatus({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            sha: process.env.COMMIT_SHA,
-            state: state,
-            context: 'MSBuild TuneForge',
-            description: `Workflow finished with status: ${state}`
-          })
+
