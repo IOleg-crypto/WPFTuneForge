@@ -15,17 +15,20 @@ on:
         description: 'Run build?'
         required: true
         default: 'true'
-        type: boolean
+        type: choice
+        options: ['true', 'false']
       run_tests:
         description: 'Run tests?'
         required: true
         default: 'true'
-        type: boolean
+        type: choice
+        options: ['true', 'false']
       run_release:
         description: 'Create release package?'
         required: true
         default: 'false'
-        type: boolean
+        type: choice
+        options: ['true', 'false']
       commit_sha:
         description: 'Commit SHA to build (defaults to HEAD)'
         required: false
@@ -34,65 +37,37 @@ on:
         required: false
 
 jobs:
-  build_and_test:
+  build:
     runs-on: windows-2022
 
     steps:
-    - name: Checkout code
+    - name: Checkout
       uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.commit_sha || github.sha }}
         fetch-depth: 0
 
-    - name: Push temp branch for workflow_dispatch
-      if: ${{ github.event_name == 'workflow_dispatch' }}
-      shell: pwsh
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        $branch = "ci-build-${{ github.run_number }}"
-        git checkout -B $branch
-        git push origin $branch --force
-
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.411
+        dotnet-version: 8.0.x
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
-    - name: Determine actions
-      shell: pwsh
-      run: |
-        $isPush = "${{ github.event_name }}" -eq "push"
-
-        function To-BoolString($value) {
-            if ($value -eq $null) { return 'false' }
-            return $value.ToString().ToLower()
-        }
-
-        $run_build   = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_build }}) }
-        $run_tests   = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_tests }}) }
-        $run_release = if ($isPush) { 'true' } else { To-BoolString(${{ github.event.inputs.run_release }}) }
-
-        "run_build=$run_build"   | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
-        "run_tests=$run_tests"   | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
-        "run_release=$run_release" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append -Force
-
+    # --- BUILD ---
     - name: Build solution
-      if: ${{ env.run_build == 'true' || env.run_tests == 'true' }}
-      shell: pwsh
+      if: ${{ github.event_name == 'push' || github.event.inputs.run_build == 'true' }}
       run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
+    # --- TESTS ---
     - name: Run xUnit tests
-      if: ${{ env.run_tests == 'true' }}
-      shell: pwsh
+      if: ${{ github.event_name == 'push' || github.event.inputs.run_tests == 'true' }}
       run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
 
+    # --- PACKAGE ---
     - name: Create ZIP package
-      if: ${{ env.run_release == 'true' }}
-      shell: pwsh
+      if: ${{ github.event_name == 'push' || github.event.inputs.run_release == 'true' }}
       run: |
         mkdir package
         xcopy /E /I /Y bin\Release\assets package\assets
@@ -102,8 +77,9 @@ jobs:
         xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
         Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip
 
+    # --- RELEASE ---
     - name: Create GitHub Release
-      if: ${{ env.run_release == 'true' }}
+      if: ${{ github.event_name == 'push' || github.event.inputs.run_release == 'true' }}
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}
@@ -115,14 +91,3 @@ jobs:
         files: bin/Release/TuneForge.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Delete temp branch
-      if: ${{ github.event_name == 'workflow_dispatch' }}
-      shell: pwsh
-      run: |
-        $branch = "ci-build-${{ github.run_number }}"
-        try {
-            git push origin --delete $branch
-        } catch {
-            Write-Host "No branch to delete"
-        }
