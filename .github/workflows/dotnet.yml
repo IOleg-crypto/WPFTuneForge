@@ -1,85 +1,129 @@
-name: Build-Windows
+name: .NET TuneForge
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches: [ main, develop ]
   workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    inputs:
+      run_build:
+        description: 'Run build?'
+        required: true
+        default: 'true'
+        type: boolean
+      run_tests:
+        description: 'Run tests?'
+        required: true
+        default: 'true'
+        type: boolean
+      run_release:
+        description: 'Create release package?'
+        required: true
+        default: 'false'
+        type: boolean
+      commit_sha:
+        description: 'Commit SHA to build (defaults to HEAD)'
+        required: false
+      release_message:
+        description: 'Release message (used if creating release)'
+        required: false
 
 jobs:
-  build:
-    name: Build & Test (${{ matrix.config }})
+  build_and_test:
     runs-on: windows-2022
-    strategy:
-      fail-fast: false
-      matrix:
-        config: [Debug, Release]
-
+    outputs:
+      TEMP_BRANCH: ${{ steps.branch.outputs.name }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: false
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.commit_sha || github.sha }}
+        fetch-depth: 0
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+    - name: Create temp branch (workflow_dispatch only)
+      id: branch
+      if: ${{ github.event_name == 'workflow_dispatch' }}
+      shell: pwsh
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        $branch = "ci-build-${{ github.run_number }}"
+        git checkout -B $branch
+        git push origin $branch --force
+        echo "name=$branch" >> $env:GITHUB_OUTPUT
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.411
 
-      - name: Restore dependencies
-        run: dotnet restore WpfTuneForgePlayer.sln
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
 
-      - name: Build solution
-        run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ matrix.config }} /p:Platform="Any CPU"
+    - name: Build solution
+      if: ${{ github.event.inputs.run_build == 'true' || github.event.inputs.run_tests == 'true' }}
+      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
-      - name: Run tests
-        run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration ${{ matrix.config }} --verbosity normal
+    - name: Run tests
+      if: ${{ github.event.inputs.run_tests == 'true' }}
+      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
 
-      - name: Package build (zip)
-        if: matrix.config == 'Release'
-        shell: pwsh
-        run: |
-          mkdir package
-          Copy-Item -Recurse -Force "bin\Release\net8.0-windows" package\
-          Compress-Archive -Path package\* -DestinationPath TuneForge-${{ matrix.config }}.zip
+    - name: Create ZIP package
+      if: ${{ github.event.inputs.run_release == 'true' }}
+      run: |
+        mkdir package
+        xcopy /E /I /Y bin\Release\assets package\assets
+        xcopy /Y bin\Release\*.dll package\
+        xcopy /Y bin\Release\*.pdb package\
+        xcopy /Y bin\Release\*.xml package\
+        xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
+        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
 
-      - name: Upload artifact
-        if: matrix.config == 'Release'
-        uses: actions/upload-artifact@v4
-        with:
-          name: TuneForge-${{ matrix.config }}
-          path: TuneForge-${{ matrix.config }}.zip
+    - name: Upload build artifact
+      if: ${{ github.event.inputs.run_release == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: TuneForge-Release
+        path: bin/Release/TuneForge.zip
 
   release:
-    name: Create GitHub Release
     runs-on: windows-2022
-    needs: build
-    if: github.ref == 'refs/heads/main'
+    needs: build_and_test
+    if: ${{ github.event.inputs.run_release == 'true' }}
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: TuneForge-Release
-          path: artifacts
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: TuneForge-Release
+        path: artifacts
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: build-${{ github.run_number }}
-          name: "TuneForge Release #${{ github.run_number }}"
-          body: |
-            • Commit: ${{ github.sha }}
-            • Automatic Windows build
-          files: artifacts/TuneForge-Release.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: build-${{ github.run_number }}
+        target_commitish: ${{ github.event.inputs.commit_sha || github.sha }}
+        name: "TuneForge Release #${{ github.run_number }}"
+        body: |
+          • Commit: ${{ github.event.inputs.commit_sha || github.sha }}
+          • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
+        files: artifacts/TuneForge.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  cleanup:
+    runs-on: windows-2022
+    needs: [build_and_test, release]
+    if: always() && github.event_name == 'workflow_dispatch'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Delete temp branch
+      shell: pwsh
+      run: |
+        $branch = "${{ needs.build_and_test.outputs.TEMP_BRANCH }}"
+        if ($branch) {
+          git push origin --delete $branch
+          Write-Host "Deleted temp branch $branch"
+        } else {
+          Write-Host "No temp branch to delete"
+        }
