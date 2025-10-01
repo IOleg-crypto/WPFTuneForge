@@ -3,18 +3,21 @@ name: .NET TuneForge
 on:
   workflow_dispatch:
     inputs:
-      run_build:
-        description: 'Run build?'
+      configuration:
+        description: 'Build configuration (Debug/Release)'
         required: true
-        default: 'true'
-        type: boolean
+        default: 'Release'
+        type: choice
+        options:
+          - Debug
+          - Release
       run_tests:
         description: 'Run tests?'
         required: true
         default: 'true'
         type: boolean
       run_release:
-        description: 'Create release package?'
+        description: 'Create release package? (only valid for Release builds)'
         required: true
         default: 'false'
         type: boolean
@@ -37,17 +40,18 @@ jobs:
         ref: ${{ github.event.inputs.commit_sha || github.sha }}
         fetch-depth: 0
 
-    - name: Create temp branch (workflow_dispatch only)
+    - name: Create temp branch (visible to others)
       id: branch
       if: ${{ github.event_name == 'workflow_dispatch' }}
       shell: pwsh
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        $branch = "ci-build-${{ github.run_number }}"
+        $branch = "ci-${{ github.event.inputs.configuration }}-${{ github.run_number }}"
         git checkout -B $branch
         git push origin $branch --force
         echo "name=$branch" >> $env:GITHUB_OUTPUT
+        Write-Host "Created temp branch: $branch"
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -57,36 +61,33 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
-    - name: Build solution
-      if: ${{ github.event.inputs.run_build == 'true' || github.event.inputs.run_tests == 'true' }}
-      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
+    - name: Build solution (${{ github.event.inputs.configuration }})
+      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ github.event.inputs.configuration }} /p:PreferredToolArchitecture=x64 /m
 
-    - name: Run tests
+    - name: Run tests (${{ github.event.inputs.configuration }})
       if: ${{ github.event.inputs.run_tests == 'true' }}
-      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
+      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration ${{ github.event.inputs.configuration }} --verbosity normal
 
-    - name: Create ZIP package
-      if: ${{ github.event.inputs.run_release == 'true' }}
+    - name: Create ZIP package (all builds)
       run: |
         mkdir package
-        xcopy /E /I /Y bin\Release\assets package\assets
-        xcopy /Y bin\Release\*.dll package\
-        xcopy /Y bin\Release\*.pdb package\
-        xcopy /Y bin\Release\*.xml package\
-        xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
-        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
+        xcopy /E /I /Y bin\${{ github.event.inputs.configuration }}\assets package\assets
+        xcopy /Y bin\${{ github.event.inputs.configuration }}\*.dll package\
+        xcopy /Y bin\${{ github.event.inputs.configuration }}\*.pdb package\
+        xcopy /Y bin\${{ github.event.inputs.configuration }}\*.xml package\
+        xcopy /Y bin\${{ github.event.inputs.configuration }}\WpfTuneForgePlayer.exe package\
+        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\${{ github.event.inputs.configuration }}\TuneForge.zip"
 
     - name: Upload build artifact
-      if: ${{ github.event.inputs.run_release == 'true' }}
       uses: actions/upload-artifact@v4
       with:
-        name: TuneForge-Release
-        path: bin/Release/TuneForge.zip
+        name: TuneForge-${{ github.event.inputs.configuration }}
+        path: bin/${{ github.event.inputs.configuration }}/TuneForge.zip
 
   release:
     runs-on: windows-2022
     needs: build_and_test
-    if: ${{ github.event.inputs.run_release == 'true' }}
+    if: ${{ github.event.inputs.run_release == 'true' && github.event.inputs.configuration == 'Release' }}
     steps:
     - name: Download artifact
       uses: actions/download-artifact@v4
@@ -97,11 +98,12 @@ jobs:
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: build-${{ github.run_number }}
+        tag_name: build-${{ github.event.inputs.configuration }}-${{ github.run_number }}-${{ github.sha }}
         target_commitish: ${{ github.event.inputs.commit_sha || github.sha }}
-        name: "TuneForge Release #${{ github.run_number }}"
+        name: "TuneForge Release #${{ github.run_number }} (${{ github.event.inputs.configuration }})"
         body: |
           • Commit: ${{ github.event.inputs.commit_sha || github.sha }}
+          • Config: ${{ github.event.inputs.configuration }}
           • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
         files: artifacts/TuneForge.zip
       env:
