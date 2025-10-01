@@ -1,6 +1,32 @@
 name: .NET TuneForge
 
 on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '**/*.txt'
+      - '**/bin/**'
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.bmp'
+      - '**/*.svg'
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '**/*.txt'
+      - '**/bin/**'
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.bmp'
+      - '**/*.svg'
   workflow_dispatch:
     inputs:
       run_build:
@@ -28,6 +54,10 @@ on:
 jobs:
   build_and_test:
     runs-on: windows-2022
+    env:
+      RUN_BUILD: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.run_build == 'true' }}
+      RUN_TESTS: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.run_tests == 'true' }}
+      RUN_RELEASE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_release == 'true' }}
 
     steps:
     - name: Checkout code
@@ -44,16 +74,36 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    - name: Restore dependencies
+      if: ${{ env.RUN_BUILD == 'true' || env.RUN_TESTS == 'true' || env.RUN_RELEASE == 'true' }}
+      run: dotnet restore WpfTuneForgePlayer.sln
+
     - name: Build solution
-      if: ${{ github.event.inputs.run_build == 'true' || github.event.inputs.run_tests == 'true' }}
+      if: ${{ env.RUN_BUILD == 'true' || env.RUN_TESTS == 'true' }}
       run: msbuild WpfTuneForgePlayer.sln /p:Configuration=Release /p:PreferredToolArchitecture=x64 /m
 
     - name: Run tests
-      if: ${{ github.event.inputs.run_tests == 'true' }}
-      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --verbosity normal
+      if: ${{ env.RUN_TESTS == 'true' }}
+      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults --verbosity normal
+
+    - name: Publish test results
+      if: ${{ always() && env.RUN_TESTS == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: TestResults
+        path: TestResults
+        if-no-files-found: warn
 
     - name: Create ZIP package
-      if: ${{ github.event.inputs.run_release == 'true' }}
+      if: ${{ env.RUN_RELEASE == 'true' }}
       run: |
         mkdir package
         xcopy /E /I /Y bin\Release\assets package\assets
@@ -63,8 +113,16 @@ jobs:
         xcopy /Y bin\Release\WpfTuneForgePlayer.exe package\
         powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\Release\TuneForge.zip"
 
+    - name: Upload release package artifact
+      if: ${{ always() && env.RUN_RELEASE == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: TuneForge-Release-${{ github.run_number }}
+        path: bin/Release/TuneForge.zip
+        if-no-files-found: error
+
     - name: Create GitHub Release
-      if: ${{ github.event.inputs.run_release == 'true' }}
+      if: ${{ env.RUN_RELEASE == 'true' }}
       uses: softprops/action-gh-release@v1
       with:
         tag_name: build-${{ github.run_number }}

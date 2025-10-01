@@ -93,12 +93,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <StackPanel>
-            <Label Content="* You can add or remove songs by editing the grid above. Changes will be saved when you click 'Save current favorite songs'." 
-                   Foreground="LightGray" 
-                   FontSize="12" 
-                   Margin="0,5,0,0"
-                   HorizontalAlignment="Center"/>
-        </StackPanel>
     </Grid>
 </Page>

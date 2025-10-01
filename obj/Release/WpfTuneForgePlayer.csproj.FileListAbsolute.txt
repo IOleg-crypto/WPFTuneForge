@@ -158,3 +158,11 @@ D:\gitnext\WpfTuneForgePlayer\bin\Release\Syncfusion.Tools.WPF.xml
 D:\gitnext\WpfTuneForgePlayer\bin\Release\FluentWPF.dll
 D:\gitnext\WpfTuneForgePlayer\bin\Release\Microsoft.Bcl.HashCode.dll
 D:\gitnext\WpfTuneForgePlayer\bin\Release\Microsoft.Bcl.HashCode.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Release\GLWpfControl.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\OpenTK.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\OpenTK.GLControl.dll
+D:\gitnext\WpfTuneForgePlayer\bin\Release\GLWpfControl.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Release\OpenTK.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Release\OpenTK.xml
+D:\gitnext\WpfTuneForgePlayer\bin\Release\OpenTK.GLControl.pdb
+D:\gitnext\WpfTuneForgePlayer\bin\Release\OpenTK.GLControl.xml
