@@ -67,7 +67,8 @@ jobs:
       run: nuget restore WpfTuneForgePlayer.sln
 
     - name: Build solution
-      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ github.event.inputs.build_config }} /p:Platform=AnyCPU /m
+      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ github.event.inputs.build_config }} /m
+
 
     - name: Run tests
       if: ${{ github.event.inputs.run_tests == 'true' }}
