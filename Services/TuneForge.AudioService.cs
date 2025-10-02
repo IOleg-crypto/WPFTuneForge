@@ -294,21 +294,14 @@ namespace WpfTuneForgePlayer.AudioModel
                 }
 
                 var songModel = viewModel.Songs[viewModel.SelectedIndex];
+                string entry = $"{songModel.Artist}|{songModel.Title}|{songModel.Duration}";
 
-                if (!viewModel.SongGrid.Any(s =>
-                        s.Title == songModel.Title &&
-                        s.Artist == songModel.Artist &&
-                        s.Duration == songModel.Duration))
+                if (!File.Exists(FileName) || !File.ReadAllLines(FileName).Any(line => line == entry))
                 {
                     var song = new Song(songModel.Title, songModel.Artist, songModel.Duration);
-                    viewModel.SongGrid.Add(song); 
-                    using (var writer = new BinaryWriter(File.Open(FileName,
-                               File.Exists(FileName) ? FileMode.Append : FileMode.Create)))
-                    {
-                        writer.Write(song.Artist);
-                        writer.Write(song.Title);
-                        writer.Write(song.Duration);
-                    }
+                    viewModel.SongGrid.Add(song);
+
+                    File.AppendAllText(FileName, entry + Environment.NewLine);
                 }
                 else
                 {

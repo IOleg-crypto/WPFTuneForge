@@ -46,7 +46,7 @@ namespace WpfTuneForgePlayer.Views
 
         private void InitPathReadFile()
         {
-            _pathFileRead = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "FavoriteSong.bin"); 
+            _pathFileRead = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "FavoriteSongs.txt");
         }
 
         private void SetupGrid()
@@ -80,26 +80,26 @@ namespace WpfTuneForgePlayer.Views
             if (!File.Exists(fileName))
                 return result;
 
-            var uniqueSongs = new HashSet<Song>();
+            var uniqueSongs = new HashSet<string>();
 
-            using (var reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
+            foreach (var line in File.ReadAllLines(fileName))
             {
-                while (reader.BaseStream.Position < reader.BaseStream.Length)
+                var parts = line.Split('|');
+                if (parts.Length != 3) continue;
+
+                string artist = parts[0];
+                string title = parts[1];
+                string duration = parts[2];
+
+                string key = $"{artist}|{title}|{duration}";
+
+                if (uniqueSongs.Add(key))
                 {
-                    string artist = reader.ReadString();
-                    string title = reader.ReadString();
-                    string duration = reader.ReadString();
-
-                    var song = new Song(title, artist, duration);
-
-                    if (uniqueSongs.Add(song))
-                    {
-                        result.Add(song);
-                    }
-                    else
-                    {
-                        SimpleLogger.Log($"Duplicate skipped: {title} - {artist}");
-                    }
+                    result.Add(new Song(title, artist, duration));
+                }
+                else
+                {
+                    SimpleLogger.Log($"Duplicate skipped: {title} - {artist}");
                 }
             }
 

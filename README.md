@@ -38,7 +38,7 @@
 ---
 
 > [!IMPORTANT]  
-> TuneForge saves your favorite songs in a `FavoriteSong.bin` file within the program folder.
+> TuneForge saves your favorite songs in a `FavoriteSong.txt` file within the program folder.
 > If this file is deleted, all your favorite songs will be lost.
 
 ## 🚀 Technologies and Libraries
@@ -152,15 +152,6 @@ dotnet test --verbosity normal
 
 # Run specific test class
 dotnet test --filter "SongTests"
-```
-
-### Test Structure
-```
-Tests/
-├── Helpers/          # Utility class tests
-├── Services/         # Service layer tests
-├── Mathematics/      # Math operation tests
-└── Properties/       # Test assembly info
 ```
 
 ## 🚀 Automated Builds
