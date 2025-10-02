@@ -70,78 +70,98 @@ jobs:
       RUN_RELEASE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_release == 'true' }}
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ env.COMMIT_SHA }}
-        fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.COMMIT_SHA }}
+          fetch-depth: 0
 
-    
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.411
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.411
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
-    - name: Cache NuGet packages
-      uses: actions/cache@v4
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
+      - name: Restore dependencies
+        if: ${{ env.RUN_BUILD == 'true' || env.RUN_TESTS == 'true' || env.RUN_RELEASE == 'true' }}
+        run: dotnet restore WpfTuneForgePlayer.sln
 
-    - name: Restore dependencies
-      if: ${{ env.RUN_BUILD == 'true' || env.RUN_TESTS == 'true' || env.RUN_RELEASE == 'true' }}
-      run: dotnet restore WpfTuneForgePlayer.sln
+      - name: Build solution
+        run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ env.SELECTED_CONFIG }} /p:PreferredToolArchitecture=x64 /m
 
-    - name: Build solution
-      run: msbuild WpfTuneForgePlayer.sln /p:Configuration=${{ env.SELECTED_CONFIG }} /p:PreferredToolArchitecture=x64 /m
+      - name: Run tests
+        if: ${{ env.RUN_TESTS == 'true' }}
+        run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults --verbosity normal
 
-    - name: Run tests
-      if: ${{ env.RUN_TESTS == 'true' }}
-      run: dotnet test WpfTuneForgePlayer.sln --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults --verbosity normal
+      - name: Publish test results
+        if: ${{ always() && env.RUN_TESTS == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: TestResults
+          if-no-files-found: warn
 
-    - name: Publish test results
-      if: ${{ always() && env.RUN_TESTS == 'true' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: TestResults
-        path: TestResults
-        if-no-files-found: warn
+      - name: Create ZIP package
+        if: ${{ env.RUN_RELEASE == 'true' }}
+        run: |
+          mkdir package
+          xcopy /E /I /Y bin\${{ env.SELECTED_CONFIG }}\assets package\assets
+          xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.dll package\
+          xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.pdb package\
+          xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.xml package\
+          xcopy /Y bin\${{ env.SELECTED_CONFIG }}\WpfTuneForgePlayer.exe package\
+          powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\${{ env.SELECTED_CONFIG }}\TuneForge_${{ env.SELECTED_CONFIG }}.zip"
 
-    - name: Create ZIP package
-      if: ${{ env.RUN_RELEASE == 'true' }}
-      run: |
-        mkdir package
-        xcopy /E /I /Y bin\${{ env.SELECTED_CONFIG }}\assets package\assets
-        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.dll package\
-        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.pdb package\
-        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\*.xml package\
-        xcopy /Y bin\${{ env.SELECTED_CONFIG }}\WpfTuneForgePlayer.exe package\
-        powershell -Command "Compress-Archive -Path package\* -DestinationPath bin\${{ env.SELECTED_CONFIG }}\TuneForge_${{ env.SELECTED_CONFIG }}.zip"
+      - name: Upload release package artifact
+        if: ${{ always() && env.RUN_RELEASE == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: TuneForge-${{ env.SELECTED_CONFIG }}-${{ github.run_number }}
+          path: bin/${{ env.SELECTED_CONFIG }}/TuneForge_${{ env.SELECTED_CONFIG }}.zip
+          if-no-files-found: error
 
-    - name: Upload release package artifact
-      if: ${{ always() && env.RUN_RELEASE == 'true' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: TuneForge-${{ env.SELECTED_CONFIG }}-${{ github.run_number }}
-        path: bin/${{ env.SELECTED_CONFIG }}/TuneForge_${{ env.SELECTED_CONFIG }}.zip
-        if-no-files-found: error
+      - name: Create GitHub Release
+        if: ${{ env.RUN_RELEASE == 'true' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ github.run_number }}
+          target_commitish: ${{ env.COMMIT_SHA }}
+          name: "TuneForge Release #${{ github.run_number }}"
+          body: |
+            • Commit: ${{ env.COMMIT_SHA }}
+            • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
+          files: bin/${{ env.SELECTED_CONFIG }}/TuneForge_${{ env.SELECTED_CONFIG }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create GitHub Release
-      if: ${{ env.RUN_RELEASE == 'true' }}
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: build-${{ github.run_number }}
-        target_commitish: ${{ env.COMMIT_SHA }}
-        name: "TuneForge Release #${{ github.run_number }}"
-        body: |
-          • Commit: ${{ env.COMMIT_SHA }}
-          • Message: ${{ github.event.inputs.release_message || 'Manual release' }}
-        files: bin/${{ env.SELECTED_CONFIG }}/TuneForge_${{ env.SELECTED_CONFIG }}.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  set_commit_status:
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    if: github.event_name == 'workflow_dispatch'
+    env:
+      COMMIT_SHA: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit_sha || github.sha }}
+    steps:
+      - name: Set commit status
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const state = '${{ needs.build_and_test.result }}' === 'success' ? 'success' : 'failure';
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: process.env.COMMIT_SHA,
+              state: state,
+              context: 'TuneForge workflow',
+              description: `Workflow finished with status: ${state}`
+            })
